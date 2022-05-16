@@ -15,6 +15,7 @@ with kpi_selection:
     loneliness_kpi_button = st.button("Loneliness")
     health_kpi_button = st.button("Health")
     economic_strength_kpi_button = st.button("Economic Strength")
+    clear_button = st.button("Clear")
 
 with kpi_weights:
     st.header("KPI weights")
@@ -24,5 +25,5 @@ with kpi_weights:
         pass
     elif economic_strength_kpi_button:
         pass
-    else:
+    elif clear_button:
         st.text("In this section you will see all the weights that create the KPI you selected")
