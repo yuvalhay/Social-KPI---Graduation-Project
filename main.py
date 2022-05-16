@@ -12,7 +12,7 @@ with header:
 
 with kpi_selection:
     st.header("KPI Selection")
-    firstKPI, secondKPI, thirdKPI, clear = st.columns([4,1,1,1,1])
+    firstKPI, secondKPI, thirdKPI, clear = st.columns([4,3,1])
     with firstKPI:
         loneliness_kpi_button = st.button("Loneliness")
     
