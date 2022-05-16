@@ -28,7 +28,7 @@ with kpi_selection:
 with kpi_weights:
     st.header("KPI weights")
     if loneliness_kpi_button:
-        total_points = st.slider("arnona_cat", 0.0, 1.0, 0.15)
+        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, 0.15)
         # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
         #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
         #                       ["accumulated_cases", 0.05]]
