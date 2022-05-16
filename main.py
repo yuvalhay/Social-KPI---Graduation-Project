@@ -29,6 +29,13 @@ with kpi_weights:
     st.header("KPI weights")
     if loneliness_kpi_button:
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, 0.15)
+        members_Water = st.slider("members_Water", 0.0, 1.0, 0.15)
+        martial = st.slider("martial", 0.0, 1.0, 0.15)
+        widow_grown = st.slider("widow_grown", 0.0, 1.0, 0.04)
+        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, 0.1)
+        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, 0.3)
+        p85_plus = st.slider("p85_plus", 0.0, 1.0, 0.06)
+        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, 0.05)
         # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
         #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
         #                       ["accumulated_cases", 0.05]]
