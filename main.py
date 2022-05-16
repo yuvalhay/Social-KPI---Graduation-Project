@@ -12,22 +12,21 @@ with header:
 
 with kpi_selection:
     st.header("KPI Selection")
-    firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
-    with firstKPI:
-        loneliness_kpi_button = st.button("Loneliness")
-
-    with secondKPI:
-        health_kpi_button = st.button("Health")
-
-    with thirdKPI:
-        economic_strength_kpi_button = st.button("Economic Strength")
-
-    with clear:
-        clear_button = st.button("Clear")
+    KPI_names = ["Loneliness", "Health", "Economic Strength"]
+    KPI_page = st.radio("KPI Selection", KPI_names)
+    # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
+    # with firstKPI:
+    #     loneliness_kpi_button = st.button("Loneliness")
+    # with secondKPI:
+    #     health_kpi_button = st.button("Health")
+    # with thirdKPI:
+    #     economic_strength_kpi_button = st.button("Economic Strength")
+    # with clear:
+    #     clear_button = st.button("Clear")
 
 with kpi_weights:
     st.header("KPI weights")
-    if loneliness_kpi_button:
+    if KPI_page == "Loneliness":
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, 0.15)
         members_Water = st.slider("members_Water", 0.0, 1.0, 0.15)
         martial = st.slider("martial", 0.0, 1.0, 0.15)
@@ -39,10 +38,26 @@ with kpi_weights:
         # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
         #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
         #                       ["accumulated_cases", 0.05]]
-
-    elif health_kpi_button:
+    elif KPI_page == "Health":
         pass
-    elif economic_strength_kpi_button:
+    elif KPI_page == "Economic Strength":
         pass
-    elif clear_button:
-        st.text("In this section you will see all the weights that create the KPI you selected")
+    # if loneliness_kpi_button:
+    #     arnona_cat = st.slider("arnona_cat", 0.0, 1.0, 0.15)
+    #     members_Water = st.slider("members_Water", 0.0, 1.0, 0.15)
+    #     martial = st.slider("martial", 0.0, 1.0, 0.15)
+    #     widow_grown = st.slider("widow_grown", 0.0, 1.0, 0.04)
+    #     widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, 0.1)
+    #     lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, 0.3)
+    #     p85_plus = st.slider("p85_plus", 0.0, 1.0, 0.06)
+    #     accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, 0.05)
+    #     # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
+    #     #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
+    #     #                       ["accumulated_cases", 0.05]]
+    #
+    # elif health_kpi_button:
+    #     pass
+    # elif economic_strength_kpi_button:
+    #     pass
+    # elif clear_button:
+    #     st.text("In this section you will see all the weights that create the KPI you selected")
