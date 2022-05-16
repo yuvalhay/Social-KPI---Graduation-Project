@@ -1,8 +1,8 @@
 import streamlit as st
 
-header = st.beta_container()
-kpi_selection = st.beta_container()
-kpi_weights = st.beta_container()
+header = st.container()
+kpi_selection = st.container()
+kpi_weights = st.container()
 
 with header:
     st.title("The visualization of our KPI's")
