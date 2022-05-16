@@ -12,10 +12,18 @@ with header:
 
 with kpi_selection:
     st.header("KPI Selection")
-    loneliness_kpi_button = st.button("Loneliness")
-    health_kpi_button = st.button("Health")
-    economic_strength_kpi_button = st.button("Economic Strength")
-    clear_button = st.button("Clear")
+    firstKPI, secondKPI, thirdKPI, clear = st.columns(4)
+    with firstKPI:
+        loneliness_kpi_button = st.button("Loneliness")
+    
+    with secondKPI:
+        health_kpi_button = st.button("Health")
+    
+    with thirdKPI:
+        economic_strength_kpi_button = st.button("Economic Strength")
+    
+    with clear:
+        clear_button = st.button("Clear")
 
 with kpi_weights:
     st.header("KPI weights")
