@@ -98,6 +98,9 @@ with kpi_weights:
 
             if diff_val > 0:
                 for i in range(8):
+                    if i == 0:
+                        del st.session_state[f"{Loneliness_kpi_names[i]}"]
+                        st.slider(f"{Loneliness_kpi_names[i]}", 0.0, 1.0, current_values[i], key=f"{Loneliness_kpi_names[i]}")
                     if i != 0:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
                         # update_slider(Loneliness_kpi_names[i], current_values[i])
