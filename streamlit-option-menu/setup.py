@@ -47,7 +47,7 @@ selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'],
 ```
 """,
     long_description_content_type="text/plain",
-    url="https://github.com/victoryhb/streamlit-option-menu",
+    url="https://github.com/yuvalhay/Social-KPI---Graduation-Project/streamlit-option-menu",
     packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],
