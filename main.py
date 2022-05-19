@@ -83,7 +83,7 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
-        del st.session_state["members_Water"]
+        del members_Water
         st.write(st.session_state)
         # for ind, kpi_name in enumerate(Loneliness_kpi_names):
         #     if f"{kpi_name}" not in st.session_state:
