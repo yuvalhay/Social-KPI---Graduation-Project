@@ -83,6 +83,7 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
+        del st.session_state["members_Water"]
         # for ind, kpi_name in enumerate(Loneliness_kpi_names):
         #     if f"{kpi_name}" not in st.session_state:
         #         # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
@@ -100,7 +101,7 @@ with kpi_weights:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
                         # update_slider(Loneliness_kpi_names[i], current_values[i])
                 del st.session_state["members_Water"]
-                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water2")
+                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
                 st.write(current_values)
 
                 # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
