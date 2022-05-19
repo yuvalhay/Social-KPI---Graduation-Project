@@ -84,6 +84,7 @@ with kpi_weights:
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
         del st.session_state["members_Water"]
+        st.write(st.session_state)
         # for ind, kpi_name in enumerate(Loneliness_kpi_names):
         #     if f"{kpi_name}" not in st.session_state:
         #         # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
