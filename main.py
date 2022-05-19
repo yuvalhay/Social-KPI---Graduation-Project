@@ -1,4 +1,11 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
+import streamlit.components.v1 as html
+from PIL import Image
+import cv2
+from st_aggrid import AgGrid
+import plotly.express as px
+import io
 
 header = st.container()
 kpi_selection = st.container()
@@ -6,8 +13,20 @@ kpi_weights = st.container()
 
 with st.sidebar:
     # st.sidebar
-    options_names = ["Prediction", "KPI"]
-    choose_page = st.radio("Choose", options_names)
+    # options_names = ["Prediction", "KPI"]
+    # choose_page = st.radio("Choose", options_names)
+
+    choose = option_menu("App Gallery", ["About", "Prediction", "Social KPI", "Contact"],
+                         icons=['person lines fill', 'pc display horizontal', 'people', 'pencil square'],
+                         menu_icon="app-indicator", default_index=0,
+                         styles={
+                             "container": {"padding": "5!important", "background-color": "orange"},
+                             "icon": {"color": "black", "font-size": "25px"},
+                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
+                                          "--hover-color": "#eee"},
+                             "nav-link-selected": {"background-color": "#02ab21"},
+                         }
+                         )
 
 with header:
     st.title("The visualization of our KPI's")
