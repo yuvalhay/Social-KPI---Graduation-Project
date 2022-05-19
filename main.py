@@ -71,7 +71,7 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6])
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])
 
-        st.text(f"{arnona_cat}")
+        st.write(f"{arnona_cat}")
         if arnona_cat != current_values[0]:
             diff_val = arnona_cat - current_values[0]
             avg_diff = diff_val/7  # בכמה לשנות כל משקל
