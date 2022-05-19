@@ -5,9 +5,9 @@ kpi_selection = st.container()
 kpi_weights = st.container()
 
 with st.sidebar:
-    st.sidebar
-    KPI_names = ["Prediction", "KPI"]
-    KPI_page = st.radio("Choose", KPI_names)
+    # st.sidebar
+    options_names = ["Prediction", "KPI"]
+    choose_page = st.radio("Choose", options_names)
 
 with header:
     st.title("The visualization of our KPI's")
