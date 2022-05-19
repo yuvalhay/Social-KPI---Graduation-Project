@@ -15,6 +15,7 @@ Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
 def update_slider(kpi_name, value):
+    del st.session_state[kpi_name]
     st.session_state[kpi_name] = value
 
 
@@ -72,8 +73,7 @@ with kpi_weights:
     #                       st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
     if KPI_page == "Loneliness":
         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies",
-                                "lonely_elderlies", "p85_plus",
-                                "accumulated_cases"]
+                                "lonely_elderlies", "p85_plus", "accumulated_cases"]
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
         members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
         martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
@@ -83,7 +83,7 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
-        del members_Water
+        # del members_Water
         st.write(st.session_state)
         # for ind, kpi_name in enumerate(Loneliness_kpi_names):
         #     if f"{kpi_name}" not in st.session_state:
@@ -100,7 +100,7 @@ with kpi_weights:
                 for i in range(8):
                     if i != 0:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
-                        # update_slider(Loneliness_kpi_names[i], current_values[i])
+                        update_slider(Loneliness_kpi_names[i], current_values[i])
                 del st.session_state["members_Water"]
                 members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
                 st.write(current_values)
