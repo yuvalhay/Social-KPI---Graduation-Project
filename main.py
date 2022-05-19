@@ -74,7 +74,7 @@ with kpi_weights:
         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies", "lonely_elderlies", "p85_plus",
                        "accumulated_cases"]
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
-        members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
+        members_Water = st.slider("members_Water", 0.0, 1.0, key="members_Water")
         martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
         widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
         widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
