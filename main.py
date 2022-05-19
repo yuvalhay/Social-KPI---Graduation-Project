@@ -74,7 +74,7 @@ with kpi_weights:
         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies",
                                 "lonely_elderlies", "p85_plus",
                                 "accumulated_cases"]
-        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, key="arnona_cat")
+        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
         members_Water = st.slider("members_Water", 0.0, 1.0, key="members_Water")
         martial = st.slider("martial", 0.0, 1.0, key="martial")
         widow_grown = st.slider("widow_grown", 0.0, 1.0, key="widow_grown")
@@ -98,7 +98,9 @@ with kpi_weights:
                 for i in range(8):
                     if i != 0:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
-                        update_slider(Loneliness_kpi_names[i], current_values[i])
+                        # update_slider(Loneliness_kpi_names[i], current_values[i])
+                        del arnona_cat
+                        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
                 st.write(current_values)
 
                 # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
