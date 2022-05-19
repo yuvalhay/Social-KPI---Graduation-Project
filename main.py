@@ -3,6 +3,11 @@ import streamlit as st
 header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
+sidebar = st.sidebar()
+
+with sidebar:
+    KPI_names = ["Prediction", "KPI"]
+    KPI_page = st.radio("Choose", KPI_names)
 
 with header:
     st.title("The visualization of our KPI's")
@@ -36,6 +41,7 @@ with kpi_weights:
     #                       st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
     #                       st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
     if KPI_page == "Loneliness":
+        current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, Loneliness_default_values[0])
         members_Water = st.slider("members_Water", 0.0, 1.0, Loneliness_default_values[1])
         martial = st.slider("martial", 0.0, 1.0, Loneliness_default_values[2])
@@ -44,7 +50,6 @@ with kpi_weights:
         lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, Loneliness_default_values[5])
         p85_plus = st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6])
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])
-        current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
         if arnona_cat != current_values[0]:
             diff_val = arnona_cat - current_values[0]
