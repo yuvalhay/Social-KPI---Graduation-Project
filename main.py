@@ -12,6 +12,16 @@ kpi_selection = st.container()
 kpi_weights = st.container()
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
+def update_slider(kpi_name, value):
+    st.session_state[f"{kpi_name}"] = value
+
+# if "test_slider" not in st.session_state:
+#     st.session_state["test_slider"] = 0
+
+# st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
+
+# st.button("Update slider values", on_click=_update_slider, kwargs={"value": random.randint(-100, 100)})
+
 # with st.sidebar:
 #     # st.sidebar
 #     # options_names = ["Prediction", "KPI"]
@@ -52,28 +62,27 @@ with kpi_selection:
 with kpi_weights:
     st.header("KPI weights")
     current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-    show_flag = True
-    Loneliness_sliders = [st.slider("arnona_cat", 0.0, 1.0, Loneliness_default_values[0]),
-                          st.slider("members_Water", 0.0, 1.0, Loneliness_default_values[1]),
-                          st.slider("martial", 0.0, 1.0, Loneliness_default_values[2]),
-                          st.slider("widow_grown", 0.0, 1.0, Loneliness_default_values[3]),
-                          st.slider("widow_elderlies", 0.0, 1.0, Loneliness_default_values[4]),
-                          st.slider("lonely_elderlies", 0.0, 1.0, Loneliness_default_values[5]),
-                          st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
-                          st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
+    # Loneliness_sliders = [st.slider("arnona_cat", 0.0, 1.0, Loneliness_default_values[0]),
+    #                       st.slider("members_Water", 0.0, 1.0, Loneliness_default_values[1]),
+    #                       st.slider("martial", 0.0, 1.0, Loneliness_default_values[2]),
+    #                       st.slider("widow_grown", 0.0, 1.0, Loneliness_default_values[3]),
+    #                       st.slider("widow_elderlies", 0.0, 1.0, Loneliness_default_values[4]),
+    #                       st.slider("lonely_elderlies", 0.0, 1.0, Loneliness_default_values[5]),
+    #                       st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
+    #                       st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
     if KPI_page == "Loneliness":
-        if show_flag == True:
-            arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
-            members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
-            martial = st.slider("martial", 0.0, 1.0, current_values[2])
-            widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
-            widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4])
-            lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5])
-            p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6])
-            accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
+        Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies", "lonely_elderlies", "p85_plus",
+                       "accumulated_cases"]
+        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
+        members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
+        martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
+        widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
+        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
+        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
+        p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
+        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
         if arnona_cat != current_values[0]:
-            show_flag = False
             diff_val = round(arnona_cat - current_values[0], 4)
             avg_diff = round(diff_val/7, 4) # בכמה לשנות כל משקל
             current_values[0] = arnona_cat
@@ -83,28 +92,31 @@ with kpi_weights:
                 for i in range(8):
                     if i != 0:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
+                        update_slider(Loneliness_kpi_names[i], current_values[i])
                 st.write(current_values)
-                arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
-                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
-                martial = st.slider("martial", 0.0, 1.0, current_values[2])
-                widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
-                widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4])
-                lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5])
-                p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6])
-                accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
+
+                # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
+                # members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
+                # martial = st.slider("martial", 0.0, 1.0, current_values[2])
+                # widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
+                # widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4])
+                # lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5])
+                # p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6])
+                # accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
 
             else:
                 for i in range(8):
                     if i != 0:
-                        current_values[i] += avg_diff
-        #
-        #         members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
-        #         martial = st.slider("martial", 0.0, 1.0, current_values[2])
-        #         widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
-        #         widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4])
-        #         lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5])
-        #         p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6])
-        #         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
+                        current_values[i] = round(current_values[i] + avg_diff, 4)
+                        update_slider(Loneliness_kpi_names[i], current_values[i])
+                # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
+                # members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
+                # martial = st.slider("martial", 0.0, 1.0, current_values[2])
+                # widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
+                # widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4])
+                # lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5])
+                # p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6])
+                # accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
 
         # temp_values = [arnona_cat, members_Water, martial, widow_grown, widow_elderlies, lonely_elderlies, p85_plus,
         #                accumulated_cases]
