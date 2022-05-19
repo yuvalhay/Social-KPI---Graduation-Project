@@ -71,8 +71,8 @@ with kpi_weights:
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7])
 
         if arnona_cat != current_values[0]:
-            diff_val = arnona_cat - current_values[0]
-            avg_diff = diff_val/7  # בכמה לשנות כל משקל
+            diff_val = round(arnona_cat - current_values[0], 4)
+            avg_diff = round(diff_val/7, 4) # בכמה לשנות כל משקל
             current_values[0] = arnona_cat
             st.write(diff_val, "--", avg_diff)
 
