@@ -83,7 +83,8 @@ with kpi_weights:
 
         for ind, kpi_name in enumerate(Loneliness_kpi_names):
             if f"{kpi_name}" not in st.session_state:
-                st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
+                # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
+                st.session_state.arnona_cat = 0.15
 
         if arnona_cat != current_values[0]:
             diff_val = round(arnona_cat - current_values[0], 4)
