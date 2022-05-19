@@ -81,10 +81,10 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, key="p85_plus")
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, key="accumulated_cases")
 
-        for kpi_name in Loneliness_kpi_names:
+        for ind, kpi_name in enumerate(Loneliness_kpi_names):
             if f"{kpi_name}" not in st.session_state:
-                st.session_state[f"{kpi_name}"] = 0
-        
+                st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
+
         if arnona_cat != current_values[0]:
             diff_val = round(arnona_cat - current_values[0], 4)
             avg_diff = round(diff_val/7, 4) # בכמה לשנות כל משקל
