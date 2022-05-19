@@ -100,7 +100,7 @@ with kpi_weights:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
                         # update_slider(Loneliness_kpi_names[i], current_values[i])
                 del st.session_state["members_Water"]
-                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
+                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water2")
                 st.write(current_values)
 
                 # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
