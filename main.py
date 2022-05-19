@@ -53,14 +53,14 @@ with kpi_weights:
     st.header("KPI weights")
     current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
     show_flag = True
-    # Loneliness_sliders = [st.slider("arnona_cat", 0.0, 1.0, Loneliness_default_values[0]),
-    #                       st.slider("members_Water", 0.0, 1.0, Loneliness_default_values[1]),
-    #                       st.slider("martial", 0.0, 1.0, Loneliness_default_values[2]),
-    #                       st.slider("widow_grown", 0.0, 1.0, Loneliness_default_values[3]),
-    #                       st.slider("widow_elderlies", 0.0, 1.0, Loneliness_default_values[4]),
-    #                       st.slider("lonely_elderlies", 0.0, 1.0, Loneliness_default_values[5]),
-    #                       st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
-    #                       st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
+    Loneliness_sliders = [st.slider("arnona_cat", 0.0, 1.0, Loneliness_default_values[0]),
+                          st.slider("members_Water", 0.0, 1.0, Loneliness_default_values[1]),
+                          st.slider("martial", 0.0, 1.0, Loneliness_default_values[2]),
+                          st.slider("widow_grown", 0.0, 1.0, Loneliness_default_values[3]),
+                          st.slider("widow_elderlies", 0.0, 1.0, Loneliness_default_values[4]),
+                          st.slider("lonely_elderlies", 0.0, 1.0, Loneliness_default_values[5]),
+                          st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
+                          st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
     if KPI_page == "Loneliness":
         if show_flag == True:
             arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
