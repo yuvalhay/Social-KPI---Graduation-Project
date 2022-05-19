@@ -79,7 +79,7 @@ with kpi_weights:
             if diff_val > 0:
                 for i in range(8):
                     if i != 0:
-                        current_values[i] = current_values[i] - avg_diff
+                        current_values[i] = round(current_values[i] - avg_diff, 4)
                 st.write(current_values)
         #         members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
         #         martial = st.slider("martial", 0.0, 1.0, current_values[2])
