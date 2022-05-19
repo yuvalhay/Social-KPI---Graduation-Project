@@ -1,4 +1,5 @@
 import streamlit as st
+
 # from streamlit_option_menu import option_menu
 # import streamlit.components.v1 as html
 # from PIL import Image
@@ -12,9 +13,9 @@ kpi_selection = st.container()
 kpi_weights = st.container()
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
-def update_slider(kpi_name, value):
-    st.session_state[f"{kpi_name}"] = value
 
+def update_slider(kpi_name, value):
+    st.session_state[kpi_name] = value
 
 
 # st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
@@ -70,8 +71,9 @@ with kpi_weights:
     #                       st.slider("p85_plus", 0.0, 1.0, Loneliness_default_values[6]),
     #                       st.slider("accumulated_cases", 0.0, 1.0, Loneliness_default_values[7])]
     if KPI_page == "Loneliness":
-        Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies", "lonely_elderlies", "p85_plus",
-                       "accumulated_cases"]
+        Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies",
+                                "lonely_elderlies", "p85_plus",
+                                "accumulated_cases"]
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, key="arnona_cat")
         members_Water = st.slider("members_Water", 0.0, 1.0, key="members_Water")
         martial = st.slider("martial", 0.0, 1.0, key="martial")
@@ -81,14 +83,14 @@ with kpi_weights:
         p85_plus = st.slider("p85_plus", 0.0, 1.0, key="p85_plus")
         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, key="accumulated_cases")
 
-        for ind, kpi_name in enumerate(Loneliness_kpi_names):
-            if f"{kpi_name}" not in st.session_state:
-                # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
-                st.session_state.arnona_cat = 0.15
+        # for ind, kpi_name in enumerate(Loneliness_kpi_names):
+        #     if f"{kpi_name}" not in st.session_state:
+        #         # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
+        #         st.session_state.arnona_cat = 0.15
 
         if arnona_cat != current_values[0]:
             diff_val = round(arnona_cat - current_values[0], 4)
-            avg_diff = round(diff_val/7, 4) # בכמה לשנות כל משקל
+            avg_diff = round(diff_val / 7, 4)  # בכמה לשנות כל משקל
             current_values[0] = arnona_cat
             st.write(diff_val, "--", avg_diff)
 
