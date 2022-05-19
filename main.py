@@ -3,9 +3,9 @@ import streamlit as st
 header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
-sidebar = st.sidebar()
 
-with sidebar:
+with st.sidebar:
+    st.sidebar
     KPI_names = ["Prediction", "KPI"]
     KPI_page = st.radio("Choose", KPI_names)
 
