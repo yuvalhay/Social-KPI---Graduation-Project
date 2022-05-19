@@ -75,12 +75,12 @@ with kpi_weights:
             avg_diff = diff_val/7  # בכמה לשנות כל משקל
             current_values[0] = arnona_cat
             st.write(diff_val, "--", avg_diff)
-            
+
             if diff_val > 0:
                 for i in range(8):
                     if i != 0:
                         current_values[i] = current_values[i] - avg_diff
-        #
+                st.write(current_values)
         #         members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1])
         #         martial = st.slider("martial", 0.0, 1.0, current_values[2])
         #         widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3])
