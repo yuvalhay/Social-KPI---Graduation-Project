@@ -15,8 +15,7 @@ Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 def update_slider(kpi_name, value):
     st.session_state[f"{kpi_name}"] = value
 
-# if "test_slider" not in st.session_state:
-#     st.session_state["test_slider"] = 0
+
 
 # st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
 
@@ -73,15 +72,19 @@ with kpi_weights:
     if KPI_page == "Loneliness":
         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies", "lonely_elderlies", "p85_plus",
                        "accumulated_cases"]
-        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
+        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, key="arnona_cat")
         members_Water = st.slider("members_Water", 0.0, 1.0, key="members_Water")
-        martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
-        widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
-        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
-        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
-        p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
-        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
+        martial = st.slider("martial", 0.0, 1.0, key="martial")
+        widow_grown = st.slider("widow_grown", 0.0, 1.0, key="widow_grown")
+        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, key="widow_elderlies")
+        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, key="lonely_elderlies")
+        p85_plus = st.slider("p85_plus", 0.0, 1.0, key="p85_plus")
+        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, key="accumulated_cases")
 
+        for kpi_name in Loneliness_kpi_names:
+            if f"{kpi_name}" not in st.session_state:
+                st.session_state[f"{kpi_name}"] = 0
+        
         if arnona_cat != current_values[0]:
             diff_val = round(arnona_cat - current_values[0], 4)
             avg_diff = round(diff_val/7, 4) # בכמה לשנות כל משקל
