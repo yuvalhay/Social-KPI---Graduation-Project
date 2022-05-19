@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import setup
 # import streamlit.components.v1 as html
 # from PIL import Image
 # import cv2
