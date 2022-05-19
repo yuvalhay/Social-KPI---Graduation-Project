@@ -75,13 +75,13 @@ with kpi_weights:
                                 "lonely_elderlies", "p85_plus",
                                 "accumulated_cases"]
         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
-        members_Water = st.slider("members_Water", 0.0, 1.0, key="members_Water")
-        martial = st.slider("martial", 0.0, 1.0, key="martial")
-        widow_grown = st.slider("widow_grown", 0.0, 1.0, key="widow_grown")
-        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, key="widow_elderlies")
-        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, key="lonely_elderlies")
-        p85_plus = st.slider("p85_plus", 0.0, 1.0, key="p85_plus")
-        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, key="accumulated_cases")
+        members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
+        martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
+        widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
+        widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
+        lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
+        p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
+        accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
 
         # for ind, kpi_name in enumerate(Loneliness_kpi_names):
         #     if f"{kpi_name}" not in st.session_state:
@@ -99,8 +99,8 @@ with kpi_weights:
                     if i != 0:
                         current_values[i] = round(current_values[i] - avg_diff, 4)
                         # update_slider(Loneliness_kpi_names[i], current_values[i])
-                        del arnona_cat
-                        arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
+                del members_Water
+                members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
                 st.write(current_values)
 
                 # arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0])
