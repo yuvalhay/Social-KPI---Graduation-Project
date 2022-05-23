@@ -107,31 +107,31 @@ with kpi_weights:
             members_Water = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[1]}'))
+                value=f'{basic_ratio[1]}')
             martial = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[2]}'))
+                value=f'{basic_ratio[2]}')
             widow_grown = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[3]}'))
+                value=f'{basic_ratio[3]}')
             widow_elderlies = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[4]}'))
+                value=f'{basic_ratio[4]}')
             lonely_elderlies = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[5]}'))
+                value=f'{basic_ratio[5]}')
             p85_plus = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[6]}'))
+                value=f'{basic_ratio[6]}')
             accumulated_cases = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{basic_ratio[7]}'))
+                value=f'{basic_ratio[7]}')
             sum_of_weights = sum(Loneliness_kpi_dict.values())
             st.write(sum_of_weights)
         # else:
