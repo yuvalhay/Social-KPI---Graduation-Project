@@ -103,45 +103,47 @@ with kpi_weights:
             arnona_cat = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[0])
+                value=f'{basic_ratio[0]}')
             members_Water = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[1])
+                value=(f'{basic_ratio[1]}'))
             martial = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[2])
+                value=(f'{basic_ratio[2]}'))
             widow_grown = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[3])
+                value=(f'{basic_ratio[3]}'))
             widow_elderlies = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[4])
+                value=(f'{basic_ratio[4]}'))
             lonely_elderlies = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[5])
+                value=(f'{basic_ratio[5]}'))
             p85_plus = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[6])
+                value=(f'{basic_ratio[6]}'))
             accumulated_cases = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=basic_ratio[7])
+                value=(f'{basic_ratio[7]}'))
+            sum_of_weights = sum(Loneliness_kpi_dict.values())
+            st.write(sum_of_weights)
         # else:
         #     index = 0
         #     for key in Loneliness_kpi_dict.keys():
         #         Loneliness_kpi_dict[key] = st.select_slider(
+            if reset_kpi_weight_button:
+                st.balloons()
         #                                         'Explanation',
         #                                         options=['1', '2', '3', '4', '5', '6', '7'],
         #                                         value=f'{current_ratio[index]}')
         #         index += 1
-            sum_of_weights = sum(Loneliness_kpi_dict.values())
-            st.write(sum_of_weights)
     #     if current_values == [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]:
     #         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies",
     #                                 "lonely_elderlies", "p85_plus", "accumulated_cases"]
