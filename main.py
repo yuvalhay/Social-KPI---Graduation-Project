@@ -104,30 +104,36 @@ with kpi_weights:
 
     if KPI_page == "Loneliness":
         st.balloons()
-        arnona_cat = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                      value=f'{basic_ratio[0]}', key="arnona_cat")
-        members_Water = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                         value=f'{basic_ratio[1]}', key="members_Water")
-        martial = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                   value=f'{basic_ratio[2]}', key="martial")
-        widow_grown = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                       value=f'{basic_ratio[3]}', key="widow_grown")
-        widow_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                           value=f'{basic_ratio[4]}', key="widow_elderlies")
-        lonely_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                            value=f'{basic_ratio[5]}', key="lonely_elderlies")
-        p85_plus = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                    value=f'{basic_ratio[6]}', key="p85_plus")
-        accumulated_cases = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                             value=f'{basic_ratio[7]}', key="accumulated_cases")
+        index = 0
+        for key in Loneliness_kpi_dict.keys():
+            Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                                        value=f'{current_ratio[index]}', key=Loneliness_kpi_dict.keys()[index])
+            index += 1
+        # arnona_cat = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                               value=f'{basic_ratio[0]}', key="arnona_cat")
+        # members_Water = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                                  value=f'{basic_ratio[1]}', key="members_Water")
+        # martial = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                            value=f'{basic_ratio[2]}', key="martial")
+        # widow_grown = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                                value=f'{basic_ratio[3]}', key="widow_grown")
+        # widow_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                                    value=f'{basic_ratio[4]}', key="widow_elderlies")
+        # lonely_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                                     value=f'{basic_ratio[5]}', key="lonely_elderlies")
+        # p85_plus = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                             value=f'{basic_ratio[6]}', key="p85_plus")
+        # accumulated_cases = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+        #                                      value=f'{basic_ratio[7]}', key="accumulated_cases")
         sum_of_weights = sum(Loneliness_kpi_dict.values())
         st.write(sum_of_weights)
+        if reset_kpi_weight_button:
+            pass
         # else:
         #     index = 0
         #     for key in Loneliness_kpi_dict.keys():
         #         Loneliness_kpi_dict[key] = st.select_slider(
-        if reset_kpi_weight_button:
-            pass
+
     #                                         'Explanation',
     #                                         options=['1', '2', '3', '4', '5', '6', '7'],
     #                                         value=f'{current_ratio[index]}')
