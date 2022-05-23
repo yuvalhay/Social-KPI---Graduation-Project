@@ -128,12 +128,12 @@ with kpi_weights:
         #                                      value=f'{basic_ratio[7]}', key="accumulated_cases")
         if reset_kpi_weight_button:
             current_ratio = basic_ratio.copy()
-            # index = 0
-            # for key in Loneliness_kpi_dict.keys():
-            #     Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-            #                                                 value=f'{current_ratio[index]}',
-            #                                                 key=Loneliness_kpi_dict_keys[index])
-            #     index += 1
+            index = 0
+            for key in Loneliness_kpi_dict.keys():
+                Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                                            value=f'{current_ratio[index]}',
+                                                            key=Loneliness_kpi_dict_keys[index])
+                index += 1
 
         sum_of_weights = sum(Loneliness_kpi_dict.values())
         st.write(sum_of_weights)
