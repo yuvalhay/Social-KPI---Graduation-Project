@@ -33,19 +33,19 @@ def count_by_sign(sign):
     elif sign == -1: return count_negatives
     else: return count_zeros + count_negatives
 
-def increase_one_kpi(kpi_name, decrease_val, kpis_dict):
-    diff_dict = {key: 0 for key in kpis_dict.keys()}
-    for key, val in kpis_dict.items():
-        diff_dict[key] = val - decrease_val
-    while diff_dict.values() < 0:
-        # max_negative_val = -1
-        # for val in diff_dict.values():
-        #     if val < 0 & val > max_negative_val:
-        #         max_negative_val = val
-        num_of_negatives = count_by_sign(-1)
-        min_negative_val = min(diff_dict.values())
-        diff_avg =
-        for key, val in kpis_dict.items():
+# def increase_one_kpi(kpi_name, decrease_val, kpis_dict):
+#     diff_dict = {key: 0 for key in kpis_dict.keys()}
+#     for key, val in kpis_dict.items():
+#         diff_dict[key] = val - decrease_val
+#     while diff_dict.values() < 0:
+#         # max_negative_val = -1
+#         # for val in diff_dict.values():
+#         #     if val < 0 & val > max_negative_val:
+#         #         max_negative_val = val
+#         num_of_negatives = count_by_sign(-1)
+#         min_negative_val = min(diff_dict.values())
+#         diff_avg =
+#         for key, val in kpis_dict.items():
 
 
 
