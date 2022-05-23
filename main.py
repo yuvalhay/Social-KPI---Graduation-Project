@@ -117,9 +117,8 @@ with kpi_weights:
 
     elif KPI_page == "Health":
         st.snow()
-        my_bar = st.progress(0)
-
-        for percent_complete in range(100):
+        my_bar = st.progress('Exporting File..')
+        for percent_complete in range(50):
             time.sleep(0.1)
             my_bar.progress(percent_complete + 1)
     elif KPI_page == "Economic Strength":
