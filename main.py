@@ -68,7 +68,7 @@ with kpi_weights:
                 Loneliness_kpi_dict[key] = st.select_slider(
                 'Explanation',
                 options=['1', '2', '3', '4', '5', '6', '7'],
-                value=(f'{current_ration[index]}')))
+                value=(f'{current_ration[index]}'))
                 index += 1
         else:
             index = 0
@@ -76,7 +76,7 @@ with kpi_weights:
                 Loneliness_kpi_dict[key] = st.select_slider(
                     'Explanation',
                     options=['1', '2', '3', '4', '5', '6', '7'],
-                    value=(f'{current_ration[index]}')))
+                    value=(f'{current_ration[index]}'))
                 index += 1
             sum_of_weights = sum(Loneliness_kpi_dict.values())
 
