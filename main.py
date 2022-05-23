@@ -30,8 +30,11 @@ def count_by_sign(sign):
             count_zeros += 1
     if sign == 0:
         return count_zeros
-    elif sign == -1: return count_negatives
-    else: return count_zeros + count_negatives
+    elif sign == -1:
+        return count_negatives
+    else:
+        return count_zeros + count_negatives
+
 
 # def increase_one_kpi(kpi_name, decrease_val, kpis_dict):
 #     diff_dict = {key: 0 for key in kpis_dict.keys()}
@@ -46,7 +49,6 @@ def count_by_sign(sign):
 #         min_negative_val = min(diff_dict.values())
 #         diff_avg =
 #         for key, val in kpis_dict.items():
-
 
 
 # st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
@@ -93,7 +95,8 @@ with kpi_selection:
 with kpi_weights:
     st.header("KPI weights")
     current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-    Loneliness_kpi_dict = {"arnona_cat":0, "members_Water":0, "martial":0, "widow_grown":0, "widow_elderlies":0, "lonely_elderlies":0, "p85_plus":0, "accumulated_cases":0}
+    Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
+                           "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
 
     basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
     current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
@@ -101,44 +104,28 @@ with kpi_weights:
 
     if KPI_page == "Loneliness":
         st.balloons()
-        arnona_cat = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[0]}')
-        members_Water = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[1]}')
-        martial = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[2]}')
-        widow_grown = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[3]}')
-        widow_elderlies = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[4]}')
-        lonely_elderlies = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[5]}')
-        p85_plus = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[6]}')
-        accumulated_cases = st.select_slider(
-            'Explanation',
-            options=['1', '2', '3', '4', '5', '6', '7'],
-            value=f'{basic_ratio[7]}')
+        arnona_cat = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                      value=f'{basic_ratio[0]}', key="arnona_cat")
+        members_Water = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                         value=f'{basic_ratio[1]}', key="members_Water")
+        martial = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                   value=f'{basic_ratio[2]}', key="martial")
+        widow_grown = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                       value=f'{basic_ratio[3]}', key="widow_grown")
+        widow_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                           value=f'{basic_ratio[4]}', key="widow_elderlies")
+        lonely_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                            value=f'{basic_ratio[5]}', key="lonely_elderlies")
+        p85_plus = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                    value=f'{basic_ratio[6]}', key="p85_plus")
+        accumulated_cases = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                             value=f'{basic_ratio[7]}', key="accumulated_cases")
         sum_of_weights = sum(Loneliness_kpi_dict.values())
         st.write(sum_of_weights)
-    # else:
-    #     index = 0
-    #     for key in Loneliness_kpi_dict.keys():
-    #         Loneliness_kpi_dict[key] = st.select_slider(
+        # else:
+        #     index = 0
+        #     for key in Loneliness_kpi_dict.keys():
+        #         Loneliness_kpi_dict[key] = st.select_slider(
         if reset_kpi_weight_button:
             pass
     #                                         'Explanation',
@@ -215,7 +202,7 @@ with kpi_weights:
     # #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
     # #                       ["accumulated_cases", 0.05]]
     elif KPI_page == "Health":
-        pass
+        st.snow()
     elif KPI_page == "Economic Strength":
         pass
     # if loneliness_kpi_button:
