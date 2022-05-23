@@ -117,9 +117,14 @@ with kpi_weights:
 
     elif KPI_page == "Health":
         st.snow()
+        my_bar = st.progress(0)
+
+        for percent_complete in range(100):
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 1)
     elif KPI_page == "Economic Strength":
-        with st.spinner('Wait for it...'):
-            time.sleep(5)
+        with st.spinner('Exporting File..'):
+            time.sleep(3)
         st.success('Done!')
 
     # health_weights = [["arnona_cat", 0.2], ["age", 0.08], ["hashlama_kizvat_nechut_elderlies", (-2) * 0.08],
