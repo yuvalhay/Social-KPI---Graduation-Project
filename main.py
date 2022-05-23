@@ -105,11 +105,10 @@ with kpi_weights:
     if KPI_page == "Loneliness":
         st.balloons()
         index = 0
-        st.write(list(Loneliness_kpi_dict.keys()))
-        st.write(list(Loneliness_kpi_dict.keys())[1])
+        Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
         for key in Loneliness_kpi_dict.keys():
             Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-                                                        value=f'{current_ratio[index]}', key=Loneliness_kpi_dict.keys()[index])
+                                                        value=f'{current_ratio[index]}', key=Loneliness_kpi_dict_keys[index])
             index += 1
         # arnona_cat = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
         #                               value=f'{basic_ratio[0]}', key="arnona_cat")
