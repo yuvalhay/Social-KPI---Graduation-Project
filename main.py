@@ -104,8 +104,8 @@ with kpi_weights:
 
     if KPI_page == "Loneliness":
         st.balloons()
-        index = 0
         Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
+        index = 0
         for key in Loneliness_kpi_dict.keys():
             Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
                                                         value=f'{current_ratio[index]}', key=Loneliness_kpi_dict_keys[index])
@@ -130,6 +130,12 @@ with kpi_weights:
         st.write(sum_of_weights)
         if reset_kpi_weight_button:
             current_ratio = basic_ratio.copy()
+            index = 0
+            for key in Loneliness_kpi_dict.keys():
+                Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
+                                                            value=f'{current_ratio[index]}',
+                                                            key=Loneliness_kpi_dict_keys[index])
+                index += 1
         # else:
         #     index = 0
         #     for key in Loneliness_kpi_dict.keys():
