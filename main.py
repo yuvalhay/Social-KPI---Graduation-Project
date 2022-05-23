@@ -117,7 +117,7 @@ with kpi_weights:
 
     elif KPI_page == "Health":
         st.snow()
-        my_bar = st.progress(10)
+        my_bar = st.progress()
         for percent_complete in range(50):
             time.sleep(0.1)
             my_bar.progress(percent_complete + 1)
