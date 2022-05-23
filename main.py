@@ -1,5 +1,5 @@
 import streamlit as st
-
+import time
 # from streamlit_option_menu import option_menu
 # import streamlit.components.v1 as html
 # from PIL import Image
@@ -109,125 +109,33 @@ with kpi_weights:
             Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=[1, 2, 3, 4, 5, 6, 7],
                                                         value=current_ratio[index], key=Loneliness_kpi_dict_keys[index])
             index += 1
-        # arnona_cat = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                               value=f'{basic_ratio[0]}', key="arnona_cat")
-        # members_Water = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                                  value=f'{basic_ratio[1]}', key="members_Water")
-        # martial = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                            value=f'{basic_ratio[2]}', key="martial")
-        # widow_grown = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                                value=f'{basic_ratio[3]}', key="widow_grown")
-        # widow_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                                    value=f'{basic_ratio[4]}', key="widow_elderlies")
-        # lonely_elderlies = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                                     value=f'{basic_ratio[5]}', key="lonely_elderlies")
-        # p85_plus = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                             value=f'{basic_ratio[6]}', key="p85_plus")
-        # accumulated_cases = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
-        #                                      value=f'{basic_ratio[7]}', key="accumulated_cases")
 
         sum_of_weights = round(sum(list(Loneliness_kpi_dict.values())), 5)
         st.write(sum_of_weights)
         Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
         st.write(Loneliness_weights_dict)
-        # else:
-        #     index = 0
-        #     for key in Loneliness_kpi_dict.keys():
-        #         Loneliness_kpi_dict[key] = st.select_slider(
 
-    #                                         'Explanation',
-    #                                         options=['1', '2', '3', '4', '5', '6', '7'],
-    #                                         value=f'{current_ratio[index]}')
-    #         index += 1
-    #     if current_values == [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]:
-    #         Loneliness_kpi_names = ["arnona_cat", "members_Water", "martial", "widow_grown", "widow_elderlies",
-    #                                 "lonely_elderlies", "p85_plus", "accumulated_cases"]
-    #         arnona_cat = st.slider("arnona_cat", 0.0, 1.0, current_values[0], key="arnona_cat")
-    #         members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
-    #         martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
-    #         widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
-    #         widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
-    #         lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
-    #         p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
-    #         accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
-    #
-    #     # del members_Water
-    #     st.write(st.session_state)
-    #     # for ind, kpi_name in enumerate(Loneliness_kpi_names):
-    #     #     if f"{kpi_name}" not in st.session_state:
-    #     #         # st.session_state[f"{kpi_name}"] = Loneliness_default_values[ind]
-    #     #         st.session_state.arnona_cat = 0.15
-    #
-    #     if arnona_cat != current_values[0]:
-    #         diff_val = round(arnona_cat - current_values[0], 4)
-    #         count = count_by_sign()
-    #         avg_diff = round(diff_val / count, 4)  # בכמה לשנות כל משקל
-    #         current_values[0] = arnona_cat
-    #         st.write(diff_val, "--", avg_diff)
-    #
-    #         if diff_val > 0:
-    #             for i in range(8):
-    #                 if i == 0:
-    #                     del st.session_state[f"{Loneliness_kpi_names[i]}"]
-    #                     arnona_cat = st.slider(f"{Loneliness_kpi_names[i]}", 0.0, 1.0, current_values[i], key=f"{Loneliness_kpi_names[i]}")
-    #                 if (i != 0) & (current_values[i] != 0):
-    #                     current_values[i] = round(current_values[i] - avg_diff, 4)
-    #                     # if current_values[i] < 0:
-    #                     #     count = count_non_zeros()
-    #                     # update_slider(Loneliness_kpi_names[i], current_values[i])
-    #                     del st.session_state[f"{Loneliness_kpi_names[i]}"]
-    #             members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
-    #             martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
-    #             widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
-    #             widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
-    #             lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
-    #             p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
-    #             accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
-    #
-    #
-    #         else:
-    #             for i in range(8):
-    #                 if i == 0:
-    #                     del st.session_state[f"{Loneliness_kpi_names[i]}"]
-    #                     arnona_cat = st.slider(f"{Loneliness_kpi_names[i]}", 0.0, 1.0, current_values[i],
-    #                                            key=f"{Loneliness_kpi_names[i]}")
-    #                 if i != 0:
-    #                     current_values[i] = round(current_values[i] + avg_diff, 4)
-    #                     # update_slider(Loneliness_kpi_names[i], current_values[i])
-    #                     del st.session_state[f"{Loneliness_kpi_names[i]}"]
-    #             members_Water = st.slider("members_Water", 0.0, 1.0, current_values[1], key="members_Water")
-    #             martial = st.slider("martial", 0.0, 1.0, current_values[2], key="martial")
-    #             widow_grown = st.slider("widow_grown", 0.0, 1.0, current_values[3], key="widow_grown")
-    #             widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, current_values[4], key="widow_elderlies")
-    #             lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, current_values[5], key="lonely_elderlies")
-    #             p85_plus = st.slider("p85_plus", 0.0, 1.0, current_values[6], key="p85_plus")
-    #             accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, current_values[7], key="accumulated_cases")
-    #
-    #     # temp_values = [arnona_cat, members_Water, martial, widow_grown, widow_elderlies, lonely_elderlies, p85_plus,
-    #     #                accumulated_cases]
-    # # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
-    # #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
-    # #                       ["accumulated_cases", 0.05]]
     elif KPI_page == "Health":
         st.snow()
     elif KPI_page == "Economic Strength":
-        pass
-    # if loneliness_kpi_button:
-    #     arnona_cat = st.slider("arnona_cat", 0.0, 1.0, 0.15)
-    #     members_Water = st.slider("members_Water", 0.0, 1.0, 0.15)
-    #     martial = st.slider("martial", 0.0, 1.0, 0.15)
-    #     widow_grown = st.slider("widow_grown", 0.0, 1.0, 0.04)
-    #     widow_elderlies = st.slider("widow_elderlies", 0.0, 1.0, 0.1)
-    #     lonely_elderlies = st.slider("lonely_elderlies", 0.0, 1.0, 0.3)
-    #     p85_plus = st.slider("p85_plus", 0.0, 1.0, 0.06)
-    #     accumulated_cases = st.slider("accumulated_cases", 0.0, 1.0, 0.05)
-    #     # loneliness_weights = [["arnona_cat", 0.15], ["members_Water", 0.15], ["martial", 0.15], ["widow_grown", 0.04],
-    #     #                       ["widow_elderlies", 0.1], ["lonely_elderlies", 0.3], ["p85_plus", 0.06],
-    #     #                       ["accumulated_cases", 0.05]]
-    #
-    # elif health_kpi_button:
-    #     pass
-    # elif economic_strength_kpi_button:
-    #     pass
-    # elif clear_button:
+        with st.spinner('Wait for it...'):
+            time.sleep(5)
+        st.success('Done!')
+
+    # health_weights = [["arnona_cat", 0.2], ["age", 0.08], ["hashlama_kizvat_nechut_elderlies", (-2) * 0.08],
+    #                   ["Mekabley_kizbaot_nechut", (-2) * 0.1], ["zachaim_kizbat_nechut_children", (-2) * 0.09],
+    #                   ["mekabley_kizbaot_from_injured_Work", (-2) * 0.11], ["mekabley_kizba_siud", (-2) * 0.15],
+    #                   ["accumulated_cases", 0.05], ["accumulated_recoveries", (-2) * 0.01],
+    #                   ["accumulated_hospitalized", (-2) * 0.07], ["accumulated_vaccination_first_dose", (-2) * 0.02],
+    #                   ["accumulated_vaccination_second_dose", (-2) * 0.02],
+    #                   ["accumulated_vaccination_third_dose", (-2) * 0.02]]
+    # economic_strength_weights = [["Ownership", 0.35], ["arnona_cat", 0.1], ["income_per_person", 0.2],
+    #                              ["avtachat_hachansa_family", 0.022], ["mekabley_kizva_elderlies", 0.022],
+    #                              ["hashlamta_hachnasa_family_eldelies", 0.022],
+    #                              ["hashlama_kizvat_nechut_elderlies", 0.022],
+    #                              ["Hashlamat_hachnasa_sheerim_family", 0.022], ["Mekabley_mezonot", 0.022],
+    #                              ["Mekabley_kizbaot_nechut", 0.022], ["zachaim_kizbat_nechut_children", 0.022],
+    #                              ["mekabley_kizbaot_from_injured_Work", 0.022], ["mekabley_kizba_siud", 0.022],
+    #                              ["socio_economic", 0.1], ["area_per_person", 0.03]]
+
     #     st.text("In this section you will see all the weights that create the KPI you selected")
