@@ -126,9 +126,9 @@ with kpi_weights:
         # accumulated_cases = st.select_slider('Explanation', options=['1', '2', '3', '4', '5', '6', '7'],
         #                                      value=f'{basic_ratio[7]}', key="accumulated_cases")
 
-        sum_of_weights = sum(list(Loneliness_kpi_dict.values()))
+        sum_of_weights = round(sum(list(Loneliness_kpi_dict.values())), 5)
         st.write(sum_of_weights)
-        Loneliness_weights_dict = {key: weight/sum_of_weights for key, weight in Loneliness_kpi_dict.items()}
+        Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
         st.write(Loneliness_weights_dict)
         # else:
         #     index = 0
