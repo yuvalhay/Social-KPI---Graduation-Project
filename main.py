@@ -129,7 +129,7 @@ with kpi_weights:
         sum_of_weights = sum(Loneliness_kpi_dict.values())
         st.write(sum_of_weights)
         if reset_kpi_weight_button:
-            pass
+            current_ratio = basic_ratio.copy()
         # else:
         #     index = 0
         #     for key in Loneliness_kpi_dict.keys():
