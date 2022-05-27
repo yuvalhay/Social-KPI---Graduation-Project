@@ -98,7 +98,12 @@ if choose == "About":
         with Niv:
             st.image(Niv_pic, width=130)
 
-if choose == "Prediction":
+elif choose == "Prediction":
+    st.balloons()
+    st.title("The Prediction section")
+    st.text("Here we will predict")
+
+elif choose == "Social KPI":
     with kpi_header:
         st.title("The visualization of our KPI's")
         st.text("1: Loneliness KPI")
@@ -170,3 +175,16 @@ if choose == "Prediction":
         #                              ["socio_economic", 0.1], ["area_per_person", 0.03]]
 
         #     st.text("In this section you will see all the weights that create the KPI you selected")
+
+elif choose == "Contact":
+    st.markdown(""" <style> .font {
+    font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+    </style> """, unsafe_allow_html=True)
+    st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
+    with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
+        Name = st.text_input(label='Please Enter Your Name')  # Collect user feedback
+        Email = st.text_input(label='Please Enter Email')  # Collect user feedback
+        Message = st.text_input(label='Please Enter Your Message')  # Collect user feedback
+        submitted = st.form_submit_button('Submit')
+        if submitted:
+            st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
