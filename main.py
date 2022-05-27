@@ -1,4 +1,3 @@
-import colorama
 import streamlit as st
 import time
 from streamlit_option_menu import option_menu
