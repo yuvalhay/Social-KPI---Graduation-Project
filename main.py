@@ -178,7 +178,7 @@ elif choose == "Social KPI":
 
 elif choose == "Contact":
     st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+    font-size:35px ; font-family: 'Cooper Black'; color: #02ab21;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
     with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
