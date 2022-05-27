@@ -1,6 +1,8 @@
 import streamlit as st
 import time
 from streamlit_option_menu import option_menu
+import pandas as pd
+import numpy as np
 # import streamlit.components.v1 as html
 # from PIL import Image
 # import cv2
