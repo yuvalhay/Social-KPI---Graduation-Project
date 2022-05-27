@@ -108,7 +108,7 @@ elif choose == "Social KPI":
         st.title("The visualization of our KPI's")
         col1, col2, col3 = st.columns(3)
         col1.text("Loneliness KPI: \nThe average loneliness \nlevel of households in \nHadar neighborhood")
-        col2.text("Health KPI: \nThe average health level of \nhouseholds in Hadar \nneighborhood")
+        col2.text("Health KPI: \nThe average health level \nof households in Hadar \nneighborhood")
         col3.text("Economic Strength KPI: \nThe average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
         col1.metric("Loneliness", "2", "-1")
         col2.metric("Health", "4", "+1")
