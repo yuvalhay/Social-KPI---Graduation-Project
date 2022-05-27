@@ -107,12 +107,12 @@ elif choose == "Social KPI":
     with kpi_header:
         st.title("The visualization of our KPI's")
         col1, col2, col3 = st.columns(3)
-        col1.text("Loneliness KPI: \nThe average loneliness \nlevel of households in \nHadar neighborhood")
-        col2.text("Health KPI: \nThe average health level \nof households in Hadar \nneighborhood")
-        col3.text("Economic Strength KPI: \nThe average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
-        col1.metric("Loneliness", "2", "-1")
-        col2.metric("Health", "4", "+1")
-        col3.metric("Economic Strength", "3", "-1")
+        col1.metric("Loneliness KPI:", "2", "-1")
+        col2.metric("Health KPI:", "4", "+1")
+        col3.metric("Economic Strength KPI:", "3", "-1")
+        col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
+        col2.text("The average health level \nof households in Hadar \nneighborhood")
+        col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
     with kpi_selection:
         st.header("KPI Selection")
