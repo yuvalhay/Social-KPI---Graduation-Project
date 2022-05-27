@@ -53,7 +53,7 @@ def count_by_sign(sign):
 #         for key, val in kpis_dict.items():
 
 
-st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
+# st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
 
 # st.button("Update slider values", on_click=_update_slider, kwargs={"value": random.randint(-100, 100)})
 
@@ -66,7 +66,7 @@ with st.sidebar:
                          icons=['person lines fill', 'pc display horizontal', 'people', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
-                             "container": {"padding": "5!important", "background-color": "orange"},
+                             "container": {"padding": "5!important", "background-color": "white"},
                              "icon": {"color": "black", "font-size": "25px"},
                              "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
                                           "--hover-color": "#eee"},
