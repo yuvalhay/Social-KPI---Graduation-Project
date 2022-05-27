@@ -4,13 +4,21 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 # import streamlit.components.v1 as html
-# from PIL import Image
+from PIL import Image
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
 # import io
 
-header = st.container()
+about_header = st.container()
+pic_about_header = st.container()
+Yuvi_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Yuval.jpeg')
+Tal_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Tal.jpeg')
+Dana_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Dana.jpeg')
+Gal_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Gal.jpeg')
+Niv_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Niv.jpeg')
+
+kpi_header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
@@ -63,7 +71,7 @@ with st.sidebar:
     # choose_page = st.radio("Choose", options_names)
 
     choose = option_menu("App Gallery", ["About", "Prediction", "Social KPI", "Contact"],
-                         icons=['person lines fill', 'pc display horizontal', 'people', 'pencil square'],
+                         icons=['person lines fill', 'kanban', 'people', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
                              "container": {"padding": "5!important", "background-color": "white"},
@@ -74,74 +82,91 @@ with st.sidebar:
                          }
                          )
 
-with header:
-    st.title("The visualization of our KPI's")
-    st.text("1: Loneliness KPI")
-    st.text("2: Health KPI")
-    st.text("3: Economic Strength KPI")
+if choose == "About":
+    with about_header:
+        st.title("The About section")
+        st.text("Team GABOT")
+        Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
+        with Yuvi:
+            st.image(Yuvi_pic, width=130)
+        with Tal:
+            st.image(Tal_pic, width=130)
+        with Dana:
+            st.image(Dana_pic, width=130)
+        with Gal:
+            st.image(Gal_pic, width=130)
+        with Niv:
+            st.image(Niv_pic, width=130)
 
-with kpi_selection:
-    st.header("KPI Selection")
-    KPI_names = ["Loneliness", "Health", "Economic Strength"]
-    KPI_page = st.radio("Choose", KPI_names)
-    # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
-    # with firstKPI:
-    #     loneliness_kpi_button = st.button("Loneliness")
-    # with secondKPI:
-    #     health_kpi_button = st.button("Health")
-    # with thirdKPI:
-    #     economic_strength_kpi_button = st.button("Economic Strength")
-    # with clear:
-    #     clear_button = st.button("Clear")
+if choose == "Prediction":
+    with kpi_header:
+        st.title("The visualization of our KPI's")
+        st.text("1: Loneliness KPI")
+        st.text("2: Health KPI")
+        st.text("3: Economic Strength KPI")
 
-with kpi_weights:
-    st.header("KPI weights")
-    current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-    Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
-                           "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
+    with kpi_selection:
+        st.header("KPI Selection")
+        KPI_names = ["Loneliness", "Health", "Economic Strength"]
+        KPI_page = st.radio("Choose", KPI_names)
+        # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
+        # with firstKPI:
+        #     loneliness_kpi_button = st.button("Loneliness")
+        # with secondKPI:
+        #     health_kpi_button = st.button("Health")
+        # with thirdKPI:
+        #     economic_strength_kpi_button = st.button("Economic Strength")
+        # with clear:
+        #     clear_button = st.button("Clear")
 
-    basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
-    current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
+    with kpi_weights:
+        st.header("KPI weights")
+        current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
+        Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
+                               "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
 
-    if KPI_page == "Loneliness":
-        st.balloons()
-        Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
-        index = 0
-        for key in Loneliness_kpi_dict.keys():
-            Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=[1, 2, 3, 4, 5, 6, 7],
-                                                        value=current_ratio[index], key=Loneliness_kpi_dict_keys[index])
-            index += 1
+        basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
+        current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
 
-        sum_of_weights = round(sum(list(Loneliness_kpi_dict.values())), 5)
-        st.write(sum_of_weights)
-        Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
-        st.write(Loneliness_weights_dict)
+        if KPI_page == "Loneliness":
+            # st.balloons()
+            Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
+            index = 0
+            for key in Loneliness_kpi_dict.keys():
+                Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=[1, 2, 3, 4, 5, 6, 7],
+                                                            value=current_ratio[index], key=Loneliness_kpi_dict_keys[index])
+                index += 1
 
-    elif KPI_page == "Health":
-        st.snow()
-        my_bar = st.progress(0)
-        for percent_complete in range(100):
-            time.sleep(0.1)
-            my_bar.progress(percent_complete + 1)
-    elif KPI_page == "Economic Strength":
-        with st.spinner('Exporting File..'):
-            time.sleep(3)
-        st.success('Done!')
+            sum_of_weights = round(sum(list(Loneliness_kpi_dict.values())), 5)
+            st.write(sum_of_weights)
+            Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
+            st.write(Loneliness_weights_dict)
 
-    # health_weights = [["arnona_cat", 0.2], ["age", 0.08], ["hashlama_kizvat_nechut_elderlies", (-2) * 0.08],
-    #                   ["Mekabley_kizbaot_nechut", (-2) * 0.1], ["zachaim_kizbat_nechut_children", (-2) * 0.09],
-    #                   ["mekabley_kizbaot_from_injured_Work", (-2) * 0.11], ["mekabley_kizba_siud", (-2) * 0.15],
-    #                   ["accumulated_cases", 0.05], ["accumulated_recoveries", (-2) * 0.01],
-    #                   ["accumulated_hospitalized", (-2) * 0.07], ["accumulated_vaccination_first_dose", (-2) * 0.02],
-    #                   ["accumulated_vaccination_second_dose", (-2) * 0.02],
-    #                   ["accumulated_vaccination_third_dose", (-2) * 0.02]]
-    # economic_strength_weights = [["Ownership", 0.35], ["arnona_cat", 0.1], ["income_per_person", 0.2],
-    #                              ["avtachat_hachansa_family", 0.022], ["mekabley_kizva_elderlies", 0.022],
-    #                              ["hashlamta_hachnasa_family_eldelies", 0.022],
-    #                              ["hashlama_kizvat_nechut_elderlies", 0.022],
-    #                              ["Hashlamat_hachnasa_sheerim_family", 0.022], ["Mekabley_mezonot", 0.022],
-    #                              ["Mekabley_kizbaot_nechut", 0.022], ["zachaim_kizbat_nechut_children", 0.022],
-    #                              ["mekabley_kizbaot_from_injured_Work", 0.022], ["mekabley_kizba_siud", 0.022],
-    #                              ["socio_economic", 0.1], ["area_per_person", 0.03]]
+        elif KPI_page == "Health":
+            # st.snow()
+            my_bar = st.progress(0)
+            for percent_complete in range(100):
+                time.sleep(0.1)
+                my_bar.progress(percent_complete + 1)
+        elif KPI_page == "Economic Strength":
+            with st.spinner('Exporting File..'):
+                time.sleep(3)
+            st.success('Done!')
 
-    #     st.text("In this section you will see all the weights that create the KPI you selected")
+        # health_weights = [["arnona_cat", 0.2], ["age", 0.08], ["hashlama_kizvat_nechut_elderlies", (-2) * 0.08],
+        #                   ["Mekabley_kizbaot_nechut", (-2) * 0.1], ["zachaim_kizbat_nechut_children", (-2) * 0.09],
+        #                   ["mekabley_kizbaot_from_injured_Work", (-2) * 0.11], ["mekabley_kizba_siud", (-2) * 0.15],
+        #                   ["accumulated_cases", 0.05], ["accumulated_recoveries", (-2) * 0.01],
+        #                   ["accumulated_hospitalized", (-2) * 0.07], ["accumulated_vaccination_first_dose", (-2) * 0.02],
+        #                   ["accumulated_vaccination_second_dose", (-2) * 0.02],
+        #                   ["accumulated_vaccination_third_dose", (-2) * 0.02]]
+        # economic_strength_weights = [["Ownership", 0.35], ["arnona_cat", 0.1], ["income_per_person", 0.2],
+        #                              ["avtachat_hachansa_family", 0.022], ["mekabley_kizva_elderlies", 0.022],
+        #                              ["hashlamta_hachnasa_family_eldelies", 0.022],
+        #                              ["hashlama_kizvat_nechut_elderlies", 0.022],
+        #                              ["Hashlamat_hachnasa_sheerim_family", 0.022], ["Mekabley_mezonot", 0.022],
+        #                              ["Mekabley_kizbaot_nechut", 0.022], ["zachaim_kizbat_nechut_children", 0.022],
+        #                              ["mekabley_kizbaot_from_injured_Work", 0.022], ["mekabley_kizba_siud", 0.022],
+        #                              ["socio_economic", 0.1], ["area_per_person", 0.03]]
+
+        #     st.text("In this section you will see all the weights that create the KPI you selected")
