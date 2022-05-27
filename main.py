@@ -12,7 +12,7 @@ from PIL import Image
 
 about_header = st.container()
 pic_about_header = st.container()
-Yuvi_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Yuval.jpeg')
+Yuvi_pic = Image.open(r'Team_members_pictures/Yuval.jpeg')
 Tal_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Tal.jpeg')
 Dana_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Dana.jpeg')
 Gal_pic = Image.open(r'https://github.com/yuvalhay/Social-KPI---Graduation-Project/blob/main/Team_members_pictures/Gal.jpeg')
