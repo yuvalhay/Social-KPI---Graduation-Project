@@ -108,14 +108,18 @@ elif choose == "Prediction":
 
 elif choose == "Social KPI":
     with kpi_header:
-        st.title("The visualization of our KPI's")
+#         st.title("The visualization of our KPI's")
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #02ab21;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">The visualization of our KPI's</p>', unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
         col1.metric("Loneliness KPI:", "2", "-1")
         col2.metric("Health KPI:", "4", "+1")
         col3.metric("Economic Strength KPI:", "3", "-1")
-        col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
-        col2.text("The average health level \nof households in Hadar \nneighborhood")
-        col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
+#         col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
+#         col2.text("The average health level \nof households in Hadar \nneighborhood")
+#         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
     with kpi_selection:
         st.header("KPI Selection")
