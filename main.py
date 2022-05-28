@@ -10,6 +10,9 @@ from PIL import Image
 # import plotly.express as px
 # import io
 
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 about_header = st.container()
 pic_about_header = st.container()
 Yuvi_pic = Image.open(r'Team_members_pictures/Yuval.jpeg')
