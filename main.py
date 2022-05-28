@@ -28,7 +28,7 @@ Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
 def header(name):
-    st.markdown(f'<p style="color: #660000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
+    st.markdown(f'<p style="color: #800000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
                 unsafe_allow_html=True)
 
 def update_slider(kpi_name, value):
@@ -129,9 +129,9 @@ elif choose == "Social KPI":
         col1.metric("Loneliness KPI:", "2", "-1")
         col2.metric("Health KPI:", "4", "+1")
         col3.metric("Economic Strength KPI:", "3", "-1")
-#         col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
-#         col2.text("The average health level \nof households in Hadar \nneighborhood")
-#         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
+        col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
+        col2.text("The average health level \nof households in Hadar \nneighborhood")
+        col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
     with kpi_selection:
         header("KPI Selection")
@@ -171,11 +171,12 @@ elif choose == "Social KPI":
             st.write(Loneliness_weights_dict)
 
         elif KPI_page == "Health":
+            st.title("Working on it")
             # st.snow()
-            my_bar = st.progress(0)
-            for percent_complete in range(100):
-                time.sleep(0.1)
-                my_bar.progress(percent_complete + 1)
+            # my_bar = st.progress(0)
+            # for percent_complete in range(100):
+            #     time.sleep(0.1)
+            #     my_bar.progress(percent_complete + 1)
         elif KPI_page == "Economic Strength":
             with st.spinner('Exporting File..'):
                 time.sleep(3)
