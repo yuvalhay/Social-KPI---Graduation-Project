@@ -12,6 +12,8 @@ div.css-1ht1j8u e16fv1kl3 > div {
 
 div.element-container css-lhdboo e1tzin5v3 > div {
     background-color: #02ab21;
+    flex-direction: row;
+    align-items: stretch;
 }
 
 div.row-widget.stRadio > div {
