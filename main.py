@@ -28,7 +28,7 @@ Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
 def header(name):
-    st.markdown(f'<p style="color: #ff0000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
+    st.markdown(f'<p style="color: #330000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
                 unsafe_allow_html=True)
 
 def update_slider(kpi_name, value):
@@ -135,10 +135,6 @@ elif choose == "Social KPI":
 
     with kpi_selection:
         header("KPI Selection")
-#         st.markdown(""" <style> .font {
-#         font-size:20px ; font-family: 'Cooper Black'; color: #ff0000;} 
-#         </style> """, unsafe_allow_html=True)
-#         st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
         KPI_names = ["Loneliness", "Health", "Economic Strength"]
         KPI_page = st.radio("Choose", KPI_names)
         # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
@@ -152,7 +148,7 @@ elif choose == "Social KPI":
         #     clear_button = st.button("Clear")
 
     with kpi_weights:
-        st.header("KPI weights")
+        header("KPI weights")
         current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
         Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
                                "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
