@@ -81,7 +81,7 @@ with st.sidebar:
                              "icon": {"color": "black", "font-size": "25px"},
                              "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
                                           "--hover-color": "#eee"},
-                             "nav-link-selected": {"background-color": "#02ab21"},
+                             "nav-link-selected": {"background-color": "#ff0000"},
                          }
                          )
 
