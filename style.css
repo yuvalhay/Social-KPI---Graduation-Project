@@ -2,6 +2,14 @@ body {
     color: #fff;
 }
 
+div.css-1ht1j8u e16fv1kl3 {
+    background-color: #EEEEEE;
+    border: 1px solid #DCDCDC;
+    padding: 20px 20px 20px 70px;
+    padding: 5% 5% 5% 10%;
+    border-radius: 10px;
+}
+
 div.row-widget.stRadio > div {
     flex-direction: row;
     align-items: stretch;
