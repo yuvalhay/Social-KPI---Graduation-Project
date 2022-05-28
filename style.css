@@ -1,6 +1,6 @@
-body {
+/* body {
     color: #fff;
-}
+} */
 
 div.css-1ht1j8u e16fv1kl3 > div {
     background-color: #EEEEEE;
@@ -8,6 +8,10 @@ div.css-1ht1j8u e16fv1kl3 > div {
     padding: 20px 20px 20px 70px;
     padding: 5% 5% 5% 10%;
     border-radius: 10px;
+}
+
+div.element-container css-lhdboo e1tzin5v3 > div {
+    background-color: #02ab21;
 }
 
 div.row-widget.stRadio > div {
