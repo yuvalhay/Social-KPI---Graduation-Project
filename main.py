@@ -87,7 +87,11 @@ with st.sidebar:
 
 if choose == "About":
     with about_header:
-        st.title("The About section")
+#         st.title("The About section")
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
         st.text("Team GABOT")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
@@ -103,14 +107,18 @@ if choose == "About":
 
 elif choose == "Prediction":
     st.balloons()
-    st.title("The Prediction section")
+#     st.title("The Prediction section")
+    st.markdown(""" <style> .font {
+    font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+    </style> """, unsafe_allow_html=True)
+    st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
     st.text("Here we will predict")
 
 elif choose == "Social KPI":
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
-        font-size:35px ; font-family: 'Cooper Black'; color: #02ab21;} 
+        font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
@@ -189,7 +197,7 @@ elif choose == "Social KPI":
 
 elif choose == "Contact":
     st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #02ab21;} 
+    font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
     with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
