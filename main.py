@@ -130,9 +130,7 @@ elif choose == "Social KPI":
 #         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
     with kpi_selection:
-        st.header(""" <style> .font {
-#         font-size:20px ; font-family: 'Cooper Black'; color: #ff0000;} 
-#         </style> """ "KPI Selection")
+        st.header("KPI Selection")
 #         st.markdown(""" <style> .font {
 #         font-size:20px ; font-family: 'Cooper Black'; color: #ff0000;} 
 #         </style> """, unsafe_allow_html=True)
