@@ -10,11 +10,19 @@ div.css-1ht1j8u e16fv1kl3 > div {
     border-radius: 10px;
 }
 
-div.element-container css-lhdboo e1tzin5v3 > div {
-    background-color: #02ab21;
+div.row-widget.stSlider > div {
     flex-direction: row;
     align-items: stretch;
 }
+
+div.row-widget.stSlider > div[role="stSlider"] > label[data-baseweb="slider"] > div:first-child {
+    background-color: #02ab21;
+}
+
+/* div.element-container css-lhdboo e1tzin5v3 > div {
+    background-color: #02ab21;
+} */
+
 
 div.row-widget.stRadio > div {
     flex-direction: row;
