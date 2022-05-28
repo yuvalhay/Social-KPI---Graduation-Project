@@ -112,7 +112,7 @@ elif choose == "Social KPI":
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #02ab21;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">The visualization of our KPI's</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">The visualization of our KPI"'"s</p>', unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
         col1.metric("Loneliness KPI:", "2", "-1")
         col2.metric("Health KPI:", "4", "+1")
