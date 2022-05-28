@@ -10,10 +10,10 @@ div.css-1ht1j8u e16fv1kl3 > div {
     border-radius: 10px;
 }
 
-/* div.stSlider > div {
+div.stSlider > div {
     flex-direction: row;
     align-items: stretch;
-} */
+}
 
 div.stSlider > label[data-baseweb="slider"] > div[class="st-cp st-cg st-cf st-bp st-b4 st-bl"] > div[class="st-av st-aw st-ax st-ay st-cq st-cr st-b7 st-cs st-ct"] > div:first-child {
     background-color: #02ab21;
