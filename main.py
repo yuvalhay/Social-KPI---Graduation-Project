@@ -174,11 +174,11 @@ elif choose == "Social KPI":
 
             elif KPI_page == "Health":
                 st.title("Working on it")
-                # st.snow()
-                # my_bar = st.progress(0)
-                # for percent_complete in range(100):
-                #     time.sleep(0.1)
-                #     my_bar.progress(percent_complete + 1)
+#                 st.snow()
+                my_bar = st.progress(0)
+                for percent_complete in range(100):
+                    time.sleep(0.1)
+                    my_bar.progress(percent_complete + 1)
             elif KPI_page == "Economic Strength":
                 # st.balloons()
                 st.write("Not Economic Strength")
