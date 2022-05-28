@@ -130,7 +130,11 @@ elif choose == "Social KPI":
 #         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
     with kpi_selection:
-        st.header("KPI Selection")
+#         st.header("KPI Selection")
+        st.markdown(""" <style> .font {
+        font-size:20px ; font-family: 'Cooper Black'; color: #ff0000;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
         KPI_names = ["Loneliness", "Health", "Economic Strength"]
         KPI_page = st.radio("Choose", KPI_names)
         # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
