@@ -133,10 +133,10 @@ elif choose == "Social KPI":
         col2.text("The average health level \nof households in Hadar \nneighborhood")
         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
-        # with kpi_selection:
-        #     header("KPI Selection")
-        #     KPI_names = ["Loneliness", "Health", "Economic Strength"]
-        #     KPI_page = st.radio("Choose", KPI_names)
+        with kpi_selection:
+            header("KPI Selection")
+            KPI_names = ["Loneliness", "Health", "Economic Strength"]
+            KPI_page = st.radio("Choose", KPI_names)
             # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
             # with firstKPI:
             #     loneliness_kpi_button = st.button("Loneliness")
@@ -148,8 +148,6 @@ elif choose == "Social KPI":
             #     clear_button = st.button("Clear")
 
         with kpi_weights:
-            KPI_names = ["Loneliness", "Health", "Economic Strength"]
-            KPI_page = st.radio("Choose", KPI_names)
             header("KPI weights")
             current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
             Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
@@ -174,11 +172,11 @@ elif choose == "Social KPI":
 
             elif KPI_page == "Health":
                 st.title("Working on it")
-#                 st.snow()
-                my_bar = st.progress(0)
-                for percent_complete in range(100):
-                    time.sleep(0.1)
-                    my_bar.progress(percent_complete + 1)
+                # st.snow()
+                # my_bar = st.progress(0)
+                # for percent_complete in range(100):
+                #     time.sleep(0.1)
+                #     my_bar.progress(percent_complete + 1)
             elif KPI_page == "Economic Strength":
                 # st.balloons()
                 st.write("Not Economic Strength")
