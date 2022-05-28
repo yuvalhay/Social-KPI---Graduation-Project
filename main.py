@@ -27,6 +27,10 @@ kpi_weights = st.container()
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
+def header(name):
+    st.markdown(f'<p style="color: #ff0000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
+                unsafe_allow_html=True)
+
 def update_slider(kpi_name, value):
     del st.session_state[kpi_name]
     st.session_state[kpi_name] = value
