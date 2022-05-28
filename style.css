@@ -5,7 +5,7 @@
 div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
     background-color: #EEEEEE;
     border: 1px solid #DCDCDC;
-    padding: 40px 40px 40px 90px;
+    padding: 20px 20px 20px 70px;
     padding: 10% 10% 10% 20%;
     border-radius: 10px;
 }
@@ -14,10 +14,10 @@ div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
     flex-direction: row;
     align-items: stretch;
 } */
-div[class="css-19s0g4l e1tzin5v0"] > div[class="css-19s0g4l e1tzin5v0"] > div[data-baseweb="slider"] > div[class="slider"] {
+/* div[class="css-19s0g4l e1tzin5v0"] > div[class="css-19s0g4l e1tzin5v0"] > div[data-baseweb="slider"] > div[class="slider"] {
     background-color: #02ab21;
     color: #02ab21;
-}
+} */
 /* div.stSlider > label[data-baseweb="slider"] > div:first-child {
     background-color: #02ab21;
 } */
@@ -27,11 +27,11 @@ div[class="css-19s0g4l e1tzin5v0"] > div[class="css-19s0g4l e1tzin5v0"] > div[da
 } */
 
 
-div.row-widget.stRadio > div {
+/* div.row-widget.stRadio > div {
     flex-direction: row;
     align-items: stretch;
 }
 
 div.row-widget.stRadio > div[role="radiogroup"] > label[data-baseweb="radio"] > div:first-child {
     background-color: #02ab21;
-}
+} */
