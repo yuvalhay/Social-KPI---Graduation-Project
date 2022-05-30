@@ -173,6 +173,8 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
+                # get df from model.py after multiply it by the new weights and group by it by statistical area (average) 
+                # st.table(df)
 
             elif KPI_page == "Health":
                 st.title("Working on it")
