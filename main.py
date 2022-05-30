@@ -153,6 +153,7 @@ elif choose == "Social KPI":
             Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
                                    "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
 
+            param_dict = ["Arnona discount", "Number of tenants", "Martial status", "Number of older widows per statistical area", "Number of elderly widows per statistical area", "Number of lonely elders per statistical area", "Number of people over the age of 85 per statistical area", "Number of cases of Covid-19 infection per statistical area"]
             basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
             current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
 
@@ -161,7 +162,7 @@ elif choose == "Social KPI":
                 Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
                 index = 0
                 for key in Loneliness_kpi_dict.keys():
-                    Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=[1, 2, 3, 4, 5, 6, 7],
+                    Loneliness_kpi_dict[key] = st.select_slider(f'{param_dict[index]}', options=[1, 2, 3, 4, 5, 6, 7],
                                                                 value=current_ratio[index], key=Loneliness_kpi_dict_keys[index])
                     index += 1
 
