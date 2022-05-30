@@ -77,7 +77,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 
-    choose = option_menu("App Gallery", ["About", "Prediction", "Social KPI", "Contact"],
+    choose = option_menu("החמל החברתי 2.0", ["About", "Prediction", "Social KPI", "Contact"],
                          icons=['person lines fill', 'kanban', 'people', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
