@@ -28,7 +28,7 @@ Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
 def header(name):
-    st.markdown(f'<p style="color: #800000; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
+    st.markdown(f'<p style="color: #FF4B4B; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
                 unsafe_allow_html=True)
 
 def update_slider(kpi_name, value):
@@ -85,7 +85,7 @@ with st.sidebar:
                              "icon": {"color": "black", "font-size": "25px"},
                              "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
                                           "--hover-color": "#eee"},
-                             "nav-link-selected": {"background-color": "#ff0000"},
+                             "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
                          )
 
@@ -93,7 +93,7 @@ if choose == "About":
     with about_header:
 #         st.title("The About section")
         st.markdown(""" <style> .font {
-        font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
         st.text("Team GABOT")
@@ -113,7 +113,7 @@ elif choose == "Prediction":
     st.balloons()
 #     st.title("The Prediction section")
     st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+    font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
     st.text("Here we will predict")
@@ -122,7 +122,7 @@ elif choose == "Social KPI":
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
-        font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
@@ -217,7 +217,7 @@ elif choose == "Social KPI":
 
 elif choose == "Contact":
     st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #ff0000;} 
+    font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
     with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
