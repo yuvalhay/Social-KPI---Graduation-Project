@@ -125,13 +125,13 @@ elif choose == "Social KPI":
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Loneliness KPI:", "2", "-1")
-        col2.metric("Health KPI:", "4", "+1")
-        col3.metric("Economic Strength KPI:", "3", "-1")
-        col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
-        col2.text("The average health level \nof households in Hadar \nneighborhood")
-        col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
+#         col1, col2, col3 = st.columns(3)
+#         col1.metric("Loneliness KPI:", "2", "-1")
+#         col2.metric("Health KPI:", "4", "+1")
+#         col3.metric("Economic Strength KPI:", "3", "-1")
+#         col1.text("The average loneliness \nlevel of households in \nHadar neighborhood")
+#         col2.text("The average health level \nof households in Hadar \nneighborhood")
+#         col3.text("The average economic \nstrength level of \nhouseholds in Hadar \nneighborhood")
 
         with kpi_selection:
             header("KPI Selection")
