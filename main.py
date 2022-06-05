@@ -33,7 +33,7 @@ def set_png_as_page_bg(png_file):
     
     st.markdown(page_bg_img, unsafe_allow_html=True)
     return
-set_png_as_page_bg('backgroung_img_1920_1080.jpg')
+set_png_as_page_bg('background_img_1920_1080.jpg')
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
