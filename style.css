@@ -1,22 +1,21 @@
- <style>
-    footer {visibility: hidden;}
-    
-    footer:hover,  footer:active {
-        color: #ffffff;
-        background-color: transparent;
-        text-decoration: underline;
-        transition: 400ms ease 0s;
-    }
+footer {visibility: hidden;}
 
-    footer:after {
-        content:'GABOT Team'; 
-        visibility: visible;
-        display: block;
-        position: relative;
-        padding: 5px;
-        top: 2px;
-    }
-    </style>
+footer:hover,  footer:active {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
+    transition: 400ms ease 0s;
+}
+
+footer:after {
+    content:'GABOT Team'; 
+    visibility: visible;
+    display: block;
+    position: relative;
+    padding: 5px;
+    top: 2px;
+}
+
 
 /* div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
     background-color: #EEEEEE;
