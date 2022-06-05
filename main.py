@@ -4,14 +4,14 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 # import streamlit.components.v1 as html
-from background_img import set_png_as_page_bg
+from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
 # import io
 st.set_page_config(layout="wide")
-set_png_as_page_bg('https://cdn.wallpapersafari.com/50/94/vZJPoH.jpg')
+set_png_as_page_bg('backgroung_img_1920_1080.jpg')
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
