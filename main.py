@@ -4,35 +4,13 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 # import streamlit.components.v1 as html
-# from background_img.background_img import set_png_as_page_bg
+from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
 # import io
 st.set_page_config(layout="wide")
-
-import base64
-
-@st.cache(allow_output_mutation=True)
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-def set_png_as_page_bg(png_file):
-    bin_str = get_base64_of_bin_file(png_file)
-    page_bg_img = '''
-    <style>
-    body {
-    background-image: url("data:image/png;base64,%s");
-    background-size: cover;
-    }
-    </style>
-    ''' % bin_str
-    
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-    return
 set_png_as_page_bg('background_img_1920_1080.jpg')
 
 with open('style.css') as f:
