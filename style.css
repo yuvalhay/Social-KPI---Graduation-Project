@@ -1,14 +1,30 @@
-/* body {
-    color: #fff;
-} */
+ <style>
+    footer {visibility: hidden;}
+    
+    footer:hover,  footer:active {
+        color: #ffffff;
+        background-color: transparent;
+        text-decoration: underline;
+        transition: 400ms ease 0s;
+    }
 
-div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
+    footer:after {
+        content:'bar'; 
+        visibility: visible;
+        display: block;
+        position: relative;
+        padding: 5px;
+        top: 2px;
+    }
+    </style>
+
+/* div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
     background-color: #EEEEEE;
     border: 1px solid #DCDCDC;
     padding: 30px 30px 30px 30px;
 /*     padding: 5% 5% 5% 5%; */
     border-radius: 20px;
-}
+} */
 
 /* div.stSlider > div {
     flex-direction: row;
