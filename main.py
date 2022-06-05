@@ -11,7 +11,7 @@ from PIL import Image
 # import plotly.express as px
 # import io
 st.set_page_config(layout="wide")
-set_png_as_page_bg('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapersafari.com%2Fbackground-city%2F&psig=AOvVaw3i0DgdxEY4FsQvHNGKYg3u&ust=1654519522284000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPCwxd-rlvgCFQAAAAAdAAAAABAY')
+set_png_as_page_bg('https://cdn.wallpapersafari.com/50/94/vZJPoH.jpg')
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
