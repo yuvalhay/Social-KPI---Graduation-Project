@@ -11,7 +11,7 @@ from PIL import Image
 # import plotly.express as px
 # import io
 st.set_page_config(layout="wide")
-set_png_as_page_bg('background_img.jpg')
+set_png_as_page_bg('background_img/background_img.jpg')
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
