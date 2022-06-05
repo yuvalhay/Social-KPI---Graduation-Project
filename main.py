@@ -13,8 +13,28 @@ from PIL import Image
 st.set_page_config(layout="wide")
 set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 
-with open('style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# with open('style.css') as f:
+#     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+ <style>
+    footer {visibility: hidden;}
+    
+    footer:hover,  footer:active {
+        color: #ffffff;
+        background-color: transparent;
+        text-decoration: underline;
+        transition: 400ms ease 0s;
+    }
+
+    footer:after {
+        content:'GABOT Team'; 
+        visibility: visible;
+        display: block;
+        position: relative;
+        padding: 5px;
+        top: 2px;
+    }
+    </style>
 
 about_header = st.container()
 pic_about_header = st.container()
