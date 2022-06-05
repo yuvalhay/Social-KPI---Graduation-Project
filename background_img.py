@@ -1,4 +1,5 @@
 import base64
+import streamlit as st
 
 @st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
