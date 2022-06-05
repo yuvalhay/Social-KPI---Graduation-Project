@@ -9,7 +9,7 @@
     }
 
     footer:after {
-        content:'bar'; 
+        content:'GABOT Team'; 
         visibility: visible;
         display: block;
         position: relative;
@@ -22,7 +22,7 @@
     background-color: #EEEEEE;
     border: 1px solid #DCDCDC;
     padding: 30px 30px 30px 30px;
-/*     padding: 5% 5% 5% 5%; */
+    padding: 5% 5% 5% 5%;
     border-radius: 20px;
 } */
 
