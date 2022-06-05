@@ -4,7 +4,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 # import streamlit.components.v1 as html
-import background_img
+from background_img import set_png_as_page_bg
 from PIL import Image
 # import cv2
 # from st_aggrid import AgGrid
