@@ -162,11 +162,17 @@ elif choose == "Social KPI":
             current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
 
             if KPI_page == "Loneliness":
+                even_col, odd_col = st.columns(2)
                 # st.balloons()
                 Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
                 index = 0
+                temp_col = even_col
                 for key in Loneliness_kpi_dict.keys():
-                    Loneliness_kpi_dict[key] = st.select_slider(f'{param_dict[index]}', options=[1, 2, 3, 4, 5, 6, 7],
+                    if index % 2 == 0:
+                        temp_col = even_col
+                    if index % 2 == 1:
+                        temp_col = odd_col
+                    Loneliness_kpi_dict[key] = temp_col.select_slider(f'{param_dict[index]}', options=[1, 2, 3, 4, 5, 6, 7],
                                                                 value=current_ratio[index], key=Loneliness_kpi_dict_keys[index])
                     index += 1
 
