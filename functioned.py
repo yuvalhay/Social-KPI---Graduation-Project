@@ -111,6 +111,7 @@ def weights_update(GUI_tuple): # gets (M, d) and update M dict by d changes
     update_weights(curr_dict, param, weight)
 
 def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_dict  ): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
+  global df_scored
   df_scores = catagorized_df
   columns_list = df_scores.columns
   df_scores['Loneliness'] = 6 - df_scores.apply(lambda row: sum([row[col] *loneliness_dict[col] for col in columns_list]), axis=1) # Now loneliness is not non-loneliness anymore (5 = lonenly)
@@ -125,7 +126,7 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
     q80 = df_scores[metric].quantile(0.80)
     q100 = df_scores[metric].quantile(0.100)
     df_scores[f'{metric}_score'] = df_scores[metric].apply(lambda x : 1 if x<=q20  else (2 if q20<x<=q40 else (3 if q40<x<=q60 else(4 if q60<x<=q80 else 5))))
-
+  
   return df_scores
 
 def default_weights(df_catagorized, loneliness_dict, health_dict, economic_strength_dict):
@@ -189,6 +190,9 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
 
 def get_spec_dict(str):
   return mapping_dict[str]
+
+def get_map_df():
+    df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
