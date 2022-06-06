@@ -196,7 +196,7 @@ elif choose == "Social KPI":
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
                 st.map(map_df, zoom=13)
-                layer = pdk.Layer("GridLayer", df, pickable=True, extruded=True, cell_size=200, elevation_scale=4)
+                layer = pdk.Layer("GridLayer", df, pickable=True, extruded=True, cell_size=200, elevation_scale=4, get_position=["lat", "lon"])
                 view_state = pdk.ViewState(latitude=37.7749295, longitude=-122.4194155, zoom=11, bearing=0, pitch=45)
 
                 # Render
