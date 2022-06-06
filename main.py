@@ -199,9 +199,9 @@ elif choose == "Social KPI":
                 layer = pydeck.Layer(
                                 'HexagonLayer',
                                 map_df,
-                                get_position=['lon', 'lat'],
+                                get_position=['lon', 'lat','Risk'],
                                 auto_highlight=True,
-                                get_radius=10,
+                                get_radius=100,
                                 get_fill_color=[255, 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 175 : 140', 140],
                                 elevation_range=[0, 1000],
                                 elevation_scale=2,
