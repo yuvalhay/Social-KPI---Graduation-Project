@@ -226,7 +226,7 @@ elif choose == "Social KPI":
                                 pitch=40.5,
                                 bearing=-27.36)
                 # , initial_view_state=view_state
-                r = pydeck.Deck(layers=[polygon, geojson], initial_view_state=view_state)
+                r = pydeck.Deck(layers=[layer2], initial_view_state=view_state)
                 st.pydeck_chart(r)
 #                 r.to_html()
 #                 weights_update()
