@@ -196,6 +196,12 @@ elif choose == "Social KPI":
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
                 st.map(map_df, zoom=13)
+                layer = pdk.Layer("GridLayer", df, pickable=True, extruded=True, cell_size=200, elevation_scale=4)
+                view_state = pdk.ViewState(latitude=37.7749295, longitude=-122.4194155, zoom=11, bearing=0, pitch=45)
+
+                # Render
+                r = pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip={"text": "{position}\nCount: {count}"},)
+                r.to_html("grid_layer.html")
 #                 weights_update()
 #                 st.pydeck_chart(pdk.Deck(
 #                      map_style='mapbox://styles/mapbox/light-v9',
@@ -210,7 +216,7 @@ elif choose == "Social KPI":
 #                             'HexagonLayer',
 #                             data=df,
 #                             get_position='[lon, lat]',
-#                             radius=20,
+#                             radius=200,
 #                             elevation_scale=4,
 #                             elevation_range=[0, 1000],
 #                             pickable=True,
@@ -221,7 +227,7 @@ elif choose == "Social KPI":
 #                              data=df,
 #                              get_position='[lon, lat]',
 #                              get_color='[200, 30, 0, 160]',
-#                              get_radius=20,
+#                              get_radius=200,
 #                          ),
 #                      ],
 #                  ))
