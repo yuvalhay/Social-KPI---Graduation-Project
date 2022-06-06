@@ -137,7 +137,7 @@ elif choose == "Social KPI":
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score", "Risk"]]
+            map_df = df[["lat", "lon", "Risk"]]
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
@@ -199,7 +199,7 @@ elif choose == "Social KPI":
                 layer = pydeck.Layer(
                                 'HexagonLayer',
                                 map_df,
-                                get_position=['lat', 'lon'],
+                                get_position=['lon', 'lat'],
                                 auto_highlight=True,
                                 elevation_scale=50,
                                 pickable=True,
