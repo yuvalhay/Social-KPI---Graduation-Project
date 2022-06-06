@@ -78,6 +78,17 @@ def update_slider(kpi_name, value):
 #         diff_avg =
 #         for key, val in kpis_dict.items():
 
+def file_update(df):
+    global loneliness_dict
+    global health_dict
+    global economic_strength_dict
+    loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+    loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+    df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+    global map_df
+    map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+    
+    return df_scored, map_df
 
 # st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
 
@@ -112,14 +123,15 @@ if choose == "File Upload":
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            global loneliness_dict
-            global health_dict
-            global economic_strength_dict
-            loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-            loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-            df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
-            global map_df
-            map_df = df[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+            df_scored, map_df = file_update(df)
+#             global loneliness_dict
+#             global health_dict
+#             global economic_strength_dict
+#             loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+#             loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+#             df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+#             global map_df
+#             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
             st.write(df)
             st.write(df_scored)
             
