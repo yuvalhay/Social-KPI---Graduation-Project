@@ -201,17 +201,17 @@ elif choose == "Social KPI":
                                 map_df,
                                 get_position=['lon', 'lat'],
                                 auto_highlight=True,
-                                elevation_scale=50,
+                                get_radius=10,
+                                get_fill_color=[255, 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 175 : 140', 140],
                                 pickable=True,
-                                elevation_range=[0, 3000],
                                 extruded=True,
                                 coverage=1)
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
                                 zoom=6,
-                                min_zoom=5,
-                                max_zoom=15,
+                                min_zoom=10,
+                                max_zoom=14,
                                 pitch=40.5,
                                 bearing=-27.36)
                 # Render
