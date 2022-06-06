@@ -133,8 +133,11 @@ elif choose == "Social KPI":
         st.write("The Economic Strength KPI is .....text....")
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
         if uploaded_file is not None:
-            dataframe = pd.read_csv(uploaded_file)
-            st.write(dataframe)
+            df = pd.read_csv(uploaded_file)
+            df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+            map_df = df[["lat", "lon"]]
+            
+#             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
 #              bytes_data = uploaded_file.read()
 #              st.write("filename:", uploaded_file.name)
@@ -190,6 +193,7 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
+                st.map(map_df)
                 # get df from model.py after multiply it by the new weights and group by it by statistical area (average) 
                 # st.table(df)
 
