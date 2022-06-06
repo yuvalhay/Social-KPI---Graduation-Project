@@ -128,7 +128,7 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
 
   return df_scores
 
-def default_weights(loneliness_dict, health_dict, economic_strength_dict):
+def default_weights(df_catagorized, loneliness_dict, health_dict, economic_strength_dict):
 #   loneliness_dict = {}
 #   health_dict = {}
 #   economic_strength_dict = {}
