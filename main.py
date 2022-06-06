@@ -203,6 +203,7 @@ elif choose == "Social KPI":
                                 auto_highlight=True,
                                 get_radius=1000,
                                 get_fill_color=[255, 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 175 : 140', 140],
+                                elevation_range=[0, 1000],
                                 pickable=True,
                                 extruded=True,
                                 coverage=0.1)
@@ -212,9 +213,8 @@ elif choose == "Social KPI":
                                 zoom=12,
                                 min_zoom=10,
                                 max_zoom=14,
-                                #pitch=40.5,
-                                #bearing=-27.36
-                                )
+                                pitch=40.5,
+                                bearing=-27.36)
                 # , initial_view_state=view_state
                 r = pydeck.Deck(layers=[layer], initial_view_state=view_state)
                 st.pydeck_chart(r)
