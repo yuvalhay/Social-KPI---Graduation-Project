@@ -137,7 +137,7 @@ elif choose == "Social KPI":
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Loneliness", "Health", "Economic Strength", "Risk"]]
+            map_df = df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score", "Risk"]]
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
