@@ -204,12 +204,11 @@ elif choose == "Social KPI":
                                 get_radius=10,
                                 get_fill_color=[255, 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 175 : 140', 140],
                                 pickable=True,
-                                extruded=True,
-                                coverage=1)
+                                )
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
-                                zoom=6,
+                                zoom=12,
                                 min_zoom=10,
                                 max_zoom=14,
                                 pitch=40.5,
