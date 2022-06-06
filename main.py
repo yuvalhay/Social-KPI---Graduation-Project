@@ -137,7 +137,7 @@ elif choose == "Social KPI":
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Risk"]]
+            map_df = df[["lat", "lon", "Loneliness", "Health", "Economic Strength", "Risk"]]
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
@@ -210,11 +210,14 @@ elif choose == "Social KPI":
                                 extruded=True,
                                 coverage=0.1)
                 layer2 = pydeck.Layer(
-                    'HexagonLayer',     # Change the `type` positional argument here
+                    'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
+                    get_elevation="Loneliness",
+                    elevation_scale=100,
+                    radius=50,
                     auto_highlight=True,
-                    get_radius=10000,          # Radius is given in meters
+#                     get_radius=10000,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
