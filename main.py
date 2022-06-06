@@ -197,17 +197,23 @@ elif choose == "Social KPI":
                 st.write(Loneliness_weights_dict)
                 st.map(map_df, zoom=13)
                 layer = pydeck.Layer(
-                                'HexagonLayer',
-                                map_df,
-                                get_position=['lon', 'lat','Risk'],
-                                auto_highlight=True,
-                                get_radius=100,
-                                # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
-                                get_fill_color=[255, 230, 200, 170, 140],
-                                elevation_range=[0, 1000],
-                                elevation_scale=2,
-                                pickable=True,
-                                extruded=True,
+                                'PolygonLayer',
+                                LAND_COVER,
+                                stroked=False,
+                                # processes the data as a flat longitude-latitude pair
+                                get_polygon='-',
+                                get_fill_color=[0, 0, 0, 20]
+#                                 'HexagonLayer',
+#                                 map_df,
+#                                 get_position=['lon', 'lat','Risk'],
+#                                 auto_highlight=True,
+#                                 get_radius=100,
+#                                 # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
+#                                 get_fill_color=[255, 230, 200, 170, 140],
+#                                 elevation_range=[0, 1000],
+#                                 elevation_scale=2,
+#                                 pickable=True,
+#                                 extruded=True,
                                 coverage=0.1)
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
