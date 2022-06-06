@@ -80,7 +80,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("GABOT", ["About", "Prediction", "Social KPI", "Contact"],
+    choose = option_menu("GABOT", ["About", "Prediction", selectbox('Social KPI',["Loneliness", "Health", "Economic Strength"]), "Contact"],
                          icons=['person lines fill', 'kanban', 'sliders', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
