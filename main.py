@@ -30,10 +30,10 @@ kpi_header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
 
-global map_df
-global loneliness_dict
-global health_dict
-global economic_strength_dict
+# global map_df
+# global loneliness_dict
+# global health_dict
+# global economic_strength_dict
 
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
@@ -112,10 +112,10 @@ if choose == "File Upload":
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+            global loneliness_dict, global health_dict, global economic_strength_dict = {}, {}, {}
             loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
             df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
-            map_df = df[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+            global map_df = df[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
             st.write(df)
             st.write(df_scored)
             
