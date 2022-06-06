@@ -138,15 +138,15 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
     economic_strength_dict[col] = 0
     
   update_weights(loneliness_dict, 'arnona_cat_score', 0.1 )
-  update_weights(loneliness_dict, 'members_Water_score', 0.08 )
+  update_weights(loneliness_dict, 'members_Water_score', 0.1 )
   update_weights(loneliness_dict, 'martial_score', 0.1 )
-  update_weights(loneliness_dict, 'widow_grown_score', 0.04 )
+  update_weights(loneliness_dict, 'widow_grown_score', 0.05 )
   update_weights(loneliness_dict, 'widow_elderlies_score', 0.1 )
   update_weights(loneliness_dict, 'lonely_elderlies_score', 0.25 )
-  update_weights(loneliness_dict, 'p85_plus_score', 0.06 )
+  update_weights(loneliness_dict, 'p85_plus_score', 0.05 )
   update_weights(loneliness_dict, 'accumulated_cases_score', 0.05)
   update_weights(loneliness_dict, 'age_score', 0.1 )
-  update_weights(loneliness_dict, 'area_per_person_score', 0.07 )
+  update_weights(loneliness_dict, 'area_per_person_score', 0.05 )
   update_weights(loneliness_dict, 'Ownership_score', 0.05)
 
   update_weights(health_dict, 'arnona_cat_score', 0.2 )
