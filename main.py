@@ -109,7 +109,7 @@ if choose == "File Upload":
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Loneliness_min_score", "Health_min_score", "Economic_Strength_min_score", "Risk"]]
+            map_df = df[["lat", "lon"]]
             st.write(df)
             
 
@@ -132,7 +132,13 @@ elif choose == "Social KPI":
         st.write("The Loneliness KPI is .....text....")
         st.write("The Health KPI is .....text....")
         st.write("The Economic Strength KPI is .....text....")
-     
+        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+#             df = rawToValCatagorized(uploaded_file)
+            df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+            map_df = df[["lat", "lon", "Loneliness_min_score", "Health_min_score", "Economic_Strength_min_score", "Risk"]]
+            st.write(df)
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
