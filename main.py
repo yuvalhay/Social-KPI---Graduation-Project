@@ -213,13 +213,13 @@ elif choose == "Social KPI":
                     'HexagonLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    auto_highlight=True,
+                    auto_highlight=False,
                     get_radius=10,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=False,
                     extruded=True,
-                    coverage=1
+                    coverage=0.1
                     )
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
