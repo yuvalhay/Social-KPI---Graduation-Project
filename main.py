@@ -191,7 +191,7 @@ elif choose == "Social KPI":
                 index = 0
                 temp_col = even_col
                 for key, val in loneliness_dict.items():
-                    loneliness_dict[f{"key"}] = round(val/0.05, 3)
+                    loneliness_dict[f"{key}"] = round(val/0.05, 3)
                 
 #                 curr_loneliness_dict = loneliness_dict.copy()
                 for key, val in loneliness_dict.items():
