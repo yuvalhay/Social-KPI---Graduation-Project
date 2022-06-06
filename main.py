@@ -214,8 +214,8 @@ elif choose == "Social KPI":
                                 max_zoom=14,
                                 pitch=40.5,
                                 bearing=-27.36)
-                # Render
-                r = pydeck.Deck(layers=[layer], initial_view_state=view_state)
+                # , initial_view_state=view_state
+                r = pydeck.Deck(layers=[layer])
                 st.pydeck_chart(r)
 #                 r.to_html()
 #                 weights_update()
