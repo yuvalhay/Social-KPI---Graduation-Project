@@ -199,7 +199,7 @@ elif choose == "Social KPI":
                 layer = pydeck.Layer(
                              'HexagonLayer',
                              map_df,
-                             get_position=['lng', 'lat'],
+                             get_position=['lat', 'lon'],
                              auto_highlight=True,
                              elevation_scale=50,
                              pickable=True,
