@@ -47,21 +47,21 @@ def update_slider(kpi_name, value):
     st.session_state[kpi_name] = value
 
 
-def count_by_sign(sign):
-    # count_non_zeros = count_zeros + count_negatives
-    count_zeros = 0
-    count_negatives = 0
-    for val in st.session_state.values():
-        if val < 0:
-            count_negatives += 1
-        if val == 0:
-            count_zeros += 1
-    if sign == 0:
-        return count_zeros
-    elif sign == -1:
-        return count_negatives
-    else:
-        return count_zeros + count_negatives
+# def count_by_sign(sign):
+#     # count_non_zeros = count_zeros + count_negatives
+#     count_zeros = 0
+#     count_negatives = 0
+#     for val in st.session_state.values():
+#         if val < 0:
+#             count_negatives += 1
+#         if val == 0:
+#             count_zeros += 1
+#     if sign == 0:
+#         return count_zeros
+#     elif sign == -1:
+#         return count_negatives
+#     else:
+#         return count_zeros + count_negatives
 
 
 # def increase_one_kpi(kpi_name, decrease_val, kpis_dict):
@@ -187,9 +187,10 @@ elif choose == "Social KPI":
             if KPI_page == "Loneliness":
                 even_col, odd_col = st.columns(2)
                 # st.balloons()
-                Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
+#                 Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
                 index = 0
                 temp_col = even_col
+                st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
                 
