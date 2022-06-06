@@ -85,8 +85,10 @@ def file_update(df):
     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+    
     global map_df
     map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+    state.my_value = map_df
     
     return df_scored, map_df
 
