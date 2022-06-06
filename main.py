@@ -217,9 +217,10 @@ elif choose == "Social KPI":
                         temp_col = even_col
                     if index % 2 == 1:
                         temp_col = odd_col
-                    loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                value=loneliness_dict[f'{key}'], key=f'{key}')
-                    index += 1
+                    if val != 0:
+                        loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                    value=loneliness_dict[f'{key}'], key=f'{key}')
+                        index += 1
 
                 sum_of_weights = round(sum(list(loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
