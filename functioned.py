@@ -177,25 +177,25 @@ def default_weights(loneliness_dict,health_dict,economic_strength_dict):
 
 #########################################################################################################
 
-df_catagorized = rawToValCatagorized('big_table.csv')
+# df_catagorized = rawToValCatagorized('big_table.csv')
 
-loneliness_dict = {}
-health_dict = {}
-economic_strength_dict = {}
-for col in df_catagorized.columns:
-  loneliness_dict[col] = 0
-  health_dict[col] = 0
-  economic_strength_dict[col] = 0
+# loneliness_dict = {}
+# health_dict = {}
+# economic_strength_dict = {}
+# for col in df_catagorized.columns:
+#   loneliness_dict[col] = 0
+#   health_dict[col] = 0
+#   economic_strength_dict[col] = 0
 
 
 
-mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
-default_weights(loneliness_dict,health_dict,economic_strength_dict)
+# mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
+# default_weights(loneliness_dict,health_dict,economic_strength_dict)
 
-# weights_update(GUI_tuple)
+# # weights_update(GUI_tuple)
 
-df_scored = MetricsCalc(df_catagorized,loneliness_dict, health_dict, economic_strength_dict  )
-df_scored
+# df_scored = MetricsCalc(df_catagorized,loneliness_dict, health_dict, economic_strength_dict  )
+# df_scored
 
 # NL = df_scores['Loneliness_score']
 # E = df_scores['Economic_Strength_score']
