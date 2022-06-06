@@ -229,7 +229,7 @@ elif choose == "Social KPI":
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in loneliness_dict.items()}
                 
 #                 map_df = get_map_df()
-                map_df = session_state["map_df"]
+                map_df = st.session_state['map_df']
 #                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
