@@ -183,6 +183,7 @@ def default_weights(loneliness_dict, health_dict, economic_strength_dict):
   update_weights(economic_strength_dict, 'members_Water_score', 0.05 )
   update_weights(economic_strength_dict, 'near_106_pizul_and_dangerous_buildings_score', 0.1 )
 
+  return loneliness_dict, health_dict, economic_strength_dict
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
