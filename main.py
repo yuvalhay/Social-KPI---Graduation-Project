@@ -214,7 +214,7 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     auto_highlight=True,
-                    get_radius=1000,          # Radius is given in meters
+                    get_radius=10,          # Radius is given in meters
                     get_fill_color=[180, 0, 200, 140],  # Set an RGBA value for fill
                     pickable=True,
                     coverage=0.1)
