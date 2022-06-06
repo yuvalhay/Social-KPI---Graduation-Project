@@ -210,12 +210,12 @@ elif choose == "Social KPI":
                                 extruded=True,
                                 coverage=0.1)
                 layer2 = pydeck.Layer(
-                    'ScatterplotLayer',     # Change the `type` positional argument here
+                    'HexagonLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
                     auto_highlight=True,
-                    get_radius=30,          # Radius is given in meters
-                    get_fill_color=[255, 0, 255, 140],  # Set an RGBA value for fill
+                    get_radius=20,          # Radius is given in meters
+                    get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
