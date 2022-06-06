@@ -137,7 +137,7 @@ elif choose == "Social KPI":
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score", "Risk"]]
+            map_df = df[["lat", "lon", "Loneliness_min_score", "Health_min_score", "Economic_Strength_min_score", "Risk"]]
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
@@ -213,19 +213,19 @@ elif choose == "Social KPI":
                     'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    get_elevation="Loneliness_score",
+                    get_elevation="Loneliness_min_score",
                     elevation_scale=20,
                     radius=50,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
-                    get_fill_color=["Loneliness_score * 10", "Loneliness_score * 3", "Loneliness_score * 10", 140],  # Set an RGBA value for fill
+                    get_fill_color=["255", "Loneliness_score * 6 + 30", "Loneliness_score * 6", 0.8],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
                     coverage=0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
+                    "html": "<b>{mrt_distance}</b> Loneliness min KPI = <b>{Loneliness_min_score}</b>",
                     "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
