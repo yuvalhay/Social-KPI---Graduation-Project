@@ -6,6 +6,7 @@ import numpy as np
 # import streamlit.components.v1 as html
 from background_img.background_img import set_png_as_page_bg
 from PIL import Image
+import pydeck as pdk
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
