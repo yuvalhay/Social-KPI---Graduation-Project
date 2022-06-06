@@ -215,10 +215,10 @@ elif choose == "Social KPI":
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_min_score",
                     elevation_scale=20,
-                    radius=50,
+                    radius=40,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
-                    get_fill_color=["255", "Loneliness_score * 6 + 30", "Loneliness_score * 6", 80],  # Set an RGBA value for fill
+                    get_fill_color=["255", "Loneliness_score * 6 + 30", "Loneliness_score * 6", "Loneliness_score * 30"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
