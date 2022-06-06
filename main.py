@@ -198,7 +198,7 @@ elif choose == "Social KPI":
                 st.map(map_df, zoom=13)
                 layer = pydeck.Layer(
                                 'PolygonLayer',
-                                LAND_COVER,
+                                map_df,
                                 stroked=False,
                                 # processes the data as a flat longitude-latitude pair
                                 get_polygon='-',
