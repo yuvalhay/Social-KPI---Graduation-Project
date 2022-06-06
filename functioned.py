@@ -128,7 +128,15 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
 
   return df_scores
 
-def default_weights(loneliness_dict,health_dict,economic_strength_dict):
+def default_weights(loneliness_dict, health_dict, economic_strength_dict):
+#   loneliness_dict = {}
+#   health_dict = {}
+#   economic_strength_dict = {}
+  for col in df_catagorized.columns:
+    loneliness_dict[col] = 0
+    health_dict[col] = 0
+    economic_strength_dict[col] = 0
+    
   update_weights(loneliness_dict, 'arnona_cat_score', 0.1 )
   update_weights(loneliness_dict, 'members_Water_score', 0.08 )
   update_weights(loneliness_dict, 'martial_score', 0.1 )
