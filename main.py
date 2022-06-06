@@ -214,11 +214,11 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     auto_highlight=True,
-                    get_radius=20,          # Radius is given in meters
+                    get_radius=10,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
-                    extruded=True,
+                    extruded=False,
                     coverage=0.1
                     )
                 view_state = pydeck.ViewState(
