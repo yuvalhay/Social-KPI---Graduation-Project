@@ -239,11 +239,11 @@ elif choose == "Social KPI":
                                 bearing=-27.36
                                 )
                 r = pydeck.Deck(
-                    column_layer,
+                    layer2,
                     initial_view_state=view,
                     tooltip=tooltip,
                     map_provider="mapbox",
-                    map_style=pdk.map_styles.SATELLITE,
+                    map_style=pydeck.map_styles.SATELLITE,
                 )
                 # , initial_view_state=view_state
 #                 r = pydeck.Deck(layers=[layer2], initial_view_state=view_state)
