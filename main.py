@@ -216,7 +216,8 @@ elif choose == "Social KPI":
                     auto_highlight=True,
                     get_radius=1000,          # Radius is given in meters
                     get_fill_color=[180, 0, 200, 140],  # Set an RGBA value for fill
-                    pickable=True)
+                    pickable=True,
+                    coverage=0.1)
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
