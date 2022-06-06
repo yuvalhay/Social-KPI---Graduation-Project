@@ -7,7 +7,7 @@ import numpy as np
 from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 import pydeck
-# from The_Brain import *
+from functioned import *
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
@@ -29,6 +29,9 @@ Niv_pic = Image.open(r'Team_members_pictures/Niv.jpeg')
 kpi_header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
+
+global map_df
+
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
 
@@ -82,7 +85,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("GABOT", ["About", "Prediction", "Social KPI", "Contact"],
+    choose = option_menu("GABOT", ["File Upload", "Prediction", "Social KPI", "About"],
                          icons=['person lines fill', 'kanban', 'sliders', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
@@ -94,25 +97,21 @@ with st.sidebar:
                          }
                          )
 
-if choose == "About":
+if choose == "File Upload":
     with about_header:
-#         st.title("The About section")
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">The File Upload section</p>', unsafe_allow_html=True)
         st.text("Team GABOT")
-        Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
-        with Yuvi:
-            st.image(Yuvi_pic, width=130)
-        with Tal:
-            st.image(Tal_pic, width=130)
-        with Dana:
-            st.image(Dana_pic, width=130)
-        with Gal:
-            st.image(Gal_pic, width=130)
-        with Niv:
-            st.image(Niv_pic, width=130)
+        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
+        if uploaded_file is not None:
+#             df = pd.read_csv(uploaded_file)
+            df = rawToValCatagorized(uploaded_file)
+            df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+            map_df = df[["lat", "lon", "Loneliness_min_score", "Health_min_score", "Economic_Strength_min_score", "Risk"]]
+            st.write(df)
+            
 
 elif choose == "Prediction":
 #     st.balloons()
@@ -133,11 +132,7 @@ elif choose == "Social KPI":
         st.write("The Loneliness KPI is .....text....")
         st.write("The Health KPI is .....text....")
         st.write("The Economic Strength KPI is .....text....")
-        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
-        if uploaded_file is not None:
-            df = pd.read_csv(uploaded_file)
-            df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            map_df = df[["lat", "lon", "Loneliness_min_score", "Health_min_score", "Economic_Strength_min_score", "Risk"]]
+     
             
 #             st.write(dataframe)
 #         for uploaded_file in uploaded_files:
@@ -331,15 +326,32 @@ elif choose == "Social KPI":
 
             #     st.text("In this section you will see all the weights that create the KPI you selected")
 
-elif choose == "Contact":
+elif choose == "About":
+    #         st.title("The About section")
     st.markdown(""" <style> .font {
     font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
     </style> """, unsafe_allow_html=True)
-    st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
-    with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
-        Name = st.text_input(label='Please Enter Your Name')  # Collect user feedback
-        Email = st.text_input(label='Please Enter Email')  # Collect user feedback
-        Message = st.text_input(label='Please Enter Your Message')  # Collect user feedback
-        submitted = st.form_submit_button('Submit')
-        if submitted:
-            st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
+    st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
+    st.text("Team GABOT")
+    Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
+    with Yuvi:
+        st.image(Yuvi_pic, width=130)
+    with Tal:
+        st.image(Tal_pic, width=130)
+    with Dana:
+        st.image(Dana_pic, width=130)
+    with Gal:
+        st.image(Gal_pic, width=130)
+    with Niv:
+        st.image(Niv_pic, width=130)
+#     st.markdown(""" <style> .font {
+#     font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+#     </style> """, unsafe_allow_html=True)
+#     st.markdown('<p class="font">Contact Form</p>', unsafe_allow_html=True)
+#     with st.form(key='columns_in_form2', clear_on_submit=True):  # clear_on_submit=True > form will be reset/cleared once it's submitted
+#         Name = st.text_input(label='Please Enter Your Name')  # Collect user feedback
+#         Email = st.text_input(label='Please Enter Email')  # Collect user feedback
+#         Message = st.text_input(label='Please Enter Your Message')  # Collect user feedback
+#         submitted = st.form_submit_button('Submit')
+#         if submitted:
+#             st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
