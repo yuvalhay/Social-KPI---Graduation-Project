@@ -197,24 +197,40 @@ elif choose == "Social KPI":
                 st.write(Loneliness_weights_dict)
                 st.map(map_df, zoom=13)
                 layer = pydeck.Layer(
-                                'PolygonLayer',
+                                'HexagonLayer',
                                 map_df,
-                                stroked=False,
-                                # processes the data as a flat longitude-latitude pair
-                                get_polygon='-',
-                                get_fill_color=[0, 0, 0, 20],
-#                                 'HexagonLayer',
-#                                 map_df,
-#                                 get_position=['lon', 'lat','Risk'],
-#                                 auto_highlight=True,
-#                                 get_radius=100,
-#                                 # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
-#                                 get_fill_color=[255, 230, 200, 170, 140],
-#                                 elevation_range=[0, 1000],
-#                                 elevation_scale=2,
-#                                 pickable=True,
-#                                 extruded=True,
+                                get_position=['lon', 'lat','Risk'],
+                                auto_highlight=True,
+                                get_radius=100,
+                                # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
+                                get_fill_color=[255, 230, 200, 170, 140],
+                                elevation_range=[0, 1000],
+                                elevation_scale=2,
+                                pickable=True,
+                                extruded=True,
                                 coverage=0.1)
+                polygon = pydeck.Layer(
+                    'PolygonLayer',
+                    LAND_COVER,
+                    stroked=False,
+                    # processes the data as a flat longitude-latitude pair
+                    get_polygon='-',
+                    get_fill_color=[0, 0, 0, 20]
+                )
+
+                geojson = pydeck.Layer(
+                    'GeoJsonLayer',
+                    DATA_URL,
+                    opacity=0.8,
+                    stroked=False,
+                    filled=True,
+                    extruded=True,
+                    wireframe=True,
+                    get_elevation='properties.valuePerSqm / 20',
+                    get_fill_color='[255, 255, properties.growth * 255]',
+                    get_line_color=[255, 255, 255],
+                    pickable=True
+)
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
@@ -224,7 +240,7 @@ elif choose == "Social KPI":
                                 pitch=40.5,
                                 bearing=-27.36)
                 # , initial_view_state=view_state
-                r = pydeck.Deck(layers=[layer], initial_view_state=view_state)
+                r = pydeck.Deck(layers=[polygon, geojson], initial_view_state=view_state)
                 st.pydeck_chart(r)
 #                 r.to_html()
 #                 weights_update()
