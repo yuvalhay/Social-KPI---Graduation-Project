@@ -7,6 +7,7 @@ import numpy as np
 from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 import pydeck as pdk
+from The_Brain import *
 # import cv2
 # from st_aggrid import AgGrid
 # import plotly.express as px
@@ -194,35 +195,36 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
-#                 st.map(map_df, zoom=13)
-                st.pydeck_chart(pdk.Deck(
-                     map_style='mapbox://styles/mapbox/light-v9',
-                     initial_view_state=pdk.ViewState(
-                         latitude=map_df['lat'],
-                         longitude=map_df['lon'],
-                         zoom=12,
-                         pitch=50,
-                     ),
-                     layers=[
-                         pdk.Layer(
-                            'HexagonLayer',
-                            data=df,
-                            get_position='[lon, lat]',
-                            radius=20,
-                            elevation_scale=4,
-                            elevation_range=[0, 1000],
-                            pickable=True,
-                            extruded=True,
-                         ),
-                         pdk.Layer(
-                             'ScatterplotLayer',
-                             data=df,
-                             get_position='[lon, lat]',
-                             get_color='[200, 30, 0, 160]',
-                             get_radius=20,
-                         ),
-                     ],
-                 ))
+                st.map(map_df, zoom=13)
+#                 weights_update()
+#                 st.pydeck_chart(pdk.Deck(
+#                      map_style='mapbox://styles/mapbox/light-v9',
+#                      initial_view_state=pdk.ViewState(
+#                          latitude=map_df['lat'],
+#                          longitude=map_df['lon'],
+#                          zoom=12,
+#                          pitch=50,
+#                      ),
+#                      layers=[
+#                          pdk.Layer(
+#                             'HexagonLayer',
+#                             data=df,
+#                             get_position='[lon, lat]',
+#                             radius=20,
+#                             elevation_scale=4,
+#                             elevation_range=[0, 1000],
+#                             pickable=True,
+#                             extruded=True,
+#                          ),
+#                          pdk.Layer(
+#                              'ScatterplotLayer',
+#                              data=df,
+#                              get_position='[lon, lat]',
+#                              get_color='[200, 30, 0, 160]',
+#                              get_radius=20,
+#                          ),
+#                      ],
+#                  ))
                 # get df from model.py after multiply it by the new weights and group by it by statistical area (average) 
                 # st.table(df)
 
