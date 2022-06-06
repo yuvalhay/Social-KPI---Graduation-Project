@@ -238,7 +238,7 @@ elif choose == "Social KPI":
                                 pitch=40.5,
                                 bearing=-27.36
                                 )
-                view = pdk.data_utils.compute_view(map_df[["lng", "lat"]])
+                view = pydeck.data_utils.compute_view(map_df[["lng", "lat"]])
                 view.pitch = 75
                 view.bearing = 60
                 
