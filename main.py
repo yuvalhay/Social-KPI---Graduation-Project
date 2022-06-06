@@ -213,7 +213,7 @@ elif choose == "Social KPI":
                     'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    get_elevation="Loneliness",
+                    get_elevation="Loneliness_score",
                     elevation_scale=3,
                     radius=10,
                     auto_highlight=True,
@@ -225,7 +225,7 @@ elif choose == "Social KPI":
                     coverage=0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> meters away from an MRT station, costs <b>{price_per_unit_area}</b> NTD/sqm",
+                    "html": "<b>{mrt_distance}</b> Loneliness KPI <b>{Loneliness_score}</b> NTD/sqm",
                     "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
