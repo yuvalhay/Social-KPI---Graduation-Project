@@ -132,8 +132,8 @@ if choose == "File Upload":
 #             df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
 #             global map_df
 #             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
-            st.write(df)
-            st.write(df_scored)
+#             st.write(df)
+#             st.write(df_scored)
             
 
 elif choose == "Prediction":
