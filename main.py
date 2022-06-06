@@ -214,7 +214,7 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_score",
-                    elevation_scale=10,
+                    elevation_scale=20,
                     radius=50,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
@@ -226,21 +226,22 @@ elif choose == "Social KPI":
                     )
                 tooltip = {
                     "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
-                    "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                    "style": {"background": "grey", "color": "red", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
-                view_state = pydeck.ViewState(
-                                longitude=34.99027286,
-                                latitude=32.81616933,
-                                zoom=12,
-                                min_zoom=10,
-                                max_zoom=14,
-                                pitch=40.5,
-                                bearing=-27.36
-                                )
+#                 view_state = pydeck.ViewState(
+#                                 longitude=34.99027286,
+#                                 latitude=32.81616933,
+#                                 zoom=12,
+#                                 min_zoom=10,
+#                                 max_zoom=14,
+#                                 pitch=40.5,
+#                                 bearing=-27.36
+#                                 )
                 view = pydeck.data_utils.compute_view(map_df[['lon', 'lat']])
                 view.pitch = 75
                 view.bearing = 60
+                view.zoom = 14
                 
                 r = pydeck.Deck(
                     layer2,
