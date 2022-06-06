@@ -193,12 +193,12 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
-                st.map(map_df, zoom=13)
+#                 st.map(map_df, zoom=13)
                 st.pydeck_chart(pdk.Deck(
                      map_style='mapbox://styles/mapbox/light-v9',
                      initial_view_state=pdk.ViewState(
-                         latitude=32.81616933,
-                         longitude=-34.99027286,
+                         latitude=map_df['lat'],
+                         longitude=map_df['lon'],
                          zoom=12,
                          pitch=50,
                      ),
@@ -218,7 +218,7 @@ elif choose == "Social KPI":
                              data=df,
                              get_position='[lon, lat]',
                              get_color='[200, 30, 0, 160]',
-                             get_radius=200,
+                             get_radius=20,
                          ),
                      ],
                  ))
