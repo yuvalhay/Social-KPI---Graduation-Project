@@ -212,7 +212,7 @@ elif choose == "Social KPI":
                 layer2 = pydeck.Layer(
                     'ScatterplotLayer',     # Change the `type` positional argument here
                     map_df,
-                    get_position=['lng', 'lat'],
+                    get_position=['lon', 'lat'],
                     auto_highlight=True,
                     get_radius=1000,          # Radius is given in meters
                     get_fill_color=[180, 0, 200, 140],  # Set an RGBA value for fill
@@ -223,8 +223,9 @@ elif choose == "Social KPI":
                                 zoom=12,
                                 min_zoom=10,
                                 max_zoom=14,
-                                pitch=40.5,
-                                bearing=-27.36)
+#                                 pitch=40.5,
+#                                 bearing=-27.36
+                                )
                 # , initial_view_state=view_state
                 r = pydeck.Deck(layers=[layer2], initial_view_state=view_state)
                 st.pydeck_chart(r)
