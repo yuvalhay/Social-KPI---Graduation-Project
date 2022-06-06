@@ -202,7 +202,7 @@ elif choose == "Social KPI":
                                 stroked=False,
                                 # processes the data as a flat longitude-latitude pair
                                 get_polygon='-',
-                                get_fill_color=[0, 0, 0, 20]
+                                get_fill_color=[0, 0, 0, 20],
 #                                 'HexagonLayer',
 #                                 map_df,
 #                                 get_position=['lon', 'lat','Risk'],
