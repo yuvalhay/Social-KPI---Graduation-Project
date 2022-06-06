@@ -218,7 +218,7 @@ elif choose == "Social KPI":
                     radius=50,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
-                    get_fill_color=["Loneliness_score * 10", "Loneliness_score", "Loneliness_score * 10", 140],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness_score * 2", "Loneliness_score", "Loneliness_score * 2", 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
@@ -241,7 +241,7 @@ elif choose == "Social KPI":
                 view = pydeck.data_utils.compute_view(map_df[['lon', 'lat']])
                 view.pitch = 75
                 view.bearing = 60
-                view.zoom = 13
+                view.zoom = 15
                 
                 r = pydeck.Deck(
                     layer2,
