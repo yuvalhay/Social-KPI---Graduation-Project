@@ -16,12 +16,12 @@ footer:after {
     top: 2px;
 }
 
-body {
+/* body {
   background-color: lightgoldenrodyellow;
-}
+} */
 
-div[data-testid="stHorizontalBlock"] > div:first-of-type {
-  background-color: #F4EBC5;
+div[data-testid="stHorizontalBlock"] {
+  background-color: #F8F7F4;
 }
 
 /* div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
