@@ -226,7 +226,7 @@ elif choose == "Social KPI":
                     )
                 tooltip = {
                     "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
-                    "style": {"background": "grey", "color": "red", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                    "style": {"background": "red", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
 #                 view_state = pydeck.ViewState(
