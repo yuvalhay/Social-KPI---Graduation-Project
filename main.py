@@ -214,8 +214,8 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     auto_highlight=True,
-                    get_radius=10,          # Radius is given in meters
-                    get_fill_color=[255, 100, 200, 140],  # Set an RGBA value for fill
+                    get_radius=30,          # Radius is given in meters
+                    get_fill_color=[255, 0, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
