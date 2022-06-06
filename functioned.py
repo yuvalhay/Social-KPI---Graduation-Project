@@ -85,10 +85,10 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
 
   #Lets make the DF more readable and relevant by leaving only the are (stat and coordiantes):
 
-  df_scores = df[['index','STAT','north','east']+all_scored_params]
+  df_full = df[['index','STAT','north','east']+all_scored_params]
 
-  df_scores.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-  return df_scores
+  df_full.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+  return df_full
 
 def update_weights(metric_dict, param_to_update, new_weight): # updated given dict with a new value
   up_dict = {f'{param_to_update}' : new_weight}
@@ -194,7 +194,7 @@ def get_spec_dict(str):
   return mapping_dict[str]
 
 def get_map_df():
-    df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+    return df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
