@@ -225,7 +225,9 @@ elif choose == "Social KPI":
                 sum_of_weights = round(sum(list(loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in loneliness_dict.items()}
-                st.write(loneliness_dict)
+                
+                map_df = get_map_df()
+#                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
 #                                 'HexagonLayer',
