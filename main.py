@@ -209,7 +209,8 @@ elif choose == "Social KPI":
 
                 # Render
                 r = pydeck.Deck(layers=[layer])
-                r.to_html()
+                st.pydeck_chart(r)
+#                 r.to_html()
 #                 weights_update()
 #                 st.pydeck_chart(pdk.Deck(
 #                      map_style='mapbox://styles/mapbox/light-v9',
