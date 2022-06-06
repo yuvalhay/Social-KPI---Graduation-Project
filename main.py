@@ -208,7 +208,7 @@ elif choose == "Social KPI":
                              coverage=1)
 
                 # Render
-                r = pdk.Deck(layers=[layer])
+                r = pydeck.Deck(layers=[layer])
                 r.to_html()
 #                 weights_update()
 #                 st.pydeck_chart(pdk.Deck(
