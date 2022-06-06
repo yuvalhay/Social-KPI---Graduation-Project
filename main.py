@@ -79,18 +79,8 @@ with st.sidebar:
     # st.sidebar
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
-
-    choose = option_menu("GABOT", ["About", "Prediction", option_menu("Social KPI",["Loneliness", "Health", "Economic Strength"],
-                                                                     icons=['person lines fill', 'kanban', 'pencil square'],
-                         menu_icon="app-indicator", default_index=0,
-                         styles={
-                             "container": {"padding": "5!important", "background-color": "white"},
-                             "icon": {"color": "black", "font-size": "25px"},
-                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
-                                          "--hover-color": "#eee"},
-                             "nav-link-selected": {"background-color": "#FF4B4B"},
-                         }
-                         ), "Contact"],
+#     selectbox('Select page',['Country data','Continent data']) 
+    choose = option_menu("GABOT", ["About", "Prediction", "Social KPI", "Contact"],
                          icons=['person lines fill', 'kanban', 'sliders', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
