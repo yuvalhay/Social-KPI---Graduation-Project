@@ -80,7 +80,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("GABOT", ["About", "Prediction", selectbox('Social KPI',["Loneliness", "Health", "Economic Strength"]), "Contact"],
+    choose = option_menu("GABOT", ["About", "Prediction", "Social KPI", "Contact"],
                          icons=['person lines fill', 'kanban', 'sliders', 'pencil square'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
@@ -113,7 +113,7 @@ if choose == "About":
             st.image(Niv_pic, width=130)
 
 elif choose == "Prediction":
-    st.balloons()
+#     st.balloons()
 #     st.title("The Prediction section")
     st.markdown(""" <style> .font {
     font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
@@ -131,6 +131,14 @@ elif choose == "Social KPI":
         st.write("The Loneliness KPI is .....text....")
         st.write("The Health KPI is .....text....")
         st.write("The Economic Strength KPI is .....text....")
+        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
+        if uploaded_file is not None:
+            dataframe = pd.read_csv(uploaded_file)
+            st.write(dataframe)
+#         for uploaded_file in uploaded_files:
+#              bytes_data = uploaded_file.read()
+#              st.write("filename:", uploaded_file.name)
+#              st.write(bytes_data)
 #         col1, col2, col3 = st.columns(3)
 #         col1.metric("Loneliness KPI:", "2", "-1")
 #         col2.metric("Health KPI:", "4", "+1")
