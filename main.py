@@ -214,8 +214,8 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness",
-                    elevation_scale=100,
-                    radius=50,
+                    elevation_scale=3,
+                    radius=10,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
@@ -224,6 +224,11 @@ elif choose == "Social KPI":
                     extruded=True,
                     coverage=0.1
                     )
+                tooltip = {
+                    "html": "<b>{mrt_distance}</b> meters away from an MRT station, costs <b>{price_per_unit_area}</b> NTD/sqm",
+                    "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                }
+                
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
@@ -233,8 +238,15 @@ elif choose == "Social KPI":
                                 pitch=40.5,
                                 bearing=-27.36
                                 )
+                r = pydeck.Deck(
+                    column_layer,
+                    initial_view_state=view,
+                    tooltip=tooltip,
+                    map_provider="mapbox",
+                    map_style=pdk.map_styles.SATELLITE,
+                )
                 # , initial_view_state=view_state
-                r = pydeck.Deck(layers=[layer2], initial_view_state=view_state)
+#                 r = pydeck.Deck(layers=[layer2], initial_view_state=view_state)
                 st.pydeck_chart(r)
 #                 r.to_html()
 #                 weights_update()
