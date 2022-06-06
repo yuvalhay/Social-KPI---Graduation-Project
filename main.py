@@ -88,7 +88,7 @@ def file_update(df):
     
     global map_df
     map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
-    state.my_value = map_df
+    st.session_state['map_df'] = map_df
     
     return df_scored, map_df
 
@@ -228,7 +228,8 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in loneliness_dict.items()}
                 
-                map_df = get_map_df()
+#                 map_df = get_map_df()
+                map_df = session_state["map_df"]
 #                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
