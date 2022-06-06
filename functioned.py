@@ -188,7 +188,7 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
   return loneliness_dict, health_dict, economic_strength_dict
 
 def get_spec_dict(str):
-    return mapping_dict[str]
+  return mapping_dict[str]
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
