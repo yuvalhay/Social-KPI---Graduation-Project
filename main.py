@@ -195,17 +195,17 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
-#                 st.map(map_df, zoom=13)
-                layer = pdk.Layer(
-                            'HexagonLayer',  # `type` positional argument is here
-                            map_df,
-                            get_position=['lng', 'lat'],
-                            auto_highlight=True,
-                            elevation_scale=50,
-                            pickable=True,
-                            elevation_range=[0, 3000],
-                            extruded=True,
-                            coverage=1)
+                st.map(map_df, zoom=13)
+                layer = pydeck.Layer(
+                             'HexagonLayer',
+                             map_df,
+                             get_position=['lng', 'lat'],
+                             auto_highlight=True,
+                             elevation_scale=50,
+                             pickable=True,
+                             elevation_range=[0, 3000],
+                             extruded=True,
+                             coverage=1)
 
                 # Render
                 r = pdk.Deck(layers=[layer])
