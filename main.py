@@ -195,20 +195,20 @@ elif choose == "Social KPI":
                 st.write(sum_of_weights)
                 Loneliness_weights_dict = {key: round(weight/sum_of_weights, 5) for key, weight in Loneliness_kpi_dict.items()}
                 st.write(Loneliness_weights_dict)
-                st.map(map_df, zoom=13)
-                layer = pydeck.Layer(
-                                'HexagonLayer',
-                                map_df,
-                                get_position=['lon', 'lat','Risk'],
-                                auto_highlight=True,
-                                get_radius=100,
-                                # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
-                                get_fill_color=[255, 230, 200, 170, 140],
-                                elevation_range=[0, 1000],
-                                elevation_scale=2,
-                                pickable=True,
-                                extruded=True,
-                                coverage=0.1)
+#                 st.map(map_df, zoom=13)
+#                 layer = pydeck.Layer(
+#                                 'HexagonLayer',
+#                                 map_df,
+#                                 get_position=['lon', 'lat','Risk'],
+#                                 auto_highlight=True,
+#                                 get_radius=100,
+#                                 # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
+#                                 get_fill_color=[255, 230, 200, 170, 140],
+#                                 elevation_range=[0, 1000],
+#                                 elevation_scale=2,
+#                                 pickable=True,
+#                                 extruded=True,
+#                                 coverage=0.1)
                 layer2 = pydeck.Layer(
                     'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
@@ -241,7 +241,7 @@ elif choose == "Social KPI":
                 view = pydeck.data_utils.compute_view(map_df[['lon', 'lat']])
                 view.pitch = 75
                 view.bearing = 60
-                view.zoom = 14
+                view.zoom = 13
                 
                 r = pydeck.Deck(
                     layer2,
