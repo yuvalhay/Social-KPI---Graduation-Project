@@ -197,18 +197,25 @@ elif choose == "Social KPI":
                 st.write(Loneliness_weights_dict)
                 st.map(map_df, zoom=13)
                 layer = pydeck.Layer(
-                             'HexagonLayer',
-                             map_df,
-                             get_position=['lat', 'lon'],
-                             auto_highlight=True,
-                             elevation_scale=50,
-                             pickable=True,
-                             elevation_range=[0, 3000],
-                             extruded=True,
-                             coverage=1)
-
+                                'HexagonLayer',
+                                map_df,
+                                get_position=['lat', 'lon'],
+                                auto_highlight=True,
+                                elevation_scale=50,
+                                pickable=True,
+                                elevation_range=[0, 3000],
+                                extruded=True,
+                                coverage=1)
+                view_state = pydeck.ViewState(
+                                longitude=34.99027286,
+                                latitude=32.81616933,
+                                zoom=6,
+                                min_zoom=5,
+                                max_zoom=15,
+                                pitch=40.5,
+                                bearing=-27.36)
                 # Render
-                r = pydeck.Deck(layers=[layer])
+                r = pydeck.Deck(layers=[layer], initial_view_state=view_state)
                 st.pydeck_chart(r)
 #                 r.to_html()
 #                 weights_update()
