@@ -209,28 +209,14 @@ elif choose == "Social KPI":
                                 pickable=True,
                                 extruded=True,
                                 coverage=0.1)
-                polygon = pydeck.Layer(
-                    'PolygonLayer',
-                    LAND_COVER,
-                    stroked=False,
-                    # processes the data as a flat longitude-latitude pair
-                    get_polygon='-',
-                    get_fill_color=[0, 0, 0, 20]
-                )
-
-                geojson = pydeck.Layer(
-                    'GeoJsonLayer',
-                    DATA_URL,
-                    opacity=0.8,
-                    stroked=False,
-                    filled=True,
-                    extruded=True,
-                    wireframe=True,
-                    get_elevation='properties.valuePerSqm / 20',
-                    get_fill_color='[255, 255, properties.growth * 255]',
-                    get_line_color=[255, 255, 255],
-                    pickable=True
-)
+                layer2 = pydeck.Layer(
+                    'ScatterplotLayer',     # Change the `type` positional argument here
+                    map_df,
+                    get_position=['lng', 'lat'],
+                    auto_highlight=True,
+                    get_radius=1000,          # Radius is given in meters
+                    get_fill_color=[180, 0, 200, 140],  # Set an RGBA value for fill
+                    pickable=True)
                 view_state = pydeck.ViewState(
                                 longitude=34.99027286,
                                 latitude=32.81616933,
