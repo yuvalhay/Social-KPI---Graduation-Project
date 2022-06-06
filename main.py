@@ -214,8 +214,8 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_score",
-                    elevation_scale=3,
-                    radius=10,
+                    elevation_scale=10,
+                    radius=50,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
@@ -225,7 +225,7 @@ elif choose == "Social KPI":
                     coverage=0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> Loneliness KPI <b>{Loneliness_score}</b> NTD/sqm",
+                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
                     "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
