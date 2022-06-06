@@ -183,7 +183,12 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
   update_weights(economic_strength_dict, 'members_Water_score', 0.05 )
   update_weights(economic_strength_dict, 'near_106_pizul_and_dangerous_buildings_score', 0.1 )
 
+  global mapping_dict
+  mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
   return loneliness_dict, health_dict, economic_strength_dict
+
+def get_spec_dict(str):
+    return mapping_dict[f"{str}"]
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
