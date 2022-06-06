@@ -86,7 +86,7 @@ with st.sidebar:
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
     choose = option_menu("GABOT", ["File Upload", "Prediction", "Social KPI", "About"],
-                         icons=['person lines fill', 'kanban', 'sliders', 'pencil square'],
+                         icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
                              "container": {"padding": "5!important", "background-color": "white"},
