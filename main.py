@@ -206,6 +206,7 @@ elif choose == "Social KPI":
 #                 Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
                 index = 0
                 temp_col = even_col
+                loneliness_dict = get_spec_dict("L")
                 st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
