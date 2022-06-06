@@ -203,7 +203,7 @@ elif choose == "Social KPI":
                                 auto_highlight=True,
                                 get_radius=100,
                                 get_fill_color=[255, 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 175 : 140', 140],
-                                elevation_range=[0, 1000],
+                                elevation_range=[0, 10000],
                                 elevation_scale=2,
                                 pickable=True,
                                 extruded=True,
