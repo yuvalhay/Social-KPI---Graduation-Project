@@ -213,11 +213,11 @@ elif choose == "Social KPI":
                     'HexagonLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    auto_highlight=False,
-                    get_radius=10,          # Radius is given in meters
+                    auto_highlight=True,
+                    get_radius=10000,          # Radius is given in meters
                     get_fill_color=[255, 255, 255, 140],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
-                    pickable=False,
+                    pickable=True,
                     extruded=True,
                     coverage=0.1
                     )
