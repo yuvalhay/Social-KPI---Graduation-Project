@@ -248,9 +248,15 @@ elif choose == "Social KPI":
                 update_session_state("loneliness_dict", loneliness_dict)
 #                 st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
-                map_df = st.session_state['map_df']
-                st.write(st.session_state)
-                st.write(map_df)
+                GUI_tuple = ("L", loneliness_dict)            
+                loneliness_dict = weights_update(GUI_tuple)
+                curr_df = MetricsCalc(session_state['df_scored'], loneliness_dict, session_state['health_dict'], session_state['economic_strength_dict'])
+                update_session_state("df_scores", curr_df)
+                map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                update_session_state("map_df", map_df)
+#                 st.session_state['map_df'] = map_df
+#                 st.write(st.session_state)
+#                 st.write(map_df)
 #                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
