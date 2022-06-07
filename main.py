@@ -79,22 +79,23 @@ def update_slider(kpi_name, value):
 #         for key, val in kpis_dict.items():
 
 def file_update(df):
-    global loneliness_dict
-    global health_dict
-    global economic_strength_dict
+#     global loneliness_dict
+#     global health_dict
+#     global economic_strength_dict
     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-    df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+    st.session_state['loneliness_dict'] = loneliness_dict
+    st.session_state['health_dict'] = health_dict
+    st.session_state['economic_strength_dict'] = economic_strength_dict
     
-    global map_df
+    df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+    st.session_state['df_scored'] = df_scored
+    
+#     global map_df
     map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
     st.session_state['map_df'] = map_df
     
     return df_scored, map_df
-
-# st.sidebar.slider("My slider", key="test_slider", min_value=-100, max_value=100)
-
-# st.button("Update slider values", on_click=_update_slider, kwargs={"value": random.randint(-100, 100)})
 
 with st.sidebar:
     # st.sidebar
@@ -194,13 +195,13 @@ elif choose == "Social KPI":
 
         with kpi_weights:
             header("KPI weights")
-            current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-            Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
-                                   "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
+#             current_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
+#             Loneliness_kpi_dict = {"arnona_cat": 0, "members_Water": 0, "martial": 0, "widow_grown": 0, "widow_elderlies": 0,
+#                                    "lonely_elderlies": 0, "p85_plus": 0, "accumulated_cases": 0}
 
-            param_dict = ["Arnona discount", "Number of tenants", "Martial status", "Number of older widows per statistical area", "Number of elderly widows per statistical area", "Number of lonely elders per statistical area", "Number of people over the age of 85 per statistical area", "Number of cases of Covid-19 infection per statistical area"]
-            basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
-            current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
+#             param_dict = ["Arnona discount", "Number of tenants", "Martial status", "Number of older widows per statistical area", "Number of elderly widows per statistical area", "Number of lonely elders per statistical area", "Number of people over the age of 85 per statistical area", "Number of cases of Covid-19 infection per statistical area"]
+#             basic_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
+#             current_ratio = [3, 3, 3, 1, 2, 6, 1, 1]
 
             if KPI_page == "Loneliness":
                 even_col, odd_col = st.columns(2)
@@ -208,7 +209,8 @@ elif choose == "Social KPI":
 #                 Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
                 index = 0
                 temp_col = even_col
-                loneliness_dict = get_spec_dict("L")
+#                 loneliness_dict = get_spec_dict("L")
+                loneliness_dict = st.session_state['loneliness_dict']
                 st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
@@ -249,12 +251,13 @@ elif choose == "Social KPI":
                     'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    get_elevation="Loneliness_min_score",
+                    get_elevation="Loneliness",
                     elevation_scale=20,
                     radius=40,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
-                    get_fill_color=["255 - (Loneliness_min_score * 10)", "Loneliness_min_score * 6 + 30", "Loneliness_min_score * 6", "140"],  # Set an RGBA value for fill
+                    # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
+                    get_fill_color=["Loneliness"*16, 38 + ("Loneliness" - 1)*40, "Loneliness"//2, 10],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
