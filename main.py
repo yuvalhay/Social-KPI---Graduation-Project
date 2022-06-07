@@ -223,7 +223,7 @@ elif choose == "Social KPI":
                 temp_col = even_col
 #                 loneliness_dict = get_spec_dict("L")
                 curr_loneliness_dict = st.session_state['loneliness_dict']
-                st.write(loneliness_dict)
+                st.write(curr_loneliness_dict)
 #                 st.write(loneliness_dict)
                 for key, val in curr_loneliness_dict.items():
                     curr_loneliness_dict[f"{key}"] = round(val/0.05, 3)
