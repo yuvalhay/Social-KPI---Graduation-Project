@@ -102,7 +102,7 @@ def update_weights(metric_dict, param_to_update, new_weight): # updated given di
   if param_to_update not in metric_dict:
     print("WARNING: param does not exist in dictionary")
 
-  return updated_metric_dict
+#   return updated_metric_dict
 
 def weights_update(GUI_tuple): # gets (M, d) and update M dict by d changes
   metric_str = GUI_tuple[0]
@@ -111,8 +111,10 @@ def weights_update(GUI_tuple): # gets (M, d) and update M dict by d changes
 
   for param, weight in new_weights_dict.items():
     update_weights(curr_dict, param, weight)
+  
+  return curr_dict
 
-def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_dict  ): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
+def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_dict): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
   global df_scored
   df_scores = catagorized_df
   columns_list = df_scores.columns
