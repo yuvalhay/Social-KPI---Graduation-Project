@@ -167,9 +167,9 @@ elif choose == "Social KPI":
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
-        st.write("The Loneliness KPI is .....text....")
-        st.write("The Health KPI is .....text....")
-        st.write("The Economic Strength KPI is .....text....")
+        st.write("An unfortunate phenomenon that has been occurring is reports by neighbors of bad smells coming from apartments, resulting in the discovery of lonely elderlies who have died in their homes.")
+        st.write("In this project we wish to reduce the number of these sad cases by using data to indicate households in risk. /nDuring the project we came to an understanding that this situation is a combination of three social KPI’s which are Loneliness, health and economic strength. /n")
+        st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPI’s. /nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
 #         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
 #         if uploaded_file is not None:
 #             df = pd.read_csv(uploaded_file)
