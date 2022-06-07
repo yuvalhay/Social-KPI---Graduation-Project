@@ -225,7 +225,7 @@ elif choose == "Social KPI":
                 loneliness_dict = st.session_state['loneliness_dict']
                 st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
-                min_val = min(list(loneliness_dict.values()))
+                min_val = min(list(loneliness_dict.values()), key = lambda k: k>0)
                 st.write(min_val)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/min_val, 3)
