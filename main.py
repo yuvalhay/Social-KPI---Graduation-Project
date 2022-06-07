@@ -126,7 +126,19 @@ if choose == "File Upload":
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-            df_scored, map_df = file_update(df)
+            loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+            loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+            st.session_state['loneliness_dict'] = loneliness_dict
+            st.session_state['health_dict'] = health_dict
+            st.session_state['economic_strength_dict'] = economic_strength_dict
+
+            df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+            st.session_state['df_scored'] = df_scored
+
+        #     global map_df
+            map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+            st.session_state['map_df'] = map_df
+#             df_scored, map_df = file_update(df)
 #             global loneliness_dict
 #             global health_dict
 #             global economic_strength_dict
@@ -251,20 +263,20 @@ elif choose == "Social KPI":
                     'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    get_elevation="Loneliness",
+                    get_elevation="Loneliness_score",
                     elevation_scale=20,
                     radius=40,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                    get_fill_color=["Loneliness * 16", "38 + 40 * (Loneliness - 1)", "Loneliness // 2", "10"],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score // 2", "10"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
                     coverage=0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> Loneliness min KPI = <b>{Loneliness_min_score}</b>",
+                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness}</b>",
                     "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
