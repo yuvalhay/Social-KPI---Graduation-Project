@@ -238,7 +238,7 @@ elif choose == "Social KPI":
                     if val != 0:
 #                         curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 #                                                                     value=val, key=f'loneliness_slider_{key}')
-                        curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=1, max_value=10,
+                        curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=1.0, max_value=10.0,
                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
 
