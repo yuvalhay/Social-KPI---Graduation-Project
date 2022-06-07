@@ -222,13 +222,13 @@ elif choose == "Social KPI":
                 index = 0
                 temp_col = even_col
 #                 loneliness_dict = get_spec_dict("L")
-                curr_loneliness_dict = st.session_state['loneliness_dict']
-                st.write(curr_loneliness_dict)
+                loneliness_dict = st.session_state['loneliness_dict']
+                st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
-                for key, val in curr_loneliness_dict.items():
-                    curr_loneliness_dict[f"{key}"] = round(val/0.05, 3)
+                for key, val in loneliness_dict.items():
+                    loneliness_dict[f"{key}"] = round(val/0.05, 3)
                 
-#                 curr_loneliness_dict = loneliness_dict.copy()
+                curr_loneliness_dict = loneliness_dict.copy()
                 for key, val in curr_loneliness_dict.items():
                     if index % 2 == 0:
                         temp_col = even_col
@@ -241,8 +241,8 @@ elif choose == "Social KPI":
 
                 sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
-                curr_loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_loneliness_dict.items()}
-                update_session_state("loneliness_dict", curr_loneliness_dict)
+                loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_loneliness_dict.items()}
+                update_session_state("loneliness_dict", loneliness_dict)
 #                 st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
                 map_df = st.session_state['map_df']
