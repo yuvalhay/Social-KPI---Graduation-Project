@@ -211,7 +211,7 @@ elif choose == "Social KPI":
                 temp_col = even_col
 #                 loneliness_dict = get_spec_dict("L")
                 loneliness_dict = st.session_state['loneliness_dict']
-                st.write(loneliness_dict)
+#                 st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
                 
@@ -229,10 +229,10 @@ elif choose == "Social KPI":
                 sum_of_weights = round(sum(list(loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in loneliness_dict.items()}
-                
+                st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
                 map_df = st.session_state['map_df']
-#                 st.write(loneliness_dict)
+                st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
 #                                 'HexagonLayer',
@@ -257,7 +257,7 @@ elif choose == "Social KPI":
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                    get_fill_color=["Loneliness * 16", "38 + (Loneliness - 1) * 40", "Loneliness // 2", "10"],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness * 16", "38 + 40 * (Loneliness - 1)", "Loneliness // 2", "10"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
