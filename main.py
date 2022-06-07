@@ -225,9 +225,10 @@ elif choose == "Social KPI":
                 loneliness_dict = st.session_state['loneliness_dict']
                 st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
+                min_val = min(list(loneliness_dict.values()))
                 for key, val in loneliness_dict.items():
-#                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
-                    loneliness_dict[f"{key}"] = round(val*10, 3)
+                    loneliness_dict[f"{key}"] = round(val/min_val, 3)
+#                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 
                 curr_loneliness_dict = loneliness_dict.copy()
                 for key, val in curr_loneliness_dict.items():
@@ -236,10 +237,10 @@ elif choose == "Social KPI":
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-#                         curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-#                                                                     value=val, key=f'loneliness_slider_{key}')
-                        curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
+                        curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                                                     value=val, key=f'loneliness_slider_{key}')
+#                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
+#                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
 
                 sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
@@ -248,8 +249,8 @@ elif choose == "Social KPI":
                 update_session_state("loneliness_dict", loneliness_dict)
 #                 st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
-                GUI_tuple = ("L", loneliness_dict)            
-                loneliness_dict = weights_update(GUI_tuple)
+#                 GUI_tuple = ("L", loneliness_dict)            
+#                 loneliness_dict = weights_update(GUI_tuple)
                 curr_df = MetricsCalc(session_state['df_scored'], loneliness_dict, session_state['health_dict'], session_state['economic_strength_dict'])
                 update_session_state("df_scores", curr_df)
                 map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
