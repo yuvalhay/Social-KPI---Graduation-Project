@@ -7,6 +7,7 @@ import numpy as np
 from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 import pydeck
+import math
 from functioned import *
 # import cv2
 # from st_aggrid import AgGrid
@@ -229,7 +230,7 @@ elif choose == "Social KPI":
                 min_val = min(filter(lambda x: x > 0, list(loneliness_dict.values())))
                 st.write(min_val)
                 for key, val in loneliness_dict.items():
-                    loneliness_dict[f"{key}"] = round(val/min_val, 3)
+                    loneliness_dict[f"{key}"] = math.ceil(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 
                 curr_loneliness_dict = loneliness_dict.copy()
