@@ -226,7 +226,8 @@ elif choose == "Social KPI":
                 st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
-                    loneliness_dict[f"{key}"] = round(val/0.05, 3)
+#                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
+                    loneliness_dict[f"{key}"] = round(val*10, 3)
                 
                 curr_loneliness_dict = loneliness_dict.copy()
                 for key, val in curr_loneliness_dict.items():
@@ -235,7 +236,9 @@ elif choose == "Social KPI":
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+#                         curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+#                                                                     value=val, key=f'loneliness_slider_{key}')
+                        curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=1, max_value=10,
                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
 
