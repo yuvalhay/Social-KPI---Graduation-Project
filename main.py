@@ -257,7 +257,7 @@ elif choose == "Social KPI":
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                    get_fill_color=["Loneliness*16", "38 + (Loneliness - 1)*40", "Loneliness//2", 10],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness * 16", "38 + (Loneliness - 1) * 40", "Loneliness // 2", "10"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
