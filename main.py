@@ -234,7 +234,7 @@ elif choose == "Social KPI":
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                        loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                                                     value=val, key=f'{key}')
                         index += 1
 
@@ -272,7 +272,7 @@ elif choose == "Social KPI":
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                    get_fill_color=["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "10"],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
