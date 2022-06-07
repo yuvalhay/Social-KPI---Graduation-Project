@@ -223,6 +223,7 @@ elif choose == "Social KPI":
                 temp_col = even_col
 #                 loneliness_dict = get_spec_dict("L")
                 loneliness_dict = st.session_state['loneliness_dict']
+                st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/0.05, 3)
@@ -235,7 +236,7 @@ elif choose == "Social KPI":
                         temp_col = odd_col
                     if val != 0:
                         loneliness_dict[f'{key}'] = temp_col.select_slider(f'loneliness_slider: {key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'{key}')
+                                                                    value=val, key=f'loneliness_slider_{key}')
                         index += 1
 
                 sum_of_weights = round(sum(list(loneliness_dict.values())), 3)
@@ -247,7 +248,7 @@ elif choose == "Social KPI":
                 map_df = st.session_state['map_df']
                 st.write(st.session_state)
                 st.write(map_df)
-                st.write(loneliness_dict)
+#                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
 #                                 'HexagonLayer',
