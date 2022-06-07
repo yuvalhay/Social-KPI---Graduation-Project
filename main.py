@@ -226,6 +226,7 @@ elif choose == "Social KPI":
                 st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
                 min_val = min(list(loneliness_dict.values()))
+                st.write(min_val)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(val/min_val, 3)
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
