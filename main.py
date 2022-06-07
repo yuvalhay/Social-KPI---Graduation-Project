@@ -42,9 +42,9 @@ def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
                 unsafe_allow_html=True)
 
-def update_slider(kpi_name, value):
-    del st.session_state[kpi_name]
-    st.session_state[kpi_name] = value
+def update_session_state(key, value):
+    del st.session_state[key]
+    st.session_state[key] = value
 
 
 # def count_by_sign(sign):
@@ -235,15 +235,18 @@ elif choose == "Social KPI":
                         temp_col = odd_col
                     if val != 0:
                         loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=loneliness_dict[f'{key}'], key=f'{key}')
+                                                                    value=val, key=f'{key}')
                         index += 1
 
                 sum_of_weights = round(sum(list(loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in loneliness_dict.items()}
-                st.session_state['loneliness_dict'] = loneliness_dict
+                update_session_state("loneliness_dict", loneliness_dict)
+#                 st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
                 map_df = st.session_state['map_df']
+                st.write(st.session_state)
+                st.write(map_df)
                 st.write(loneliness_dict)
 #                 st.map(map_df, zoom=13)
 #                 layer = pydeck.Layer(
@@ -269,14 +272,14 @@ elif choose == "Social KPI":
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                    get_fill_color=["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score // 2", "10"],  # Set an RGBA value for fill
+                    get_fill_color=["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "10"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
                     coverage=0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness}</b>",
+                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
                     "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
