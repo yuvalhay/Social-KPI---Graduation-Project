@@ -103,7 +103,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("GABOT", ["File Upload", "Prediction", "Social KPI", "About"],
+    choose = option_menu("SociCity", ["File Upload", "Prediction", "Social KPI", "About"],
                          icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
@@ -241,10 +241,9 @@ elif choose == "Social KPI":
                         temp_col = odd_col
                     if val != 0:
                         curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'loneliness_slider_{key}', help="blabla")
+                                                                    value=val, key=f'loneliness_slider_{key}', help=f'{key} exp..')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
-#                         st.write("ניתן לרשום כאן הסבר")
                         index += 1
 
                 sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
