@@ -17,6 +17,13 @@ st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 #     st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
 
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden; }
+        footer {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
