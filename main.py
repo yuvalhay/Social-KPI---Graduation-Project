@@ -91,7 +91,7 @@ with st.sidebar:
 
 
 if choose == "File Upload":
-    uploaded_file = None
+#     uploaded_file = None
     with about_header:
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
@@ -101,6 +101,7 @@ if choose == "File Upload":
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
         if uploaded_file is not None:
             st.success("File was uploaded!")
+            flag = True
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -127,8 +128,10 @@ if choose == "File Upload":
 #             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #             st.write(df)
 #             st.write(df_scored)
+         else:
+            flag = False
 
-elif choose == "Social KPI" and uploaded_file is None:
+elif choose == "Social KPI" and flag is False:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
@@ -138,7 +141,7 @@ elif choose == "Social KPI" and uploaded_file is None:
     
     st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
     
-elif choose == "Social KPI" and uploaded_file is not None:
+elif choose == "Social KPI" and flag is True:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
