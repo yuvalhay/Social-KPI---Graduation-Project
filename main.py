@@ -299,31 +299,31 @@ elif choose == "Social KPI":
                 even_col, odd_col = st.columns(2)
                 index = 0
                 temp_col = even_col
-                Health_dict = st.session_state['Health_dict']
-                min_val = min(filter(lambda x: x > 0, list(Health_dict.values())))
+                health_dict = st.session_state['health_dict']
+                min_val = min(filter(lambda x: x > 0, list(health_dict.values())))
 #                 st.write(min_val)
-                for key, val in Health_dict.items():
-                    Health_dict[f"{key}"] = round(round(val/min_val, 3))
+                for key, val in health_dict.items():
+                    health_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 
-                curr_Health_dict = Health_dict.copy()
-                for key, val in curr_Health_dict.items():
+                curr_health_dict = health_dict.copy()
+                for key, val in curr_health_dict.items():
                     if index % 2 == 0:
                         temp_col = even_col
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        curr_Health_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                        curr_health_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                                                     value=val, key=f'Health_slider_{key}', help=f'{key} exp..')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
 
-                sum_of_weights = round(sum(list(curr_Health_dict.values())), 3)
+                sum_of_weights = round(sum(list(curr_health_dict.values())), 3)
 #                 st.write(sum_of_weights)
-                Health_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_Health_dict.items()}
+                health_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_health_dict.items()}
 #                 update_session_state("loneliness_dict", loneliness_dict)
-                st.session_state['Health_dict'] = Health_dict
+                st.session_state['health_dict'] = health_dict
 #                 map_df = get_map_df()
 #                 GUI_tuple = ("L", loneliness_dict)            
 #                 loneliness_dict = weights_update(GUI_tuple)
