@@ -44,7 +44,6 @@ kpi_weights = st.container()
 
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 # if flag == False:
-flag = False
 # else:
 #     flag = False
 
@@ -104,7 +103,7 @@ if choose == "File Upload":
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
         if uploaded_file is not None:
             st.success("File was uploaded!")
-            flag = True
+            st.session_state['flag'] = True
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -132,9 +131,9 @@ if choose == "File Upload":
 #             st.write(df)
 #             st.write(df_scored)
         else:
-            flag = False
+            st.session_state['flag'] = False
 
-elif choose == "Social KPI" and st.session_state['loneliness_dict'] != loneliness_dict:
+elif choose == "Social KPI" and st.session_state['flag'] is False:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
@@ -144,7 +143,7 @@ elif choose == "Social KPI" and st.session_state['loneliness_dict'] != lonelines
     
     st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
     
-elif choose == "Social KPI" and st.session_state['loneliness_dict'] == loneliness_dict:
+elif choose == "Social KPI" and st.session_state['flag'] is True:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
