@@ -264,7 +264,7 @@ elif choose == "Social KPI":
                 map_df["G_color"] = map_df["R_color"]
 #                 map_df["B_color"] = map_df["R_color"]
                 for v, i in enumerate(list(map_df["Loneliness_score"]), num_of_rows):
-                    st.write(v)
+#                     st.write(v)
                     if v == 1:
                         map_df.loc[i,["R_color"]] = '255'
                         map_df.loc[i,["G_color"]] = '0'
@@ -281,7 +281,7 @@ elif choose == "Social KPI":
                         map_df.loc[i,["R_color"]] = '44'
                         map_df.loc[i,["G_color"]] = '186'
                         
-#                 st.write(map_df)
+                st.write(map_df)
                         
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
