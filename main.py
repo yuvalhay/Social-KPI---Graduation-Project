@@ -264,7 +264,7 @@ elif choose == "Social KPI":
                 map_df["G_color"] = map_df["R_color"]
 #                 map_df["B_color"] = map_df["R_color"]
                 num_of_rows_range = [i for i in range(num_of_rows)]
-                for v, i in enumerate(list(map_df["Loneliness_score"]), num_of_rows_range):
+                for v, i in zip(list(map_df["Loneliness_score"]), num_of_rows_range):
 #                     st.write(v)
                     if v == 1:
                         map_df.loc[i,["R_color"]] = '255'
