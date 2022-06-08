@@ -15,7 +15,7 @@ from functioned import *
 # import io
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
-set_png_as_page_bg('background_img/228-2288728_drawing-structures-city-city-background-footer-hd-png.png')
+set_png_as_page_bg('background_img/Download Wireframe City Background Perspective 3D Render of Building for free.jpg')
 
 
 #     st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
