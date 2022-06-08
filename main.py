@@ -15,6 +15,9 @@ from functioned import *
 # import io
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
+set_png_as_sidebar_bg('background_img/3_background_img_1920_1080.png')
+#     st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
+
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -71,7 +74,6 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
