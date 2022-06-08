@@ -265,19 +265,19 @@ elif choose == "Social KPI":
                 num_of_rows_range = [i for i in range(num_of_rows)]
                 for v in list(map_df["Loneliness_score"]):
 #                     st.write(v)
-                    if v == 1:
+                    if v == 5:
                         R_color.append(255)
                         G_color.append(0)
-                    elif v == 2:
+                    elif v == 3:
                         R_color.append(255)
                         G_color.append(167)
                     elif v == 3:
                         R_color.append(255)
                         G_color.append(244)
-                    elif v == 4:
+                    elif v == 2:
                         R_color.append(163)
                         G_color.append(255)
-                    elif v == 5:
+                    elif v == 1:
                         R_color.append(44)
                         G_color.append(186)
                         
