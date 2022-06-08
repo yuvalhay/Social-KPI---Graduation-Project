@@ -259,12 +259,27 @@ elif choose == "Social KPI":
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-#                 map_df["R_color"] = [0 for _ in range(curr_df.shape[0])]
-#                 map_df["G_color"] = map_df["R_color"]
+                num_of_rows = curr_df.shape[0]
+                map_df["R_color"] = [0 for _ in range(num_of_rows)]
+                map_df["G_color"] = map_df["R_color"]
 #                 map_df["B_color"] = map_df["R_color"]
-#                 for v in map_df["Loneliness_score"]:
-#                     if v == 1:
-#                         map_df.at[index,"R_color"]='Safa'
+                for v, i in enumerate(map_df["Loneliness_score"], num_of_rows):
+                    if v == 1:
+                        map_df.at[i,"R_color"]= '255'
+                        map_df.at[i,"G_color"]= '0'
+                    elif v == 2:
+                        map_df.at[i,"R_color"]= '255'
+                        map_df.at[i,"G_color"]= '167'
+                    elif v == 3:
+                        map_df.at[i,"R_color"]= '255'
+                        map_df.at[i,"G_color"]= '244'
+                    elif v == 4:
+                        map_df.at[i,"R_color"]= '163'
+                        map_df.at[i,"G_color"]= '255'
+                    elif v == 5:
+                        map_df.at[i,"R_color"]= '44'
+                        map_df.at[i,"G_color"]= '186'
+                        
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
 #                 st.session_state['map_df'] = map_df
@@ -298,7 +313,7 @@ elif choose == "Social KPI":
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
                     # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
                     # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
-                    get_fill_color=["63 * (Loneliness_score - 1)", "0", "0", "120"],  # Set an RGBA value for fill
+                    get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
