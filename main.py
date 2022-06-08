@@ -14,7 +14,7 @@ from functioned import *
 # import plotly.express as px
 # import io
 st.set_page_config(layout="wide")
-set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
+# set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -82,7 +82,17 @@ with st.sidebar:
                              "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
                          )
-    Image.open(r'Team_members_pictures/Yuval.jpeg')
+    st.markdown(
+    """
+<style>
+.sidebar .sidebar-content {
+    background-image: linear-gradient(#2e7bcf,#2e7bcf);
+    color: white;
+}
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 if choose == "File Upload":
     with about_header:
