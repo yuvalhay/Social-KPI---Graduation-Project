@@ -133,7 +133,7 @@ if choose == "File Upload":
             st.session_state['health_dict'] = health_dict
             st.session_state['economic_strength_dict'] = economic_strength_dict
 
-            df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+            df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
             st.session_state['df_scored'] = df_scored
 
         #     global map_df
@@ -255,7 +255,7 @@ elif choose == "Social KPI":
 #                 GUI_tuple = ("L", loneliness_dict)            
 #                 loneliness_dict = weights_update(GUI_tuple)
                 st.write(st.session_state['df_scored'])
-                curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'])
+                curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
                 update_session_state("df_scores", curr_df)
                 map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
                 update_session_state("map_df", map_df)
