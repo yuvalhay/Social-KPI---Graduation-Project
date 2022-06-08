@@ -43,7 +43,7 @@ kpi_weights = st.container()
 # global economic_strength_dict
 
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-
+flag = False
 
 def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
