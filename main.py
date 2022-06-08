@@ -134,7 +134,7 @@ if choose == "File Upload":
         else:
             flag = False
 
-elif choose == "Social KPI" and flag is False:
+elif choose == "Social KPI" and st.session_state['loneliness_dict'] != loneliness_dict:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
@@ -144,7 +144,7 @@ elif choose == "Social KPI" and flag is False:
     
     st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
     
-elif choose == "Social KPI" and flag is True:
+elif choose == "Social KPI" and st.session_state['loneliness_dict'] == loneliness_dict:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
