@@ -124,8 +124,8 @@ if choose == "File Upload":
 #             st.write(df)
 #             st.write(df_scored)
 
-# elif choose == "Social KPI" and uploaded_file is None:
-#     st.info("Do you really, really, wanna do this?")
+elif choose == "Social KPI" and uploaded_file is None:
+    st.warning("Do you really, really, wanna do this?")
 
 elif choose == "Social KPI" and uploaded_file is not None:
     with kpi_header:
