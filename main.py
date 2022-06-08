@@ -128,7 +128,7 @@ if choose == "File Upload":
 #             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #             st.write(df)
 #             st.write(df_scored)
-         else:
+        else:
             flag = False
 
 elif choose == "Social KPI" and flag is False:
