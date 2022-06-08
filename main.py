@@ -122,9 +122,11 @@ if choose == "File Upload":
 #             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #             st.write(df)
 #             st.write(df_scored)
-elif choose == "Social KPI" and uploaded_file is None:
-    st.info("Do you really, really, wanna do this?")
-elif choose == "Social KPI":
+
+# elif choose == "Social KPI" and uploaded_file is None:
+#     st.info("Do you really, really, wanna do this?")
+
+elif choose == "Social KPI" and uploaded_file is not None:
     with kpi_header:
 #         st.title("The visualization of our KPI's")
         st.markdown(""" <style> .font {
