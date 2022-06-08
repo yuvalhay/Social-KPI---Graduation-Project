@@ -259,31 +259,32 @@ elif choose == "Social KPI":
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-#                 num_of_rows = curr_df.shape[0]
-#                 map_df["R_color"] = [0 for _ in range(num_of_rows)]
-#                 map_df["G_color"] = [0 for _ in range(num_of_rows)]
-# #                 map_df["B_color"] = map_df["R_color"]
-#                 num_of_rows_range = [i for i in range(num_of_rows)]
-#                 for v, i in zip(list(map_df["Loneliness_score"]), num_of_rows_range):
-# #                     st.write(v)
-#                     if v == 1:
-#                         map_df.loc[i,["R_color"]] = 255
-#                         map_df.loc[i,["G_color"]] = 0
-#                     elif v == 2:
-#                         map_df.loc[i,["R_color"]] = 255
-#                         map_df.loc[i,["G_color"]] = 167
-#                     elif v == 3:
-#                         map_df.loc[i,["R_color"]] = 255
-#                         map_df.loc[i,["G_color"]] = 244
-#                     elif v == 4:
-#                         map_df.loc[i,["R_color"]] = 163
-#                         map_df.loc[i,["G_color"]] = 255
-#                     elif v == 5:
-#                         map_df.loc[i,["R_color"]] = 44
-#                         map_df.loc[i,["G_color"]] = 186
+                num_of_rows = curr_df.shape[0]
+                R_color, G_color = [], []
+#                 map_df["B_color"] = map_df["R_color"]
+                num_of_rows_range = [i for i in range(num_of_rows)]
+                for v in list(map_df["Loneliness_score"]):
+#                     st.write(v)
+                    if v == 1:
+                        R_color.append(255)
+                        G_color.append(0)
+                    elif v == 2:
+                        R_color.append(255)
+                        G_color.append(167)
+                    elif v == 3:
+                        R_color.append(255)
+                        G_color.append(244)
+                    elif v == 4:
+                        R_color.append(163)
+                        G_color.append(255)
+                    elif v == 5:
+                        R_color.append(44)
+                        G_color.append(186)
                         
-#                 st.write(map_df)
-#                 st.write(map_df["Loneliness_score"])
+                map_df["R_color"] = R_color
+                map_df["G_color"] = G_color
+                st.write(map_df)
+                st.write(map_df["Loneliness_score"])
                         
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
@@ -319,14 +320,14 @@ elif choose == "Social KPI":
                     # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
                     # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                     # new: ["R_color", "G_color", "0", "120"],
-                    get_fill_color=["63 * (Loneliness_score - 1)", "0", "0", "120"],  # Set an RGBA value for fill
+                    get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
                     coverage=5 #0.1
                     )
                 tooltip = {
-                    "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
+                    "html": "<b>Loneliness KPI = {Loneliness_score}</b>",
                     "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                 }
                 
