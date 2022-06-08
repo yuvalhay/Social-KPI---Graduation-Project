@@ -122,7 +122,7 @@ if choose == "File Upload":
 #             st.write(df)
 #             st.write(df_scored)
 elif choose == "Social KPI" and uploaded_file is None:
-    st.warning(st.warning('This is a warning'))
+    st.error("Do you really, really, wanna do this?")
 elif choose == "Social KPI":
     with kpi_header:
 #         st.title("The visualization of our KPI's")
