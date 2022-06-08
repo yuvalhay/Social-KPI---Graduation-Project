@@ -114,9 +114,11 @@ def weights_update(GUI_tuple): # gets (M, d) and update M dict by d changes
   
   return curr_dict
 
-def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_dict): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
+def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_dict, update_flag): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
   global df_scored
   df_scores = catagorized_df
+  if update_flag:
+    df_scores.drop(columns=['Loneliness', 'Health', 'Economic_Strength', 'Loneliness_score', 'Health_score', 'Economic_Strength_score'])
   columns_list = df_scores.columns
   st.write(df_scores['Loneliness'])
   df_scores['Loneliness'] = df_scores.apply(lambda row: 6 - sum([row[col] *loneliness_dict[col] for col in columns_list]), axis=1) # Now loneliness is not non-loneliness anymore (5 = lonenly)
