@@ -125,8 +125,14 @@ if choose == "File Upload":
 #             st.write(df_scored)
 
 elif choose == "Social KPI" and uploaded_file is None:
-    st.error("Do you really, really, wanna do this?")
-    choose = "File Upload"
+    with kpi_header:
+#         st.title("The visualization of our KPI's")
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
+    
+    st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
     
 elif choose == "Social KPI" and uploaded_file is not None:
     with kpi_header:
