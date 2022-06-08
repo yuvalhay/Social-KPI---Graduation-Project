@@ -103,7 +103,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("SociCity", ["File Upload", "Prediction", "Social KPI", "About"],
+    choose = option_menu("SoCity", ["File Upload", "Prediction", "Social KPI", "About"],
                          icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
@@ -282,6 +282,7 @@ elif choose == "Social KPI":
                         map_df.loc[i,["G_color"]] = '186'
                         
                 st.write(map_df)
+                st.write(map_df["Loneliness_score"])
                         
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
