@@ -121,7 +121,7 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
         df_scores = df_scores.drop(['Loneliness', 'Health', 'Economic_Strength', 'Loneliness_score', 'Health_score', 'Economic_Strength_score'], axis=1)
     
     columns_list = df_scores.columns
-    st.write(columns_list)
+#     st.write(columns_list)
     df_scores['Loneliness'] = df_scores.apply(lambda row: 6 - sum([row[col] *loneliness_dict[col] for col in columns_list]), axis=1) # Now loneliness is not non-loneliness anymore (5 = lonenly)
     df_scores['Health'] = df_scores.apply(lambda row: sum([row[col] *health_dict[col] for col in columns_list]), axis=1)
     df_scores['Economic_Strength'] = df_scores.apply(lambda row: sum([row[col] *economic_strength_dict[col] for col in columns_list]), axis=1)
