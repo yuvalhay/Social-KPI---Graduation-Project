@@ -281,7 +281,7 @@ elif choose == "Social KPI":
                         map_df.loc[i,["R_color"]] = '44'
                         map_df.loc[i,["G_color"]] = '186'
                         
-                st.write(map_df)
+#                 st.write(map_df)
                         
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
