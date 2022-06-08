@@ -71,7 +71,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
-    choose = option_menu("SoCity", ["File Upload", "Prediction", "Social KPI", "About"],
+    choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
@@ -118,16 +118,6 @@ if choose == "File Upload":
 #             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
 #             st.write(df)
 #             st.write(df_scored)
-            
-
-elif choose == "Prediction":
-#     st.balloons()
-#     st.title("The Prediction section")
-    st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
-    </style> """, unsafe_allow_html=True)
-    st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
-    st.text("Here we will predict")
 
 elif choose == "Social KPI":
     with kpi_header:
@@ -450,6 +440,17 @@ elif choose == "Social KPI":
 
             #     st.text("In this section you will see all the weights that create the KPI you selected")
 
+elif choose == "Prediction":
+#     st.balloons()
+#     st.title("The Prediction section")
+    st.markdown(""" <style> .font {
+    font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+    </style> """, unsafe_allow_html=True)
+    st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
+    knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv','xls','xlsx'], key="knn_file")
+    new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv','xls','xlsx'], key="new_file")
+
+            
 elif choose == "About":
     #         st.title("The About section")
     st.markdown(""" <style> .font {
