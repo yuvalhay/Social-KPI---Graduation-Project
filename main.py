@@ -43,7 +43,7 @@ kpi_weights = st.container()
 # global economic_strength_dict
 
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-if flag = False:
+if flag == False:
     flag = False
 else:
     flag = False
