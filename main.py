@@ -284,8 +284,8 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_score",
-                    elevation_scale=20,
-                    radius=400, #40,
+                    elevation_scale=200, #20,
+                    radius=40,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
