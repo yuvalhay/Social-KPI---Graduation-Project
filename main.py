@@ -283,8 +283,8 @@ elif choose == "Social KPI":
                         
                 map_df["R_color"] = R_color
                 map_df["G_color"] = G_color
-                st.write(map_df)
-                st.write(map_df["Loneliness_score"])
+#                 st.write(map_df)
+#                 st.write(map_df["Loneliness_score"])
                         
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
