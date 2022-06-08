@@ -118,7 +118,7 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
     global df_scored
     df_scores = catagorized_df
     if update_flag:
-        df_scores.drop(['Loneliness', 'Health', 'Economic_Strength', 'Loneliness_score', 'Health_score', 'Economic_Strength_score'], axis=1)
+        df_scores = df_scores.drop(['Loneliness', 'Health', 'Economic_Strength', 'Loneliness_score', 'Health_score', 'Economic_Strength_score'], axis=1)
     
     columns_list = df_scores.columns
     st.write(columns_list)
