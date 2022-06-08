@@ -71,6 +71,7 @@ with st.sidebar:
     # options_names = ["Prediction", "KPI"]
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
+    st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'kanban', 'sliders', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
@@ -82,17 +83,7 @@ with st.sidebar:
                              "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
                          )
-    st.markdown(
-    """
-<style>
-.sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-    color: white;
-}
-</style>
-""",
-    unsafe_allow_html=True,
-)
+
 
 if choose == "File Upload":
     with about_header:
