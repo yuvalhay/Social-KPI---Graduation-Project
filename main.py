@@ -224,11 +224,11 @@ elif choose == "Social KPI":
                 temp_col = even_col
 #                 loneliness_dict = get_spec_dict("L")
                 loneliness_dict = st.session_state['loneliness_dict']
-                st.write(loneliness_dict)
+#                 st.write(loneliness_dict)
 #                 st.write(loneliness_dict)
 #                 min_val = min(list(loneliness_dict.values()), key = lambda k: k>0)
                 min_val = min(filter(lambda x: x > 0, list(loneliness_dict.values())))
-                st.write(min_val)
+#                 st.write(min_val)
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
@@ -247,14 +247,14 @@ elif choose == "Social KPI":
                         index += 1
 
                 sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
-                st.write(sum_of_weights)
+#                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_loneliness_dict.items()}
 #                 update_session_state("loneliness_dict", loneliness_dict)
                 st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
 #                 GUI_tuple = ("L", loneliness_dict)            
 #                 loneliness_dict = weights_update(GUI_tuple)
-                st.write(st.session_state['df_scored'])
+#                 st.write(st.session_state['df_scored'])
                 curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
