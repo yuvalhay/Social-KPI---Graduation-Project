@@ -261,14 +261,14 @@ elif choose == "Social KPI":
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
                 num_of_rows = curr_df.shape[0]
                 map_df["R_color"] = [0 for _ in range(num_of_rows)]
-                map_df["G_color"] = map_df["R_color"]
+                map_df["G_color"] = [0 for _ in range(num_of_rows)]
 #                 map_df["B_color"] = map_df["R_color"]
                 num_of_rows_range = [i for i in range(num_of_rows)]
                 for v, i in zip(list(map_df["Loneliness_score"]), num_of_rows_range):
 #                     st.write(v)
                     if v == 1:
-                        map_df.loc[i,["R_color"]] = int(255)
-                        map_df.loc[i,["G_color"]] = int(0)
+                        map_df.loc[i,["R_color"]] = 255
+                        map_df.loc[i,["G_color"]] = 0
                     elif v == 2:
                         map_df.loc[i,["R_color"]] = 255
                         map_df.loc[i,["G_color"]] = 167
