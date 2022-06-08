@@ -8,7 +8,7 @@ footer:hover,  footer:active {
 }
 
 footer:after {
-    content:'GABOT Team'; 
+    content:'SoCity'; 
     visibility: visible;
     display: block;
     position: relative;
