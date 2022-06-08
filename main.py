@@ -280,7 +280,7 @@ elif choose == "Social KPI":
 #                                 extruded=True,
 #                                 coverage=0.1)
                 layer2 = pydeck.Layer(
-                    'HexagonLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                    'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_score",
