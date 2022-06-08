@@ -89,9 +89,9 @@ with st.sidebar:
                          }
                          )
 
-uploaded_file = None
 
 if choose == "File Upload":
+    uploaded_file = None
     with about_header:
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
