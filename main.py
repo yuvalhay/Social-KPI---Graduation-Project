@@ -44,7 +44,6 @@ kpi_weights = st.container()
 
 Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
 
-uploaded_file = None
 
 def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
@@ -90,6 +89,7 @@ with st.sidebar:
                          }
                          )
 
+uploaded_file = None
 
 if choose == "File Upload":
     with about_header:
@@ -100,6 +100,7 @@ if choose == "File Upload":
         st.text("Team GABOT")
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
         if uploaded_file is not None:
+            st.success("File was uploaded!")
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
