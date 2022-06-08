@@ -266,20 +266,20 @@ elif choose == "Social KPI":
                 for v, i in enumerate(list(map_df["Loneliness_score"]), num_of_rows):
                     st.write(v)
                     if v == 1:
-                        map_df.at[i,"R_color"]= '255'
-                        map_df.at[i,"G_color"]= '0'
+                        map_df.loc[i,["R_color"]] = '255'
+                        map_df.loc[i,["G_color"]] = '0'
                     elif v == 2:
-                        map_df.at[i,"R_color"]= '255'
-                        map_df.at[i,"G_color"]= '167'
+                        map_df.loc[i,["R_color"]] = '255'
+                        map_df.loc[i,["G_color"]] = '167'
                     elif v == 3:
-                        map_df.at[i,"R_color"]= '255'
-                        map_df.at[i,"G_color"]= '244'
+                        map_df.loc[i,["R_color"]] = '255'
+                        map_df.loc[i,["G_color"]] = '244'
                     elif v == 4:
-                        map_df.at[i,"R_color"]= '163'
-                        map_df.at[i,"G_color"]= '255'
+                        map_df.loc[i,["R_color"]] = '163'
+                        map_df.loc[i,["G_color"]] = '255'
                     elif v == 5:
-                        map_df.at[i,"R_color"]= '44'
-                        map_df.at[i,"G_color"]= '186'
+                        map_df.loc[i,["R_color"]] = '44'
+                        map_df.loc[i,["G_color"]] = '186'
                         
                 st.write(map_df)
                         
