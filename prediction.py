@@ -90,44 +90,7 @@ def clean_data(csv):
   
   return csv
 
-# sample_df = clean_data(sample_df)
 
-# df_knn = clean_data(df_knn)
-# sample_df = clean_data(sample_df)
-
-# #Transform strings to numeric
-
-# # ARNONA_CAT - arbitrar scoring
-# sample_df.arnona_cat = pd.Categorical(sample_df.arnona_cat)
-# sample_df['arnona_cat'] = sample_df.arnona_cat.cat.codes.astype(int)
-# # MARTIAL - arbitrar scoring
-# sample_df.martial = pd.Categorical(sample_df.martial)
-# sample_df['martial'] = sample_df.martial.cat.codes
-# # Predominant Leum - arbitrar scoring
-# # df_knn['Predominant_Leum'] = df_knn['Predominant Leum']
-# # df_knn.drop(columns=['Predominant Leum'], inplace = True)
-# sample_df.rename(columns = { 'Predominant Leum' : 'Predominant_Leum' }, inplace = True)
-
-# sample_df.Predominant_Leum = pd.Categorical(sample_df.Predominant_Leum)
-# sample_df['Predominant_Leum'] = sample_df.Predominant_Leum.cat.codes
-# # Predominant_enter_exit_group - arbitrar scoring
-# sample_df.Predominant_enter_exit_group = pd.Categorical(sample_df.Predominant_enter_exit_group)
-# sample_df['Predominant_enter_exit_group'] = sample_df.Predominant_enter_exit_group.cat.codes
-
-# #ADRESS - omitting (adress information is given anyway by coordinates)
-# sample_df.drop(columns=['heb_address','Gush','Helka','gush_helka'], inplace = True)
-
-# sample_df.dropna(axis = 1, inplace = True) # remove NA
-
-# sample_df = sample_df[np.isfinite(sample_df).all(1)] #remove inf
-# sample_df
-
-# df_knn
-
-# sample_df.shape[1]
-# sample_df
-
-# pd.set_option('display.max_rows', 500)
 
 def knn_init(df_knn):
   from sklearn.model_selection import train_test_split
@@ -190,111 +153,10 @@ def chooseK (X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_tr
     acc_HLT.append(metrics.accuracy_score(y_test_HLT, pred_n_HLT))
     acc_ECO.append(metrics.accuracy_score(y_test_ECO, pred_n_ECO))
 
-    # cv_scores_LON = cross_val_score(classifier, X_train_LON, y_train_LON, cv=5)
-    # cv_scores_HLT = cross_val_score(classifier, X_train_HLT, y_train_HLT, cv=5)
-    # cv_scores_ECO = cross_val_score(classifier, X_train_ECO, y_train_ECO, cv=5)
-
-    # list_of_mean_LON.append(cv_scores_LON.mean())
-    # list_of_mean_HLT.append(cv_scores_HLT.mean())
-    # list_of_mean_ECO.append(cv_scores_ECO.mean())
-
-
-    # range_list_LON.append(n)
-    # range_list_HLT.append(n)
-    # range_list_ECO.append(n)
 
   return acc_LON, acc_HLT, acc_ECO
 
-# fig=plt.figure(figsize=(20, 10)) 
-# plt.subplot(3, 2, 1)
-# # plt.plot(range_list_LON, list_of_mean_LON)
-# plt.plot(range(1, 40), error_LON, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Loneliness - ERROR")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
 
-# # plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 2, 2)
-# # plt.plot(range_list_HLT, list_of_mean_HLT)
-# plt.plot(range(1, 40), acc_LON, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Loneliness - ACCURACY")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# # plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 2, 3)
-# # plt.plot(range_list_ECO, list_of_mean_ECO)
-# plt.plot(range(1, 40), error_HLT, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Health - ERROR")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# # plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 2, 4)
-# # plt.plot(range_list_ECO, list_of_mean_ECO)
-# plt.plot(range(1, 40), acc_HLT, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Health - ACCURACY")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# # plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 2, 5)
-# # plt.plot(range_list_ECO, list_of_mean_ECO)
-# plt.plot(range(1, 40), error_ECO, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Economic_Strength - ERROR")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# # plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 2, 6)
-# # plt.plot(range_list_ECO, list_of_mean_ECO)
-# plt.plot(range(1, 40), acc_ECO, color='red', linestyle='dashed', marker='o', markerfacecolor='blue', markersize=10)
-# plt.title("Economic_Strength - ACCURACY")
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.9, wspace=0.4, hspace=0.4)
-
-# plt.show()
-
-# X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO = knn_init(df_knn)
-# acc_LON, acc_HLT, acc_ECO = chooseK(X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO)
-# idx_LON = acc_LON.index(max(acc_LON))+1
-# idx_HLT = acc_HLT.index(max(acc_HLT))+1
-# idx_ECO = acc_ECO.index(max(acc_ECO))+1
-
-# neigh_LON = idx_LON
-# neigh_HLT = idx_HLT
-# neigh_ECO = idx_ECO
-
-# # neigh_LON = idx_LON
-# # neigh_HLT = idx_HLT
-# # neigh_ECO = idx_ECO
-
-# # Loneliness_score
-# classifier_LON = KNeighborsClassifier(n_neighbors=neigh_LON)
-# classifier_LON.fit(X_train_LON, y_train_LON)
-# y_pred_LON = classifier_LON.predict(X_test_LON)
-# # df_pred['pred_Loneliness'] = y_pred_LON
-
-# # Health_score
-# classifier_HLT = KNeighborsClassifier(n_neighbors=neigh_HLT)
-# classifier_HLT.fit(X_train_HLT, y_train_HLT)
-# y_pred_HLT = classifier_HLT.predict(X_test_HLT)
-# # df_pred['pred_Health'] = y_pred_HLT
-
-# # Economic_Strength_score
-# classifier_ECO = KNeighborsClassifier(n_neighbors=neigh_ECO)
-# classifier_ECO.fit(X_train_ECO, y_train_ECO)
-# y_pred_ECO = classifier_ECO.predict(X_test_ECO)
-# # df_pred['pred_Economic_Strength'] = y_pred_ECO
-
-
-
-
-# print('Loneliness:', round(metrics.accuracy_score(y_test_LON, y_pred_LON)*100,2) , '% Accuracy')
-# print('Health:', round(metrics.accuracy_score(y_test_HLT, y_pred_HLT)*100,2) , '% Accuracy')
-# print('Economic_Strength:', round(metrics.accuracy_score(y_test_ECO, y_pred_ECO)*100,2) , '% Accuracy')
 
 def knn_pred(df_knn, sample_df):
   from sklearn.model_selection import train_test_split
@@ -308,10 +170,8 @@ def knn_pred(df_knn, sample_df):
   X_train_LON = df_knn_train.loc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
   y_train_LON = df_knn_train.loc[: , ['Loneliness_score']]
 
-  # X_test_LON = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
   X_test_LON = df_knn_test.iloc[: , :]
 
-  # y_test_LON = df_knn_test.loc[: , ['Loneliness_score']]
 
 
   # Health_score
@@ -319,7 +179,6 @@ def knn_pred(df_knn, sample_df):
   y_train_HLT = df_knn_train.loc[: , ['Health_score']]
 
   X_test_HLT = df_knn_test.iloc[: , :]
-  # y_test_HLT = df_knn_test.loc[: , ['Health_score']]
 
 
   # Economic_Strength_score
@@ -327,92 +186,14 @@ def knn_pred(df_knn, sample_df):
   y_train_ECO = df_knn_train.loc[: , ['Economic_Strength_score']]
 
   X_test_ECO = df_knn_test.iloc[: , :]
-# y_test_ECO = df_knn_test.loc[: , ['Economic_Strength_score']]
 
 
-# X_test_ECO = df_knn_test.iloc[: , :-1]
-# y_test_ECO = df_knn_test.iloc[: , -1:]
   return X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO
-
-# error = []
-
-# # Calculating error for K values between 1 and 40
-# for i in range(1, 40):
-#     knn = KNeighborsClassifier(n_neighbors=i)
-#     knn.fit(X_train_LON, y_train_LON)
-#     pred_i = knn.predict(X_test)
-#     error.append(np.mean(pred_i != y_test))
-
-# plt.figure(figsize=(12, 6))
-# plt.plot(range(1, 40), error, color='red', linestyle='dashed', marker='o',
-#          markerfacecolor='blue', markersize=10)
-# plt.title('Error Rate K Value')
-# plt.xlabel('K Value')
-# plt.ylabel('Mean Error')
-
-# list_of_mean_LON = []
-# range_list_LON = []
-
-# list_of_mean_HLT = []
-# range_list_HLT = []
-
-# list_of_mean_ECO = []
-# range_list_ECO = []
-
-
-# for n in range(1,10):
-#     classifier = KNeighborsClassifier(n_neighbors=n)
-
-#     cv_scores_LON = cross_val_score(classifier, X_train_LON, y_train_LON, cv=5)
-#     cv_scores_HLT = cross_val_score(classifier, X_train_HLT, y_train_HLT, cv=5)
-#     cv_scores_ECO = cross_val_score(classifier, X_train_ECO, y_train_ECO, cv=5)
-
-#     list_of_mean_LON.append(cv_scores_LON.mean())
-#     list_of_mean_HLT.append(cv_scores_HLT.mean())
-#     list_of_mean_ECO.append(cv_scores_ECO.mean())
-
-
-#     range_list_LON.append(n)
-#     range_list_HLT.append(n)
-#     range_list_ECO.append(n)
-
-# plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 1, 1)
-# plt.plot(range_list_LON, list_of_mean_LON)
-# plt.title("Loneliness")
-# plt.xlabel("K values")
-# plt.ylabel("Avg")
-
-# plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 1, 2)
-# plt.plot(range_list_HLT, list_of_mean_HLT)
-# plt.title("Health")
-# plt.xlabel("K values")
-# plt.ylabel("Avg")
-
-# plt.figure(figsize=(6, 10)) 
-# plt.subplot(3, 1, 3)
-# plt.plot(range_list_ECO, list_of_mean_ECO)
-# plt.title("Economic_Strength ")
-# plt.xlabel("K values")
-# plt.ylabel("Avg")
-
-# plt.show()
-
-# def secondmax(arr):
-#   sublist = [x for x in arr if x < max(arr)]
-#   return max(sublist)
-
-# idx_LON = list_of_mean_LON.index(secondmax(list_of_mean_LON))
-# idx_HLT = list_of_mean_HLT.index(secondmax(list_of_mean_HLT))
-# idx_ECO = list_of_mean_ECO.index(secondmax(list_of_mean_ECO))
 
 
 
 def prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, neigh_LON, neigh_HLT, neigh_ECO):
-  # neigh_LON = idx_LON+1
-  # neigh_HLT = idx_HLT+1
-  # neigh_ECO = idx_ECO+1
+
   df_pred = sample_df.copy()
 
   # Loneliness_score
@@ -437,10 +218,6 @@ def prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_t
 
 
 
-
-# print('Loneliness:', round(metrics.accuracy_score(y_test_LON, y_pred_LON)*100,2) , '% Accuracy')
-# print('Health:', round(metrics.accuracy_score(y_test_HLT, y_pred_HLT)*100,2) , '% Accuracy')
-# print('Economic_Strength:', round(metrics.accuracy_score(y_test_ECO, y_pred_ECO)*100,2) , '% Accuracy')
 
 """# Risk Metric
 
@@ -520,17 +297,7 @@ def main(knn_df, new_df):
   risk_df = df_pred.query('Risk == 1')
   return risk_perc, risk_df
 
-#  neigh_LON = idx_LON
-# neigh_HLT = idx_HLT
-# neigh_ECO = idx_ECO
 
-#   X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO = knn_pred(df_knn, sample_df)
-# #
-
-# sample_df
-# #
-
-# df_pred = prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, neigh_LON, neigh_HLT, neigh_ECO)
 
 perc_risk, df_risk = main(df_knn, sample_df)
 
