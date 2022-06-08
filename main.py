@@ -249,16 +249,18 @@ elif choose == "Social KPI":
                 sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
                 st.write(sum_of_weights)
                 loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_loneliness_dict.items()}
-                update_session_state("loneliness_dict", loneliness_dict)
-#                 st.session_state['loneliness_dict'] = loneliness_dict
+#                 update_session_state("loneliness_dict", loneliness_dict)
+                st.session_state['loneliness_dict'] = loneliness_dict
 #                 map_df = get_map_df()
 #                 GUI_tuple = ("L", loneliness_dict)            
 #                 loneliness_dict = weights_update(GUI_tuple)
                 st.write(st.session_state['df_scored'])
                 curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
-                update_session_state("df_scores", curr_df)
+#                 update_session_state("df_scores", curr_df)
+                st.session_state['df_scores'] = curr_df
                 map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                update_session_state("map_df", map_df)
+#                 update_session_state("map_df", map_df)
+                st.session_state['map_df'] = map_df
 #                 st.session_state['map_df'] = map_df
 #                 st.write(st.session_state)
 #                 st.write(map_df)
