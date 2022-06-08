@@ -102,8 +102,8 @@ if choose == "File Upload":
         st.text("Team GABOT")
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
         if uploaded_file is not None:
-            st.success("File was uploaded!")
             st.session_state['flag'] = True
+            st.success("File was uploaded!")
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
