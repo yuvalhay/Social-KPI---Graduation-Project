@@ -258,7 +258,7 @@ elif choose == "Social KPI":
                 curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
-                map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
 #                 st.session_state['map_df'] = map_df
