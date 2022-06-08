@@ -284,7 +284,7 @@ elif choose == "Social KPI":
                     map_df,
                     get_position=['lon', 'lat'],
                     get_elevation="Loneliness_score",
-                    elevation_scale=200, #20,
+                    elevation_scale=20,
                     radius=40,
                     auto_highlight=True,
 #                     get_radius=10000,          # Radius is given in meters
@@ -294,7 +294,7 @@ elif choose == "Social KPI":
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
-                    coverage=0.1
+                    coverage=5 #0.1
                     )
                 tooltip = {
                     "html": "<b>{mrt_distance}</b> Loneliness KPI = <b>{Loneliness_score}</b>",
