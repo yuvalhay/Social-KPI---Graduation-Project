@@ -90,7 +90,8 @@ with st.sidebar:
                              "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
                          )
-
+if 'key' not in st.session_state:
+    st.session_state['flag'] = False
 
 if choose == "File Upload":
 #     uploaded_file = None
