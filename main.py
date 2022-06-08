@@ -292,7 +292,7 @@ elif choose == "Social KPI":
                     # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
                     # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
                     # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
-                    get_fill_color=["255 - (max(Loneliness_score - 3, 0))*100", "(min(Loneliness_score - 1, 255))*160", "0", "120"],  # Set an RGBA value for fill
+                    get_fill_color=["255 - (math.max(Loneliness_score - 3, 0))*100", "(math.min(Loneliness_score - 1, 255))*160", "0", "120"],  # Set an RGBA value for fill
 #                     elevation_range=[0, 1000],
                     pickable=True,
                     extruded=True,
