@@ -79,24 +79,24 @@ def update_session_state(key, value):
 #         diff_avg =
 #         for key, val in kpis_dict.items():
 
-def file_update(df):
-#     global loneliness_dict
-#     global health_dict
-#     global economic_strength_dict
-    loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-    loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-    st.session_state['loneliness_dict'] = loneliness_dict
-    st.session_state['health_dict'] = health_dict
-    st.session_state['economic_strength_dict'] = economic_strength_dict
+# def file_update(df):
+# #     global loneliness_dict
+# #     global health_dict
+# #     global economic_strength_dict
+#     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+#     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+#     st.session_state['loneliness_dict'] = loneliness_dict
+#     st.session_state['health_dict'] = health_dict
+#     st.session_state['economic_strength_dict'] = economic_strength_dict
     
-    df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
-    st.session_state['df_scored'] = df_scored
+#     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
+#     st.session_state['df_scored'] = df_scored
     
-#     global map_df
-    map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
-    st.session_state['map_df'] = map_df
+# #     global map_df
+#     map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
+#     st.session_state['map_df'] = map_df
     
-    return df_scored, map_df
+#     return df_scored, map_df
 
 with st.sidebar:
     # st.sidebar
