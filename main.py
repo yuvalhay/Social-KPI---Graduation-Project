@@ -15,7 +15,7 @@ from functioned import *
 # import io
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
-set_png_as_page_bg('background_img/Social-KPI---Graduation-Project/background_img/228-2288728_drawing-structures-city-city-background-footer-hd-png.png
+set_png_as_page_bg('background_img/228-2288728_drawing-structures-city-city-background-footer-hd-png.png
 ')
 
 
