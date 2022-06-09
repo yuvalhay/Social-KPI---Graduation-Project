@@ -657,7 +657,15 @@ def main():
                     )
                     st.pydeck_chart(r)
 
-    elif choose == "Prediction":
+    elif choose == "Prediction" and st.session_state['flag'] is False:
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
+        
+        st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
+        
+    elif choose == "Prediction" and st.session_state['flag'] is True:
     #     st.balloons()
     #     st.title("The Prediction section")
         st.markdown(""" <style> .font {
@@ -665,16 +673,16 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
-        new_df = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
-        if new_df is not None:
-            new_df = pd.read_csv(new_df)
+        new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
+        if new_file is not None:
+            new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
 
             st.write(new_df)
             st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
-            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], st.session_state['new_df'])
+            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
             st.write(f'{round(perc_risk,3)}% of the households are under risk')
             st.dataframe(df_risk)
             
