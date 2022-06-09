@@ -131,8 +131,8 @@ def main():
             st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPI’s. \nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
 
             with kpi_selection:
-                header("KPI Selection")
                 KPI_names = ["Loneliness", "Health", "Economic Strength"]
+                header("KPI Selection")
                 KPI_page = st.radio("", KPI_names)
 
 
