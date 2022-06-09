@@ -21,7 +21,8 @@ footer:after {
 } */
 
 div[data-testid="stHorizontalBlock"] {
-  background-color: #F8F7F4;
+/*   background-color: #FFFFFF; */
+    background-color: rgba(255,255,255,0.6)
 }
 
 /* div[class="css-19s0g4l e1tzin5v0"] > div[class="css-ocqkz7 e1tzin5v4"] {
