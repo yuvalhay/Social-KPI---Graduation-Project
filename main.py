@@ -91,6 +91,7 @@ def main():
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
                     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
+                    st.write(df_scored)
                     map_df = addAggMetrics(df_scored)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     
