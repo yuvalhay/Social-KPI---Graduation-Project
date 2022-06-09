@@ -237,7 +237,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                         temp_col = odd_col
                     if val != 0:
                         curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'loneliness_slider_{key}', help=f'{key} exp..')
+                                                                    value=val, key=f'Loneliness_slider_{key}', help=f'{key} exp..')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
@@ -323,7 +323,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 
                 curr_health_dict = health_dict.copy()
-                for key, val in curr_health_dict.items():
+                for key, val in health_dict.items():
                     if index % 2 == 0:
                         temp_col = even_col
                     if index % 2 == 1:
