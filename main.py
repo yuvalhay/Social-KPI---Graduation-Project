@@ -731,20 +731,20 @@ def main():
     #         if submitted:
     #             st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
 
-global login_stat = False
+# global login_stat = False
 
-if __name__ == "__main__":
-#     main()
+# if __name__ == "__main__":
+# #     main()
     
-    if not login_stat:
-        name, authentication_status, authenticator = login()
-        login_stat = True
-        st.write(authentication_status)
-        if authentication_status:
-            authenticator.logout('Logout', 'main')
-            st.sidebar.write('Welcome *%s*' % (name))
-            main()
-        elif authentication_status == False:
-            st.error('Username/Password is incorrect')
-    #     while authentication_status == None:
-    #         st.warning('Please enter your username and password')
+# #     if not login_stat:
+name, authentication_status, authenticator = login()
+login_stat = True
+st.write(authentication_status)
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.sidebar.write('Welcome *%s*' % (name))
+    main()
+elif authentication_status == False:
+    st.error('Username/Password is incorrect')
+#     elif authentication_status == None:
+#         st.warning('Please enter your username and password')
