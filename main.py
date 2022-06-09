@@ -82,13 +82,13 @@ with st.sidebar:
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'sliders', 'kanban', 'person lines fill'],
                          
-                         menu_icon="bi-building", default_index=0,
+                         menu_icon="bi-building", default_index=1,
 #                          bi bi-building
 #                          app-indicator
                          styles={
                              "container": {"padding": "5!important", "background-color": "white"},
                              "icon": {"color": "black", "font-size": "25px"},
-                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "10px",
+                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "3px",
                                           "--hover-color": "#eee"},
                              "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
