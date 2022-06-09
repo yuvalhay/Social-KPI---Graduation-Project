@@ -137,7 +137,7 @@ def main():
 
 
             with kpi_weights:
-                header("KPI weights")
+                header("KPI Weights")
 
                 if KPI_page == "Loneliness":
                     even_col, odd_col = st.columns(2)
