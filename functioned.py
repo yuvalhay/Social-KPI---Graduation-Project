@@ -87,6 +87,7 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
 
     df_full = df[['index','STAT','north','east']+all_scored_params]
 
+    df_full.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
     return df_full
 
 def update_weights(metric_dict, param_to_update, new_weight): # updated given dict with a new value
