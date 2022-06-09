@@ -736,7 +736,7 @@ def main():
 
 if __name__ == "__main__":
 #     main()
-    st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="centered")
+    st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico")
     name, authentication_status, authenticator = login()
     
     if authentication_status:
