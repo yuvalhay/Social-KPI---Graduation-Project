@@ -628,11 +628,11 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Economic Strength KPI (Average) = round({Economic_Strength_score__AVG})</b>",
+                        "html": "<b>Economic Strength KPI (Average) = round({Economic_Strength_score_AVG})</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
-                        "html": "<b>Economic Strength KPI (Worst) = {Economic_Strength_score__STRCT}</b>",
+                        "html": "<b>Economic Strength KPI (Worst) = {Economic_Strength_score_STRCT}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
 
