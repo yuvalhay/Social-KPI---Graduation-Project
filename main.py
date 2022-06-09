@@ -185,7 +185,7 @@ def main():
         
                     R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
                     num_of_rows = map_df.shape[0]
-                    num_of_rows_range = [i for i in range(num_of_rows)]
+#                     num_of_rows_range = [i for i in range(num_of_rows)]
                     for avg in list(map_df["Loneliness_score_AVG"]):
                         if avg == 1:
                             R_color_AVG.append(44)
@@ -227,6 +227,7 @@ def main():
                     
                     
 #                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                    st.write(R_color_AVG, num_of_rows)
                     map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
                     map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
                     map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
