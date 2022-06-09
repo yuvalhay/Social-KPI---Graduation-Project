@@ -131,8 +131,8 @@ def main():
             st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPI’s. \nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
 
             with kpi_selection:
-                KPI_names = ["Loneliness", "Health", "Economic Strength"]
                 header("KPI Selection")
+                KPI_names = ["Loneliness", "Health", "Economic Strength"]
                 KPI_page = st.radio("", KPI_names)
 
 
@@ -275,7 +275,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Loneliness KPI (Average) = {Loneliness_score_AVG}</b>",
+                        "html": "<b>Loneliness KPI (Average) = {round(Loneliness_score_AVG)}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -447,7 +447,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Health KPI (Average) = {Health_score_AVG}</b>",
+                        "html": "<b>Health KPI (Average) = {round(Health_score_AVG)}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -624,7 +624,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Economic Strength KPI (Average) = {Economic_Strength_score__AVG}</b>",
+                        "html": "<b>Economic Strength KPI (Average) = {round(Economic_Strength_score__AVG)}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
