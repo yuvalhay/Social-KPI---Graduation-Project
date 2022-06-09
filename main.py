@@ -91,12 +91,15 @@ def main():
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
                     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
-                    df_scored = addAggMetrics(df_scored)
+                    map_df = addAggMetrics(df_scored)
+                    map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+                    
                     st.session_state['df_scored'] = df_scored
+                    st.session_state['map_df'] = map_df
 
                 #     global map_df
-                    map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                    st.session_state['map_df'] = map_df
+#                     map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                    
 
                 st.success("File was uploaded!")
   
