@@ -203,7 +203,7 @@ def main():
                             R_color_AVG.append(255)
                             G_color_AVG.append(0)
                    
-                for strct inlist(map_df["Loneliness_score_STRCT"]):
+                for strct in list(map_df["Loneliness_score_STRCT"]):
                         if strct == 1:
                             R_color_STRCT.append(44)
                             G_color_STRCT.append(186)
