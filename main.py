@@ -330,7 +330,20 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 for key, val in health_dict.items():
                     health_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
-                
+                health_hebrew_dict={'arnona_cat_score':('סוג הנחת ארנונה עבור משק בית', 'הסבר על המדד'),
+                                    'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
+                                    'hashlama_kizvat_nechut_elderlies_score':('מספר מקבלי השלמה לקצבת נכות לאזרח ותיק באזור סטטיסטי', 'הסבר על המדד'),
+                                    'Mekabley_kizbaot_nechut_score':('מספר מקבלי קיצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
+                                    'zachaim_kizbat_nechut_children_score':('מספר ילדים הזכאים לקצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
+                                    'mekabley_kizbaot_from_injured_work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
+                                    'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_recoveries_score':('סה"כ מקרי הבראה מקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_hospitalized_score':('סה"כ מקרי התאשפזות בעקבות קורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_vaccination_first_dose_score':('סה"כ כמות מתחסנים בחיסון ראשון באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_vaccination_second_dose_score':('סה"כ כמות מתחסנים בחיסון שני באזור סטטיסטי', 'הסבר על המדד'),
+                                    'accumulated_vaccination_third_dose_score':('סה"כ כמות מתחסנים בחיסון שלישי באזור סטטיסטי', 'הסבר על המדד')
+                                   }
                 curr_health_dict = health_dict.copy()
                 for key, val in curr_health_dict.items():
                     if index % 2 == 0:
@@ -338,8 +351,8 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        curr_health_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'Health_slider_{key}', help=f'{key} exp..')
+                        curr_health_dict[f'{key}'] = temp_col.select_slider(f'{health_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                    value=val, key=f'Health_slider_{key}', help=f'{health_hebrew_dict[key][1]}')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
