@@ -16,15 +16,15 @@ set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSaf
 
 
 name, authentication_status, user_id, authenticator = login()
-    user_dict = {
-        'name': name,
-        'user_id': user_id
-    }
+#     user_dict = {
+#         'name': name,
+#         'user_id': user_id
+#     }
 
     if authentication_status:
         authenticator.logout('Logout', 'main')
         st.sidebar.write('Welcome *%s*' % (name))
-        main(user_dict)
+#         main(user_dict)
     elif authentication_status == False:
         st.error('Username/Password is incorrect')
     elif authentication_status == None:
