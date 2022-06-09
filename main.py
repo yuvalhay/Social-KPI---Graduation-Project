@@ -172,8 +172,6 @@ def main():
                         if val != 0:
                             curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                                                         value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_hebrew_dict[key][1]}')
-    #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
-    #                                                                     value=val, key=f'loneliness_slider_{key}')
                             index += 1
 
                     sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
@@ -181,10 +179,7 @@ def main():
                     loneliness_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_loneliness_dict.items()}
     #                 update_session_state("loneliness_dict", loneliness_dict)
                     st.session_state['loneliness_dict'] = loneliness_dict
-    #                 map_df = get_map_df()
-    #                 GUI_tuple = ("L", loneliness_dict)            
-    #                 loneliness_dict = weights_update(GUI_tuple)
-    #                 st.write(st.session_state['df_scored'])
+ 
                     curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
     #                 update_session_state("df_scores", curr_df)
                     R_color, G_color = [], []
@@ -231,18 +226,34 @@ def main():
     #                                 pickable=True,
     #                                 extruded=True,
     #                                 coverage=0.1)
-                    layer2 = pydeck.Layer(
+                    layer1 = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
-                        get_elevation="Loneliness_score",
+                        get_elevation="Loneliness_score_STRCT",
                         elevation_scale=20,
     #                     radius=40,
                         get_radius = 10,
                         auto_highlight=True,
     #                     get_radius=10000,          # Radius is given in meters
-                        # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                        # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
+                        # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
+                        # new: ["R_color", "G_color", "0", "120"],
+                        get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+    #                     elevation_range=[0, 1000],
+                        pickable=True,
+                        extruded=True,
+                        coverage=5 #0.1
+                        )
+                    layer2 = pydeck.Layer(
+                        'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                        map_df,
+                        get_position=['lon', 'lat'],
+                        get_elevation="Loneliness_score_AVG",
+                        elevation_scale=20,
+    #                     radius=40,
+                        get_radius = 10,
+                        auto_highlight=True,
+    #                     get_radius=10000,          # Radius is given in meters
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
                         get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
@@ -262,7 +273,7 @@ def main():
                     view.zoom = 14
 
                     r = pydeck.Deck(
-                        layer2,
+                        [layer1, layer2],
                         initial_view_state=view,
                         tooltip=tooltip,
                         map_provider="mapbox",
