@@ -92,10 +92,9 @@ def main():
 
                     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
 #                     st.write(df_scored)
-                    st.write(df_scored)
                     map_df = addAggMetrics(df_scored)
                     
-#                     df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+                    df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     
                     st.write(df_scored)
