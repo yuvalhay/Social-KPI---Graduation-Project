@@ -13,7 +13,7 @@ from functioned import *
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png')
-st.set_page_config(page_title='SoCity', layout = 'wide', page_icon = building, initial_sidebar_state = 'auto')
+st.beta_set_page_config(page_title='SoCity', page_icon = building, layout = 'wide', initial_sidebar_state = 'auto')
 
 
 name, authentication_status, user_id, authenticator = login()
@@ -65,30 +65,7 @@ def update_session_state(key, value):
     del st.session_state[key]
     st.session_state[key] = value
 
-# def file_update(df):
-# #     global loneliness_dict
-# #     global health_dict
-# #     global economic_strength_dict
-#     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-#     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-#     st.session_state['loneliness_dict'] = loneliness_dict
-#     st.session_state['health_dict'] = health_dict
-#     st.session_state['economic_strength_dict'] = economic_strength_dict
-    
-#     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
-#     st.session_state['df_scored'] = df_scored
-    
-# #     global map_df
-#     map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
-#     st.session_state['map_df'] = map_df
-    
-#     return df_scored, map_df
-
 with st.sidebar:
-    # st.sidebar
-    # options_names = ["Prediction", "KPI"]
-    # choose_page = st.radio("Choose", options_names)
-#     selectbox('Select page',['Country data','Continent data']) 
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'sliders', 'kanban', 'person lines fill'],
                          
@@ -133,46 +110,10 @@ if choose == "File Upload":
 
             #     global map_df
                 map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-
-#                 R_color, G_color = [], []
-#                 num_of_rows = df_scored.shape[0]
-#                 num_of_rows_range = [i for i in range(num_of_rows)]
-#                 for v in list(map_df["Loneliness_score"]):
-#     #                     st.write(v)
-#                     if v == 1:
-#                         R_color.append(44)
-#                         G_color.append(186)
-#                     elif v == 2:
-#                         R_color.append(163)
-#                         G_color.append(255)
-#                     elif v == 3:
-#                         R_color.append(255)
-#                         G_color.append(244)
-#                     elif v == 4:
-#                         R_color.append(255)
-#                         G_color.append(167)
-#                     elif v == 5:
-#                         R_color.append(255)
-#                         G_color.append(0)
-
-#     #             map_df["R_color"] = R_color
-#     #             map_df["G_color"] = G_color
-#                 st.session_state["R_color"] = R_color
-#                 st.session_state["G_color"] = G_color
                 st.session_state['map_df'] = map_df
             
             st.success("File was uploaded!")
-#             df_scored, map_df = file_update(df)
-#             global loneliness_dict
-#             global health_dict
-#             global economic_strength_dict
-#             loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-#             loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-#             df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict)
-#             global map_df
-#             map_df = df_scored[["lat", "lon", "Loneliness", "Health", "Economic_Strength"]]
-#             st.write(df)
-#             st.write(df_scored)
+
         else:
             st.session_state['flag'] = False
 
