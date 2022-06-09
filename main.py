@@ -9,7 +9,6 @@ from PIL import Image
 import pydeck
 import math
 from functioned import *
-from prediction import *
 
 st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
@@ -665,6 +664,8 @@ def main():
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_df = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
         st.session_state['new_df'] = new_df
+        st.success("File was uploaded!")
+
         
         if st.button('Predict!'):
             perc_risk, df_risk = main(st.session_state['df_knn'], new_df)
