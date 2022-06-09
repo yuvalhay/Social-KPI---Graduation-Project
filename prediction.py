@@ -56,167 +56,154 @@ Methodology:
 
 def clean_data(csv):
   
-  #Transform strings to numeric
+    #Transform strings to numeric
 
-  # ARNONA_CAT - arbitrar scoring
-  csv.arnona_cat = pd.Categorical(csv.arnona_cat)
-  csv['arnona_cat'] = csv.arnona_cat.cat.codes.astype(int)
-  # MARTIAL - arbitrar scoring
-  csv.martial = pd.Categorical(csv.martial)
-  csv['martial'] = csv.martial.cat.codes
-  # Predominant Leum - arbitrar scoring
-  # df_knn['Predominant_Leum'] = df_knn['Predominant Leum']
-  # df_knn.drop(columns=['Predominant Leum'], inplace = True)
-  csv.rename(columns = { 'Predominant Leum' : 'Predominant_Leum' }, inplace = True)
+    # ARNONA_CAT - arbitrar scoring
+    csv.arnona_cat = pd.Categorical(csv.arnona_cat)
+    csv['arnona_cat'] = csv.arnona_cat.cat.codes.astype(int)
+    # MARTIAL - arbitrar scoring
+    csv.martial = pd.Categorical(csv.martial)
+    csv['martial'] = csv.martial.cat.codes
+    # Predominant Leum - arbitrar scoring
+    # df_knn['Predominant_Leum'] = df_knn['Predominant Leum']
+    # df_knn.drop(columns=['Predominant Leum'], inplace = True)
+    csv.rename(columns = { 'Predominant Leum' : 'Predominant_Leum' }, inplace = True)
 
-  csv.Predominant_Leum = pd.Categorical(csv.Predominant_Leum)
-  csv['Predominant_Leum'] = csv.Predominant_Leum.cat.codes
-  # Predominant_enter_exit_group - arbitrar scoring
-  csv.Predominant_enter_exit_group = pd.Categorical(csv.Predominant_enter_exit_group)
-  csv['Predominant_enter_exit_group'] = csv.Predominant_enter_exit_group.cat.codes
+    csv.Predominant_Leum = pd.Categorical(csv.Predominant_Leum)
+    csv['Predominant_Leum'] = csv.Predominant_Leum.cat.codes
+    # Predominant_enter_exit_group - arbitrar scoring
+    csv.Predominant_enter_exit_group = pd.Categorical(csv.Predominant_enter_exit_group)
+    csv['Predominant_enter_exit_group'] = csv.Predominant_enter_exit_group.cat.codes
 
-  #ADRESS - omitting (adress information is given anyway by coordinates)
-  csv.drop(columns=['heb_address'], inplace = True)
-  csv
-  csv[csv==np.inf]=np.nan
-  csv.dropna(axis = 1, inplace = True) # remove NA
+    #ADRESS - omitting (adress information is given anyway by coordinates)
+    csv.drop(columns=['heb_address'], inplace = True)
+    csv
+    csv[csv==np.inf]=np.nan
+    csv.dropna(axis = 1, inplace = True) # remove NA
 
-  # if csv=='df_knn':
-  # csv = csv[np.isfinite(csv).all(1)] #remove inf
-  if csv.name == 'sample_df':
-    csv.drop(columns=['Gush','Helka','gush_helka'], inplace = True)
+    # if csv=='df_knn':
+    # csv = csv[np.isfinite(csv).all(1)] #remove inf
+    if csv.name == 'sample_df':
+        csv.drop(columns=['Gush','Helka','gush_helka'], inplace = True)
 
-
-  
-  return csv
-
+    return csv
 
 
 def knn_init(df_knn):
-  from sklearn.model_selection import train_test_split
+    from sklearn.model_selection import train_test_split
 
-  df_knn_train,df_knn_test = train_test_split(df_knn, test_size=0.2)
+    df_knn_train,df_knn_test = train_test_split(df_knn, test_size=0.2)
 
-  # Loneliness_score
-  X_train_LON = df_knn_train.loc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_LON = df_knn_train.loc[: , ['Loneliness_score']]
+    # Loneliness_score
+    X_train_LON = df_knn_train.loc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_LON = df_knn_train.loc[: , ['Loneliness_score']]
 
-  X_test_LON = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_test_LON = df_knn_test.loc[: , ['Loneliness_score']]
+    X_test_LON = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_test_LON = df_knn_test.loc[: , ['Loneliness_score']]
 
+    # Health_score
+    X_train_HLT = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_HLT = df_knn_train.loc[: , ['Health_score']]
 
-  # Health_score
-  X_train_HLT = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_HLT = df_knn_train.loc[: , ['Health_score']]
+    X_test_HLT = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_test_HLT = df_knn_test.loc[: , ['Health_score']]
 
-  X_test_HLT = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_test_HLT = df_knn_test.loc[: , ['Health_score']]
+    # Economic_Strength_score
+    X_train_ECO = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_ECO = df_knn_train.loc[: , ['Economic_Strength_score']]
 
+    X_test_ECO = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_test_ECO = df_knn_test.loc[: , ['Economic_Strength_score']]
 
-  # Economic_Strength_score
-  X_train_ECO = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_ECO = df_knn_train.loc[: , ['Economic_Strength_score']]
-
-  X_test_ECO = df_knn_test.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_test_ECO = df_knn_test.loc[: , ['Economic_Strength_score']]
-
-  return X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO
+    return X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO
 
 def chooseK (X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO):
-  error_LON = []
-  error_HLT = []
-  error_ECO = []
+    error_LON = []
+    error_HLT = []
+    error_ECO = []
 
-  acc_LON = []
-  acc_HLT = []
-  acc_ECO = []
-
-
-  for n in range(1,40):
-    classifier_LON = KNeighborsClassifier(n_neighbors=n)
-    classifier_HLT = KNeighborsClassifier(n_neighbors=n)
-    classifier_ECO = KNeighborsClassifier(n_neighbors=n)
-
-    classifier_LON.fit(X_train_LON, y_train_LON)
-    classifier_HLT.fit(X_train_HLT, y_train_HLT)
-    classifier_ECO.fit(X_train_ECO, y_train_ECO)
-
-    pred_n_LON = classifier_LON.predict(X_test_LON)
-    pred_n_HLT = classifier_HLT.predict(X_test_HLT)
-    pred_n_ECO = classifier_ECO.predict(X_test_ECO)
-
-    error_LON.append(np.mean(pred_n_LON != np.array(y_test_LON)))
-    error_HLT.append(np.mean(pred_n_HLT != np.array(y_test_HLT)))
-    error_ECO.append(np.mean(pred_n_ECO != np.array(y_test_ECO)))
-
-    acc_LON.append(metrics.accuracy_score(y_test_LON, pred_n_LON))
-    acc_HLT.append(metrics.accuracy_score(y_test_HLT, pred_n_HLT))
-    acc_ECO.append(metrics.accuracy_score(y_test_ECO, pred_n_ECO))
+    acc_LON = []
+    acc_HLT = []
+    acc_ECO = []
 
 
-  return acc_LON, acc_HLT, acc_ECO
+    for n in range(1,40):
+        classifier_LON = KNeighborsClassifier(n_neighbors=n)
+        classifier_HLT = KNeighborsClassifier(n_neighbors=n)
+        classifier_ECO = KNeighborsClassifier(n_neighbors=n)
 
+        classifier_LON.fit(X_train_LON, y_train_LON)
+        classifier_HLT.fit(X_train_HLT, y_train_HLT)
+        classifier_ECO.fit(X_train_ECO, y_train_ECO)
+
+        pred_n_LON = classifier_LON.predict(X_test_LON)
+        pred_n_HLT = classifier_HLT.predict(X_test_HLT)
+        pred_n_ECO = classifier_ECO.predict(X_test_ECO)
+
+        error_LON.append(np.mean(pred_n_LON != np.array(y_test_LON)))
+        error_HLT.append(np.mean(pred_n_HLT != np.array(y_test_HLT)))
+        error_ECO.append(np.mean(pred_n_ECO != np.array(y_test_ECO)))
+
+        acc_LON.append(metrics.accuracy_score(y_test_LON, pred_n_LON))
+        acc_HLT.append(metrics.accuracy_score(y_test_HLT, pred_n_HLT))
+        acc_ECO.append(metrics.accuracy_score(y_test_ECO, pred_n_ECO))
+
+    return acc_LON, acc_HLT, acc_ECO
 
 
 def knn_pred(df_knn, sample_df):
-  from sklearn.model_selection import train_test_split
+    from sklearn.model_selection import train_test_split
 
-  df_knn_train,df_knn_test = train_test_split(df_knn, test_size=0.0001)
-  # df_knn_train = df_knn
-  df_knn_test = sample_df
+    df_knn_train,df_knn_test = train_test_split(df_knn, test_size=0.0001)
+    # df_knn_train = df_knn
+    df_knn_test = sample_df
 
+    # Loneliness_score
+    X_train_LON = df_knn_train.loc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_LON = df_knn_train.loc[: , ['Loneliness_score']]
 
-  # Loneliness_score
-  X_train_LON = df_knn_train.loc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_LON = df_knn_train.loc[: , ['Loneliness_score']]
+    X_test_LON = df_knn_test.iloc[: , :]
 
-  X_test_LON = df_knn_test.iloc[: , :]
+    # Health_score
+    X_train_HLT = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_HLT = df_knn_train.loc[: , ['Health_score']]
 
+    X_test_HLT = df_knn_test.iloc[: , :]
 
+    # Economic_Strength_score
+    X_train_ECO = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
+    y_train_ECO = df_knn_train.loc[: , ['Economic_Strength_score']]
 
-  # Health_score
-  X_train_HLT = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_HLT = df_knn_train.loc[: , ['Health_score']]
-
-  X_test_HLT = df_knn_test.iloc[: , :]
-
-
-  # Economic_Strength_score
-  X_train_ECO = df_knn_train.iloc[: , ~df_knn_train.columns.isin(['Loneliness_score','Health_score','Economic_Strength_score'])]
-  y_train_ECO = df_knn_train.loc[: , ['Economic_Strength_score']]
-
-  X_test_ECO = df_knn_test.iloc[: , :]
+    X_test_ECO = df_knn_test.iloc[: , :]
 
 
-  return X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO
+    return X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO
 
 
 
 def prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, neigh_LON, neigh_HLT, neigh_ECO):
 
-  df_pred = sample_df.copy()
+    df_pred = sample_df.copy()
 
-  # Loneliness_score
-  classifier_LON = KNeighborsClassifier(n_neighbors=neigh_LON)
-  classifier_LON.fit(X_train_LON, y_train_LON)
-  y_pred_LON = classifier_LON.predict(X_test_LON)
-  df_pred['pred_Loneliness'] = y_pred_LON
+    # Loneliness_score
+    classifier_LON = KNeighborsClassifier(n_neighbors=neigh_LON)
+    classifier_LON.fit(X_train_LON, y_train_LON)
+    y_pred_LON = classifier_LON.predict(X_test_LON)
+    df_pred['pred_Loneliness'] = y_pred_LON
 
-  # Health_score
-  classifier_HLT = KNeighborsClassifier(n_neighbors=neigh_HLT)
-  classifier_HLT.fit(X_train_HLT, y_train_HLT)
-  y_pred_HLT = classifier_HLT.predict(X_test_HLT)
-  df_pred['pred_Health'] = y_pred_HLT
+    # Health_score
+    classifier_HLT = KNeighborsClassifier(n_neighbors=neigh_HLT)
+    classifier_HLT.fit(X_train_HLT, y_train_HLT)
+    y_pred_HLT = classifier_HLT.predict(X_test_HLT)
+    df_pred['pred_Health'] = y_pred_HLT
 
-  # Economic_Strength_score
-  classifier_ECO = KNeighborsClassifier(n_neighbors=neigh_ECO)
-  classifier_ECO.fit(X_train_ECO, y_train_ECO)
-  y_pred_ECO = classifier_ECO.predict(X_test_ECO)
-  df_pred['pred_Economic_Strength'] = y_pred_ECO
+    # Economic_Strength_score
+    classifier_ECO = KNeighborsClassifier(n_neighbors=neigh_ECO)
+    classifier_ECO.fit(X_train_ECO, y_train_ECO)
+    y_pred_ECO = classifier_ECO.predict(X_test_ECO)
+    df_pred['pred_Economic_Strength'] = y_pred_ECO
 
-  return df_pred
-
-
+    return df_pred
 
 
 """# Risk Metric
@@ -260,42 +247,42 @@ Otherwise, the household isn't under risk.
 """
 
 def risk(df_pred):
-  NL = df_pred['pred_Loneliness']
-  E = df_pred['pred_Economic_Strength']
-  H = df_pred['pred_Health']
-  K_const = 5
-  T_threshold = 34 # risker than (1,2,2)
+    NL = df_pred['pred_Loneliness']
+    E = df_pred['pred_Economic_Strength']
+    H = df_pred['pred_Health']
+    K_const = 5
+    T_threshold = 34 # risker than (1,2,2)
 
-  df_pred['R_function'] = np.power(K_const-NL,2) + np.power(K_const-H,2) + np.power(K_const-E,2)
-  df_pred['Risk'] = df_pred['R_function'].apply(lambda x : 1 if x>= T_threshold else 0)
+    df_pred['R_function'] = np.power(K_const-NL,2) + np.power(K_const-H,2) + np.power(K_const-E,2)
+    df_pred['Risk'] = df_pred['R_function'].apply(lambda x : 1 if x>= T_threshold else 0)
 
-  perc = round(df_pred.query('Risk == 1').count()[1]/df_pred.shape[0],3)*100
-  return perc
+    perc = round(df_pred.query('Risk == 1').count()[1]/df_pred.shape[0],3)*100
+    return perc
 
 def prediction_main(knn_df, new_df):
-  knn_df.name = 'df_knn'
-  df_knn = clean_data(knn_df)
-  
-  new_df.name = 'sample_df'
-  sample_df = clean_data(new_df)
+    knn_df.name = 'df_knn'
+    df_knn = clean_data(knn_df)
 
-  X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO = knn_init(df_knn)
-  acc_LON, acc_HLT, acc_ECO = chooseK(X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO)
-  idx_LON = acc_LON.index(max(acc_LON))+1
-  idx_HLT = acc_HLT.index(max(acc_HLT))+1
-  idx_ECO = acc_ECO.index(max(acc_ECO))+1
+    new_df.name = 'sample_df'
+    sample_df = clean_data(new_df)
 
-  neigh_LON = idx_LON
-  neigh_HLT = idx_HLT
-  neigh_ECO = idx_ECO
+    X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO = knn_init(df_knn)
+    acc_LON, acc_HLT, acc_ECO = chooseK(X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, y_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, y_test_ECO)
+    idx_LON = acc_LON.index(max(acc_LON))+1
+    idx_HLT = acc_HLT.index(max(acc_HLT))+1
+    idx_ECO = acc_ECO.index(max(acc_ECO))+1
 
-  X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO = knn_pred(df_knn, sample_df)
-  
-  df_pred = prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, neigh_LON, neigh_HLT, neigh_ECO)
+    neigh_LON = idx_LON
+    neigh_HLT = idx_HLT
+    neigh_ECO = idx_ECO
 
-  risk_perc = risk(df_pred)
-  risk_df = df_pred.query('Risk == 1')
-  return risk_perc, risk_df
+    X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO = knn_pred(df_knn, sample_df)
+
+    df_pred = prediction(sample_df, X_train_LON, y_train_LON, X_test_LON, X_train_HLT, y_train_HLT, X_test_HLT, X_train_ECO, y_train_ECO, X_test_ECO, neigh_LON, neigh_HLT, neigh_ECO)
+
+    risk_perc = risk(df_pred)
+    risk_df = df_pred.query('Risk == 1')
+    return risk_perc, risk_df
 
 
 
