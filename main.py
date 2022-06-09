@@ -226,7 +226,7 @@ def main():
     #                                 pickable=True,
     #                                 extruded=True,
     #                                 coverage=0.1)
-                    layer1 = pydeck.Layer(
+                    WORST = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
@@ -244,7 +244,7 @@ def main():
                         extruded=True,
                         coverage=5 #0.1
                         )
-                    layer2 = pydeck.Layer(
+                    AVERAGE = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
@@ -271,14 +271,17 @@ def main():
                     view.pitch = 75
                     view.bearing = 60
                     view.zoom = 14
-
+                    
+                    option = st.selectbox('Choose the Layer?',(AVERAGE, WORST))
+                    
                     r = pydeck.Deck(
-                        [layer1, layer2],
+                        option,
                         initial_view_state=view,
                         tooltip=tooltip,
                         map_provider="mapbox",
                         map_style=pydeck.map_styles.SATELLITE,
                     )
+                    
                     st.pydeck_chart(r)
 
                 elif KPI_page == "Health":
