@@ -552,13 +552,14 @@ def main():
 
 
 if __name__ == "__main__":
-    name, authentication_status, authenticator = login()
+    main()
+#     name, authentication_status, authenticator = login()
     
-    if authentication_status:
-        authenticator.logout('Logout', 'main')
-        st.sidebar.write('Welcome *%s*' % (name))
-        main()
-    elif authentication_status == False:
-        st.error('Username/Password is incorrect')
-    elif authentication_status == None:
-        st.warning('Please enter your username and password')
+#     if authentication_status:
+#         authenticator.logout('Logout', 'main')
+#         st.sidebar.write('Welcome *%s*' % (name))
+#         main()
+#     elif authentication_status == False:
+#         st.error('Username/Password is incorrect')
+#     elif authentication_status == None:
+#         st.warning('Please enter your username and password')
