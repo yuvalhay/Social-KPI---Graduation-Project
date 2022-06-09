@@ -82,7 +82,7 @@ def main():
                 with st.spinner('Working on your file, just a sec..'):
     #                 time.sleep(20)
     #             df = pd.read_csv(uploaded_file)
-                    df = rawToValCatagorized(uploaded_file)
+                    df, raw_df = rawToValCatagorized(uploaded_file)
                     df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
                     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
@@ -90,7 +90,7 @@ def main():
                     st.session_state['health_dict'] = health_dict
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
-                    df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
+                    df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False)
 #                     st.write(df_scored)
                     map_df = addAggMetrics(df_scored)
                     
@@ -98,6 +98,7 @@ def main():
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
 
                     st.session_state['df_scored'] = df_scored
+                    st.session_state['df_knn'] = df_knn
                     st.session_state['map_df'] = map_df
 
                 #     global map_df
