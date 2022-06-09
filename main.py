@@ -91,7 +91,7 @@ def main():
                     st.session_state['health_dict'] = health_dict
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
-                    df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False)
+                    df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False, True)
 #                     st.write(df_scored)
                     map_df = addAggMetrics(df_scored)
                     
@@ -181,7 +181,7 @@ def main():
     #                 update_session_state("loneliness_dict", loneliness_dict)
                     st.session_state['loneliness_dict'] = loneliness_dict
  
-                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
+                    curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True, False)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -355,7 +355,7 @@ def main():
     #                 GUI_tuple = ("L", loneliness_dict)            
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
-                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['health_dict'], health_dict, st.session_state['economic_strength_dict'], True)
+                    curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['health_dict'], health_dict, st.session_state['economic_strength_dict'], True, False)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -532,7 +532,7 @@ def main():
     #                 GUI_tuple = ("L", loneliness_dict)            
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
-                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
+                    curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True, False)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -672,7 +672,7 @@ def main():
 
         
         if st.button('Predict!'):
-            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
+            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], st.session_state['new_df'])
             st.write(f'{round(perc_risk,3)}% of the households are under risk')
             st.dataframe(df_risk)
             
