@@ -731,13 +731,13 @@ def main():
     #         if submitted:
     #             st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
 
-# global login_stat = False
+global login_stat = False
 
 # if __name__ == "__main__":
 # #     main()
     
-# #     if not login_stat:
-name, authentication_status, authenticator = login()
+if not login_stat:
+    name, authentication_status, authenticator = login()
 login_stat = True
 st.write(authentication_status)
 if authentication_status:
