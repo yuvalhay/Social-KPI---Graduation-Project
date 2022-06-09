@@ -548,7 +548,6 @@ def main():
 
 
 if __name__ == "__main__":
-    set_streamlit_layout()
     name, authentication_status, user_id, authenticator = login()
     
     if authentication_status:
