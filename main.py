@@ -158,7 +158,8 @@ if choose == "File Upload":
 #             st.write(df)
 #             st.write(df_scored)
         else:
-            st.session_state['flag'] = False
+            if st.session_state['flag'] != True:
+                st.session_state['flag'] = False
 
 elif choose == "Social KPI" and st.session_state['flag'] is False:
     with kpi_header:
