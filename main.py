@@ -735,14 +735,15 @@ def main():
 
 if __name__ == "__main__":
 #     main()
-    name, authentication_status, authenticator = login()
-    
-    st.write(authentication_status)
-    if authentication_status:
-        authenticator.logout('Logout', 'main')
-        st.sidebar.write('Welcome *%s*' % (name))
-        main()
-    elif authentication_status == False:
-        st.error('Username/Password is incorrect')
-#     while authentication_status == None:
-#         st.warning('Please enter your username and password')
+    if not authentication_status:
+        name, authentication_status, authenticator = login()
+        st.session_state['login_status'] = True
+        st.write(authentication_status)
+        if authentication_status:
+            authenticator.logout('Logout', 'main')
+            st.sidebar.write('Welcome *%s*' % (name))
+            main()
+        elif authentication_status == False:
+            st.error('Username/Password is incorrect')
+    #     while authentication_status == None:
+    #         st.warning('Please enter your username and password')
