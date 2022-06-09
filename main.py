@@ -82,13 +82,13 @@ with st.sidebar:
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                          icons=['upload', 'sliders', 'kanban', 'person lines fill'],
                          
-                         menu_icon="bi-building", default_index=1,
+                         menu_icon="bi-building", default_index=0,
 #                          bi bi-building
 #                          app-indicator
                          styles={
                              "container": {"padding": "5!important", "background-color": "white"},
                              "icon": {"color": "black", "font-size": "25px"},
-                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "3px",
+                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
                                           "--hover-color": "#eee"},
                              "nav-link-selected": {"background-color": "#FF4B4B"},
                          }
@@ -423,7 +423,26 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 for key, val in economic_strength_dict.items():
                     economic_strength_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
-                
+                economic_strength_hebrew_dict={'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
+                                                'socio_economic_score':('ציון סוציו אקונומי', 'הסבר על המדד'),
+                                                'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
+                                                'mekabley_kizbaot_from_injured_work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
+                                                'zachaim_kizbat_nechut_children_score':('מספר ילדים הזכאים לקצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
+                                                'Mekabley_kizbaot_nechut_score':('מספר מקבלי קיצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
+                                                'Mekabley_mezonot_score':('מספר מקבלי מזונות באזור סטטיסטי', 'הסבר על המדד'),
+                                                'Hashlamat_hachnasa_sheerim_family_score':('מספר מקבלי השלמת הכנסה שארים באזור סטטיסטי', 'הסבר על המדד'),
+                                                'hashlama_kizvat_nechut_elderlies_score':('מספר מקבלי השלמה לקצבת נכות לאזרח ותיק באזור סטטיסטי', 'הסבר על המדד'),
+                                                'hashlamta_hachnasa_family_eldelies_score':('מספר מקבלי השלמת הכנסה מבוגרים במשפחה באזור סטטיסטי', 'הסבר על המדד'),
+                                                'mekabley_kizva_elderlies_score':('מספר מקבלי קצבת זקנה באזור סטטיסטי', 'הסבר על המדד'),
+                                                'avtachat_hachnasa_family_score':('מספר מקבלי הבטחת הכנסה משפחות באזור סטטיסטי', 'הסבר על המדד'),
+                                                'income_per_person_score':('סך הכל הכנסה פר נפש במשק בית', 'הסבר על המדד'),
+                                                'arnona_cat_score':('סוג הנחת ארנונה עבור משק בית', 'הסבר על המדד'),
+                                                'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד'),
+                                                'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
+                                                'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
+                                                'members_water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
+                                                'near_106_pizul)and_dangerous_buildings_score':('בניין שנמצא במרחק של עד 25 מטר מבניין מסוכן או בניין שעבר פיצול', 'הסבר על המדד')
+                                              }
                 curr_economic_strength_dict = economic_strength_dict.copy()
                 for key, val in curr_economic_strength_dict.items():
                     if index % 2 == 0:
@@ -431,8 +450,8 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        curr_economic_strength_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'Economic_Strength_slider_{key}', help=f'{key} exp..')
+                        curr_economic_strength_dict[f'{key}'] = temp_col.select_slider(f'{economic_strength_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                    value=val, key=f'Economic_Strength_slider_{key}', help=f'{economic_strength_hebrew_dict[key][1]}')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
