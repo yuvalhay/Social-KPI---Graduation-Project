@@ -395,7 +395,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], health_dict, st.session_state['economic_strength_dict'], True)
 #                 update_session_state("df_scores", curr_df)
                 R_color, G_color = [], []
-                num_of_rows = df_scored.shape[0]
+                num_of_rows = curr_df.shape[0]
                 num_of_rows_range = [i for i in range(num_of_rows)]
                 for v in list(curr_df["Health_score"]):
     #                     st.write(v)
@@ -519,7 +519,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
 #                 update_session_state("df_scores", curr_df)
                 R_color, G_color = [], []
-                num_of_rows = df_scored.shape[0]
+                num_of_rows = curr_df.shape[0]
                 num_of_rows_range = [i for i in range(num_of_rows)]
                 for v in list(curr_df["Economic_Strength_score"]):
     #                     st.write(v)
