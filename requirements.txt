@@ -1,4 +1,5 @@
 streamlit_option_menu
+streamlit_authenticator
 pandas
 numpy
 matplotlib
