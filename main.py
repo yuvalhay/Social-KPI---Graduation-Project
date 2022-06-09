@@ -133,7 +133,7 @@ def main():
             with kpi_selection:
                 header("KPI Selection")
                 KPI_names = ["Loneliness", "Health", "Economic Strength"]
-                KPI_page = st.radio("Choose", KPI_names)
+                KPI_page = st.radio("", KPI_names)
 
 
             with kpi_weights:
