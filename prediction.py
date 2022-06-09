@@ -127,7 +127,7 @@ def chooseK (X_train_LON, y_train_LON, X_test_LON, y_test_LON, X_train_HLT, y_tr
     acc_ECO = []
 
 
-    for n in range(1,40):
+    for n in range(1,20):
         classifier_LON = KNeighborsClassifier(n_neighbors=n)
         classifier_HLT = KNeighborsClassifier(n_neighbors=n)
         classifier_ECO = KNeighborsClassifier(n_neighbors=n)
