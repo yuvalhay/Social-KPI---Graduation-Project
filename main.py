@@ -180,36 +180,57 @@ def main():
                     st.session_state['loneliness_dict'] = loneliness_dict
  
                     curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
-    #                 update_session_state("df_scores", curr_df)
-                    R_color, G_color = [], []
-                    num_of_rows = curr_df.shape[0]
+                    st.session_state['df_scores'] = curr_df
+                    map_df = addAggMetrics(curr_df)
+        
+                    R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
+                    num_of_rows = map_df.shape[0]
                     num_of_rows_range = [i for i in range(num_of_rows)]
-                    for v in list(curr_df["Loneliness_score"]):
+                    for avg, strct in zip(list(map_df["Loneliness_score_AVG"]), list(map_df["Loneliness_score_STRCT"])):
         #                     st.write(v)
-                        if v == 1:
-                            R_color.append(44)
-                            G_color.append(186)
-                        elif v == 2:
-                            R_color.append(163)
-                            G_color.append(255)
-                        elif v == 3:
-                            R_color.append(255)
-                            G_color.append(244)
-                        elif v == 4:
-                            R_color.append(255)
-                            G_color.append(167)
-                        elif v == 5:
-                            R_color.append(255)
-                            G_color.append(0)
+                        if avg == 1:
+                            R_color_AVG.append(44)
+                            G_color_AVG.append(186)
+                        elif avg == 2:
+                            R_color_AVG.append(163)
+                            G_color_AVG.append(255)
+                        elif avg == 3:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(244)
+                        elif avg == 4:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(167)
+                        elif avg == 5:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(0)
+                       
+                    elif strct == 1:
+                            R_color_STRCT.append(44)
+                            G_color_STRCT.append(186)
+                        elif strct == 2:
+                            R_color_STRCT.append(163)
+                            G_color_STRCT.append(255)
+                        elif strct == 3:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(244)
+                        elif strct == 4:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(167)
+                        elif strct == 5:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(0)
 
     #                 map_df["R_color"] = R_color
     #                 map_df["G_color"] = G_color
     #                 st.session_state["R_color"] = R_color
     #                 st.session_state["G_color"] = G_color
-                    st.session_state['df_scores'] = curr_df
-                    map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                    map_df["R_color"] = R_color # st.session_state["R_color"]
-                    map_df["G_color"] = G_color # st.session_state["G_color"]        
+                    
+                    
+#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                    map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
+                    map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
+                    map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
+                    map_df["G_color_STRCT"] = G_color_STRCT # st.session_state["G_color"]    
     #                 update_session_state("map_df", map_df)
                     st.session_state['map_df'] = map_df
 
@@ -225,7 +246,7 @@ def main():
     #                     get_radius=10000,          # Radius is given in meters
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+                        get_fill_color=["R_color_STRCT", "G_color_STRCT", "0", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
@@ -243,7 +264,7 @@ def main():
     #                     get_radius=10000,          # Radius is given in meters
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+                        get_fill_color=["R_color_AVG", "G_color_AVG", "0", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
