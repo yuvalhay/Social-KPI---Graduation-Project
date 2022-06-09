@@ -83,6 +83,7 @@ def main():
     #                 time.sleep(20)
     #             df = pd.read_csv(uploaded_file)
                     df, raw_df = rawToValCatagorized(uploaded_file)
+                    st.session_state['raw_df'] = raw_df
                     df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
                     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
@@ -180,7 +181,7 @@ def main():
     #                 update_session_state("loneliness_dict", loneliness_dict)
                     st.session_state['loneliness_dict'] = loneliness_dict
  
-                    curr_df, _ = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
+                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -354,7 +355,7 @@ def main():
     #                 GUI_tuple = ("L", loneliness_dict)            
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
-                    curr_df, _ = MetricsCalc(st.session_state['df_scored'], st.session_state['health_dict'], health_dict, st.session_state['economic_strength_dict'], True)
+                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['health_dict'], health_dict, st.session_state['economic_strength_dict'], True)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -531,7 +532,7 @@ def main():
     #                 GUI_tuple = ("L", loneliness_dict)            
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
-                    curr_df, _ = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
+                    curr_df, _ = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
