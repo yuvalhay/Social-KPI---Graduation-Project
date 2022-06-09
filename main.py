@@ -426,7 +426,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 economic_strength_hebrew_dict={'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
                                                 'socio_economic_score':('ציון סוציו אקונומי', 'הסבר על המדד'),
                                                 'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
-                                                'mekabley_kizbaot_from_injured_work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
+                                                'mekabley_kizbaot_from_injured_Work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
                                                 'zachaim_kizbat_nechut_children_score':('מספר ילדים הזכאים לקצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
                                                 'Mekabley_kizbaot_nechut_score':('מספר מקבלי קיצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
                                                 'Mekabley_mezonot_score':('מספר מקבלי מזונות באזור סטטיסטי', 'הסבר על המדד'),
