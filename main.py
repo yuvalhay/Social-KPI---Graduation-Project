@@ -120,7 +120,7 @@ if choose == "File Upload":
             map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
             
             R_color, G_color = [], []
-            num_of_rows = curr_df.shape[0]
+            num_of_rows = df_scored.shape[0]
             num_of_rows_range = [i for i in range(num_of_rows)]
             for v in list(map_df["Loneliness_score"]):
 #                     st.write(v)
