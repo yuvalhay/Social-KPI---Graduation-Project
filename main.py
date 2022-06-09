@@ -736,7 +736,7 @@ def St_login():
     login_stat = True
     st.warning('Please enter your username and password')
     while authentication_status == None:
-        st.write(authentication_status)
+#         st.write(authentication_status)
         if authentication_status:
             authenticator.logout('Logout', 'main')
             st.sidebar.write('Welcome *%s*' % (name))
