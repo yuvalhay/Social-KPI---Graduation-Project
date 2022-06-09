@@ -272,7 +272,7 @@ def risk(df_pred):
   perc = round(df_pred.query('Risk == 1').count()[1]/df_pred.shape[0],3)*100
   return perc
 
-def main(knn_df, new_df):
+def prediction_main(knn_df, new_df):
   knn_df.name = 'df_knn'
   df_knn = clean_data(knn_df)
   
