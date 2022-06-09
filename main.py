@@ -10,7 +10,7 @@ import pydeck
 import math
 from functioned import *
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Hello world", page_icon="chart_with_upwards_trend" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png')
 # st.set_page_config(page_title='SoCity', layout = 'wide', page_icon = building, initial_sidebar_state = 'auto')
@@ -21,7 +21,7 @@ set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSaf
 #     )
 
 
-name, authentication_status, authenticator = login()
+name, authentication_status, user_id, authenticator = login()
 #     user_dict = {
 #         'name': name,
 #         'user_id': user_id
