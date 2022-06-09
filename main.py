@@ -13,7 +13,7 @@ from functioned import *
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png')
-st.beta_set_page_config(page_title='SoCity', page_icon = building, layout = 'wide', initial_sidebar_state = 'auto')
+st.set_page_config(page_title='SoCity', layout = 'wide', page_icon = 'building', initial_sidebar_state = 'auto')
 
 
 name, authentication_status, user_id, authenticator = login()
