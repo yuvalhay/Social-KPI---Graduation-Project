@@ -96,8 +96,7 @@ def main():
                     
                     df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-                    
-                    st.write(df_scored)
+
                     st.session_state['df_scored'] = df_scored
                     st.session_state['map_df'] = map_df
 
@@ -272,8 +271,11 @@ def main():
                     view.bearing = 60
                     view.zoom = 14
                     
-                    option = st.selectbox('Choose the Layer?',(AVERAGE, WORST))
-                    
+                    option = st.selectbox('Choose the Layer?',('Loneliness AVERAGE score per building', 'Loneliness WORST score per building'))
+                    if option == 'Loneliness AVERAGE score per building':
+                        option = AVERAGE
+                    else: option = WORST
+                        
                     r = pydeck.Deck(
                         option,
                         initial_view_state=view,
