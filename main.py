@@ -670,7 +670,8 @@ def main():
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
 
-        
+            st.write(new_df)
+            st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
             perc_risk, df_risk = prediction_main(st.session_state['df_knn'], st.session_state['new_df'])
             st.write(f'{round(perc_risk,3)}% of the households are under risk')
