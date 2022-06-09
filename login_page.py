@@ -2,9 +2,9 @@ import streamlit as st
 import streamlit_authenticator as stauth
 
 def login():
-    names = ['Batel Yossef Ravid', 'Meirav Aharon - Gutman', 'Asaf Avrahami','Shai Zusman', 'Admin']
-    usernames = ['BatelYR','MeiravAG', 'AsafA', 'ShaiZ', 'Admin']
-    passwords = ['B!100yr','M@200ag', 'A#300a', 'S$400z', 'A%700g']
+    names = []
+    usernames = []
+    passwords = []
     hashed_passwords = stauth.Hasher(passwords).generate()
 
     authenticator = stauth.Authenticate(names,usernames,hashed_passwords,
