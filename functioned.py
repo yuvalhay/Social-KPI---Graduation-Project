@@ -139,7 +139,7 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
 
 
 def addAggMetrics(df): #adds M_AVG and M_STRCT columns for each metric M
-    df_minimal_scored = df[['index','STAT','north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score','Risk']]
+    df_minimal_scored = df[['index','STAT','north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score']]
     
     temp_df_AVG = df_minimal_scored.groupby(['north','east']).mean().reset_index()[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
     temp_df_STRCT = df_minimal_scored.groupby(['north','east']).aggregate({'Loneliness_score':np.max,'Health_score':np.min,'Economic_Strength_score':np.min}).reset_index(level=0).reset_index(level=0)
