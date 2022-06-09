@@ -223,6 +223,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 loneliness_dict = st.session_state['loneliness_dict']
                 min_val = min(filter(lambda x: x > 0, list(loneliness_dict.values())))
 #                 st.write(min_val)
+                
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
@@ -262,10 +263,35 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                 st.write(st.session_state['df_scored'])
                 curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
 #                 update_session_state("df_scores", curr_df)
+                R_color, G_color = [], []
+                num_of_rows = df_scored.shape[0]
+                num_of_rows_range = [i for i in range(num_of_rows)]
+                for v in list(curr_df["Loneliness_score"]):
+    #                     st.write(v)
+                    if v == 1:
+                        R_color.append(44)
+                        G_color.append(186)
+                    elif v == 2:
+                        R_color.append(163)
+                        G_color.append(255)
+                    elif v == 3:
+                        R_color.append(255)
+                        G_color.append(244)
+                    elif v == 4:
+                        R_color.append(255)
+                        G_color.append(167)
+                    elif v == 5:
+                        R_color.append(255)
+                        G_color.append(0)
+
+#                 map_df["R_color"] = R_color
+#                 map_df["G_color"] = G_color
+#                 st.session_state["R_color"] = R_color
+#                 st.session_state["G_color"] = G_color
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                map_df["R_color"] = st.session_state["R_color"]
-                map_df["G_color"] = st.session_state["G_color"]        
+                map_df["R_color"] = R_color # st.session_state["R_color"]
+                map_df["G_color"] = G_color # st.session_state["G_color"]        
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
 #                 layer = pydeck.Layer(
@@ -368,10 +394,35 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                 st.write(st.session_state['df_scored'])
                 curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], health_dict, st.session_state['economic_strength_dict'], True)
 #                 update_session_state("df_scores", curr_df)
+                R_color, G_color = [], []
+                num_of_rows = df_scored.shape[0]
+                num_of_rows_range = [i for i in range(num_of_rows)]
+                for v in list(curr_df["Health_score"]):
+    #                     st.write(v)
+                    if v == 1:
+                        R_color.append(44)
+                        G_color.append(186)
+                    elif v == 2:
+                        R_color.append(163)
+                        G_color.append(255)
+                    elif v == 3:
+                        R_color.append(255)
+                        G_color.append(244)
+                    elif v == 4:
+                        R_color.append(255)
+                        G_color.append(167)
+                    elif v == 5:
+                        R_color.append(255)
+                        G_color.append(0)
+
+#                 map_df["R_color"] = R_color
+#                 map_df["G_color"] = G_color
+#                 st.session_state["R_color"] = R_color
+#                 st.session_state["G_color"] = G_color
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                map_df["R_color"] = st.session_state["R_color"]
-                map_df["G_color"] = st.session_state["G_color"]  
+                map_df["R_color"] = R_color # st.session_state["R_color"]
+                map_df["G_color"] = G_color # st.session_state["G_color"]  
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
                 layer2 = pydeck.Layer(
@@ -467,17 +518,42 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                 st.write(st.session_state['df_scored'])
                 curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
 #                 update_session_state("df_scores", curr_df)
+                R_color, G_color = [], []
+                num_of_rows = df_scored.shape[0]
+                num_of_rows_range = [i for i in range(num_of_rows)]
+                for v in list(curr_df["Economic_Strength_score"]):
+    #                     st.write(v)
+                    if v == 1:
+                        R_color.append(44)
+                        G_color.append(186)
+                    elif v == 2:
+                        R_color.append(163)
+                        G_color.append(255)
+                    elif v == 3:
+                        R_color.append(255)
+                        G_color.append(244)
+                    elif v == 4:
+                        R_color.append(255)
+                        G_color.append(167)
+                    elif v == 5:
+                        R_color.append(255)
+                        G_color.append(0)
+
+#                 map_df["R_color"] = R_color
+#                 map_df["G_color"] = G_color
+#                 st.session_state["R_color"] = R_color
+#                 st.session_state["G_color"] = G_color
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                map_df["R_color"] = st.session_state["R_color"]
-                map_df["G_color"] = st.session_state["G_color"]  
+                map_df["R_color"] = R_color # st.session_state["R_color"]
+                map_df["G_color"] = G_color # st.session_state["G_color"]  
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
                 layer2 = pydeck.Layer(
                     'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
                     get_position=['lon', 'lat'],
-                    get_elevation="Health_score",
+                    get_elevation="Economic_Strength_score",
                     elevation_scale=20,
 #                     radius=40,
                     get_radius = 10,
