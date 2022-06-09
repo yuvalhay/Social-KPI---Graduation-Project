@@ -104,6 +104,8 @@ if choose == "File Upload":
         uploaded_file = st.file_uploader("Choose a CSV file", type=['csv'], key="uploaded_file")
         if uploaded_file is not None:
             st.session_state['flag'] = True
+            with st.spinner('Working on your file, just a sec..'):
+                time.sleep(20)
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -145,6 +147,7 @@ if choose == "File Upload":
             st.session_state["R_color"] = R_color
             st.session_state["G_color"] = G_color
             st.session_state['map_df'] = map_df
+            
             st.success("File was uploaded!")
 #             df_scored, map_df = file_update(df)
 #             global loneliness_dict
@@ -158,8 +161,7 @@ if choose == "File Upload":
 #             st.write(df)
 #             st.write(df_scored)
         else:
-            if st.session_state['flag'] != True:
-                st.session_state['flag'] = False
+            st.session_state['flag'] = False
 
 elif choose == "Social KPI" and st.session_state['flag'] is False:
     with kpi_header:
