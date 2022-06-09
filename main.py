@@ -734,6 +734,7 @@ def main():
 def St_login():
     name, authentication_status, authenticator = login()
     login_stat = True
+    st.warning('Please enter your username and password')
     while authentication_status == None:
         st.write(authentication_status)
         if authentication_status:
@@ -742,8 +743,8 @@ def St_login():
             main()  
         elif authentication_status == False:
             st.error('Username/Password is incorrect')
-        elif authentication_status == None:
-            st.warning('Please enter your username and password')
+#         elif authentication_status == None:
+#             st.warning('Please enter your username and password')
 
 if __name__ == "__main__":
     St_login()
