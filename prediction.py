@@ -25,14 +25,14 @@ from sklearn.neighbors import KNeighborsClassifier
 import warnings
 warnings.filterwarnings("ignore")
 
-df = pd.read_csv('big_table.csv')
-sample_df = df.sample(n = 30)
-sample_df
+# df = pd.read_csv('big_table.csv')
+# sample_df = df.sample(n = 30)
+# sample_df
 
-df_knn = pd.read_csv('df_knn_raw.csv')
-df_knn.head(5)
+# df_knn = pd.read_csv('df_knn_raw.csv')
+# df_knn.head(5)
 
-df_knn.shape[1]
+# df_knn.shape[1]
 
 """Focusing the dataframe
 
