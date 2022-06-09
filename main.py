@@ -3,23 +3,32 @@ import time
 from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
-# import streamlit.components.v1 as html
 from background_img.background_img import set_png_as_page_bg
+from login import login
 from PIL import Image
 import pydeck
 import math
 from functioned import *
-# import cv2
-# from st_aggrid import AgGrid
-# import plotly.express as px
-# import io
+
 st.set_page_config(layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png')
 
 
-#     st.markdown("""<style>.sidebar .sidebar-content {background-image: linear-gradient(#2e7bcf,#2e7bcf);color: red;}</style>""",unsafe_allow_html=True,)
+name, authentication_status, user_id, authenticator = login()
+    user_dict = {
+        'name': name,
+        'user_id': user_id
+    }
 
+    if authentication_status:
+        authenticator.logout('Logout', 'main')
+        st.sidebar.write('Welcome *%s*' % (name))
+        main(user_dict)
+    elif authentication_status == False:
+        st.error('Username/Password is incorrect')
+    elif authentication_status == None:
+        st.warning('Please enter your username and password')
 
 
 with open('style.css') as f:
