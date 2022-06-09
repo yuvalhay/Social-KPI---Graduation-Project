@@ -434,7 +434,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                                                 'hashlama_kizvat_nechut_elderlies_score':('מספר מקבלי השלמה לקצבת נכות לאזרח ותיק באזור סטטיסטי', 'הסבר על המדד'),
                                                 'hashlamta_hachnasa_family_eldelies_score':('מספר מקבלי השלמת הכנסה מבוגרים במשפחה באזור סטטיסטי', 'הסבר על המדד'),
                                                 'mekabley_kizva_elderlies_score':('מספר מקבלי קצבת זקנה באזור סטטיסטי', 'הסבר על המדד'),
-                                                'avtachat_hachnasa_family_score':('מספר מקבלי הבטחת הכנסה משפחות באזור סטטיסטי', 'הסבר על המדד'),
+                                                'avtachat_hachansa_family_score':('מספר מקבלי הבטחת הכנסה משפחות באזור סטטיסטי', 'הסבר על המדד'),
                                                 'income_per_person_score':('סך הכל הכנסה פר נפש במשק בית', 'הסבר על המדד'),
                                                 'arnona_cat_score':('סוג הנחת ארנונה עבור משק בית', 'הסבר על המדד'),
                                                 'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד'),
