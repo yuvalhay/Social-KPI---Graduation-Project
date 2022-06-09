@@ -323,7 +323,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 
                 curr_health_dict = health_dict.copy()
-                for key, val in health_dict.items():
+                for key, val in curr_health_dict.items():
                     if index % 2 == 0:
                         temp_col = even_col
                     if index % 2 == 1:
@@ -352,19 +352,6 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 map_df["G_color"] = st.session_state["G_color"]  
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
-#                 layer = pydeck.Layer(
-#                                 'HexagonLayer',
-#                                 map_df,
-#                                 get_position=['lon', 'lat','Risk'],
-#                                 auto_highlight=True,
-#                                 get_radius=100,
-#                                 # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
-#                                 get_fill_color=[255, 230, 200, 170, 140],
-#                                 elevation_range=[0, 1000],
-#                                 elevation_scale=2,
-#                                 pickable=True,
-#                                 extruded=True,
-#                                 coverage=0.1)
                 layer2 = pydeck.Layer(
                     'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                     map_df,
@@ -403,43 +390,86 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                     map_style=pydeck.map_styles.SATELLITE,
                 )
                 st.pydeck_chart(r)
+                
             elif KPI_page == "Economic Strength":
-                # st.balloons()
-                st.write("Not Economic Strength")
-                Loneliness_kpi_dict_keys = list(Loneliness_kpi_dict.keys())
+                even_col, odd_col = st.columns(2)
                 index = 0
-                for key in Loneliness_kpi_dict.keys():
-                    Loneliness_kpi_dict[key] = st.select_slider('Explanation', options=[1, 2, 3, 4, 5, 6, 7],
-                                                                value=current_ratio[index],
-                                                                key=Loneliness_kpi_dict_keys[index])
-                    index += 1
+                temp_col = even_col
+                economic_strength_dict = st.session_state['economic_strength_dict']
+                min_val = min(filter(lambda x: x > 0, list(economic_strength_dict.values())))
+#                 st.write(min_val)
+                for key, val in economic_strength_dict.items():
+                    economic_strength_dict[f"{key}"] = round(round(val/min_val, 3))
+#                     loneliness_dict[f"{key}"] = round(val*10, 3)
+                
+                curr_economic_strength_dict = economic_strength_dict.copy()
+                for key, val in curr_economic_strength_dict.items():
+                    if index % 2 == 0:
+                        temp_col = even_col
+                    if index % 2 == 1:
+                        temp_col = odd_col
+                    if val != 0:
+                        curr_economic_strength_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                    value=val, key=f'Economic_Strength_slider_{key}', help=f'{key} exp..')
+#                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
+#                                                                     value=val, key=f'loneliness_slider_{key}')
+                        index += 1
 
-                sum_of_weights = round(sum(list(Loneliness_kpi_dict.values())), 5)
-                st.write(sum_of_weights)
-                Loneliness_weights_dict = {key: round(weight / sum_of_weights, 5) for key, weight in
-                                           Loneliness_kpi_dict.items()}
-                st.write(Loneliness_weights_dict)
-                # with st.spinner('Exporting File..'):
-                #     time.sleep(3)
-                # st.success('Done!')
+                sum_of_weights = round(sum(list(curr_economic_strength_dict.values())), 3)
+#                 st.write(sum_of_weights)
+                economic_strength_dict = {key: round(weight/sum_of_weights, 5) for key, weight in curr_economic_strength_dict.items()}
+#                 update_session_state("loneliness_dict", loneliness_dict)
+                st.session_state['economic_strength_dict'] = economic_strength_dict
+#                 map_df = get_map_df()
+#                 GUI_tuple = ("L", loneliness_dict)            
+#                 loneliness_dict = weights_update(GUI_tuple)
+#                 st.write(st.session_state['df_scored'])
+                curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
+#                 update_session_state("df_scores", curr_df)
+                st.session_state['df_scores'] = curr_df
+                map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+                map_df["R_color"] = st.session_state["R_color"]
+                map_df["G_color"] = st.session_state["G_color"]  
+#                 update_session_state("map_df", map_df)
+                st.session_state['map_df'] = map_df
+                layer2 = pydeck.Layer(
+                    'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                    map_df,
+                    get_position=['lon', 'lat'],
+                    get_elevation="Health_score",
+                    elevation_scale=20,
+#                     radius=40,
+                    get_radius = 10,
+                    auto_highlight=True,
+#                     get_radius=10000,          # Radius is given in meters
+                    # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
+                    # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
+                    # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
+                    # new: ["R_color", "G_color", "0", "120"],
+                    get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+#                     elevation_range=[0, 1000],
+                    pickable=True,
+                    extruded=True,
+                    coverage=5 #0.1
+                    )
+                tooltip = {
+                    "html": "<b>Health KPI = {Health_score}</b>",
+                    "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                }
 
-            # health_weights = [["arnona_cat", 0.2], ["age", 0.08], ["hashlama_kizvat_nechut_elderlies", (-2) * 0.08],
-            #                   ["Mekabley_kizbaot_nechut", (-2) * 0.1], ["zachaim_kizbat_nechut_children", (-2) * 0.09],
-            #                   ["mekabley_kizbaot_from_injured_Work", (-2) * 0.11], ["mekabley_kizba_siud", (-2) * 0.15],
-            #                   ["accumulated_cases", 0.05], ["accumulated_recoveries", (-2) * 0.01],
-            #                   ["accumulated_hospitalized", (-2) * 0.07], ["accumulated_vaccination_first_dose", (-2) * 0.02],
-            #                   ["accumulated_vaccination_second_dose", (-2) * 0.02],
-            #                   ["accumulated_vaccination_third_dose", (-2) * 0.02]]
-            # economic_strength_weights = [["Ownership", 0.35], ["arnona_cat", 0.1], ["income_per_person", 0.2],
-            #                              ["avtachat_hachansa_family", 0.022], ["mekabley_kizva_elderlies", 0.022],
-            #                              ["hashlamta_hachnasa_family_eldelies", 0.022],
-            #                              ["hashlama_kizvat_nechut_elderlies", 0.022],
-            #                              ["Hashlamat_hachnasa_sheerim_family", 0.022], ["Mekabley_mezonot", 0.022],
-            #                              ["Mekabley_kizbaot_nechut", 0.022], ["zachaim_kizbat_nechut_children", 0.022],
-            #                              ["mekabley_kizbaot_from_injured_Work", 0.022], ["mekabley_kizba_siud", 0.022],
-            #                              ["socio_economic", 0.1], ["area_per_person", 0.03]]
-
-            #     st.text("In this section you will see all the weights that create the KPI you selected")
+                view = pydeck.data_utils.compute_view(map_df[['lon', 'lat']])
+                view.pitch = 75
+                view.bearing = 60
+                view.zoom = 14
+                
+                r = pydeck.Deck(
+                    layer2,
+                    initial_view_state=view,
+                    tooltip=tooltip,
+                    map_provider="mapbox",
+                    map_style=pydeck.map_styles.SATELLITE,
+                )
+                st.pydeck_chart(r)
 
 elif choose == "Prediction":
 #     st.balloons()
