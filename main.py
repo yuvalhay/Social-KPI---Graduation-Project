@@ -548,7 +548,7 @@ def main():
 
 
 if __name__ == "__main__":
-    name, authentication_status, user_id, authenticator = login()
+    name, authentication_status, authenticator = login()
     
     if authentication_status:
         authenticator.logout('Logout', 'main')
