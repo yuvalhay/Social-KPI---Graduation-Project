@@ -83,7 +83,7 @@ def main():
     #                 time.sleep(20)
     #             df = pd.read_csv(uploaded_file)
                     df = rawToValCatagorized(uploaded_file)
-#                     df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+                    df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
                     loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
                     st.session_state['loneliness_dict'] = loneliness_dict
@@ -94,7 +94,7 @@ def main():
 #                     st.write(df_scored)
                     map_df = addAggMetrics(df_scored)
                     
-                    df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+#                     df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     
                     st.write(df_scored)
