@@ -227,7 +227,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                     loneliness_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
                 loneliness_hebrew_dict={'arnona_cat_score':('סוג הנחת ארנונה עבור משק בית', 'הסבר על המדד'),
-                                        'members_water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
+                                        'members_Water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
                                         'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
                                         'widow_grown_score':('מספר אלמנים מבוגרים באזור סטטיסטי', 'הסבר על המדד'),
                                         'widow_elderlies_score':('מספר אלמנים זקנים באזור סטטיסטי', 'הסבר על המדד'),
