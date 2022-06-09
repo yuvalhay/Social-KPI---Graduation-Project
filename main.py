@@ -21,7 +21,7 @@ set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSaf
 #     )
 
 
-name, authentication_status, user_id, authenticator = login()
+name, authentication_status, authenticator = login()
 #     user_dict = {
 #         'name': name,
 #         'user_id': user_id
