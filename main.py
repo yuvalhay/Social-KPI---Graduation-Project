@@ -180,7 +180,7 @@ def main():
     #                 update_session_state("loneliness_dict", loneliness_dict)
                     st.session_state['loneliness_dict'] = loneliness_dict
  
-                    curr_df = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
+                    curr_df, _ = MetricsCalc(st.session_state['df_scored'], loneliness_dict, st.session_state['health_dict'], st.session_state['economic_strength_dict'], True)
                     st.session_state['df_scores'] = curr_df
                     map_df = addAggMetrics(curr_df)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -671,7 +671,7 @@ def main():
 
         
         if st.button('Predict!'):
-            perc_risk, df_risk = main(st.session_state['df_knn'], new_df)
+            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
             st.write(f'{round(perc_risk,3)}% of the households are under risk')
             st.dataframe(df_risk)
             
