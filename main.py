@@ -211,15 +211,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
             header("KPI Selection")
             KPI_names = ["Loneliness", "Health", "Economic Strength"]
             KPI_page = st.radio("Choose", KPI_names)
-            # firstKPI, secondKPI, thirdKPI, clear = st.columns([0.5, 0.4, 1, 1])
-            # with firstKPI:
-            #     loneliness_kpi_button = st.button("Loneliness")
-            # with secondKPI:
-            #     health_kpi_button = st.button("Health")
-            # with thirdKPI:
-            #     economic_strength_kpi_button = st.button("Economic Strength")
-            # with clear:
-            #     clear_button = st.button("Clear")
+            
 
         with kpi_weights:
             header("KPI weights")
@@ -234,7 +226,18 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                 for key, val in loneliness_dict.items():
                     loneliness_dict[f"{key}"] = round(round(val/min_val, 3))
 #                     loneliness_dict[f"{key}"] = round(val*10, 3)
-                
+                loneliness_hebrew_dict={'arnona_cat_score':('סוג הנחת ארנונה עבור משק בית', 'הסבר על המדד'),
+                                        'members_water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
+                                        'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
+                                        'widow_grown_score':('מספר אלמנים מבוגרים באזור סטטיסטי', 'הסבר על המדד'),
+                                        'widow_elderlies_score':('מספר אלמנים זקנים באזור סטטיסטי', 'הסבר על המדד'),
+                                        'lonely_elderlies_score':('מספר מבוגרים בודדים באזור סטטיסטי', 'הסבר על המדד'),
+                                        'p85_plus_score':('מספר בני 85 ומעלה באזור סטטיסטי', 'הסבר על המדד'),
+                                        'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                        'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
+                                        'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
+                                        'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
+                                       }
                 curr_loneliness_dict = loneliness_dict.copy()
                 for key, val in curr_loneliness_dict.items():
                     if index % 2 == 0:
@@ -242,8 +245,8 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                     if index % 2 == 1:
                         temp_col = odd_col
                     if val != 0:
-                        curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{key}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                    value=val, key=f'Loneliness_slider_{key}', help=f'{key} exp..')
+                        curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                    value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_hebrew_dict[key][1]}')
 #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
 #                                                                     value=val, key=f'loneliness_slider_{key}')
                         index += 1
