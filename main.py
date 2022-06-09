@@ -137,7 +137,7 @@ def main():
 
 
             with kpi_weights:
-                header("KPI Weights")
+                header("KPI weights")
 
                 if KPI_page == "Loneliness":
                     even_col, odd_col = st.columns(2)
@@ -274,8 +274,12 @@ def main():
                         extruded=True,
                         coverage=5 #0.1
                         )
-                    tooltip = {
-                        "html": "<b>Loneliness KPI = {Loneliness_score}</b>",
+                    tooltip_AVG = {
+                        "html": "<b>Loneliness KPI (Average) = {Loneliness_score_AVG}</b>",
+                        "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                    }
+                    tooltip_STRCT = {
+                        "html": "<b>Loneliness KPI (Worst) = {Loneliness_score_STRCT}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
 
@@ -284,11 +288,12 @@ def main():
                     view.bearing = 60
                     view.zoom = 14
                     
-                    layer = ""
+                    layer, tooltip = "", ""
                     option = st.selectbox('Choose the Layer?',('Loneliness AVERAGE score per building', 'Loneliness WORST score per building'))
                     if option == 'Loneliness AVERAGE score per building':
                         layer = AVERAGE
-                    else: layer = WORST
+                        tooltip = tooltip_AVG
+                    else: layer = WORST, tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
                         layer,
@@ -346,61 +351,107 @@ def main():
     #                 GUI_tuple = ("L", loneliness_dict)            
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
-                    curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], health_dict, st.session_state['economic_strength_dict'], True)
-    #                 update_session_state("df_scores", curr_df)
-                    R_color, G_color = [], []
-                    num_of_rows = curr_df.shape[0]
-                    num_of_rows_range = [i for i in range(num_of_rows)]
-                    for v in list(curr_df["Health_score"]):
-        #                     st.write(v)
-                        if v == 1:
-                            R_color.append(44)
-                            G_color.append(186)
-                        elif v == 2:
-                            R_color.append(163)
-                            G_color.append(255)
-                        elif v == 3:
-                            R_color.append(255)
-                            G_color.append(244)
-                        elif v == 4:
-                            R_color.append(255)
-                            G_color.append(167)
-                        elif v == 5:
-                            R_color.append(255)
-                            G_color.append(0)
+                    curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['health_dict'], health_dict, st.session_state['economic_strength_dict'], True)
+                    st.session_state['df_scores'] = curr_df
+                    map_df = addAggMetrics(curr_df)
+                    map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+        
+                    R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
+                    num_of_rows = map_df.shape[0]
+#                     num_of_rows_range = [i for i in range(num_of_rows)]
+#                     st.write(map_df)
+                    for avg in list(map_df["Health_score_AVG"]):
+                        avg = round(avg)
+                        if avg == 1:
+                            R_color_AVG.append(44)
+                            G_color_AVG.append(186)
+                        elif avg == 2:
+                            R_color_AVG.append(163)
+                            G_color_AVG.append(255)
+                        elif avg == 3:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(244)
+                        elif avg == 4:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(167)
+                        elif avg == 5:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(0)
+                   
+                    for strct in list(map_df["Health_score_STRCT"]):
+                        if strct == 1:
+                            R_color_STRCT.append(44)
+                            G_color_STRCT.append(186)
+                        elif strct == 2:
+                            R_color_STRCT.append(163)
+                            G_color_STRCT.append(255)
+                        elif strct == 3:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(244)
+                        elif strct == 4:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(167)
+                        elif strct == 5:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(0)
 
     #                 map_df["R_color"] = R_color
     #                 map_df["G_color"] = G_color
     #                 st.session_state["R_color"] = R_color
     #                 st.session_state["G_color"] = G_color
-                    st.session_state['df_scores'] = curr_df
-                    map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                    map_df["R_color"] = R_color # st.session_state["R_color"]
-                    map_df["G_color"] = G_color # st.session_state["G_color"]  
+                    
+                    
+#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+#                     st.write(R_color_AVG, num_of_rows)
+                    map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
+                    map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
+                    map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
+                    map_df["G_color_STRCT"] = G_color_STRCT # st.session_state["G_color"]    
     #                 update_session_state("map_df", map_df)
                     st.session_state['map_df'] = map_df
-                    layer2 = pydeck.Layer(
+
+                    WORST = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
-                        get_elevation="Health_score",
+                        get_elevation="Health_score_STRCT",
                         elevation_scale=20,
     #                     radius=40,
                         get_radius = 10,
                         auto_highlight=True,
     #                     get_radius=10000,          # Radius is given in meters
-                        # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                        # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+                        get_fill_color=["R_color_STRCT", "G_color_STRCT", "0", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
                         coverage=5 #0.1
                         )
-                    tooltip = {
-                        "html": "<b>Health KPI = {Health_score}</b>",
+                    AVERAGE = pydeck.Layer(
+                        'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                        map_df,
+                        get_position=['lon', 'lat'],
+                        get_elevation="Health_score_AVG",
+                        elevation_scale=20,
+    #                     radius=40,
+                        get_radius = 10,
+                        auto_highlight=True,
+    #                     get_radius=10000,          # Radius is given in meters
+                        # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
+                        # new: ["R_color", "G_color", "0", "120"],
+                        get_fill_color=["R_color_AVG", "G_color_AVG", "0", "120"],  # Set an RGBA value for fill
+    #                     elevation_range=[0, 1000],
+                        pickable=True,
+                        extruded=True,
+                        coverage=5 #0.1
+                        )
+                    tooltip_AVG = {
+                        "html": "<b>Health KPI (Average) = {Health_score_AVG}</b>",
+                        "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                    }
+                    tooltip_STRCT = {
+                        "html": "<b>Health KPI (Worst) = {Health_score_STRCT}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
 
@@ -408,9 +459,16 @@ def main():
                     view.pitch = 75
                     view.bearing = 60
                     view.zoom = 14
-
+                    
+                    layer, tooltip = "", ""
+                    option = st.selectbox('Choose the Layer?',('Health AVERAGE score per building', 'Health WORST score per building'))
+                    if option == 'Health AVERAGE score per building':
+                        layer = AVERAGE
+                        tooltip = tooltip_AVG
+                    else: layer = WORST, tooltip = tooltip_STRCT
+                        
                     r = pydeck.Deck(
-                        layer2,
+                        layer,
                         initial_view_state=view,
                         tooltip=tooltip,
                         map_provider="mapbox",
@@ -471,60 +529,106 @@ def main():
     #                 loneliness_dict = weights_update(GUI_tuple)
     #                 st.write(st.session_state['df_scored'])
                     curr_df = MetricsCalc(st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], economic_strength_dict, True)
-    #                 update_session_state("df_scores", curr_df)
-                    R_color, G_color = [], []
-                    num_of_rows = curr_df.shape[0]
-                    num_of_rows_range = [i for i in range(num_of_rows)]
-                    for v in list(curr_df["Economic_Strength_score"]):
-        #                     st.write(v)
-                        if v == 1:
-                            R_color.append(44)
-                            G_color.append(186)
-                        elif v == 2:
-                            R_color.append(163)
-                            G_color.append(255)
-                        elif v == 3:
-                            R_color.append(255)
-                            G_color.append(244)
-                        elif v == 4:
-                            R_color.append(255)
-                            G_color.append(167)
-                        elif v == 5:
-                            R_color.append(255)
-                            G_color.append(0)
+                    st.session_state['df_scores'] = curr_df
+                    map_df = addAggMetrics(curr_df)
+                    map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+        
+                    R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
+                    num_of_rows = map_df.shape[0]
+#                     num_of_rows_range = [i for i in range(num_of_rows)]
+#                     st.write(map_df)
+                    for avg in list(map_df["Economic_Strength_score_AVG"]):
+                        avg = round(avg)
+                        if avg == 1:
+                            R_color_AVG.append(44)
+                            G_color_AVG.append(186)
+                        elif avg == 2:
+                            R_color_AVG.append(163)
+                            G_color_AVG.append(255)
+                        elif avg == 3:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(244)
+                        elif avg == 4:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(167)
+                        elif avg == 5:
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(0)
+                   
+                    for strct in list(map_df["Economic_Strength_score_STRCT"]):
+                        if strct == 1:
+                            R_color_STRCT.append(44)
+                            G_color_STRCT.append(186)
+                        elif strct == 2:
+                            R_color_STRCT.append(163)
+                            G_color_STRCT.append(255)
+                        elif strct == 3:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(244)
+                        elif strct == 4:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(167)
+                        elif strct == 5:
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(0)
 
     #                 map_df["R_color"] = R_color
     #                 map_df["G_color"] = G_color
     #                 st.session_state["R_color"] = R_color
     #                 st.session_state["G_color"] = G_color
-                    st.session_state['df_scores'] = curr_df
-                    map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                    map_df["R_color"] = R_color # st.session_state["R_color"]
-                    map_df["G_color"] = G_color # st.session_state["G_color"]  
+                    
+                    
+#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+#                     st.write(R_color_AVG, num_of_rows)
+                    map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
+                    map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
+                    map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
+                    map_df["G_color_STRCT"] = G_color_STRCT # st.session_state["G_color"]    
     #                 update_session_state("map_df", map_df)
                     st.session_state['map_df'] = map_df
-                    layer2 = pydeck.Layer(
+
+                    WORST = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
-                        get_elevation="Economic_Strength_score",
+                        get_elevation="Economic_Strength_score_STRCT",
                         elevation_scale=20,
     #                     radius=40,
                         get_radius = 10,
                         auto_highlight=True,
     #                     get_radius=10000,          # Radius is given in meters
-                        # ["255 - (Loneliness * 10)", "Loneliness * 6 + 30", "Loneliness * 6", "140"]
-                        # Green: ["Loneliness_score * 16", "38 + 40 * (Loneliness_score - 1)", "Loneliness_score % 2", "120"]
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["R_color", "G_color", "0", "120"],  # Set an RGBA value for fill
+                        get_fill_color=["R_color_STRCT", "G_color_STRCT", "0", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
                         coverage=5 #0.1
                         )
-                    tooltip = {
-                        "html": "<b>Health KPI = {Health_score}</b>",
+                    AVERAGE = pydeck.Layer(
+                        'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                        map_df,
+                        get_position=['lon', 'lat'],
+                        get_elevation="Economic_Strength_score_AVG",
+                        elevation_scale=20,
+    #                     radius=40,
+                        get_radius = 10,
+                        auto_highlight=True,
+    #                     get_radius=10000,          # Radius is given in meters
+                        # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
+                        # new: ["R_color", "G_color", "0", "120"],
+                        get_fill_color=["R_color_AVG", "G_color_AVG", "0", "120"],  # Set an RGBA value for fill
+    #                     elevation_range=[0, 1000],
+                        pickable=True,
+                        extruded=True,
+                        coverage=5 #0.1
+                        )
+                    tooltip_AVG = {
+                        "html": "<b>Economic Strength KPI (Average) = {Economic_Strength_score__AVG}</b>",
+                        "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+                    }
+                    tooltip_STRCT = {
+                        "html": "<b>Economic Strength KPI (Worst) = {Economic_Strength_score__STRCT}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
 
@@ -532,9 +636,16 @@ def main():
                     view.pitch = 75
                     view.bearing = 60
                     view.zoom = 14
-
+                    
+                    layer, tooltip = "", ""
+                    option = st.selectbox('Choose the Layer?',('Economic Strength AVERAGE score per building', 'Economic Strength WORST score per building'))
+                    if option == 'Economic Strength AVERAGE score per building':
+                        layer = AVERAGE
+                        tooltip = tooltip_AVG
+                    else: layer = WORST, tooltip = tooltip_STRCT
+                        
                     r = pydeck.Deck(
-                        layer2,
+                        layer,
                         initial_view_state=view,
                         tooltip=tooltip,
                         map_provider="mapbox",
