@@ -663,8 +663,9 @@ def main():
         st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_df = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
-        st.session_state['new_df'] = new_df
-        st.success("File was uploaded!")
+        if new_df is not None:
+            st.session_state['new_df'] = new_df
+            st.success("File was uploaded!")
 
         
         if st.button('Predict!'):
