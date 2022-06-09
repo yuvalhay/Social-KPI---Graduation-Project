@@ -116,7 +116,7 @@ def weights_update(GUI_tuple): # gets (M, d) and update M dict by d changes
   
     return curr_dict
 
-def MetricsCalc(raw_df, catagorized_df, loneliness_dict, health_dict, economic_strength_dict, update_flag): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
+def MetricsCalc(raw_df, catagorized_df, loneliness_dict, health_dict, economic_strength_dict, update_flag, KNN_flag): # this function recieve a DF (catagorized), wwights dictionary and return the same DF with metrics
     global df_scored
     df_scores = catagorized_df
     if update_flag:
@@ -136,8 +136,10 @@ def MetricsCalc(raw_df, catagorized_df, loneliness_dict, health_dict, economic_s
         q80 = df_scores[metric].quantile(0.80)
         q100 = df_scores[metric].quantile(0.100)
         df_scores[f'{metric}_score'] = df_scores[metric].apply(lambda x : 1 if x<=q20  else (2 if q20<x<=q40 else (3 if q40<x<=q60 else(4 if q60<x<=q80 else 5))))
-    df_knn_raw = pd.merge(raw_df,df_scores[['index','Loneliness_score', 'Health_score', 'Economic_Strength_score']],on = 'index', how = 'left') #new one
-    return df_scores, df_knn_raw
+    if KNN_flag:
+        df_knn_raw = pd.merge(raw_df,df_scores[['index','Loneliness_score', 'Health_score', 'Economic_Strength_score']],on = 'index', how = 'left') #new one
+        return df_scores, df_knn_raw
+    else: return df_scores
 
 
 def addAggMetrics(df): #adds M_AVG and M_STRCT columns for each metric M
