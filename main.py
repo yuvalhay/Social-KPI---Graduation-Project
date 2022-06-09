@@ -734,7 +734,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+#     main()
     name, authentication_status, authenticator = login()
     
     if authentication_status:
