@@ -667,6 +667,7 @@ def main():
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_df = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
         if new_df is not None:
+            new_df = pd.read_csv(new_df)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
 
