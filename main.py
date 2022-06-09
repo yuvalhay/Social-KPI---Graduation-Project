@@ -97,6 +97,7 @@ def main():
                     df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
                     
+                    st.write(df_scored)
                     st.session_state['df_scored'] = df_scored
                     st.session_state['map_df'] = map_df
 
