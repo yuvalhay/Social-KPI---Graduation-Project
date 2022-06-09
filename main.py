@@ -80,7 +80,7 @@ with st.sidebar:
     # choose_page = st.radio("Choose", options_names)
 #     selectbox('Select page',['Country data','Continent data']) 
     choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
-                         icons=['upload', 'kanban', 'sliders', 'person lines fill'],
+                         icons=['upload', 'sliders', 'kanban', 'person lines fill'],
                          menu_icon="app-indicator", default_index=0,
                          styles={
                              "container": {"padding": "5!important", "background-color": "white"},
@@ -101,10 +101,9 @@ if choose == "File Upload":
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The File Upload section</p>', unsafe_allow_html=True)
         st.text("Team GABOT")
-        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv','xls','xlsx'], key="uploaded_file")
+        uploaded_file = st.file_uploader("Choose a CSV file", type=['csv'], key="uploaded_file")
         if uploaded_file is not None:
             st.session_state['flag'] = True
-            st.success("File was uploaded!")
 #             df = pd.read_csv(uploaded_file)
             df = rawToValCatagorized(uploaded_file)
             df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
@@ -119,7 +118,34 @@ if choose == "File Upload":
 
         #     global map_df
             map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+            
+            R_color, G_color = [], []
+            num_of_rows = curr_df.shape[0]
+            num_of_rows_range = [i for i in range(num_of_rows)]
+            for v in list(map_df["Loneliness_score"]):
+#                     st.write(v)
+                if v == 1:
+                    R_color.append(44)
+                    G_color.append(186)
+                elif v == 2:
+                    R_color.append(163)
+                    G_color.append(255)
+                elif v == 3:
+                    R_color.append(255)
+                    G_color.append(244)
+                elif v == 4:
+                    R_color.append(255)
+                    G_color.append(167)
+                elif v == 5:
+                    R_color.append(255)
+                    G_color.append(0)
+
+#             map_df["R_color"] = R_color
+#             map_df["G_color"] = G_color
+            st.session_state["R_color"] = R_color
+            st.session_state["G_color"] = G_color
             st.session_state['map_df'] = map_df
+            st.success("File was uploaded!")
 #             df_scored, map_df = file_update(df)
 #             global loneliness_dict
 #             global health_dict
@@ -229,33 +255,8 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                num_of_rows = curr_df.shape[0]
-                R_color, G_color = [], []
-#                 map_df["B_color"] = map_df["R_color"]
-                num_of_rows_range = [i for i in range(num_of_rows)]
-                for v in list(map_df["Loneliness_score"]):
-#                     st.write(v)
-                    if v == 1:
-                        R_color.append(44)
-                        G_color.append(186)
-                    elif v == 2:
-                        R_color.append(163)
-                        G_color.append(255)
-                    elif v == 3:
-                        R_color.append(255)
-                        G_color.append(244)
-                    elif v == 4:
-                        R_color.append(255)
-                        G_color.append(167)
-                    elif v == 5:
-                        R_color.append(255)
-                        G_color.append(0)
-                        
-                map_df["R_color"] = R_color
-                map_df["G_color"] = G_color
-#                 st.write(map_df)
-#                 st.write(map_df["Loneliness_score"])
-                        
+                map_df["R_color"] = st.session_state["R_color"]
+                map_df["G_color"] = st.session_state["G_color"]        
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
 #                 layer = pydeck.Layer(
@@ -347,33 +348,8 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
 #                 update_session_state("df_scores", curr_df)
                 st.session_state['df_scores'] = curr_df
                 map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                num_of_rows = curr_df.shape[0]
-                R_color, G_color = [], []
-#                 map_df["B_color"] = map_df["R_color"]
-                num_of_rows_range = [i for i in range(num_of_rows)]
-                for v in list(map_df["Health_score"]):
-#                     st.write(v)
-                    if v == 1:
-                        R_color.append(44)
-                        G_color.append(186)
-                    elif v == 2:
-                        R_color.append(163)
-                        G_color.append(255)
-                    elif v == 3:
-                        R_color.append(255)
-                        G_color.append(244)
-                    elif v == 4:
-                        R_color.append(255)
-                        G_color.append(167)
-                    elif v == 5:
-                        R_color.append(255)
-                        G_color.append(0)
-                        
-                map_df["R_color"] = R_color
-                map_df["G_color"] = G_color
-#                 st.write(map_df)
-#                 st.write(map_df["Loneliness_score"])
-                        
+                map_df["R_color"] = st.session_state["R_color"]
+                map_df["G_color"] = st.session_state["G_color"]  
 #                 update_session_state("map_df", map_df)
                 st.session_state['map_df'] = map_df
 #                 layer = pydeck.Layer(
