@@ -276,7 +276,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Loneliness KPI (Average) = {round(Loneliness_score_AVG)}</b>",
+                        "html": "<b>Loneliness KPI (Average) = round({Loneliness_score_AVG})</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -294,7 +294,8 @@ def main():
                     if option == 'Loneliness AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    else: layer = WORST, tooltip = tooltip_STRCT
+                    else: layer = WORST 
+                        tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
                         layer,
