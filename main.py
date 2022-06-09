@@ -212,19 +212,7 @@ def main():
                     map_df["G_color"] = G_color # st.session_state["G_color"]        
     #                 update_session_state("map_df", map_df)
                     st.session_state['map_df'] = map_df
-    #                 layer = pydeck.Layer(
-    #                                 'HexagonLayer',
-    #                                 map_df,
-    #                                 get_position=['lon', 'lat','Risk'],
-    #                                 auto_highlight=True,
-    #                                 get_radius=100,
-    #                                 # 'Risk = 5 ? 255 : Risk = 4 ? 230 : Risk = 3 ? 200 : Risk = 2 ? 170 : 140',
-    #                                 get_fill_color=[255, 230, 200, 170, 140],
-    #                                 elevation_range=[0, 1000],
-    #                                 elevation_scale=2,
-    #                                 pickable=True,
-    #                                 extruded=True,
-    #                                 coverage=0.1)
+
                     WORST = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
@@ -271,13 +259,14 @@ def main():
                     view.bearing = 60
                     view.zoom = 14
                     
+                    layer = ""
                     option = st.selectbox('Choose the Layer?',('Loneliness AVERAGE score per building', 'Loneliness WORST score per building'))
                     if option == 'Loneliness AVERAGE score per building':
-                        option = AVERAGE
-                    else: option = WORST
+                        layer = AVERAGE
+                    else: layer = WORST
                         
                     r = pydeck.Deck(
-                        option,
+                        layer,
                         initial_view_state=view,
                         tooltip=tooltip,
                         map_provider="mapbox",
