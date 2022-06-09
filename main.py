@@ -11,7 +11,7 @@ import math
 from functioned import *
 from prediction import *
 
-st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
+# st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
 set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png')
 # st.set_page_config(page_title='SoCity', layout = 'wide', page_icon = building, initial_sidebar_state = 'auto')
@@ -51,6 +51,7 @@ def update_session_state(key, value):
     st.session_state[key] = value
 
 def main():
+    st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
     with st.sidebar:
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
@@ -735,6 +736,7 @@ def main():
 
 if __name__ == "__main__":
 #     main()
+    st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="centered")
     name, authentication_status, authenticator = login()
     
     if authentication_status:
