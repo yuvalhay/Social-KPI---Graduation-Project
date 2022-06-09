@@ -441,7 +441,7 @@ elif choose == "Social KPI" and st.session_state['flag'] is True:
                                                 'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
                                                 'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
                                                 'members_Water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
-                                                'near_106_pizul)and_dangerous_buildings_score':('בניין שנמצא במרחק של עד 25 מטר מבניין מסוכן או בניין שעבר פיצול', 'הסבר על המדד')
+                                                'near_106_pizul_and_dangerous_buildings_score':('בניין שנמצא במרחק של עד 25 מטר מבניין מסוכן או בניין שעבר פיצול', 'הסבר על המדד')
                                               }
                 curr_economic_strength_dict = economic_strength_dict.copy()
                 for key, val in curr_economic_strength_dict.items():
