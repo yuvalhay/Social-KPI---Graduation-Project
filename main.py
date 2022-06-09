@@ -204,7 +204,7 @@ def main():
                             R_color_AVG.append(255)
                             G_color_AVG.append(0)
                        
-                    elif strct == 1:
+                        elif strct == 1:
                             R_color_STRCT.append(44)
                             G_color_STRCT.append(186)
                         elif strct == 2:
