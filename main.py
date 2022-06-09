@@ -744,5 +744,5 @@ if __name__ == "__main__":
         main()
     elif authentication_status == False:
         st.error('Username/Password is incorrect')
-    while authentication_status == None:
-        st.warning('Please enter your username and password')
+#     while authentication_status == None:
+#         st.warning('Please enter your username and password')
