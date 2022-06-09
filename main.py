@@ -91,6 +91,7 @@ def main():
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
                     df_scored = MetricsCalc(df, loneliness_dict, health_dict, economic_strength_dict, False)
+                    df_scored = addAggMetrics(df_scored)
                     st.session_state['df_scored'] = df_scored
 
                 #     global map_df
