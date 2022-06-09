@@ -21,14 +21,14 @@ name, authentication_status, user_id, authenticator = login()
 #         'user_id': user_id
 #     }
 
-    if authentication_status:
-        authenticator.logout('Logout', 'main')
-        st.sidebar.write('Welcome *%s*' % (name))
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.sidebar.write('Welcome *%s*' % (name))
 #         main(user_dict)
-    elif authentication_status == False:
-        st.error('Username/Password is incorrect')
-    elif authentication_status == None:
-        st.warning('Please enter your username and password')
+elif authentication_status == False:
+    st.error('Username/Password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
 
 
 with open('style.css') as f:
