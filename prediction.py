@@ -299,8 +299,8 @@ def main(knn_df, new_df):
 
 
 
-perc_risk, df_risk = main(df_knn, sample_df)
+# perc_risk, df_risk = main(df_knn, new)
 
-print(f'{round(perc_risk,3)}% of the households are under risk')
+# print(f'{round(perc_risk,3)}% of the households are under risk')
 
-df_risk
+# df_risk
