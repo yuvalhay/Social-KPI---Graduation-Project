@@ -294,7 +294,8 @@ def main():
                     if option == 'Loneliness AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    else: layer = WORST 
+                    else: 
+                        layer = WORST 
                         tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
