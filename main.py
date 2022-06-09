@@ -277,7 +277,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Loneliness KPI (Average) = round({Loneliness_score_AVG})</b>",
+                        "html": "<b>Loneliness KPI (Average) = math.round({Loneliness_score_AVG})</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -451,7 +451,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Health KPI (Average) = {round(Health_score_AVG)}</b>",
+                        "html": "<b>Health KPI (Average) = math.round({Health_score_AVG})</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -628,7 +628,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Economic Strength KPI (Average) = {round(Economic_Strength_score__AVG)}</b>",
+                        "html": "<b>Economic Strength KPI (Average) = round({Economic_Strength_score__AVG})</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
