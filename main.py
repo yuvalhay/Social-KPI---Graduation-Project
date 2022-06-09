@@ -737,6 +737,7 @@ if __name__ == "__main__":
 #     main()
     name, authentication_status, authenticator = login()
     
+    st.write(authentication_status)
     if authentication_status:
         authenticator.logout('Logout', 'main')
         st.sidebar.write('Welcome *%s*' % (name))
