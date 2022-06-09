@@ -661,8 +661,26 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
-        knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
-        new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
+#         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
+        new_df = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
+        st.session_state['new_file'] = new_file
+        
+        if st.button('Predict!'):
+            perc_risk, df_risk = main(st.session_state['df_knn'], new_df)
+            st.write(f'{round(perc_risk,3)}% of the households are under risk')
+            st.dataframe(df_risk)
+            
+            def convert_df(df):
+                # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                return df.to_csv().encode('utf-8')
+
+            csv = convert_df(df_risk)
+            st.download_button(
+                 label="Download the predicted data as CSV",
+                 data=csv,
+                 file_name='Prediction.csv',
+                 mime='text/csv',
+                )
 
 
     elif choose == "About":
