@@ -137,6 +137,23 @@ def MetricsCalc(catagorized_df, loneliness_dict, health_dict, economic_strength_
   
     return df_scores
 
+
+def addAggMetrics(df): #adds M_AVG and M_STRCT columns for each metric M
+    df_minimal_scored = df[['index','STAT','north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score','Risk']]
+    
+    temp_df_AVG = df_minimal_scored.groupby(['north','east']).mean().reset_index()[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
+    temp_df_STRCT = df_minimal_scored.groupby(['north','east']).aggregate({'Loneliness_score':np.max,'Health_score':np.min,'Economic_Strength_score':np.min}).reset_index(level=0).reset_index(level=0)
+
+    df_mrg_avg = pd.merge(df_minimal_scored,temp_df_AVG[['north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score']],suffixes= ('','_AVG'),on = ['north','east'], how = 'left')
+    df_scored_agg = pd.merge(df_mrg_avg,temp_df_STRCT[['north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score']],suffixes= ('','_STRCT'),on = ['north','east'], how = 'left')
+    
+    return df_scored_agg
+
+        
+    
+    
+    
+    
 def default_weights(df_catagorized, loneliness_dict, health_dict, economic_strength_dict):
 #   loneliness_dict = {}
 #   health_dict = {}
@@ -191,6 +208,7 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
     update_weights(economic_strength_dict, 'martial_score', 0.02 )
     update_weights(economic_strength_dict, 'members_Water_score', 0.06 )
     update_weights(economic_strength_dict, 'near_106_pizul_and_dangerous_buildings_score', 0.1 )
+  
 
     global mapping_dict
     mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
