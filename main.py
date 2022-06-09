@@ -680,24 +680,25 @@ def main():
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
 
-            st.write(new_df)
-            st.write(st.session_state['df_knn'])
+#             st.write(new_df)
+#             st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
-            perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
-            st.write(f'{round(perc_risk,3)}% of the households are under risk')
-            st.dataframe(df_risk)
-            
-            def convert_df(df):
-                # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                return df.to_csv().encode('utf-8')
+            with st.spinner('Predicting for you, just a min..'):
+                perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
+                st.write(f'{round(perc_risk,3)}% of the households are under risk')
+                st.dataframe(df_risk)
 
-            csv = convert_df(df_risk)
-            st.download_button(
-                 label="Download the predicted data as CSV",
-                 data=csv,
-                 file_name='Prediction.csv',
-                 mime='text/csv',
-                )
+                def convert_df(df):
+                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                    return df.to_csv().encode('utf-8')
+
+                csv = convert_df(df_risk)
+                st.download_button(
+                     label="Download the predicted data as CSV",
+                     data=csv,
+                     file_name='Prediction.csv',
+                     mime='text/csv',
+                    )
 
 
     elif choose == "About":
