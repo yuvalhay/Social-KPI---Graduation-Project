@@ -186,8 +186,7 @@ def main():
                     R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
                     num_of_rows = map_df.shape[0]
                     num_of_rows_range = [i for i in range(num_of_rows)]
-                    for avg, strct in zip(list(map_df["Loneliness_score_AVG"]), list(map_df["Loneliness_score_STRCT"])):
-        #                     st.write(v)
+                    for avg in list(map_df["Loneliness_score_AVG"]):
                         if avg == 1:
                             R_color_AVG.append(44)
                             G_color_AVG.append(186)
@@ -203,8 +202,9 @@ def main():
                         elif avg == 5:
                             R_color_AVG.append(255)
                             G_color_AVG.append(0)
-                       
-                        elif strct == 1:
+                   
+                for strct inlist(map_df["Loneliness_score_STRCT"]):
+                        if strct == 1:
                             R_color_STRCT.append(44)
                             G_color_STRCT.append(186)
                         elif strct == 2:
