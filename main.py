@@ -188,6 +188,7 @@ def main():
 #                     num_of_rows_range = [i for i in range(num_of_rows)]
                     st.write(map_df)
                     for avg in list(map_df["Loneliness_score_AVG"]):
+                        avg = round(avg)
                         if avg == 1:
                             R_color_AVG.append(44)
                             G_color_AVG.append(186)
