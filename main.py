@@ -478,8 +478,8 @@ elif choose == "Prediction":
     font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
-    knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv','xls','xlsx'], key="knn_file")
-    new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv','xls','xlsx'], key="new_file")
+    knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
+    new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
 
             
 elif choose == "About":
