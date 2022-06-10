@@ -731,21 +731,21 @@ def main():
     #         if submitted:
     #             st.write('Thanks for your contacting us. \nWe will respond to your questions or inquiries as soon as possible! \n   Team GABOT')
     
-def St_login():
-    name, authentication_status, authenticator = login()
-    login_stat = True
-#     st.write(authentication_status)
+# def St_login():
+#     name, authentication_status, authenticator = login()
+#     login_stat = True
+# #     st.write(authentication_status)
 
-    st.warning('Please enter your username and password')
+#     st.warning('Please enter your username and password')
 
-    if authentication_status:
-        authenticator.logout('Logout', 'main')
-        st.sidebar.write('Welcome *%s*' % (name))
-        main()  
-    elif authentication_status == False:
-        st.error('Username/Password is incorrect')
-    elif authentication_status == None:
-        st.warning('Please enter your username and password')
+#     if authentication_status:
+#         authenticator.logout('Logout', 'main')
+#         st.sidebar.write('Welcome *%s*' % (name))
+#         main()  
+#     elif authentication_status == False:
+#         st.error('Username/Password is incorrect')
+#     elif authentication_status == None:
+#         st.warning('Please enter your username and password')
 
 if __name__ == "__main__":
 #     St_login()
@@ -762,6 +762,7 @@ if __name__ == "__main__":
         st.error('Username/Password is incorrect')
     elif authentication_status == None:
         st.warning('Please enter your username and password')
+        
 #         st.subheader("Register")
 #         with st.expander("Registering"):
 #             name_register = st.text_input("Your name")
