@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 
-def login():
+def loginn():
     names = st.secrets["DB_USERNAME"]
     usernames = st.secrets["DB_USERNAME"]
     passwords = st.secrets["DB_TOKEN"]
