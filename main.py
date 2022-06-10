@@ -780,17 +780,20 @@ def check_password():
         st.text_input(
             "Password", type="password", on_change=password_entered, key="password"
         )
-        return False
+        is_register = st.button("Submit")
+        if is_register:
+    # Password correct.
+            return False
     elif not st.session_state["password_correct"]:
         # Password not correct, show input + error.
-        st.text_input("Username", key="username")
+        st.text_input("Username", on_change=password_entered, key="username")
         st.text_input(
-            "Password", type="password", key="password"
+            "Password", type="password", on_change=password_entered, key="password"
         )
+        is_register = st.button("Submit")
         st.error("Username/Password is incorrect 😕")
         return False
     else:
-        is_register = st.button("Submit")
         if is_register:
     # Password correct.
             return True
