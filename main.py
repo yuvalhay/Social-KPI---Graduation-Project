@@ -683,7 +683,8 @@ def main():
 #             st.write(new_df)
 #             st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
-            with st.spinner('Predicting for you, just a min..'):
+
+            with st.spinner('Predicting for you, it may take a few minutes to complete..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
 #                 col1, col2, col3 = st.columns(3)
 #                 col1.subheader("")
@@ -700,12 +701,12 @@ def main():
                     return df.to_csv().encode('utf-8')
 
                 csv = convert_df(df_risk)
-            st.download_button(
-                 label="Download the predicted data as CSV",
-                 data=csv,
-                 file_name='Prediction.csv',
-                 mime='text/csv',
-                )
+                st.download_button(
+                     label="Download the predicted data as CSV",
+                     data=csv,
+                     file_name='Prediction.csv',
+                     mime='text/csv',
+                    )
 
 
     elif choose == "About":
