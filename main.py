@@ -816,10 +816,10 @@ if __name__ == "__main__":
 #         st.warning('Please enter your username and password')
         
         
-if check_password():
-    st.write("Here goes your normal Streamlit app...")
-    st.button("Click me")
-    main()
+    if check_password():
+        st.write("Here goes your normal Streamlit app...")
+        st.button("Click me")
+        main()
         
 #         st.subheader("Register")
 #         with st.expander("Registering"):
