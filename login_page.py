@@ -12,4 +12,4 @@ def login():
 
     name, authentication_status, username = authenticator.login('Login','main')
     
-    return name, authentication_status, authenticator
+    return name, authentication_status, username, authenticator
