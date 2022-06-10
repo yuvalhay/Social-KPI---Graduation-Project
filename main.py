@@ -687,7 +687,7 @@ def main():
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
                 col1, col2, col3 = st.columns(3)
                 col1.subheader("")
-                col1.subheader("Households which are under risk")
+                col2.subheader("Households which are under risk")
                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
