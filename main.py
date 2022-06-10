@@ -4,7 +4,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 from background_img.background_img import set_png_as_page_bg
-from login_page import login
+from login_page import loginn
 from PIL import Image
 import pydeck
 import math
