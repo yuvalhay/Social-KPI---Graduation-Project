@@ -686,9 +686,9 @@ def main():
             with st.spinner('Predicting for you, just a min..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
                 col1, col2, col3 = st.columns(3)
-                col1.metric()
+                col1.subheader("")
                 col2.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
-                col3.metric()
+                col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
                 st.write(f'{round(perc_risk,3)}% of the households are under risk')
                 st.dataframe(df_risk)
