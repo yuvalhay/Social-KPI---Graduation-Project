@@ -755,19 +755,19 @@ def main():
 
 if __name__ == "__main__":
 #     St_login()
-    main()
+#     main()
     
-#     name, authentication_status, username, authenticator = loginn()
+    name, authentication_status, username, authenticator = loginn()
 # #     login_stat = True
 # #     st.write(authentication_status)
-#     if authentication_status:
-#         authenticator.logout('Logout', 'main')
-#         st.sidebar.write('Welcome *%s*' % (name))
-#         main()
-#     elif authentication_status == False:
-#         st.error('Username/Password is incorrect')
-#     elif authentication_status == None:
-#         st.warning('Please enter your username and password')
+    if authentication_status:
+        authenticator.logout('Logout', 'main')
+        st.sidebar.write('Welcome *%s*' % (name))
+        main()
+    elif authentication_status == False:
+        st.error('Username/Password is incorrect')
+    elif authentication_status == None:
+        st.warning('Please enter your username and password')
         
 #         st.subheader("Register")
 #         with st.expander("Registering"):
