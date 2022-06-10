@@ -791,9 +791,9 @@ def check_password():
         return False
     else:
         is_register = st.button("Submit")
-            if is_register:
-        # Password correct.
-                return True
+        if is_register:
+    # Password correct.
+            return True
 
 # if check_password():
 #     st.write("Here goes your normal Streamlit app...")
