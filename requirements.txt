@@ -5,4 +5,3 @@ numpy
 matplotlib
 seaborn 
 sklearn
-warnings
