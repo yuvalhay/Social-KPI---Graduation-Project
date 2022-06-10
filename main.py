@@ -803,17 +803,17 @@ if __name__ == "__main__":
 #     St_login()
 #     main()
     
-    name, authentication_status, username, authenticator = loginn()
-# #     login_stat = True
-# #     st.write(authentication_status)
-    if authentication_status:
-        authenticator.logout('Logout', 'main')
-        st.sidebar.write('Welcome *%s*' % (name))
-        main()
-    elif authentication_status == False:
-        st.error('Username/Password is incorrect')
-    elif authentication_status == None:
-        st.warning('Please enter your username and password')
+#     name, authentication_status, username, authenticator = loginn()
+# # #     login_stat = True
+# # #     st.write(authentication_status)
+#     if authentication_status:
+#         authenticator.logout('Logout', 'main')
+#         st.sidebar.write('Welcome *%s*' % (name))
+#         main()
+#     elif authentication_status == False:
+#         st.error('Username/Password is incorrect')
+#     elif authentication_status == None:
+#         st.warning('Please enter your username and password')
         
         
 if check_password():
