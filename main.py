@@ -685,6 +685,7 @@ def main():
 #         if st.button('Predict!'):
             with st.spinner('Predicting for you, just a min..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
+                st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
                 st.write(f'{round(perc_risk,3)}% of the households are under risk')
                 st.dataframe(df_risk)
 
