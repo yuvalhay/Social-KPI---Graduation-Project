@@ -787,7 +787,7 @@ def check_password():
         st.text_input(
             "Password", type="password", on_change=password_entered, key="password"
         )
-        st.error("Username/Password is incorrect 😕 Try Again")
+        st.error("Username/Password is incorrect 😕")
         return False
     else:
         # Password correct.
@@ -819,7 +819,7 @@ if __name__ == "__main__":
     if check_password():
         st.write("Here goes your normal Streamlit app...")
         st.button("Click me")
-        main()
+#         main()
         
 #         st.subheader("Register")
 #         with st.expander("Registering"):
