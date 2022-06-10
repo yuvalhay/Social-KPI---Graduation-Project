@@ -749,8 +749,8 @@ def St_login():
 #             st.warning('Please enter your username and password')
 
 if __name__ == "__main__":
-    St_login()
-#     main()
+#     St_login()
+    main()
     
     
 #     name, authentication_status, authenticator = login()
