@@ -691,7 +691,8 @@ def main():
                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
-                st.write(f'{round(perc_risk,3)}% of the households are under risk')
+                st.title(<*font color=‘red’>'{round(perc_risk,3)}% '</*font> of the households are under risk')
+                
                 st.dataframe(df_risk)
 
                 def convert_df(df):
