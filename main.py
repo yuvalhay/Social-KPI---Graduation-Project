@@ -744,22 +744,30 @@ def St_login():
         main()  
     elif authentication_status == False:
         st.error('Username/Password is incorrect')
-#         elif authentication_status == None:
-#             st.warning('Please enter your username and password')
+    elif authentication_status == None:
+        st.warning('Please enter your username and password')
 
 if __name__ == "__main__":
 #     St_login()
-    main()
+#     main()
     
     
-#     name, authentication_status, authenticator = login()
+    name, authentication_status, authenticator = login()
 #     login_stat = True
 #     st.write(authentication_status)
-#     if authentication_status:
-#         authenticator.logout('Logout', 'main')
-#         st.sidebar.write('Welcome *%s*' % (name))
-#         main()
-#     elif authentication_status == False:
-#         st.error('Username/Password is incorrect')
-#     #     elif authentication_status == None:
-#     #         st.warning('Please enter your username and password')
+    if authentication_status:
+        authenticator.logout('Logout', 'main')
+        st.sidebar.write('Welcome *%s*' % (name))
+        main()
+    elif authentication_status == False:
+        st.error('Username/Password is incorrect')
+    elif authentication_status == None:
+        st.warning('Please enter your username and password')
+        st.subheader("Register")
+        with st.expander("Registering"):
+            name_register = st.text_input("Your name")
+            user_name_register = st.text_input("User name")
+            password_register = st.text_input("Password", type="password")
+            is_register = st.button("Submit")
+            if is_register:
+                register_user(user_name_register, password_register, name_register)
