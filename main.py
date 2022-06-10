@@ -685,11 +685,11 @@ def main():
 #         if st.button('Predict!'):
             with st.spinner('Predicting for you, just a min..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
-                col1, col2, col3 = st.columns(3)
-                col1.subheader("")
-                col2.subheader("Households which are under risk")
-                col2.metric(label="", value=f'{round(perc_risk,3)}%')
-                col3.subheader("")
+#                 col1, col2, col3 = st.columns(3)
+#                 col1.subheader("")
+#                 col2.subheader("Households which are under risk")
+#                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
+#                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
                 st.title(f'{round(perc_risk,3)}% of the households are under risk')
                 
@@ -700,12 +700,12 @@ def main():
                     return df.to_csv().encode('utf-8')
 
                 csv = convert_df(df_risk)
-                st.download_button(
-                     label="Download the predicted data as CSV",
-                     data=csv,
-                     file_name='Prediction.csv',
-                     mime='text/csv',
-                    )
+            st.download_button(
+                 label="Download the predicted data as CSV",
+                 data=csv,
+                 file_name='Prediction.csv',
+                 mime='text/csv',
+                )
 
 
     elif choose == "About":
