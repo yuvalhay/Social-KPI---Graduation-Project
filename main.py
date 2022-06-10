@@ -751,8 +751,6 @@ if __name__ == "__main__":
 #     St_login()
 #     main()
     
-    set_streamlit_layout()
-
     name, authentication_status, username, authenticator = login()
 #     login_stat = True
 #     st.write(authentication_status)
