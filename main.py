@@ -816,6 +816,7 @@ def login_page_only():
     with col_3:
         st.write("")
     st.info('Please enter Username and Password')
+    return True
 
 if __name__ == "__main__":
 #     St_login()
@@ -832,7 +833,7 @@ if __name__ == "__main__":
 #         st.error('Username/Password is incorrect')
 #     elif authentication_status == None:
 #         st.warning('Please enter your username and password')  
-    login_page_only()
+    flag = login_page_only()
     if check_password():
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
