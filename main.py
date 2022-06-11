@@ -25,6 +25,9 @@ set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSaf
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
+
+login_icon = st.container()
+
 about_header = st.container()
 pic_about_header = st.container()
 Yuvi_pic = Image.open(r'Team_members_pictures/Yuval.jpeg')
@@ -37,10 +40,6 @@ kpi_header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
 
-Loneliness_default_values = [0.15, 0.15, 0.15, 0.04, 0.1, 0.3, 0.06, 0.05]
-# if flag == False:
-# else:
-#     flag = False
 
 def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
@@ -759,16 +758,17 @@ def main():
 # streamlit_app.py
 
 def check_password():
-    col_1, col_2, col_3 = st.columns(3)
-    with col_1:
-        st.write("")
+    with login_icon
+        col_1, col_2, col_3 = st.columns(3)
+        with col_1:
+            st.write("")
 
-    with col_2:
-        image = Image.open('background_img/login_page_icon.png')
-        st.image(image)
+        with col_2:
+            image = Image.open('background_img/login_page_icon.png')
+            st.image(image)
 
-    with col_3:
-        st.write("")
+        with col_3:
+            st.write("")
     
 #     """Returns `True` if the user had a correct password."""
 
