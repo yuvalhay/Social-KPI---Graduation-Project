@@ -50,11 +50,7 @@ def update_session_state(key, value):
     del st.session_state[key]
     st.session_state[key] = value
 
-def main(image, col_1, col_2, col_3):
-    del image
-    del col_1
-    del col_2
-    del col_3
+def main():
     with st.sidebar:
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
@@ -813,7 +809,7 @@ def check_password():
     else:
 #         if is_register:
     # Password correct.
-        return True, image, col_1, col_2, col_3
+        return True
 
 # if check_password():
 #     st.write("Here goes your normal Streamlit app...")
@@ -835,13 +831,12 @@ if __name__ == "__main__":
 #     elif authentication_status == False:
 #         st.error('Username/Password is incorrect')
 #     elif authentication_status == None:
-#         st.warning('Please enter your username and password')
-    login_status, image, col_1, col_2, col_3 = check_password()  
+#         st.warning('Please enter your username and password')  
         
-    if login_status:
+    if check_password():
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
-        main(image, col_1, col_2, col_3)
+        main()
         
 #         st.subheader("Register")
 #         with st.expander("Registering"):
