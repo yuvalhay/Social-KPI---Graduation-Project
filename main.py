@@ -50,7 +50,7 @@ def update_session_state(key, value):
     del st.session_state[key]
     st.session_state[key] = value
 
-def main():
+def main(image, col_1, col_2, col_3):
     del image
     del col_1
     del col_2
@@ -763,15 +763,15 @@ def main():
 # streamlit_app.py
 
 def check_password():
-    col1, col2, col3 = st.columns(3)
-    with col1:
+    col_1, col_2, col_3 = st.columns(3)
+    with col_1:
         st.write("")
 
-    with col2:
+    with col_2:
         image = Image.open('background_img/login_page_icon.png')
         st.image(image)
 
-    with col3:
+    with col_3:
         st.write("")
     
 #     """Returns `True` if the user had a correct password."""
@@ -813,7 +813,7 @@ def check_password():
     else:
 #         if is_register:
     # Password correct.
-        return True
+        return True, image, col_1, col_2, col_3
 
 # if check_password():
 #     st.write("Here goes your normal Streamlit app...")
@@ -836,12 +836,12 @@ if __name__ == "__main__":
 #         st.error('Username/Password is incorrect')
 #     elif authentication_status == None:
 #         st.warning('Please enter your username and password')
+    login_status, image, col_1, col_2, col_3 = check_password()  
         
-        
-    if check_password():
+    if login_status:
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
-        main()
+        main(image, col_1, col_2, col_3)
         
 #         st.subheader("Register")
 #         with st.expander("Registering"):
