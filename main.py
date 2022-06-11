@@ -774,6 +774,7 @@ def check_password():
             st.session_state["password_correct"] = False
 
     if "password_correct" not in st.session_state:
+        login_page_only
         # First run, show inputs for username + password.
         st.text_input("Username", on_change=password_entered, key="username")
         st.text_input(
@@ -784,6 +785,7 @@ def check_password():
     # Password Incorrect.
         return False
     elif not st.session_state["password_correct"]:
+        login_page_only
         # Password not correct, show input + error.
         st.text_input("Username", on_change=password_entered, key="username")
         st.text_input(
@@ -804,7 +806,6 @@ def check_password():
 #     st.button("Click me")
 
 def login_page_only():
-
     col_1, col_2, col_3 = st.columns(3)
     with col_1:
         st.write("")
@@ -816,7 +817,7 @@ def login_page_only():
     with col_3:
         st.write("")
     st.info('Please enter Username and Password')
-    return True
+
 
 if __name__ == "__main__":
 #     St_login()
@@ -833,7 +834,6 @@ if __name__ == "__main__":
 #         st.error('Username/Password is incorrect')
 #     elif authentication_status == None:
 #         st.warning('Please enter your username and password')  
-    flag = login_page_only()
     if check_password():
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
