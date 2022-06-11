@@ -760,6 +760,7 @@ def main():
 
 def check_password():
     image = Image.open('background_img/login_page_icon.png')
+    st.image(image)
     """Returns `True` if the user had a correct password."""
 
     def password_entered():
