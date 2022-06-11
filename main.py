@@ -51,7 +51,7 @@ def update_session_state(key, value):
     st.session_state[key] = value
 
 def main():
-    del st.image('background_img/login_page_icon.png')
+    del image
     del col_1
     del col_2
     del col_3
