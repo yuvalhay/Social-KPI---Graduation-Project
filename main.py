@@ -758,23 +758,11 @@ def main():
 
 # streamlit_app.py
 
-def check_password():
-    with login_icon:
-        col_1, col_2, col_3 = st.columns(3)
-        with col_1:
-            st.write("")
-
-        with col_2:
-            image = Image.open('background_img/login_page_icon.png')
-            st.image(image)
-
-        with col_3:
-            st.write("")
-    
+def check_password():  
 #     """Returns `True` if the user had a correct password."""
-    st.info('Please enter Username and Password')
+    
     def password_entered():
-        """Checks whether a password entered by the user is correct."""
+#         """Checks whether a password entered by the user is correct."""
         if (
             st.session_state["username"] in st.secrets["passwords"]
             and st.session_state["password"]
@@ -833,7 +821,18 @@ if __name__ == "__main__":
 #         st.error('Username/Password is incorrect')
 #     elif authentication_status == None:
 #         st.warning('Please enter your username and password')  
-        
+    with login_icon:
+        col_1, col_2, col_3 = st.columns(3)
+        with col_1:
+            st.write("")
+
+        with col_2:
+            image = Image.open('background_img/login_page_icon.png')
+            st.image(image)
+
+        with col_3:
+            st.write("")
+    st.info('Please enter Username and Password')    
     if check_password():
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
