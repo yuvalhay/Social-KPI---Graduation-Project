@@ -699,10 +699,10 @@ def main():
                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
                     return df.to_csv().encode('utf-8')
 
-#                 csv = convert_df(df_risk)
+                csv = convert_df(df_risk)
                 st.download_button(
                      label="Download the predicted data as CSV",
-                     data=convert_df(df_risk),
+                     data=csv,
                      file_name='Prediction.csv',
                      mime='text/csv',
                     )
