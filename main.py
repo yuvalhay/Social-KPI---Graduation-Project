@@ -50,6 +50,7 @@ def update_session_state(key, value):
     st.session_state[key] = value
 
 def main():
+    del login_icon
     with st.sidebar:
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
@@ -771,7 +772,7 @@ def check_password():
             st.write("")
     
 #     """Returns `True` if the user had a correct password."""
-
+    st.info('Please enter Username and Password')
     def password_entered():
         """Checks whether a password entered by the user is correct."""
         if (
