@@ -758,7 +758,7 @@ def main():
 # streamlit_app.py
 
 def check_password():
-    with login_icon
+    with login_icon:
         col_1, col_2, col_3 = st.columns(3)
         with col_1:
             st.write("")
