@@ -51,7 +51,10 @@ def update_session_state(key, value):
     st.session_state[key] = value
 
 def main():
-    del st.image()
+    del st.image('background_img/login_page_icon.png')
+    del col_1
+    del col_2
+    del col_3
     with st.sidebar:
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
