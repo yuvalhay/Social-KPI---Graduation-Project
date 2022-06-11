@@ -693,16 +693,16 @@ def main():
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
                 st.title(f'{round(perc_risk,3)}% of the households are under risk')
                 
-                st.dataframe(df_risk)
+#                 st.dataframe(df_risk)
 
                 def convert_df(df):
                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
                     return df.to_csv().encode('utf-8')
 
-                csv = convert_df(df_risk)
+#                 csv = convert_df(df_risk)
                 st.download_button(
                      label="Download the predicted data as CSV",
-                     data=csv,
+                     data=convert_df(df_risk),
                      file_name='Prediction.csv',
                      mime='text/csv',
                     )
@@ -759,18 +759,6 @@ def main():
 
 def check_password():  
 #     """Returns `True` if the user had a correct password."""
-#     def login_page_only():
-#         col_1, col_2, col_3 = st.columns(3)
-#         with col_1:
-#             st.write("")
-
-#         with col_2:
-#             image = Image.open('background_img/login_page_icon.png')
-#             st.image(image)
-
-#         with col_3:
-#             st.write("")
-#         st.info('Please enter Username and Password')
     def password_entered():
 #         """Checks whether a password entered by the user is correct."""
         if (
