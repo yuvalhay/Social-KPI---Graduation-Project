@@ -759,8 +759,17 @@ def main():
 # streamlit_app.py
 
 def check_password():
-    image = Image.open('background_img/login_page_icon.png')
-    st.image(image)
+    col1, col2, col3 = st.columns([1,6,1])
+    with col1:
+        st.write("")
+
+    with col2:
+        image = Image.open('background_img/login_page_icon.png')
+        st.image(image)
+
+    with col3:
+        st.write("")
+    
     """Returns `True` if the user had a correct password."""
 
     def password_entered():
