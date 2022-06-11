@@ -759,18 +759,18 @@ def main():
 
 def check_password():  
 #     """Returns `True` if the user had a correct password."""
-    def login_page_only():
-        col_1, col_2, col_3 = st.columns(3)
-        with col_1:
-            st.write("")
+#     def login_page_only():
+#         col_1, col_2, col_3 = st.columns(3)
+#         with col_1:
+#             st.write("")
 
-        with col_2:
-            image = Image.open('background_img/login_page_icon.png')
-            st.image(image)
+#         with col_2:
+#             image = Image.open('background_img/login_page_icon.png')
+#             st.image(image)
 
-        with col_3:
-            st.write("")
-        st.info('Please enter Username and Password')
+#         with col_3:
+#             st.write("")
+#         st.info('Please enter Username and Password')
     def password_entered():
 #         """Checks whether a password entered by the user is correct."""
         if (
@@ -785,7 +785,17 @@ def check_password():
             st.session_state["password_correct"] = False
 
     if "password_correct" not in st.session_state:
-        login_page_only
+        col_1, col_2, col_3 = st.columns(3)
+        with col_1:
+            st.write("")
+
+        with col_2:
+            image = Image.open('background_img/login_page_icon.png')
+            st.image(image)
+
+        with col_3:
+            st.write("")
+        st.info('Please enter Username and Password')
         # First run, show inputs for username + password.
         st.text_input("Username", on_change=password_entered, key="username")
         st.text_input(
@@ -796,7 +806,17 @@ def check_password():
     # Password Incorrect.
         return False
     elif not st.session_state["password_correct"]:
-        login_page_only
+        col_1, col_2, col_3 = st.columns(3)
+        with col_1:
+            st.write("")
+
+        with col_2:
+            image = Image.open('background_img/login_page_icon.png')
+            st.image(image)
+
+        with col_3:
+            st.write("")
+        st.info('Please enter Username and Password')
         # Password not correct, show input + error.
         st.text_input("Username", on_change=password_entered, key="username")
         st.text_input(
