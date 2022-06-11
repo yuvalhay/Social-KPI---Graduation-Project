@@ -770,7 +770,7 @@ def check_password():
     with col3:
         st.write("")
     
-    """Returns `True` if the user had a correct password."""
+#     """Returns `True` if the user had a correct password."""
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
