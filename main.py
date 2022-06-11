@@ -759,7 +759,7 @@ def main():
 # streamlit_app.py
 
 def check_password():
-    col1, col2, col3 = st.columns([1,6,1])
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.write("")
 
