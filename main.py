@@ -919,7 +919,7 @@ def check_password():
         else:
             st.session_state["password_correct"] = False
 
-    if "password_correct" not in st.session_state:
+    if "password_correct" not in st.session_state or not st.session_state["password_correct"]:
         col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
         with col_1:
             st.write("")
@@ -954,41 +954,41 @@ def check_password():
     # Password Incorrect.
         st.warning("Press enter to submit")
         return False
-    elif not st.session_state["password_correct"]:
-        col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
-        with col_1:
-            st.write("")
+#     elif not st.session_state["password_correct"]:
+#         col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
+#         with col_1:
+#             st.write("")
 
-        with col_2:
-            st.write("")
+#         with col_2:
+#             st.write("")
 
-        with col_3:
-            st.write("")
+#         with col_3:
+#             st.write("")
         
-        with col_4:
-            image = Image.open('background_img/SoCityFINAL-LOGO.png')
-            st.image(image)
+#         with col_4:
+#             image = Image.open('background_img/SoCityFINAL-LOGO.png')
+#             st.image(image)
             
-        with col_5:
-            st.write("")
+#         with col_5:
+#             st.write("")
             
-        with col_6:
-            st.write("")
+#         with col_6:
+#             st.write("")
             
-        with col_7:
-            st.write("")
+#         with col_7:
+#             st.write("")
             
         
             
             
-        st.info('Please enter Username and Password')
-        # Password not correct, show input + error.
-        st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", on_change=password_entered, key="password"
-        )
-#         is_register = st.button("Submit")
-#         if is_register:
+#         st.info('Please enter Username and Password')
+#         # Password not correct, show input + error.
+#         st.text_input("Username", key="username")
+#         st.text_input(
+#             "Password", type="password", on_change=password_entered, key="password"
+#         )
+# #         is_register = st.button("Submit")
+# #         if is_register:
     # Password Incorrect.
         st.error("Username/Password is incorrect 😕")
         return False
