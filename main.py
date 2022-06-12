@@ -169,16 +169,16 @@ def main():
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
                                            }
                     loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
-                        'members_Water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
-                        'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
-                        'widow_grown_score':('מספר אלמנים מבוגרים באזור סטטיסטי', 'הסבר על המדד'),
-                        'widow_elderlies_score':('מספר אלמנים זקנים באזור סטטיסטי', 'הסבר על המדד'),
-                        'lonely_elderlies_score':('מספר מבוגרים בודדים באזור סטטיסטי', 'הסבר על המדד'),
-                        'p85_plus_score':('מספר בני 85 ומעלה באזור סטטיסטי', 'הסבר על המדד'),
-                        'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
-                        'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
-                        'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
-                        'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
+                        'members_Water_score':('Number of people per household', 'הסבר על המדד'),
+                        'martial_score':('Marital status of head of household', 'הסבר על המדד'),
+                        'widow_grown_score':('number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
+                        'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
+                        'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
+                        'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
+                        'accumulated_cases_score':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
+                        'age_score':('Age of head of household', 'הסבר על המדד'),
+                        'area_per_person_score':('Area per person per household', 'הסבר על המדד'),
+                        'Ownership_score':('Type of property ownership (rent/ownership)', 'הסבר על המדד')
                        }
                     curr_loneliness_dict = loneliness_dict.copy()
                     for key, val in curr_loneliness_dict.items():
