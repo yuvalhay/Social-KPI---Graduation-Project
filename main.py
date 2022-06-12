@@ -817,7 +817,7 @@ def check_password():
             st.error("Username/Password is incorrect 😕")
             return False
     else:
-        if is_register:
+#         if is_register:
     # Password correct.
             return True
 
