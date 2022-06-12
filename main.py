@@ -171,7 +171,7 @@ def main():
                     loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
                         'members_Water_score':('Number of people per household', 'הסבר על המדד'),
                         'martial_score':('Marital status of head of household', 'הסבר על המדד'),
-                        'widow_grown_score':('number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
+                        'widow_grown_score':('Number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
                         'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
                         'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
                         'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
