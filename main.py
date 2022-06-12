@@ -53,7 +53,7 @@ def main():
     with st.sidebar:
         
         image = Image.open('background_img/SoCityFINAL-LOGO_wide.png')
-        st.image(image, width='600')
+        st.image(image)
 
         choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Risk", "Prediction", "About"],
                              icons=['upload', 'sliders','bullseye', 'kanban', 'person lines fill'],
