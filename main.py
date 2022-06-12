@@ -914,7 +914,7 @@ def main():
 #              data=csv,
 #              file_name='Prediction.csv',
 #              mime='text/csv',
-            )
+#             )
     
     elif choose == "About":
         #         st.title("The About section")
