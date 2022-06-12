@@ -46,7 +46,7 @@ def header(name):
                 unsafe_allow_html=True)
 
 def subheader(name):
-    st.markdown(f'<p style="color: #000000; font-size: 13px; "> {name} </p>',
+    st.markdown(f'<p style="color: #000000; font-size: 16px; "> {name} </p>',
                 unsafe_allow_html=True)
     
 def update_session_state(key, value):
@@ -85,11 +85,11 @@ def main():
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
             subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
             subheader("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
-            st.subheader("During the project we came to an understanding that “Risk” is a combination of three social KPI's ")
-            st.subheader("which are Loneliness, Health and Economic Strength. ")
-            st.subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
-            st.subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
-            st.subheader("so you can observe how much it has affected the social KPI and the Risk.")
+            subheader("During the project we came to an understanding that “Risk” is a combination of three social KPI's ")
+            subheader("which are Loneliness, Health and Economic Strength. ")
+            subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
+            subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
+            subheader("so you can observe how much it has affected the social KPI and the Risk.")
             
     if choose == "File Upload":
     #     uploaded_file = None
