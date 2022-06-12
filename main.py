@@ -79,7 +79,7 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
-            st.text("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
+            st.subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
             st.text("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
             st.text("During the project we came to an understanding that “Risk” is a combination of three social KPIs ")
             st.text("which are Loneliness, Health and Economic Strength. ")
