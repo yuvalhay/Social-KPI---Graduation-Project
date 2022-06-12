@@ -55,8 +55,8 @@ def main():
         image = Image.open('background_img/SoCityFINAL-LOGO_wide.png')
         st.image(image)
 
-        choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Risk", "Prediction", "About"],
-                             icons=['upload', 'sliders','bullseye', 'kanban', 'person lines fill'],
+        choose = option_menu("SoCity", ["Home", "File Upload", "Social KPIs", "Risk", "Prediction", "About"],
+                             icons=['house', 'upload', 'sliders','bullseye', 'kanban', 'person lines fill'],
 
                              menu_icon="building", default_index=0,
     #                          bi bi-building
@@ -71,7 +71,21 @@ def main():
                              )
     if 'flag' not in st.session_state:
         st.session_state['flag'] = False
-
+    
+    if choose == "Home":
+    #     uploaded_file = None
+        with about_header:
+            st.markdown(""" <style> .font {
+            font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+            </style> """, unsafe_allow_html=True)
+            st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
+            st.text("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
+            st.text("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
+            st.write("During the project we came to an understanding that “risk” is a combination of three social KPI’S which are Loneliness, Health and Economic strength. ")
+            st.text("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPI’s. ")
+            st.text("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
+            st.text("so you can observe how much it has affected the social KPI.")
+            
     if choose == "File Upload":
     #     uploaded_file = None
         with about_header:
