@@ -951,7 +951,7 @@ def check_password():
         )
         is_register = st.button("Submit")
         if is_register:
-            passeord_enter()
+            password_entered()
     # Password Incorrect.
         st.warning("Press enter to submit")
         return False
