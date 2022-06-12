@@ -775,16 +775,23 @@ def check_password():
             st.session_state["password_correct"] = False
 
     if "password_correct" not in st.session_state:
-        col_1, col_2, col_3 = st.columns(3)
+        col_1, col_2, col_3, col_4, col_5 = st.columns(5)
         with col_1:
-            st.write("")
+            st.write("1")
 
         with col_2:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
-            st.image(image)
+            st.write("1")
 
         with col_3:
-            st.write("")
+            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            st.image(image)
+        
+        with col_4:
+            st.write("1")
+            
+        with col_5:
+            st.write("1")
+            
         st.info('Please enter Username and Password')
         # First run, show inputs for username + password.
         st.text_input("Username", key="username")
