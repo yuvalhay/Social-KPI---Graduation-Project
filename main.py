@@ -775,7 +775,7 @@ def check_password():
             st.session_state["password_correct"] = False
 
     if "password_correct" not in st.session_state:
-        col_1, col_2, col_3, col_4, col_5 = st.columns(5)
+        col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
         with col_1:
             st.write("1")
 
@@ -783,14 +783,20 @@ def check_password():
             st.write("1")
 
         with col_3:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
-            st.image(image)
+            st.write("1")
         
         with col_4:
-            st.write("1")
+            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            st.image(image)
             
         with col_5:
-            st.write("1")
+            st.write("")
+            
+        with col_6:
+            st.write("")
+            
+        with col_7:
+            st.write("")
             
         st.info('Please enter Username and Password')
         # First run, show inputs for username + password.
@@ -804,7 +810,7 @@ def check_password():
         st.warning("Press enter to submit")
         return False
     elif not st.session_state["password_correct"]:
-        col_1, col_2, col_3, col_4, col_5 = st.columns(5)
+        col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
         with col_1:
             st.write("1")
 
@@ -812,14 +818,20 @@ def check_password():
             st.write("1")
 
         with col_3:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
-            st.image(image)
+            st.write("1")
         
         with col_4:
-            st.write("1")
+            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            st.image(image)
             
         with col_5:
-            st.write("1")
+            st.write("")
+            
+        with col_6:
+            st.write("")
+            
+        with col_7:
+            st.write("")
             
         
             
