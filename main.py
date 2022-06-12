@@ -80,12 +80,12 @@ def main():
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
             st.subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
-            st.text("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
-            st.text("During the project we came to an understanding that “Risk” is a combination of three social KPIs ")
-            st.text("which are Loneliness, Health and Economic Strength. ")
-            st.text("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
-            st.text("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
-            st.text("so you can observe how much it has affected the social KPI and the Risk.")
+            st.subheader("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
+            st.subheader("During the project we came to an understanding that “Risk” is a combination of three social KPI's ")
+            st.subheader("which are Loneliness, Health and Economic Strength. ")
+            st.subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
+            st.subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
+            st.subheader("so you can observe how much it has affected the social KPI and the Risk.")
             
     if choose == "File Upload":
     #     uploaded_file = None
