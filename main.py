@@ -848,20 +848,18 @@ def main():
 
             with st.spinner('Processing, it may take a few minutes..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
-                col1, col2, col3 = st.columns([1, 3, 1])
+                col1, col2 = st.columns([3, 1])
 #                 col1, col2, col3 = st.columns(3)
 #                 col1.subheader("")
 #                 col2.subheader("Households which are under risk")
 #                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
 #                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
-                
+                        
                 col1.header("")
-        
-                col2.header("")
-                col2.subheader("")
-                col2.subheader("")
-                col2.subheader(f'{round(perc_risk,3)}% of the households are under risk')
+                col1.subheader("")
+                col1.subheader("")
+                col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
                 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
@@ -874,7 +872,7 @@ def main():
                 ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-                col3.pyplot(fig1)
+                col2.pyplot(fig1)
                 
                 
                 st.dataframe(df_risk)
