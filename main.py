@@ -51,16 +51,9 @@ def update_session_state(key, value):
 
 def main():
     with st.sidebar:
-        col_1, col_2, col_3 = st.columns(3)
-        with col_1:
-            st.write("")
-
-        with col_2:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
-            st.image(image)
-
-        with col_3:
-            st.write("")
+        
+        image = Image.open('background_img/SoCityLOGOwithtitle.png')
+        st.image(image, use_column_width=auto)
 
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
