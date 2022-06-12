@@ -76,8 +76,9 @@ def clean_data(csv):
     csv['Predominant_enter_exit_group'] = csv.Predominant_enter_exit_group.cat.codes
 
     #ADRESS - omitting (adress information is given anyway by coordinates)
-    csv.drop(columns=['heb_address'], inplace = True)
-    csv
+    if 'heb_address' in csv.columns:
+        csv.drop(columns=['heb_address'], inplace = True)
+#     csv
     csv[csv==np.inf]=np.nan
     csv.dropna(axis = 1, inplace = True) # remove NA
 
