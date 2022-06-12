@@ -843,8 +843,8 @@ def main():
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         if "new_file_name" in st.session_state:
-            new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
-            if (new_file is not None):
+            new_file_2 = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file_2")
+            if (new_file_2 is not None):
                 st.session_state["new_file_name"] = new_file
                 st.session_state["finish_Prediction_flag"] = False
         
