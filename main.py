@@ -8,6 +8,7 @@ from login_page import loginn
 from PIL import Image
 import pydeck
 import math
+from goto import goto, label
 from functioned import *
 from prediction import *
 
@@ -847,11 +848,13 @@ def main():
             if (new_file_2 is not None):
                 st.session_state["new_file_name"] = new_file_2
                 st.session_state["finish_Prediction_flag"] = False
-        
+                goto .continue
+                
         elif "new_file_name" not in st.session_state:
             new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
             st.session_state["new_file_name"] = new_file
-        
+            
+            label .continue
             if (new_file is not None) and (st.session_state["finish_Prediction_flag"] == False):
                 new_df = pd.read_csv(new_file)
                 st.session_state['new_df'] = new_df
