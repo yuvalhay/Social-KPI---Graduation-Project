@@ -792,7 +792,7 @@ def check_password():
 #         is_register = st.button("Submit")
 #         if is_register:
     # Password Incorrect.
-        st.error("Username/Password is incorrect 😕")
+        st.warning("Press enter to submit")
         return False
     elif not st.session_state["password_correct"]:
         col_1, col_2, col_3 = st.columns(3)
