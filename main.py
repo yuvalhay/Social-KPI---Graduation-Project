@@ -168,6 +168,20 @@ def main():
                                             'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
                                            }
+                                            
+                     loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
+                                            'members_Water_score':('Number of people per household', 'הסבר על המדד'),
+                                            'martial_score':('Marital status of head of household', 'הסבר על המדד'),
+                                            'widow_grown_score':('Number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
+                                            'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
+                                            'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
+                                            'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
+                                            'accumulated_cases_score':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
+                                            'age_score':('Age of head of household', 'הסבר על המדד'),
+                                            'area_per_person_score':('Area per person per household', 'הסבר על המדד'),
+                                            'Ownership_score':('Type of property ownership (rent/ownership)', 'הסבר על המדד')
+                                  
+                                           }
                     curr_loneliness_dict = loneliness_dict.copy()
                     for key, val in curr_loneliness_dict.items():
                         if index % 2 == 0:
@@ -175,8 +189,8 @@ def main():
                         if index % 2 == 1:
                             temp_col = odd_col
                         if val != 0:
-                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_hebrew_dict[key][1]}')
+                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_english_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_english_dict[key][1]}')
                             index += 1
 
                     sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
