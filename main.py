@@ -983,7 +983,7 @@ def check_password():
         with col_7:
             st.write("")
             
-        st.info('Please enter Username and Password')
+#         st.info('Please enter Username and Password')
         # First run, show inputs for username + password.
         st.text_input("Username", key="username")
         st.text_input(
