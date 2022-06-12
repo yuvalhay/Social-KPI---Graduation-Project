@@ -123,7 +123,7 @@ def main():
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Social KPIs</p>', unsafe_allow_html=True)
 
-        st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
 
     elif choose == "Social KPIs" and st.session_state['flag'] is True:
         with kpi_header:
@@ -667,7 +667,7 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
         
-        st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
         
     elif choose == "Prediction" and st.session_state['flag'] is True:
     #     st.balloons()
@@ -675,7 +675,7 @@ def main():
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font"Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
         if new_file is not None:
@@ -717,7 +717,7 @@ def main():
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">About</p>', unsafe_allow_html=True)
 #         st.text("Team GABOT")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
