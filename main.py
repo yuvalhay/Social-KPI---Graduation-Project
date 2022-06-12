@@ -75,7 +75,7 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">The File Upload section</p>', unsafe_allow_html=True)
-            st.text("Team GABOT")
+#             st.text("Team GABOT")
             uploaded_file = st.file_uploader("Choose a CSV file", type=['csv'], key="uploaded_file")
             if uploaded_file is not None:
                 st.session_state['flag'] = True
@@ -714,7 +714,7 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">The About section</p>', unsafe_allow_html=True)
-        st.text("Team GABOT")
+#         st.text("Team GABOT")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
             st.image(Yuvi_pic, width=130)
