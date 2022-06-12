@@ -168,18 +168,6 @@ def main():
                                             'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
                                            }
-                    loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
-                        'members_Water_score':('Number of people per household', 'הסבר על המדד'),
-                        'martial_score':('Marital status of head of household', 'הסבר על המדד'),
-                        'widow_grown_score':('Number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
-                        'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
-                        'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
-                        'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
-                        'accumulated_cases_score':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
-                        'age_score':('Age of head of household', 'הסבר על המדד'),
-                        'area_per_person_score':('Area per person per household', 'הסבר על המדד'),
-                        'Ownership_score':('Type of property ownership (rent/ownership)', 'הסבר על המדד')
-                       }
                     curr_loneliness_dict = loneliness_dict.copy()
                     for key, val in curr_loneliness_dict.items():
                         if index % 2 == 0:
@@ -187,8 +175,8 @@ def main():
                         if index % 2 == 1:
                             temp_col = odd_col
                         if val != 0:
-                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_english_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_english_dict[key][1]}')
+                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_hebrew_dict[key][1]}')
                             index += 1
 
                     sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
@@ -690,6 +678,83 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
+        
+         # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+        curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
+        st.session_state['df_scores'] = curr_df
+        map_df = addAggMetrics(curr_df)
+        map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+        # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+        
+        R_color, G_color, B_color, A_color = [], [], [], []
+        num_of_rows = map_df.shape[0]
+#                     num_of_rows_range = [i for i in range(num_of_rows)]
+#                     st.write(map_df)
+        for val in list(map_df["Economic_Strength_score_STRCT"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            if val == 0:
+                R_color.append(255)
+                G_color.append(255)
+                B_color.append(255)
+                A_color.append(120)
+            elif val == 1:
+                R_color.append(255)
+                G_color.append(0)
+                B_color.append(0)
+                A_color.append(0)
+        
+        Risk_df = st.session_state['Risk'] # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        st.title(f'{round(perc_risk,3)}% of the households are under risk') # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        st.dataframe(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        def convert_df(df):
+            # IMPORTANT: Cache the conversion to prevent computation on every rerun
+            return df.to_csv().encode('utf-8')
+
+        csv = convert_df(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        st.download_button(
+             label="Download the Risk data as CSV",
+             data=csv,
+             file_name='Prediction.csv',
+             mime='text/csv',
+            )
+        
+        Risk_layer = pydeck.Layer(
+                        'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
+                        map_df,
+                        get_position=['lon', 'lat'],
+                        get_elevation="Economic_Strength_score_STRCT", # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                        elevation_scale=20,
+    #                     radius=40,
+                        get_radius = 10,
+                        auto_highlight=True,
+    #                     get_radius=10000,          # Radius is given in meters
+                        # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
+                        # new: ["R_color", "G_color", "0", "120"],
+                        get_fill_color=["R_color", "G_color", "B_color", "A_color"],  # Set an RGBA value for fill
+    #                     elevation_range=[0, 1000],
+                        pickable=True,
+                        extruded=True,
+                        coverage=5 #0.1
+                        )
+        Risk_tooltip = {
+            "html": "<b>Risk index (Worst) = {Risk_score})</b>",
+            "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+        }
+
+        view = pydeck.data_utils.compute_view(map_df[['lon', 'lat']])
+        view.pitch = 75
+        view.bearing = 60
+        view.zoom = 14
+
+        r = pydeck.Deck(
+            Risk_layer,
+            initial_view_state=view,
+            tooltip=Risk_tooltip,
+            map_provider="mapbox",
+            map_style=pydeck.map_styles.SATELLITE,
+        )
+        st.pydeck_chart(r)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
 #         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
 #         if new_file is not None:
@@ -775,8 +840,7 @@ def main():
                      file_name='Prediction.csv',
                      mime='text/csv',
                     )
-
-
+    
     elif choose == "About":
         #         st.title("The About section")
         st.markdown(""" <style> .font {
