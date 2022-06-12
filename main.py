@@ -849,9 +849,8 @@ def main():
 #             st.write(new_df)
 #             st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
-
+            finish_flag = False
             with st.spinner('Processing, it may take a few minutes..'):
-                st.write(st.session_state['df_knn'])
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
                 col1, col2 = st.columns([3, 1])
 #                 col1, col2, col3 = st.columns(3)
@@ -881,19 +880,30 @@ def main():
                 
                 
                 st.dataframe(df_risk)
+                finish_flag = True
+#                 def convert_df(df):
+#                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#                     return df.to_csv().encode('utf-8')
 
+#                 csv = convert_df(df_risk)
+#                 st.download_button(
+#                      label="Download the predicted data as CSV",
+#                      data=csv,
+#                      file_name='Prediction.csv',
+#                      mime='text/csv',
+#                     )
+            if finish_flag == True:
                 def convert_df(df):
                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
                     return df.to_csv().encode('utf-8')
 
                 csv = convert_df(df_risk)
-                if st.download_button(
+                st.download_button(
                      label="Download the predicted data as CSV",
                      data=csv,
                      file_name='Prediction.csv',
                      mime='text/csv',
-                    ):
-                    pass
+                    )
     
     elif choose == "About":
         #         st.title("The About section")
