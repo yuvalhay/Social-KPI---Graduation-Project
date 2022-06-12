@@ -855,6 +855,8 @@ def main():
 #                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
 #                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
+                col1.header("")
+                col1.subheader("")
                 col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
                 
 
