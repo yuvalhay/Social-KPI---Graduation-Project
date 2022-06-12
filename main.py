@@ -52,7 +52,7 @@ def update_session_state(key, value):
 def main():
     with st.sidebar:
         
-        image = Image.open('background_img/SoCityLOGOwithtitle.png')
+        image = Image.open('background_img/SoCityFINAL-LOGO_wide.png')
         st.image(image, use_column_width='auto')
 
         choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Risk", "Prediction", "About"],
@@ -841,7 +841,7 @@ def check_password():
             st.write("")
         
         with col_4:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            image = Image.open('background_img/SoCityFINAL-LOGO.png')
             st.image(image)
             
         with col_5:
@@ -876,7 +876,7 @@ def check_password():
             st.write("")
         
         with col_4:
-            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            image = Image.open('background_img/SoCityFINAL-LOGO.png')
             st.image(image)
             
         with col_5:
