@@ -848,30 +848,33 @@ def main():
 
             with st.spinner('Processing, it may take a few minutes..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
-                col1, col2 = st.columns([3, 1])
+                col1, col2, col3 = st.columns([1, 3, 1])
 #                 col1, col2, col3 = st.columns(3)
 #                 col1.subheader("")
 #                 col2.subheader("Households which are under risk")
 #                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
 #                 col3.subheader("")
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
+                
                 col1.header("")
-                col1.subheader("")
-                col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
+        
+                col2.header("")
+                col2.subheader("")
+                col2.subheader("")
+                col2.subheader(f'{round(perc_risk,3)}% of the households are under risk')
                 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
                 colors = ['#FF4B4B', '#B7C3F3']
-                labels = 'Risk', ''
+                labels = ['Risk', '']
                 sizes = [perc_risk/100, 1-(perc_risk/100)]
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
                 fig1, ax1 = plt.subplots()
-                ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-                        shadow=True, startangle=90,colors=colors)
+                ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-                col2.pyplot(fig1)
+                col3.pyplot(fig1)
                 
                 
                 st.dataframe(df_risk)
