@@ -56,7 +56,7 @@ def main():
         st.image(image, use_column_width='auto')
 
         choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Risk", "Prediction", "About"],
-                             icons=['upload', 'sliders','Bullseye', 'kanban', 'person lines fill'],
+                             icons=['upload', 'sliders','bullseye', 'kanban', 'person lines fill'],
 
                              menu_icon="building", default_index=0,
     #                          bi bi-building
