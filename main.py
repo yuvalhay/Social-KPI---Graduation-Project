@@ -777,13 +777,13 @@ def check_password():
     if "password_correct" not in st.session_state:
         col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
         with col_1:
-            st.write("1")
+            st.write("")
 
         with col_2:
-            st.write("1")
+            st.write("")
 
         with col_3:
-            st.write("1")
+            st.write("")
         
         with col_4:
             image = Image.open('background_img/SoCityLOGOwithtitle.png')
@@ -812,13 +812,13 @@ def check_password():
     elif not st.session_state["password_correct"]:
         col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
         with col_1:
-            st.write("1")
+            st.write("")
 
         with col_2:
-            st.write("1")
+            st.write("")
 
         with col_3:
-            st.write("1")
+            st.write("")
         
         with col_4:
             image = Image.open('background_img/SoCityLOGOwithtitle.png')
