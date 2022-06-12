@@ -845,7 +845,7 @@ def main():
         if "new_file_name" in st.session_state:
             new_file_2 = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file_2")
             if (new_file_2 is not None):
-                st.session_state["new_file_name"] = new_file
+                st.session_state["new_file_name"] = new_file_2
                 st.session_state["finish_Prediction_flag"] = False
         
         elif "new_file_name" not in st.session_state:
