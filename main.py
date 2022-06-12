@@ -187,7 +187,7 @@ def main():
                         if index % 2 == 1:
                             temp_col = odd_col
                         if val != 0:
-                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                            curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_english_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                                                         value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_english_dict[key][1]}')
                             index += 1
 
