@@ -45,6 +45,10 @@ def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
                 unsafe_allow_html=True)
 
+def subheader(name):
+    st.markdown(f'<p style="color: #000000; font-size: 13px; "> {name} </p>',
+                unsafe_allow_html=True)
+    
 def update_session_state(key, value):
     del st.session_state[key]
     st.session_state[key] = value
@@ -79,8 +83,8 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
-            st.subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
-            st.subheader("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
+            subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
+            subheader("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
             st.subheader("During the project we came to an understanding that “Risk” is a combination of three social KPI's ")
             st.subheader("which are Loneliness, Health and Economic Strength. ")
             st.subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
