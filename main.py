@@ -52,7 +52,7 @@ def update_session_state(key, value):
 def main():
     with st.sidebar:
         image = Image.open('background_img/SoCityLOGOwithtitle.png')
-        st.image(image, use_column_width=True)
+        st.image(image)
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
 
