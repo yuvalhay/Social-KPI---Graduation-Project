@@ -851,6 +851,7 @@ def main():
 #         if st.button('Predict!'):
 
             with st.spinner('Processing, it may take a few minutes..'):
+                st.write(st.session_state['df_knn'])
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
                 col1, col2 = st.columns([3, 1])
 #                 col1, col2, col3 = st.columns(3)
