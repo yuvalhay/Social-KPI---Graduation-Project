@@ -677,7 +677,7 @@ def main():
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font"Risk</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
 #         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
 #         if new_file is not None:
