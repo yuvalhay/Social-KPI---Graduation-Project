@@ -55,7 +55,7 @@ def main():
         image = Image.open('background_img/SoCityLOGOwithtitle.png')
         st.image(image, use_column_width='auto')
 
-        choose = option_menu("SoCity", ["File Upload", "Social KPIs", ,"Risk", "Prediction", "About"],
+        choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Risk", "Prediction", "About"],
                              icons=['upload', 'sliders','Bullseye', 'kanban', 'person lines fill'],
 
                              menu_icon="building", default_index=0,
