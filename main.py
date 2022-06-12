@@ -54,7 +54,7 @@ def main():
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
 
-                             menu_icon="background_img/Tal.jpeg", default_index=0,
+                             menu_icon="background_img/Simple Cute Desktop Wallpapers - WallpaperSafari.png", default_index=0,
     #                          bi bi-building
     #                          app-indicator
                              styles={
