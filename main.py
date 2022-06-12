@@ -859,13 +859,14 @@ def main():
                 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+                colors = ['#FF4B4B', '#B7C3F3', 
                 labels = 'Risk', ''
                 sizes = [perc_risk/100, 1-(perc_risk/100)]
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
                 fig1, ax1 = plt.subplots()
                 ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-                        shadow=True, startangle=90)
+                        shadow=True, startangle=90,colors=colors)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
                 col2.pyplot(fig1)
