@@ -918,6 +918,7 @@ def check_password():
             del st.session_state["username"]
         else:
             st.session_state["password_correct"] = False
+    passwoed_entered()
     col_1, col_2, col_3, col_4, col_5, col_6, col_7 = st.columns(7)
     with col_1:
         st.write("")
