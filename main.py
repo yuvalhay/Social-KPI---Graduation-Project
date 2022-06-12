@@ -51,7 +51,7 @@ def update_session_state(key, value):
 
 def main():
     with st.sidebar:
-        image = Image.open('background_img/login_page_icon.png')
+        image = Image.open('background_img/WhatsApp Image 2022-06-12 at 11.09.29 AM.jpeg')
         st.image(image, use_column_width=True)
         choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
@@ -802,7 +802,7 @@ def check_password():
             st.write("")
 
         with col_2:
-            image = Image.open('background_img/login_page_icon.png')
+            image = Image.open('background_img/WhatsApp Image 2022-06-12 at 11.09.29 AM.jpeg')
             st.image(image)
 
         with col_3:
