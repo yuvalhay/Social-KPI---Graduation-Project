@@ -19,7 +19,7 @@ set_png_as_page_bg('background_img/Simple Cute Desktop Wallpapers - WallpaperSaf
 #         page_title="Hello world",
 #         page_icon="chart_with_upwards_trend",
 #         layout="wide",
-#     )
+#     ) 
 
 
 with open('style.css') as f:
