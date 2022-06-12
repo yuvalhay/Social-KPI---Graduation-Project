@@ -797,16 +797,26 @@ def check_password():
         st.warning("Press enter to submit")
         return False
     elif not st.session_state["password_correct"]:
-        col_1, col_2, col_3 = st.columns(3)
+        col_1, col_2, col_3, col_4, col_5 = st.columns(5)
         with col_1:
             st.write("")
 
         with col_2:
-            image = Image.open('background_img/WhatsApp Image 2022-06-12 at 11.09.29 AM.jpeg')
-            st.image(image)
+            st.write("")
 
         with col_3:
+            image = Image.open('background_img/SoCityLOGOwithtitle.png')
+            st.image(image)
+        
+        with col_4:
             st.write("")
+            
+        with col_5:
+            st.write("")
+            
+        
+            
+            
         st.info('Please enter Username and Password')
         # Password not correct, show input + error.
         st.text_input("Username", key="username")
