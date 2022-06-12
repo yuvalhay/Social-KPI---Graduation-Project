@@ -841,7 +841,8 @@ def main():
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
-        if new_file is not None:
+        finish_flag = False
+        if (new_file is not None) and (finish_flag == False):
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
@@ -892,18 +893,18 @@ def main():
 #                      file_name='Prediction.csv',
 #                      mime='text/csv',
 #                     )
-            if finish_flag == True:
-                def convert_df(df):
-                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                    return df.to_csv().encode('utf-8')
+        if (new_file is not None) and (finish_flag == True):
+            def convert_df(df):
+                # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                return df.to_csv().encode('utf-8')
 
-                csv = convert_df(df_risk)
-                st.download_button(
-                     label="Download the predicted data as CSV",
-                     data=csv,
-                     file_name='Prediction.csv',
-                     mime='text/csv',
-                    )
+            csv = convert_df(df_risk)
+            st.download_button(
+                 label="Download the predicted data as CSV",
+                 data=csv,
+                 file_name='Prediction.csv',
+                 mime='text/csv',
+                )
     
     elif choose == "About":
         #         st.title("The About section")
