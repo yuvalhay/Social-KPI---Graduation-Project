@@ -859,7 +859,7 @@ def main():
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
                 labels = 'Risk', ''
-                sizes = [perc_risk, 1-perc_risk]
+                sizes = [perc_risk/100, 1-(perc_risk/100)]
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
                 fig1, ax1 = plt.subplots()
