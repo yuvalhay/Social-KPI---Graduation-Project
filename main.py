@@ -40,6 +40,8 @@ kpi_header = st.container()
 kpi_selection = st.container()
 kpi_weights = st.container()
 
+st.session_state["finish_Prediction_flag"] = False
+
 
 def header(name):
     st.markdown(f'<p style="color: #8F2A2A; font-size: 20px; font-family: Cooper Black;"> {name} </p>',
@@ -840,9 +842,17 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
-        new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
-        finish_flag = False
-        if (new_file is not None) and (finish_flag == False):
+        if "new_file_name" in st.session_state:
+            new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
+            if (new_file is not None):
+                st.session_state["new_file_name"] = new_file
+                st.session_state["finish_Prediction_flag"] = False
+        
+        elif "new_file_name" not in st.session_state:
+            new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
+            st.session_state["new_file_name"] = new_file
+        
+        if (new_file is not None) and (st.session_state["finish_Prediction_flag"] == False):
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
@@ -881,30 +891,30 @@ def main():
                 
                 
                 st.dataframe(df_risk)
-                finish_flag = True
-#                 def convert_df(df):
-#                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-#                     return df.to_csv().encode('utf-8')
+                st.session_state["finish_Prediction_flag"] = True
+                def convert_df(df):
+                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                    return df.to_csv().encode('utf-8')
 
-#                 csv = convert_df(df_risk)
-#                 st.download_button(
-#                      label="Download the predicted data as CSV",
-#                      data=csv,
-#                      file_name='Prediction.csv',
-#                      mime='text/csv',
-#                     )
-        if (new_file is not None) and (finish_flag == True):
-            def convert_df(df):
-                # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                return df.to_csv().encode('utf-8')
+                csv = convert_df(df_risk)
+                st.download_button(
+                     label="Download the predicted data as CSV",
+                     data=csv,
+                     file_name='Prediction.csv',
+                     mime='text/csv',
+                    )
+#         if (new_file is not None) and (finish_flag == True):
+#         def convert_df(df):
+#             # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#             return df.to_csv().encode('utf-8')
 
-            csv = convert_df(df_risk)
-            st.download_button(
-                 label="Download the predicted data as CSV",
-                 data=csv,
-                 file_name='Prediction.csv',
-                 mime='text/csv',
-                )
+#         csv = convert_df(df_risk)
+#         st.download_button(
+#              label="Download the predicted data as CSV",
+#              data=csv,
+#              file_name='Prediction.csv',
+#              mime='text/csv',
+            )
     
     elif choose == "About":
         #         st.title("The About section")
