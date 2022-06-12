@@ -814,7 +814,7 @@ def check_password():
         is_register = st.button("Submit")
         if is_register:
     # Password Incorrect.
-        st.error("Username/Password is incorrect 😕")
+            st.error("Username/Password is incorrect 😕")
             return False
     else:
         if is_register:
