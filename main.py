@@ -852,57 +852,57 @@ def main():
             new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
             st.session_state["new_file_name"] = new_file
         
-        if (new_file is not None) and (st.session_state["finish_Prediction_flag"] == False):
-            new_df = pd.read_csv(new_file)
-            st.session_state['new_df'] = new_df
-            st.success("File was uploaded!")
+            if (new_file is not None) and (st.session_state["finish_Prediction_flag"] == False):
+                new_df = pd.read_csv(new_file)
+                st.session_state['new_df'] = new_df
+                st.success("File was uploaded!")
 
-#             st.write(new_df)
-#             st.write(st.session_state['df_knn'])
-#         if st.button('Predict!'):
-            finish_flag = False
-            with st.spinner('Processing, it may take a few minutes..'):
-                perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
-                col1, col2 = st.columns([3, 1])
-#                 col1, col2, col3 = st.columns(3)
-#                 col1.subheader("")
-#                 col2.subheader("Households which are under risk")
-#                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
-#                 col3.subheader("")
-#                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
-                        
-                col1.header("")
-                col1.subheader("")
-                col1.subheader("")
-                col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
-                
+    #             st.write(new_df)
+    #             st.write(st.session_state['df_knn'])
+    #         if st.button('Predict!'):
+                finish_flag = False
+                with st.spinner('Processing, it may take a few minutes..'):
+                    perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
+                    col1, col2 = st.columns([3, 1])
+    #                 col1, col2, col3 = st.columns(3)
+    #                 col1.subheader("")
+    #                 col2.subheader("Households which are under risk")
+    #                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
+    #                 col3.subheader("")
+    #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
 
-                # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-                colors = ['#FF4B4B', '#B7C3F3']
-                labels = ['Risk', '']
-                sizes = [perc_risk/100, 1-(perc_risk/100)]
-                explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+                    col1.header("")
+                    col1.subheader("")
+                    col1.subheader("")
+                    col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
 
-                fig1, ax1 = plt.subplots()
-                ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
-                ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-                col2.pyplot(fig1)
-                
-                
-                st.dataframe(df_risk)
-                st.session_state["finish_Prediction_flag"] = True
-                def convert_df(df):
-                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                    return df.to_csv().encode('utf-8')
+                    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+                    colors = ['#FF4B4B', '#B7C3F3']
+                    labels = ['Risk', '']
+                    sizes = [perc_risk/100, 1-(perc_risk/100)]
+                    explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
-                csv = convert_df(df_risk)
-                st.download_button(
-                     label="Download the predicted data as CSV",
-                     data=csv,
-                     file_name='Prediction.csv',
-                     mime='text/csv',
-                    )
+                    fig1, ax1 = plt.subplots()
+                    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
+                    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+                    col2.pyplot(fig1)
+
+
+                    st.dataframe(df_risk)
+                    st.session_state["finish_Prediction_flag"] = True
+                    def convert_df(df):
+                        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                        return df.to_csv().encode('utf-8')
+
+                    csv = convert_df(df_risk)
+                    st.download_button(
+                         label="Download the predicted data as CSV",
+                         data=csv,
+                         file_name='Prediction.csv',
+                         mime='text/csv',
+                        )
 #         if (new_file is not None) and (finish_flag == True):
 #         def convert_df(df):
 #             # IMPORTANT: Cache the conversion to prevent computation on every rerun
