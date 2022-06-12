@@ -887,12 +887,13 @@ def main():
                     return df.to_csv().encode('utf-8')
 
                 csv = convert_df(df_risk)
-                st.download_button(
+                if st.download_button(
                      label="Download the predicted data as CSV",
                      data=csv,
                      file_name='Prediction.csv',
                      mime='text/csv',
-                    )
+                    ):
+                    pass
     
     elif choose == "About":
         #         st.title("The About section")
