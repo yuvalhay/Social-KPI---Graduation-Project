@@ -660,12 +660,65 @@ def main():
                         map_style=pydeck.map_styles.SATELLITE,
                     )
                     st.pydeck_chart(r)
+                    
+    
+    elif choose == "Risk" and st.session_state['flag'] is False:
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
+        
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
+        
+        
+    elif choose == "Risk" and st.session_state['flag'] is True:
+    #     st.balloons()
+    #     st.title("The Prediction section")
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font"Risk</p>', unsafe_allow_html=True)
+#         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
+#         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
+#         if new_file is not None:
+#             new_df = pd.read_csv(new_file)
+#             st.session_state['new_df'] = new_df
+#             st.success("File was uploaded!")
 
+# #             st.write(new_df)
+# #             st.write(st.session_state['df_knn'])
+# #         if st.button('Predict!'):
+
+#             with st.spinner('Processing, it may take a few minutes..'):
+#                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
+# #                 col1, col2, col3 = st.columns(3)
+# #                 col1.subheader("")
+# #                 col2.subheader("Households which are under risk")
+# #                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
+# #                 col3.subheader("")
+# #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
+#                 st.title(f'{round(perc_risk,3)}% of the households are under risk')
+                
+#                 st.dataframe(df_risk)
+
+#                 def convert_df(df):
+#                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#                     return df.to_csv().encode('utf-8')
+
+#                 csv = convert_df(df_risk)
+#                 st.download_button(
+#                      label="Download the predicted data as CSV",
+#                      data=csv,
+#                      file_name='Prediction.csv',
+#                      mime='text/csv',
+#                     )
+        
+        
     elif choose == "Prediction" and st.session_state['flag'] is False:
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">The Prediction section</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
         
         st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
         
