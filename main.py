@@ -168,6 +168,18 @@ def main():
                                             'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
                                            }
+                    loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
+                        'members_Water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
+                        'martial_score':('סטטוס משפחתי של ראש משק הבית', 'הסבר על המדד'),
+                        'widow_grown_score':('מספר אלמנים מבוגרים באזור סטטיסטי', 'הסבר על המדד'),
+                        'widow_elderlies_score':('מספר אלמנים זקנים באזור סטטיסטי', 'הסבר על המדד'),
+                        'lonely_elderlies_score':('מספר מבוגרים בודדים באזור סטטיסטי', 'הסבר על המדד'),
+                        'p85_plus_score':('מספר בני 85 ומעלה באזור סטטיסטי', 'הסבר על המדד'),
+                        'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                        'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
+                        'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
+                        'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
+                       }
                     curr_loneliness_dict = loneliness_dict.copy()
                     for key, val in curr_loneliness_dict.items():
                         if index % 2 == 0:
@@ -176,7 +188,7 @@ def main():
                             temp_col = odd_col
                         if val != 0:
                             curr_loneliness_dict[f'{key}'] = temp_col.select_slider(f'{loneliness_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_hebrew_dict[key][1]}')
+                                                                        value=val, key=f'Loneliness_slider_{key}', help=f'{loneliness_english_dict[key][1]}')
                             index += 1
 
                     sum_of_weights = round(sum(list(curr_loneliness_dict.values())), 3)
