@@ -946,11 +946,10 @@ def check_password():
         st.info('Please enter Username and Password')
         # First run, show inputs for username + password.
         st.text_input("Username", key="username")
-        st.text_input(
-            "Password", type="password", on_change=password_entered, key="password"
-        )
-#         is_register = st.button("Submit")
-#         if is_register:
+        st.text_input("Password", type="password", key="password")
+        is_register = st.button("Submit")
+        if is_register:
+            password_entered()
     # Password Incorrect.
         st.warning("Press enter to submit")
         return False
