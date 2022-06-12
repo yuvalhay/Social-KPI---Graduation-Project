@@ -677,7 +677,7 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font"Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
-        new_file = st.file_uploader("Choose a new CSV file for prediction", type=['csv'], key="new_file")
+        new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")
         if new_file is not None:
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
@@ -697,7 +697,7 @@ def main():
 #                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
                 st.title(f'{round(perc_risk,3)}% of the households are under risk')
                 
-#                 st.dataframe(df_risk)
+                st.dataframe(df_risk)
 
                 def convert_df(df):
                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
