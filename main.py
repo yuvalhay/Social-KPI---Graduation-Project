@@ -787,13 +787,13 @@ def check_password():
         # First run, show inputs for username + password.
         st.text_input("Username", key="username")
         st.text_input(
-            "Password", type="password", key="password"
+            "Password", type="password", on_change=password_entered, key="password"
         )
-        is_register = st.button("Submit")
-        if is_register:
+#         is_register = st.button("Submit")
+#         if is_register:
     # Password Incorrect.
-            st.error("Username/Password is incorrect 😕")
-            return False
+        st.error("Username/Password is incorrect 😕")
+        return False
     elif not st.session_state["password_correct"]:
         col_1, col_2, col_3 = st.columns(3)
         with col_1:
@@ -809,17 +809,17 @@ def check_password():
         # Password not correct, show input + error.
         st.text_input("Username", key="username")
         st.text_input(
-            "Password", type="password", key="password"
+            "Password", type="password", on_change=password_entered, key="password"
         )
-        is_register = st.button("Submit")
-        if is_register:
+#         is_register = st.button("Submit")
+#         if is_register:
     # Password Incorrect.
-            st.error("Username/Password is incorrect 😕")
-            return False
+        st.error("Username/Password is incorrect 😕")
+        return False
     else:
 #         if is_register:
     # Password correct.
-            return True
+        return True
 
 # if check_password():
 #     st.write("Here goes your normal Streamlit app...")
