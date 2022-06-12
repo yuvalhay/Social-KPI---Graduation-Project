@@ -55,7 +55,7 @@ def main():
         image = Image.open('background_img/SoCityLOGOwithtitle.png')
         st.image(image, use_column_width='auto')
 
-        choose = option_menu("SoCity", ["File Upload", "Social KPI", "Prediction", "About"],
+        choose = option_menu("SoCity", ["File Upload", "Social KPIs", "Prediction", "About"],
                              icons=['upload', 'sliders', 'kanban', 'person lines fill'],
 
                              menu_icon="building", default_index=0,
@@ -78,12 +78,12 @@ def main():
             st.markdown(""" <style> .font {
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
-            st.markdown('<p class="font">The File Upload section</p>', unsafe_allow_html=True)
+            st.markdown('<p class="font">File Upload</p>', unsafe_allow_html=True)
 #             st.text("Team GABOT")
-            uploaded_file = st.file_uploader("Choose a CSV file", type=['csv'], key="uploaded_file")
+            uploaded_file = st.file_uploader("Choose a CSV file to analyze", type=['csv'], key="uploaded_file")
             if uploaded_file is not None:
                 st.session_state['flag'] = True
-                with st.spinner('Working on your file, just a sec..'):
+                with st.spinner('Uploading, it may take a few minutes..'):
     #                 time.sleep(20)
     #             df = pd.read_csv(uploaded_file)
                     df, raw_df = rawToValCatagorized(uploaded_file)
@@ -115,17 +115,17 @@ def main():
             else:
                 st.session_state['flag'] = False
 
-    elif choose == "Social KPI" and st.session_state['flag'] is False:
+    elif choose == "Social KPIs" and st.session_state['flag'] is False:
         with kpi_header:
     #         st.title("The visualization of our KPI's")
             st.markdown(""" <style> .font {
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
-            st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
+            st.markdown('<p class="font">Social KPIs</p>', unsafe_allow_html=True)
 
         st.error("You didn't upload a CSV file. please go back to 'File Upload' section!")
 
-    elif choose == "Social KPI" and st.session_state['flag'] is True:
+    elif choose == "Social KPIs" and st.session_state['flag'] is True:
         with kpi_header:
     #         st.title("The visualization of our KPI's")
             st.markdown(""" <style> .font {
@@ -134,7 +134,7 @@ def main():
             st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
             st.write("An unfortunate phenomenon that has been occurring is reports by neighbors of bad smells coming from apartments, resulting in the discovery of lonely elderlies who have died in their homes.")
             st.write("In this project we wish to reduce the number of these sad cases by using data to indicate households in risk. \nDuring the project we came to an understanding that this situation is a combination of three social KPI’s which are Loneliness, health and economic strength.")
-            st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPI’s. \nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
+            st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. \nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
 
             with kpi_selection:
                 header("KPI Selection")
@@ -687,7 +687,7 @@ def main():
 #             st.write(st.session_state['df_knn'])
 #         if st.button('Predict!'):
 
-            with st.spinner('Predicting for you, it may take a few minutes to complete..'):
+            with st.spinner('Processing, it may take a few minutes..'):
                 perc_risk, df_risk = prediction_main(st.session_state['df_knn'], new_df)
 #                 col1, col2, col3 = st.columns(3)
 #                 col1.subheader("")
