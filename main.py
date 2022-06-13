@@ -742,7 +742,7 @@ def main():
         
             under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
             st.dataframe(under_risk_list_df)
-	    download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
+	    	download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
             map_df = addAggMetrics(curr_df, True)
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
