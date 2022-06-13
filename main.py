@@ -161,7 +161,22 @@ def main():
                 header("KPI Selection")
                 KPI_names = ["Loneliness", "Health", "Economic Strength"]
                 KPI_page = st.radio("", KPI_names)
+                if st.button("Reset Weights"):
+                    loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+                    loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+                    st.session_state['loneliness_dict'] = loneliness_dict
+                    st.session_state['health_dict'] = health_dict
+                    st.session_state['economic_strength_dict'] = economic_strength_dict
 
+                    df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False, True)
+                    map_df = addAggMetrics(df_scored, False)
+                    
+                    df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+                    map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+
+                    st.session_state['df_scored'] = df_scored
+                    st.session_state['df_knn'] = df_knn
+                    st.session_state['map_df'] = map_df
 
             with kpi_weights:
                 header("KPI weights")
