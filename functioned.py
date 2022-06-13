@@ -255,7 +255,7 @@ def loneliness_default_weights(df_catagorized, loneliness_dict):
     update_weights(loneliness_dict, 'Ownership_score', 0.05)
 
     
-def loneliness_default_weights(df_catagorized, health_dict):
+def health_default_weights(df_catagorized, health_dict):
     for col in df_catagorized.columns:
         health_dict[col] = 0
     
@@ -269,7 +269,7 @@ def loneliness_default_weights(df_catagorized, health_dict):
     update_weights(health_dict, 'corona_immunity_score', 0.2 )
     
     
-def loneliness_default_weights(df_catagorized, economic_strength_dict):
+def economic_strength_default_weights(df_catagorized, economic_strength_dict):
     for col in df_catagorized.columns:
         economic_strength_dict[col] = 0
     
