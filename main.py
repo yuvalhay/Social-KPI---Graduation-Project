@@ -762,7 +762,8 @@ def main():
                 R_color.append(255)
                 G_color.append(0)
                 B_color.append(0)
-                A_color.append(0)
+                A_color.append(0.5)
+
             elif val == 1:
                 R_color.append(255)
                 G_color.append(255)
