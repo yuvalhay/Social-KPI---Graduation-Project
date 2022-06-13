@@ -161,7 +161,7 @@ def addAggMetrics(df, Risk_flag): #adds M_AVG and M_STRCT columns for each metri
     elif not Risk_flag:
         df_minimal_scored = df[['index','STAT','north','east','Loneliness_score', 'Health_score', 'Economic_Strength_score']]
     
-    temp_df_AVG = df_minimal_scored.groupby(['north','east']).mean().reset_index()[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
+    temp_df_AVG = df_minimal_scored.groupby(['north','east']).mean().round(0).reset_index()[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
     temp_df_STRCT = df_minimal_scored.groupby(['north','east']).aggregate({'Loneliness_score':np.max,'Health_score':np.min,'Economic_Strength_score':np.min}).reset_index(level=0).reset_index(level=0)
 
     df_mrg_avg = pd.merge(df_minimal_scored,temp_df_AVG[['north','east','Loneliness_score',	'Health_score',	'Economic_Strength_score']],suffixes= ('','_AVG'),on = ['north','east'], how = 'left')
