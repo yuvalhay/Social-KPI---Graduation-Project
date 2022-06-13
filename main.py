@@ -783,26 +783,10 @@ def main():
             st.markdown("")
             map_df = addAggMetrics(curr_df, True)
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-        # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
                 
         
-        st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-#         st.title(f'{round(perc_risk,3)}% of the households are under risk') # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-#         st.dataframe(Risk_df) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-#         def convert_df(df):
-#             # IMPORTANT: Cache the conversion to prevent computation on every rerun
-#             return df.to_csv().encode('utf-8')
-
-#         csv = convert_df(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-#         if st.download_button(
-#              label="Download the Risk data as CSV",
-#              data=csv,
-#              file_name='Prediction.csv',
-#              mime='text/csv',
-#             ):
-#             st.stop()
+        st.session_state['Risk_df'] = map_df 
         
         Risk_layer = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
@@ -892,7 +876,8 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
-        new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
+        subheader("In order to generalize the system for future usage, where the data format is similar but not identical to the initial format, a KNN model is used to predict the risk of a new given set of households. Upload new data and get the information about the percentage and the household in risk. You can also download the results for further processing.")
+	new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
         if new_file is not None:
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
