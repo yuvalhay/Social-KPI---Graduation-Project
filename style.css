@@ -19,7 +19,7 @@ footer:after {
 
 .download {
   background-color: #F0F2F6;
-  color: white;
+  color: #FFFFFF;
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
@@ -31,6 +31,7 @@ footer:after {
   background-color: #FF4B4B;
   text-decoration: none;
   decoration: none;
+  color: #FFFFFF;
 }
 
 /* body {
