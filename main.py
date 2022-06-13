@@ -733,14 +733,15 @@ def main():
         for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             if val == 0:
                 R_color.append(255)
-                G_color.append(0)
-                B_color.append(0)
-                A_color.append(0)
-            elif val == 1:
-                R_color.append(255)
                 G_color.append(255)
                 B_color.append(255)
                 A_color.append(120)
+                
+            elif val == 1:
+                R_color.append(255)
+                G_color.append(0)
+                B_color.append(0)
+                A_color.append(0)
                 
         
         st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
