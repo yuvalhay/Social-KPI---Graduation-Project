@@ -715,15 +715,42 @@ def main():
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
         
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-        curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
-        st.session_state['df_scores'] = curr_df
-        under_risk_list_df = CalcRisk(curr_df)
-        perc = round(under_risk_list_df.query('Risk == 1').count()[1]/under_risk_list_df.shape[0],3)*100
-        st.write(perc)
-        under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
-        st.dataframe(under_risk_list_df)
-        map_df = addAggMetrics(curr_df, True)
-        map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+        with st.spinner('Processing, it may take a few minutes..'):
+            curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
+            st.session_state['df_scores'] = curr_df
+            under_risk_list_df = CalcRisk(curr_df)
+            perc = round(under_risk_list_df.query('Risk == 1').count()[1]/under_risk_list_df.shape[0],3)*100
+        
+            col1, col2 = st.columns([3, 1])
+#                 col1, col2, col3 = st.columns(3)
+#                 col1.subheader("")
+#                 col2.subheader("Households which are under risk")
+#                 col2.metric(label="", value=f'{round(perc_risk,3)}%')
+#                 col3.subheader("")
+#                 st.metric(label="Households which are under risk", value=f'{round(perc_risk,3)}%')
+
+            col1.header("")
+            col1.subheader("")
+            col1.subheader("")
+            col1.subheader(f'{round(perc,3)}% of the households are under risk')
+
+
+            # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+            colors = ['#FF4B4B', '#00aef0']
+            labels = ['Risk', '']
+            sizes = [perc/100, 1-(perc/100)]
+            explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+            fig1, ax1 = plt.subplots()
+            ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
+            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+            col2.pyplot(fig1)
+        
+            under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
+            st.dataframe(under_risk_list_df)
+            map_df = addAggMetrics(curr_df, True)
+            map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
         
         R_color, G_color, B_color, A_color = [], [], [], []
@@ -733,15 +760,14 @@ def main():
         for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             if val == 0:
                 R_color.append(255)
-                G_color.append(255)
-                B_color.append(255)
-                A_color.append(120)
-                
-            elif val == 1:
-                R_color.append(255)
                 G_color.append(0)
                 B_color.append(0)
                 A_color.append(0)
+            elif val == 1:
+                R_color.append(255)
+                G_color.append(255)
+                B_color.append(255)
+                A_color.append(120)
                 
         
         st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
