@@ -111,30 +111,30 @@ def main():
                 with st.spinner('Uploading, it may take a few minutes..'):
     #                 time.sleep(20)
     #             df = pd.read_csv(uploaded_file)
-			df, raw_df = rawToValCatagorized(uploaded_file)
-			st.session_state['df'] = df
-			st.session_state['raw_df'] = raw_df
-			df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-			loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-			loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-			st.session_state['loneliness_dict'] = loneliness_dict
-			st.session_state['health_dict'] = health_dict
-			st.session_state['economic_strength_dict'] = economic_strength_dict
+					df, raw_df = rawToValCatagorized(uploaded_file)
+					st.session_state['df'] = df
+					st.session_state['raw_df'] = raw_df
+					df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+					loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+					loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+					st.session_state['loneliness_dict'] = loneliness_dict
+					st.session_state['health_dict'] = health_dict
+					st.session_state['economic_strength_dict'] = economic_strength_dict
 
-			df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False, True)
-	#                     st.write(df_scored)
-			map_df = addAggMetrics(df_scored, False)
+					df_scored, df_knn = MetricsCalc(raw_df, df, loneliness_dict, health_dict, economic_strength_dict, False, True)
+			#                     st.write(df_scored)
+					map_df = addAggMetrics(df_scored, False)
 
-			df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-			map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+					df_scored.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+					map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
 
-			st.session_state['df_scored'] = df_scored
-			st.session_state['df_knn'] = df_knn
-			st.session_state['map_df'] = map_df
+					st.session_state['df_scored'] = df_scored
+					st.session_state['df_knn'] = df_knn
+					st.session_state['map_df'] = map_df
 
-                #     global map_df
-#                     map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-                    
+						#     global map_df
+		#                     map_df = df_scored[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
+
 
                 	st.success("File was uploaded!")
   
