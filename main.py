@@ -884,18 +884,24 @@ def main():
 
                 st.dataframe(df_risk)
                 st.session_state["finish_Prediction_flag"] = True
-                def convert_df(df):
-                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                    return df.to_csv().encode('utf-8')
-
-                csv = convert_df(df_risk)
-                if st.download_button(
-                     label="Download the predicted data as CSV",
-                     data=csv,
-                     file_name='Prediction.csv',
-                     mime='text/csv',
-                    ):
+                from google.colab import files
+                
+                if st.button("Download the predicted data as CSV"):
+                    df_risk.to_csv('Prediction.csv', index=False ,encoding = 'utf-8-sig')
+                    files.download('Prediction.csv')
                     st.stop()
+#                 def convert_df(df):
+#                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#                     return df.to_csv().encode('utf-8')
+
+#                 csv = convert_df(df_risk)
+#                 if st.download_button(
+#                      label="Download the predicted data as CSV",
+#                      data=csv,
+#                      file_name='Prediction.csv',
+#                      mime='text/csv',
+#                     ):
+#                     st.stop()
 #         if (new_file is not None) and (finish_flag == True):
 #         def convert_df(df):
 #             # IMPORTANT: Cache the conversion to prevent computation on every rerun
