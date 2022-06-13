@@ -238,6 +238,60 @@ def default_weights(df_catagorized, loneliness_dict, health_dict, economic_stren
     mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
     return loneliness_dict, health_dict, economic_strength_dict
 
+def loneliness_default_weights(df_catagorized, loneliness_dict):
+    for col in df_catagorized.columns:
+        loneliness_dict[col] = 0
+    
+    update_weights(loneliness_dict, 'arnona_cat_score', 0.1 )
+    update_weights(loneliness_dict, 'members_Water_score', 0.1 )
+    update_weights(loneliness_dict, 'martial_score', 0.1 )
+    update_weights(loneliness_dict, 'widow_grown_score', 0.05 )
+    update_weights(loneliness_dict, 'widow_elderlies_score', 0.1 )
+    update_weights(loneliness_dict, 'lonely_elderlies_score', 0.25 )
+    update_weights(loneliness_dict, 'p85_plus_score', 0.05 )
+    update_weights(loneliness_dict, 'corona_immunity_score', 0.05)
+    update_weights(loneliness_dict, 'age_score', 0.1 )
+    update_weights(loneliness_dict, 'area_per_person_score', 0.05 )
+    update_weights(loneliness_dict, 'Ownership_score', 0.05)
+
+    
+def loneliness_default_weights(df_catagorized, health_dict):
+    for col in df_catagorized.columns:
+        health_dict[col] = 0
+    
+    update_weights(health_dict, 'arnona_cat_score', 0.2 )
+    update_weights(health_dict, 'age_score', 0.08 )
+    update_weights(health_dict, 'hashlama_kizvat_nechut_elderlies_score', 0.08 )
+    update_weights(health_dict, 'Mekabley_kizbaot_nechut_score', 0.1 )
+    update_weights(health_dict, 'zachaim_kizbat_nechut_children_score', 0.1 )
+    update_weights(health_dict, 'mekabley_kizbaot_from_injured_Work_score', 0.1 )
+    update_weights(health_dict, 'mekabley_kizba_siud_score', 0.14 )
+    update_weights(health_dict, 'corona_immunity_score', 0.2 )
+    
+    
+def loneliness_default_weights(df_catagorized, economic_strength_dict):
+    for col in df_catagorized.columns:
+        economic_strength_dict[col] = 0
+    
+    update_weights(economic_strength_dict, 'area_per_person_score', 0.04 )
+    update_weights(economic_strength_dict, 'socio_economic_score', 0.04 )
+    update_weights(economic_strength_dict, 'mekabley_kizba_siud_score', 0.02 )
+    update_weights(economic_strength_dict, 'mekabley_kizbaot_from_injured_Work_score', 0.02 )
+    update_weights(economic_strength_dict, 'zachaim_kizbat_nechut_children_score', 0.02 )
+    update_weights(economic_strength_dict, 'Mekabley_kizbaot_nechut_score', 0.02 )
+    update_weights(economic_strength_dict, 'Mekabley_mezonot_score', 0.02 )
+    update_weights(economic_strength_dict, 'Hashlamat_hachnasa_sheerim_family_score', 0.02 )
+    update_weights(economic_strength_dict, 'hashlama_kizvat_nechut_elderlies_score', 0.02 )
+    update_weights(economic_strength_dict, 'hashlamta_hachnasa_family_eldelies_score', 0.02 )
+    update_weights(economic_strength_dict, 'mekabley_kizva_elderlies_score', 0.02 )
+    update_weights(economic_strength_dict, 'avtachat_hachansa_family_score', 0.02 )
+    update_weights(economic_strength_dict, 'income_per_person_score', 0.2 )
+    update_weights(economic_strength_dict, 'arnona_cat_score', 0.1 )
+    update_weights(economic_strength_dict, 'Ownership_score', 0.2 )
+    update_weights(economic_strength_dict, 'age_score', 0.04 )
+    update_weights(economic_strength_dict, 'martial_score', 0.02 )
+    update_weights(economic_strength_dict, 'members_Water_score', 0.06 )
+    update_weights(economic_strength_dict, 'near_106_pizul_and_dangerous_buildings_score', 0.1 )
 #########################################################################################################
 
 # df_catagorized = rawToValCatagorized('big_table.csv')
