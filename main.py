@@ -869,7 +869,7 @@ def main():
 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-                colors = ['#FF4B4B', '#B7C3F3']
+                colors = ['#FF4B4B', '#00aef0']
                 labels = ['Risk', '']
                 sizes = [perc_risk/100, 1-(perc_risk/100)]
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
