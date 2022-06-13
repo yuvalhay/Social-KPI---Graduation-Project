@@ -958,10 +958,11 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">About</p>', unsafe_allow_html=True)
-        about_home_subheader("We are information system engineering students from the Technion.")
-        about_home_subheader("During our studies we had to work on a final project that combines the knowledge we gained in the last four years of our studies.")
-        about_home_subheader("Beside the fact that we are very good friends, we have a lot of experience working together, so the decision to unite into a team was natural and immediate.")
-        about_home_subheader("While scrolling the available project subjects we were interested in some projects, but after hearing the large impact this project has on our society we didn’t think twice.")
+        about_home_subheader("We are information system engineering students at the Technion.")
+        about_home_subheader("As a part of our studies we had to work on a final project that combines the knowledge we gained during the last four years of our studies.")
+        about_home_subheader("Beside the fact that we are very good friends, we have also a lot of experience working together,")
+	      about_home_subheader("so the decision to unite into a team was natural and immediate. 
+        about_home_subheader("but after hearing and realizing the large impact this project may have on our society we didn’t think twice.")
         about_home_subheader("We were thrilled and excited to work on a project with large added value that contributes to society.")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
