@@ -17,7 +17,7 @@ footer:after {
 }
 
 
-div[data-testid="stMarkdownContainer"] {
+/* div[data-testid="stMarkdownContainer"] {
   background-color: #FF4B4B;
   color: white;
   padding: 15px 25px;
@@ -27,7 +27,7 @@ div[data-testid="stMarkdownContainer"] {
 }
 
 a:hover, a:active {
-  background-color: #FF4B4B;
+  background-color: #FF4B4B; */
 }
 
 /* body {
