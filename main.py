@@ -892,14 +892,15 @@ def main():
                     return df.to_csv().encode('utf-8')
 
                 csv = convert_df(df_risk)
-                st.download_button(
-                     label="Download the predicted data as CSV",
-                     data=csv,
-                     file_name='Prediction.csv',
-                     mime='text/csv'
-#                     ,
-#                      on_click=st.stop(),
-                    )
+#                 st.download_button(
+#                      label="Download the predicted data as CSV",
+#                      data=csv,
+#                      file_name='Prediction.csv',
+#                      mime='text/csv'
+# #                     ,
+# #                      on_click=st.stop(),
+#                     )
+                download = FileDownloader(csv.to_csv(),file_ext='csv').download()
                     
 #         if (new_file is not None) and (finish_flag == True):
 #         def convert_df(df):
@@ -1056,6 +1057,35 @@ def check_password():
 #         if is_register:
     # Password correct.
         return True
+    
+    
+    
+def csv_downloader(data):
+	csvfile = data.to_csv()
+	b64 = base64.b64encode(csvfile.encode()).decode()
+	new_filename = "new_text_file_{}_.csv".format(timestr)
+	st.markdown("#### Download File ###")
+	href = f'<a href="data:file/csv;base64,{b64}" download="{new_filename}">Click Here!!</a>'
+	st.markdown(href,unsafe_allow_html=True)
+
+# Class
+class FileDownloader(object):
+	"""docstring for FileDownloader
+	>>> download = FileDownloader(data,filename,file_ext).download()
+	"""
+	def __init__(self, data,filename='myfile',file_ext='txt'):
+		super(FileDownloader, self).__init__()
+		self.data = data
+		self.filename = filename
+		self.file_ext = file_ext
+
+	def download(self):
+		b64 = base64.b64encode(self.data.encode()).decode()
+		new_filename = "{}_{}_.{}".format(self.filename,timestr,self.file_ext)
+		st.markdown("#### Download File ###")
+		href = f'<a href="data:file/{self.file_ext};base64,{b64}" download="{new_filename}">Click Here!!</a>'
+		st.markdown(href,unsafe_allow_html=True)
+
 
 
 if __name__ == "__main__":
