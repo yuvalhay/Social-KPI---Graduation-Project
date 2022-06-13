@@ -254,6 +254,8 @@ def loneliness_default_weights(df_catagorized, loneliness_dict):
     update_weights(loneliness_dict, 'area_per_person_score', 0.05 )
     update_weights(loneliness_dict, 'Ownership_score', 0.05)
 
+    return loneliness_dict
+
     
 def health_default_weights(df_catagorized, health_dict):
     for col in df_catagorized.columns:
@@ -268,6 +270,8 @@ def health_default_weights(df_catagorized, health_dict):
     update_weights(health_dict, 'mekabley_kizba_siud_score', 0.14 )
     update_weights(health_dict, 'corona_immunity_score', 0.2 )
     
+    return health_dict
+
     
 def economic_strength_default_weights(df_catagorized, economic_strength_dict):
     for col in df_catagorized.columns:
@@ -292,35 +296,5 @@ def economic_strength_default_weights(df_catagorized, economic_strength_dict):
     update_weights(economic_strength_dict, 'martial_score', 0.02 )
     update_weights(economic_strength_dict, 'members_Water_score', 0.06 )
     update_weights(economic_strength_dict, 'near_106_pizul_and_dangerous_buildings_score', 0.1 )
-#########################################################################################################
-
-# df_catagorized = rawToValCatagorized('big_table.csv')
-
-# loneliness_dict = {}
-# health_dict = {}
-# economic_strength_dict = {}
-# for col in df_catagorized.columns:
-#   loneliness_dict[col] = 0
-#   health_dict[col] = 0
-#   economic_strength_dict[col] = 0
-
-
-
-# mapping_dict = {"E" : economic_strength_dict, "H" : health_dict, "L" : loneliness_dict } #maps from a letter to the corresponding dictionary
-# default_weights(loneliness_dict,health_dict,economic_strength_dict)
-
-# # weights_update(GUI_tuple)
-
-# df_scored = MetricsCalc(df_catagorized,loneliness_dict, health_dict, economic_strength_dict  )
-# df_scored
-
-# NL = df_scores['Loneliness_score']
-# E = df_scores['Economic_Strength_score']
-# H = df_scores['Health_score']
-# K_const = 5
-# T_threshold = 34 # risker than (1,2,2)
-
-# df_scores['R_function'] = np.power(K_const-NL,2) + np.power(K_const-H,2) + np.power(K_const-E,2)
-# df_scores['Risk'] = df_scores['R_function'].apply(lambda x : 1 if x>= T_threshold else 0)
-
-# print(round(df_scores.query('Risk == 1').count()[1]/df_scores.shape[0]*100 ,3), '% of the households are under risk')
+    
+    return economic_strength_dict
