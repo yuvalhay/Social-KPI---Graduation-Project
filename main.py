@@ -13,7 +13,7 @@ from prediction import *
 # Utils
 import base64 
 import time
-timestr = time.strftime("%Y%m%d")
+timestr = time.strftime("%Y%m%d_%H%M")
 
 st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
