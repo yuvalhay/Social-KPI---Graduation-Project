@@ -56,7 +56,11 @@ def header(name):
 def subheader(name):
     st.markdown(f'<p style="color: #000000; font-size: 18px; "> {name} </p>',
                 unsafe_allow_html=True)
-    
+
+def pers_subheader(name):
+    st.markdown(f'<p style="color: #000000; font-size: 19px; "> {name} </p>',
+                unsafe_allow_html=True)
+
 def update_session_state(key, value):
     del st.session_state[key]
     st.session_state[key] = value
