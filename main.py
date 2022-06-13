@@ -935,7 +935,13 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">About</p>', unsafe_allow_html=True)
 #         st.text("Team GABOT")
-        Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
+        subheader("We are information system engineering students from the Technion.")
+	subheader("During our studies we had to work on a final project that combines the knowledge we gained in the last four years of our studies.")
+	subheader("Beside the fact that we are very good friends, we have a lot of experience working together, so the decision to unite into a team was natural and immediate.")
+	subheader("While scrolling the available project subjects we were interested in some projects, but after hearing the large impact this project has on our society we didn’t think twice.")
+	subheader("We were thrilled and excited to work on a project with large added value that contributes to society.")
+	
+	Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
             st.image(Yuvi_pic, width=130)
         with Tal:
