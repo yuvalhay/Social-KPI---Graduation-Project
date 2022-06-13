@@ -201,7 +201,7 @@ def main():
                                             'widow_elderlies_score':('מספר אלמנים זקנים באזור סטטיסטי', 'הסבר על המדד'),
                                             'lonely_elderlies_score':('מספר מבוגרים בודדים באזור סטטיסטי', 'הסבר על המדד'),
                                             'p85_plus_score':('מספר בני 85 ומעלה באזור סטטיסטי', 'הסבר על המדד'),
-                                            'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                            'corona_immunity':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
                                             'age_score':('גיל ראש משק הבית', 'הסבר על המדד'),
                                             'area_per_person_score':('שטח לאדם במשק בית', 'הסבר על המדד'),
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
@@ -215,7 +215,7 @@ def main():
                                             'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
                                             'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
                                             'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
-                                            'accumulated_cases_score':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
+                                            'corona_immunity':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
                                             'age_score':('Age of head of household', 'הסבר על המדד'),
                                             'area_per_person_score':('Area per person per household', 'הסבר על המדד'),
                                             'Ownership_score':('Type of property ownership (rent/ownership)', 'הסבר על המדד')
@@ -375,12 +375,7 @@ def main():
                                         'zachaim_kizbat_nechut_children_score':('מספר ילדים הזכאים לקצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
                                         'mekabley_kizbaot_from_injured_Work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
                                         'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_cases_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_recoveries_score':('סה"כ מקרי הבראה מקורונה באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_hospitalized_score':('סה"כ מקרי התאשפזות בעקבות קורונה באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_vaccination_first_dose_score':('סה"כ כמות מתחסנים בחיסון ראשון באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_vaccination_second_dose_score':('סה"כ כמות מתחסנים בחיסון שני באזור סטטיסטי', 'הסבר על המדד'),
-                                        'accumulated_vaccination_third_dose_score':('סה"כ כמות מתחסנים בחיסון שלישי באזור סטטיסטי', 'הסבר על המדד')
+                                        'corona_immunity':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
                                        }
                     curr_health_dict = health_dict.copy()
                     for key, val in curr_health_dict.items():
