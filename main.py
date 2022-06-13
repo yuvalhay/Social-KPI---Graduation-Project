@@ -154,7 +154,7 @@ def main():
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Social KPIs</p>', unsafe_allow_html=True)
 
-        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' page!")
 
     elif choose == "Social KPIs" and st.session_state['flag'] is True:
         with kpi_header:
@@ -739,7 +739,7 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
         
-        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' page!")
         
         
     elif choose == "Risk" and st.session_state['flag'] is True:
@@ -891,7 +891,7 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
         
-        st.error("CSV file was not uploaded. Please go back to 'File Upload' section!")
+        st.error("CSV file was not uploaded. Please go back to 'File Upload' page!")
         
     elif choose == "Prediction" and st.session_state['flag'] is True:
     #     st.balloons()
