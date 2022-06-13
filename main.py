@@ -13,7 +13,7 @@ from prediction import *
 # Utils
 import base64 
 import time
-timestr = time.strftime("%Y%m%d-%H%M%S")
+timestr = time.strftime("%Y%m%d")
 
 st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
@@ -111,17 +111,7 @@ def main():
             if uploaded_file is not None:
                 st.session_state['flag'] = True
                 with st.spinner('Uploading, it may take a few minutes..'):
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					df,raw_df = rawToValCatagorized(uploaded_file)
+			df,raw_df = rawToValCatagorized(uploaded_file)
 					st.session_state['df'] = df
 					st.session_state['raw_df'] = raw_df
 					df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
