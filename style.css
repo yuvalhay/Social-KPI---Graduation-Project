@@ -17,7 +17,7 @@ footer:after {
 }
 
 
-/* div[data-testid="stMarkdownContainer"] {
+.download {
   background-color: #FF4B4B;
   color: white;
   padding: 15px 25px;
@@ -26,9 +26,9 @@ footer:after {
   display: inline-block;
 }
 
-a:hover, a:active {
+/* a:hover, a:active {
   background-color: #FF4B4B; */
-}
+/* } */
 
 /* body {
   background-color: lightgoldenrodyellow;
