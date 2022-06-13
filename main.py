@@ -878,7 +878,7 @@ def main():
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
-        if (new_file is not None):
+        if new_file is not None:
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
@@ -917,8 +917,7 @@ def main():
 
 
                 st.dataframe(df_risk)
-                st.session_state["finish_Prediction_flag"] = True
-                from google.colab import files
+#                 st.session_state["finish_Prediction_flag"] = True
                 
                 if st.button("Download the predicted data as CSV"):
                     df_risk.to_csv('Prediction.csv', index=False ,encoding = 'utf-8')
@@ -1113,8 +1112,7 @@ if __name__ == "__main__":
     if check_password():
 #         st.write("Here goes your normal Streamlit app...")
 #         st.button("Click me")
-        main()
-        
+        main()    
 #         st.subheader("Register")
 #         with st.expander("Registering"):
 #             name_register = st.text_input("Your name")
