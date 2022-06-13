@@ -18,7 +18,7 @@ footer:after {
 
 
 .download {
-  background-color: #FF4B4B;
+  background-color: #F0F2F6;
   color: white;
   padding: 15px 25px;
   text-align: center;
@@ -27,9 +27,11 @@ footer:after {
   display: inline-block;
 }
 
-/* a:hover, a:active {
-  background-color: #FF4B4B; */
-/* } */
+.download:hover, .download:active {
+  background-color: #FF4B4B;
+  text-decoration: none;
+  decoration: none;
+}
 
 /* body {
   background-color: lightgoldenrodyellow;
