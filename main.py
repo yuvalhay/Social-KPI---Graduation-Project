@@ -721,10 +721,8 @@ def main():
         perc = round(under_risk_list_df.query('Risk == 1').count()[1]/under_risk_list_df.shape[0],3)*100
         st.write(perc)
         under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
-        st.write(under_risk_list_df)
-        st.write(curr_df)
+        st.dataframe(under_risk_list_df)
         map_df = addAggMetrics(curr_df, True)
-        st.write(map_df)
         map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
         
@@ -745,10 +743,10 @@ def main():
                 A_color.append(120)
                 
         
-        Risk_df = st.session_state['Risk'] # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 #         st.title(f'{round(perc_risk,3)}% of the households are under risk') # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        st.dataframe(Risk_df) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#         st.dataframe(Risk_df) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 #         def convert_df(df):
 #             # IMPORTANT: Cache the conversion to prevent computation on every rerun
