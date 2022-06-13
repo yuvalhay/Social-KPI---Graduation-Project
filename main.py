@@ -57,7 +57,7 @@ def subheader(name):
     st.markdown(f'<p style="color: #000000; font-size: 18px; "> {name} </p>',
                 unsafe_allow_html=True)
 
-def pers_subheader(name):
+def perc_subheader(name):
     st.markdown(f'<p style="color: #000000; font-size: 19px; "> {name} </p>',
                 unsafe_allow_html=True)
 
@@ -729,7 +729,7 @@ def main():
             col1.header("")
             col1.subheader("")
             col1.subheader("")
-            col1.subheader(f'{round(perc,3)}% of the households are under risk')
+            col1.perc_subheader(f'{round(perc,3)}% of the households are under risk')
 
 
             # Pie chart, where the slices will be ordered and plotted counter-clockwise:
@@ -881,7 +881,7 @@ def main():
                 col1.header("")
                 col1.subheader("")
                 col1.subheader("")
-                col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
+                col1.perc_subheader(f'{round(perc_risk,3)}% of the households are under risk')
 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
