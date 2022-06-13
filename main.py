@@ -387,7 +387,7 @@ def main():
 					'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
 					'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
 					'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
-					'mekabley_kizbaot_from_injured_Work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
+					'mekabley_kizbaot_from_injured_work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
 					'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
 					'corona_imunitiny_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
 					  }
@@ -761,6 +761,7 @@ def main():
             under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
             st.dataframe(under_risk_list_df)
             download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
+	    st.markdown("")
             map_df = addAggMetrics(curr_df, True)
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
