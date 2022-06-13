@@ -729,7 +729,7 @@ def main():
             col1.header("")
             col1.subheader("")
             col1.subheader("")
-            col1.perc_subheader(f'{round(perc,3)}% of the households are under risk')
+            col1.subheader(f'{round(perc,3)}% of the households are under risk')
 
 
             # Pie chart, where the slices will be ordered and plotted counter-clockwise:
@@ -881,7 +881,7 @@ def main():
                 col1.header("")
                 col1.subheader("")
                 col1.subheader("")
-                col1.perc_subheader(f'{round(perc_risk,3)}% of the households are under risk')
+                col1.subheader(f'{round(perc_risk,3)}% of the households are under risk')
 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
