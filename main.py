@@ -17,7 +17,8 @@ from datetime import datetime, timedelta
 from pytz import timezone
 curr_time = time.localtime()
 # tz = timezone('Europe/Berlin')
-timestr = time.strftime("%d%m%Y_%H%M") + datetime.timedelta(hours=3)
+timestr = (datetime.now() + timedelta(hours=3)).strftime("%d%m%Y_%H%M")
+# timestr = time.strftime("%d%m%Y_%H%M") + datetime.timedelta(hours=3)
 
 st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
