@@ -934,7 +934,7 @@ def main():
                      data=csv,
                      file_name='Prediction.csv',
                      mime='text/csv',
-                     on_click=st.stop()
+                     on_click=st.stop(),
                     )
                     
 #         if (new_file is not None) and (finish_flag == True):
