@@ -718,7 +718,7 @@ def main():
         curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
         st.session_state['df_scores'] = curr_df
         under_risk_list_df = CalcRisk(curr_df)
-        under_risk_list_df = underRisk.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
+        under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
         st.write(curr_df)
         map_df = addAggMetrics(curr_df, True)
         st.write(map_df)
