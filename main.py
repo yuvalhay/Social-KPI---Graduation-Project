@@ -54,7 +54,7 @@ def header(name):
                 unsafe_allow_html=True)
 
 def subheader(name):
-    st.markdown(f'<p style="color: #000000; font-size: 18px; "> {name} </p>',
+    st.markdown(f'<p style="color: #000000; font-size: 16px; "> {name} </p>',
                 unsafe_allow_html=True)
 
 def perc_subheader(name):
@@ -387,7 +387,7 @@ def main():
 					'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
 					'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
 					'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
-					'mekabley_kizbaot_from_injured_work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
+					'mekabley_kizbaot_from_injured_Work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
 					'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
 					'corona_immunity_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
 					  }
