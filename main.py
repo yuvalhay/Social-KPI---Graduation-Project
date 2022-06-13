@@ -345,11 +345,11 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Loneliness AVERAGE score per building', 'Loneliness WORST score per building'))
-                    if option == 'Loneliness AVERAGE score per building':
+                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif option == 'Loneliness WORST score per building':
+                    elif option == 'Display by worst':
                         layer = WORST 
                         tooltip = tooltip_STRCT
                         
@@ -516,12 +516,12 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Health AVERAGE score per building', 'Health WORST score per building'))
-                    if option == 'Health AVERAGE score per building':
+                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif 'Health WORST score per building':
-                        layer = WORST
+                    elif option == 'Display by worst':
+                        layer = WORST 
                         tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
@@ -687,12 +687,12 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Economic Strength AVERAGE score per building', 'Economic Strength WORST score per building'))
-                    if option == 'Economic Strength AVERAGE score per building':
+                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif option == 'Economic Strength WORST score per building':
-                        layer = WORST
+                    elif option == 'Display by worst':
+                        layer = WORST 
                         tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
