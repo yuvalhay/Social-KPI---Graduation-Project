@@ -208,19 +208,19 @@ def main():
                                            }
                                             
 			
-                    loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
-                                            'members_Water_score':('Number of people per household', 'הסבר על המדד'),
-                                            'martial_score':('Marital status of head of household', 'הסבר על המדד'),
-                                            'widow_grown_score':('Number of older (18 - 67) widows in statistical area', 'הסבר על המדד'),
-                                            'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area', 'הסבר על המדד'),
-                                            'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area', 'הסבר על המדד'),
-                                            'p85_plus_score':('Number of 85 and above in statistical area', 'הסבר על המדד'),
-                                            'corona_immunity':('Total number of Corona cases in statistical area', 'הסבר על המדד'),
-                                            'age_score':('Age of head of household', 'הסבר על המדד'),
-                                            'area_per_person_score':('Area per person per household', 'הסבר על המדד'),
-                                            'Ownership_score':('Type of property ownership (rent/ownership)', 'הסבר על המדד')
-                                  
-                                           }
+                    loneliness_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
+						'members_Water_score':('Number of people per household','number of people living in this house according to water records'),
+						'martial_score':('Marital status of head of household','The marital status can be one of the followings widow,single,married, divorced') ,
+						'widow_grown_score':('number of older (18 - 67) widows in statistical area', 'The number of grown widows in ages 18-67 who live in the statistical area'),
+						'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area','The number of elderlies widows (67 and older) who live in statistical area'),
+						'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area','The number of elderlies (67 and older) that defined lonely according to municipalities records'),
+						'p85_plus_score':('Number of people aged 85 and above in statistical area','Number of people aged 85 and above in statistical area according to municipalities records'),
+						'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
+						'area_per_person_score':('area per person per household', 'Built-up area of the household divided by the number of people live in the house'),
+						'corona_imunitiny':('Corona status per statistical area','Calculation of Corona parameters in statistical area'),
+						'Ownership_score':('Type of property ownership (rent/ownership)', 'Indicate whether the house is rent or owned by the head of the household')
+					    }
+
                     curr_loneliness_dict = loneliness_dict.copy()
                     for key, val in curr_loneliness_dict.items():
                         if index % 2 == 0:
@@ -729,7 +729,7 @@ def main():
 
 
             # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-            colors = ['#FF4B4B', '#0077b8']
+            colors = ['#FF4B4B', '#00aef0']
             labels = ['', '']
             sizes = [perc/100, 1-(perc/100)]
             explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
@@ -881,7 +881,7 @@ def main():
 
 
                 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-                colors = ['#FF4B4B', '#0077b8']
+                colors = ['#FF4B4B', '#00aef0']
                 labels = ['', '']
                 sizes = [perc_risk/100, 1-(perc_risk/100)]
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
