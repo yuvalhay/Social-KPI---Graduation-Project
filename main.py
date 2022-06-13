@@ -915,7 +915,7 @@ def main():
 # #                     ,
 # #                      on_click=st.stop(),
 #                     )
-                download = FileDownloader(csv.to_csv(),file_ext='csv').download()
+                download = FileDownloader(df_risk.to_csv(),file_ext='csv').download()
                     
 #         if (new_file is not None) and (finish_flag == True):
 #         def convert_df(df):
