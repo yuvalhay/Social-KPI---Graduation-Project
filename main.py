@@ -381,6 +381,16 @@ def main():
                                         'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
                                         'corona_immunity':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
                                        }
+					health_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
+										'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
+										'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
+										'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
+										'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
+										'mekabley_kizbaot_from_injured_work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
+										'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
+										'corona_imunitiny_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
+										  }
+	
                     curr_health_dict = health_dict.copy()
                     for key, val in curr_health_dict.items():
                         if index % 2 == 0:
@@ -388,8 +398,8 @@ def main():
                         if index % 2 == 1:
                             temp_col = odd_col
                         if val != 0:
-                            curr_health_dict[f'{key}'] = temp_col.select_slider(f'{health_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                        value=val, key=f'Health_slider_{key}', help=f'{health_hebrew_dict[key][1]}')
+                            curr_health_dict[f'{key}'] = temp_col.select_slider(f'{health_english_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                        value=val, key=f'Health_slider_{key}', help=f'{health_english_dict[key][1]}')
     #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
     #                                                                     value=val, key=f'loneliness_slider_{key}')
                             index += 1
@@ -710,7 +720,12 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
-        
+        subheader("SoCity is a project that combines data and visualization, not only to present the data, but use it in order to indicate households in risk.")
+		subheader("During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
+		subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view.")
+		subheader("For the most convenient and effective data processing we present the household in risk in two ways:")
+		subheader("1.  On a map - you can get partial understanding")
+		subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
         with st.spinner('Processing, it may take a few minutes..'):
             curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
