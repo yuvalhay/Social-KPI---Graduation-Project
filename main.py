@@ -887,8 +887,8 @@ def main():
                 from google.colab import files
                 
                 if st.button("Download the predicted data as CSV"):
-                    df_risk.to_csv('Prediction.csv', index=False ,encoding = 'utf-8-sig')
-                    files.download('Prediction.csv')
+                    df_risk.to_csv('Prediction.csv', index=False ,encoding = 'utf-8')
+#                     files.download('Prediction.csv')
                     st.stop()
 #                 def convert_df(df):
 #                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
