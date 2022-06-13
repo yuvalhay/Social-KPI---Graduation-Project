@@ -178,7 +178,7 @@ def main():
 
                 if KPI_page == "Loneliness":
                     if st.button("Reset Weights"):
-			loneliness_dict = {}
+                        loneliness_dict = {}
                         loneliness_dict = loneliness_default_weights(st.session_state['df'], loneliness_dict)
                         st.session_state['loneliness_dict'] = loneliness_dict
 		
