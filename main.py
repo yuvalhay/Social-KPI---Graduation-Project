@@ -791,9 +791,9 @@ def main():
         
         Risk_layer = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
-                        map_df,
+                        under_risk_list_df,
                         get_position=['lon', 'lat'],
-                        get_elevation="Risk", # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#                         get_elevation="Risk", # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                         elevation_scale=20,
     #                     radius=40,
                         get_radius = 10,
@@ -801,7 +801,7 @@ def main():
     #                     get_radius=10000,          # Radius is given in meters
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["R_color", "G_color", "B_color", "A_color"],  # Set an RGBA value for fill
+                        get_fill_color=["255", "255", "255", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
