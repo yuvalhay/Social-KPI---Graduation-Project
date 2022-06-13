@@ -99,8 +99,8 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
-            about_home_subheader("In our society where the socio-economic gaps are getting wider, loneliness has become a common phenomenon and health problems can affect life quality, many families find themselves struggling to survive.")
-            about_home_subheader("SoCity wishes to help the municipality decision makers find those households at risk, so they can help them.")
+            about_home_subheader("In our society where the socio-economic gaps are getting wider, loneliness has become a common phenomenon, and health issues can negatively impact quality of life, many families find themselves struggling to survive.")
+            about_home_subheader(" *SoCity's main goal is to enable the authorities to make data-driven decisions about social issues and turn the spotlight on households at risk, so they can help them.*")
             about_home_subheader("In this project we collected data from the local authorities in order to calculate social measures for life quality, as defined by “Joint” organization.")
             about_home_subheader("SoCity gives you the opportunity to see those measures on a map, so you can get spatial understanding regarding the population at risk.")
 #             subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
