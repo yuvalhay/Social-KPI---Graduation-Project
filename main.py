@@ -718,6 +718,7 @@ def main():
         curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
         st.session_state['df_scores'] = curr_df
         curr_df = CalcRisk(curr_df)
+        st.write(curr_df)
         map_df = addAggMetrics(curr_df)
         st.write(map_df)
         map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
