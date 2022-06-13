@@ -532,7 +532,7 @@ def main():
 
                 elif KPI_page == "Economic Strength":
                     if st.button("Reset Weights"):
-			economic_strength_dict = {}
+                        economic_strength_dict = {}
                         economic_strength_dict = economic_strength_default_weights(st.session_state['df'], economic_strength_dict)
                         st.session_state['economic_strength_dict'] = economic_strength_dict
                     even_col, odd_col = st.columns(2)
