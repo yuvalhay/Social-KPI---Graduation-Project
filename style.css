@@ -25,9 +25,9 @@ a:link, a:visited {
   display: inline-block;
 }
 
-a:hover, a:active {
+/* a:hover, a:active {
   background-color: #FF4B4B;
-}
+} */
 
 /* body {
   background-color: lightgoldenrodyellow;
