@@ -113,12 +113,12 @@ def main():
                 st.session_state['flag'] = True
                 with st.spinner('Uploading, it may take a few minutes..'):
                     df,raw_df = rawToValCatagorized(uploaded_file)
-			        st.session_state['df'] = df
-			        st.session_state['raw_df'] = raw_df
-			        df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
-			        loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
-			        loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
-			        st.session_state['loneliness_dict'] = loneliness_dict
+                    st.session_state['df'] = df
+                    st.session_state['raw_df'] = raw_df
+                    df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+                    loneliness_dict, health_dict, economic_strength_dict = {}, {}, {}
+                    loneliness_dict, health_dict, economic_strength_dict = default_weights(df, loneliness_dict, health_dict, economic_strength_dict)
+                    st.session_state['loneliness_dict'] = loneliness_dict
                     st.session_state['health_dict'] = health_dict
                     st.session_state['economic_strength_dict'] = economic_strength_dict
 
