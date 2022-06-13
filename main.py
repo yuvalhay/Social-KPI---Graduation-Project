@@ -112,7 +112,7 @@ def main():
             if uploaded_file is not None:
                 st.session_state['flag'] = True
                 with st.spinner('Uploading, it may take a few minutes..'):
-			df,raw_df = rawToValCatagorized(uploaded_file)
+					df,raw_df = rawToValCatagorized(uploaded_file)
 			st.session_state['df'] = df
 			st.session_state['raw_df'] = raw_df
 			df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
