@@ -721,11 +721,11 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
         subheader("SoCity is a project that combines data and visualization, not only to present the data, but use it in order to indicate households in risk.")
-		subheader("During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
-		subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view.")
-		subheader("For the most convenient and effective data processing we present the household in risk in two ways:")
-		subheader("1.  On a map - you can get partial understanding")
-		subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
+        subheader("During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
+        subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view.")
+        subheader("For the most convenient and effective data processing we present the household in risk in two ways:")
+        subheader("1.  On a map - you can get partial understanding")
+        subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
         with st.spinner('Processing, it may take a few minutes..'):
             curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
