@@ -194,7 +194,8 @@ def main():
 
                 if KPI_page == "Loneliness":
                     if st.button("Reset Weights"):
-                        st.session_state['loneliness_dict'] = loneliness_default_weights(st.session_state['df'], st.session_state['loneliness_dict'])
+                        loneliness_dict = st.session_state['loneliness_dict']
+                        st.session_state['loneliness_dict'] = loneliness_default_weights(st.session_state['df'], loneliness_dict)
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
