@@ -578,7 +578,7 @@ def main():
 						'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
 						'hashlamta_hachnasa_family_eldelies_score':('Recipients of income completions due to elderlies in the family in statistical area', 'The number of household in statistical area  which get income completions due to elderlies in the family'),
 						'mekabley_kizva_elderlies_score':('Recipients of elderly allowance in statistical area','The number of households in statistical area who get elderly allowance'),
-						'avtachat_hachnasa_family_score':('Recipients of family income security in statistical area', 'The number of households which get family income security in statistical area'),
+						'avtachat_hachansa_family_score':('Recipients of family income security in statistical area', 'The number of households which get family income security in statistical area'),
 						'income_per_person_score':('Total income per person per household','The total income of household divided by the number of people live in the house'),
 						'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
 						'Ownership_score':('Type of property ownership (rent/ownership)','Indicate whether the house is rent or owned by the head of the household'),
