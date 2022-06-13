@@ -380,7 +380,7 @@ def main():
                                         'zachaim_kizbat_nechut_children_score':('מספר ילדים הזכאים לקצבת נכות באזור סטטיסטי', 'הסבר על המדד'),
                                         'mekabley_kizbaot_from_injured_Work_score':('מספר מקבלי קיצבת תאונות עבודה באזור סטטיסטי', 'הסבר על המדד'),
                                         'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
-                                        'corona_immunity':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
+                                        'corona_immunity_score':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
                                        }
                     health_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
 					'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
@@ -389,7 +389,7 @@ def main():
 					'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
 					'mekabley_kizbaot_from_injured_Work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
 					'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
-					'corona_imunitiny_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
+					'corona_immunity_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
 					  }
 	
                     curr_health_dict = health_dict.copy()
