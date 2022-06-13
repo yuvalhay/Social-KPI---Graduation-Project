@@ -57,6 +57,10 @@ def subheader(name):
     st.markdown(f'<p style="color: #000000; font-size: 16px; "> {name} </p>',
                 unsafe_allow_html=True)
 
+def about_home_subheader(name):
+    st.markdown(f'<p style="color: #000000; font-size: 18px; "> {name} </p>',
+                unsafe_allow_html=True)
+
 def perc_subheader(name):
     st.markdown(f'<p style="color: #000000; font-size: 19px; "> {name} </p>',
                 unsafe_allow_html=True)
@@ -95,10 +99,10 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
-            subheader("In our society where the socio-economic gaps are getting wider, loneliness has become a common phenomenon and health problems can affect life quality, many families find themselves struggling to survive.")
-            subheader("SoCity wishes to help the municipality decision makers find those households at risk, so they can help them.")
-            subheader("In this project we collected data from the local authorities in order to calculate social measures for life quality, as defined by “Joint” organization.")
-            subheader("SoCity gives you the opportunity to see those measures on a map, so you can get spatial understanding regarding the population at risk.")
+            about_home_subheader("In our society where the socio-economic gaps are getting wider, loneliness has become a common phenomenon and health problems can affect life quality, many families find themselves struggling to survive.")
+            about_home_subheader("SoCity wishes to help the municipality decision makers find those households at risk, so they can help them.")
+            about_home_subheader("In this project we collected data from the local authorities in order to calculate social measures for life quality, as defined by “Joint” organization.")
+            about_home_subheader("SoCity gives you the opportunity to see those measures on a map, so you can get spatial understanding regarding the population at risk.")
 #             subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
 #             subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
 #             subheader("so you can observe how much it has affected the social KPI and the Risk.")
@@ -954,11 +958,11 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">About</p>', unsafe_allow_html=True)
-        subheader("We are information system engineering students from the Technion.")
-        subheader("During our studies we had to work on a final project that combines the knowledge we gained in the last four years of our studies.")
-        subheader("Beside the fact that we are very good friends, we have a lot of experience working together, so the decision to unite into a team was natural and immediate.")
-        subheader("While scrolling the available project subjects we were interested in some projects, but after hearing the large impact this project has on our society we didn’t think twice.")
-        subheader("We were thrilled and excited to work on a project with large added value that contributes to society.")
+        about_home_subheader("We are information system engineering students from the Technion.")
+        about_home_subheader("During our studies we had to work on a final project that combines the knowledge we gained in the last four years of our studies.")
+        about_home_subheader("Beside the fact that we are very good friends, we have a lot of experience working together, so the decision to unite into a team was natural and immediate.")
+        about_home_subheader("While scrolling the available project subjects we were interested in some projects, but after hearing the large impact this project has on our society we didn’t think twice.")
+        about_home_subheader("We were thrilled and excited to work on a project with large added value that contributes to society.")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
         	st.image(Yuvi_pic, width=130)
