@@ -159,9 +159,10 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
-            st.write("An unfortunate phenomenon that has been occurring is reports by neighbors of bad smells coming from apartments, resulting in the discovery of lonely elderlies who have died in their homes.")
-            st.write("In this project we wish to reduce the number of these sad cases by using data to indicate households in risk. \nDuring the project we came to an understanding that this situation is a combination of three social KPI’s which are Loneliness, health and economic strength.")
-            st.write("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. \nOn this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI's.")
+            subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate some of the social KPI’s the “Joint” organization defined - Loneliness, Health, Economic Strength.")
+            subheader("There are default weights that reflect our conclusion from the data. In this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI.")
+            subheader("This flexibility can help you change the importance of the parameter in the metric, or in a different perspective, it can reflect the changes regarding resource allocation.")
+            subheader("You can change each KPI parameters individually by choosing the relevant KPI. The changes you made here affect the “RISK”")
 
             with kpi_selection:
                 header("KPI Selection")
@@ -720,10 +721,8 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
-        subheader("SoCity is a project that combines data and visualization, not only to present the data, but use it in order to indicate households in risk.")
-        subheader("During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
-        subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view.")
-        subheader("For the most convenient and effective data processing we present the household in risk in two ways:")
+        subheader("SoCity is a project that combines data and visualization, not only to present the data, but use it in order to indicate households in risk. During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
+        subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view. For the most convenient and effective data processing we present the household in risk in two ways:")
         subheader("1.  On a map - you can get partial understanding")
         subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
