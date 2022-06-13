@@ -717,9 +717,9 @@ def main():
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
         curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
         st.session_state['df_scores'] = curr_df
-#         under_risk_list_df = CalcRisk(curr_df)
-#         under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','north','east','Loneliness_score','Health_score','Economic_Strength_score']]
-#         st.write(under_risk_list_df)
+        under_risk_list_df = CalcRisk(curr_df)
+        under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
+        st.write(under_risk_list_df)
         st.write(curr_df)
         map_df = addAggMetrics(curr_df, True)
         st.write(map_df)
@@ -850,7 +850,7 @@ def main():
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
-        if (new_file is not None) and (st.session_state["finish_Prediction_flag"] == False):
+        if (new_file is not None):
             new_df = pd.read_csv(new_file)
             st.session_state['new_df'] = new_df
             st.success("File was uploaded!")
