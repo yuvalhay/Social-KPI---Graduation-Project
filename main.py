@@ -137,6 +137,7 @@ def main():
             else:
                 st.session_state['flag'] = False
 
+            
     elif choose == "Social KPIs" and st.session_state['flag'] is False:
         with kpi_header:
     #         st.title("The visualization of our KPI's")
