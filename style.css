@@ -27,11 +27,12 @@ footer:after {
   display: inline-block;
 }
 
-.download:hover, .download:active {
+.download:hover, .download:active, .download:focus {
   background-color: #FF4B4B;
+  color: #FFFFFF;
   text-decoration: none;
   decoration: none;
-  color: #FFFFFF;
+ 
 }
 
 /* body {
