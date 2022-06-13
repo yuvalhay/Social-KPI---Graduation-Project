@@ -91,13 +91,13 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">Home</p>', unsafe_allow_html=True)
-            subheader("SoCity is an extension to the 3D GIS model of the “HAMAL”. ")
-            subheader("In this project we wish not only to present the data, but use it in order to indicate households in risk. ")
-            subheader("During the project we came to an understanding that “Risk” is a combination of three social KPI's ")
-            subheader("which are Loneliness, Health and Economic Strength. ")
-            subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
-            subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
-            subheader("so you can observe how much it has affected the social KPI and the Risk.")
+            subheader("In our society where the socio-economic gaps are getting wider, loneliness has become a common phenomenon and health problems can affect life quality, many families find themselves struggling to survive.")
+            subheader("SoCity wishes to help the municipality decision makers find those households at risk, so they can help them.")
+            subheader("In this project we collected data from the local authorities in order to calculate social measures for life quality, as defined by “Joint” organization.")
+            subheader("SoCity gives you the opportunity to see those measures on a map, so you can get spatial understanding regarding the population at risk.")
+#             subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate these KPIs. ")
+#             subheader("On this view we give you the opportunity to control the weight of each metric’s parameters, ")
+#             subheader("so you can observe how much it has affected the social KPI and the Risk.")
             
 			
     if choose == "File Upload":
