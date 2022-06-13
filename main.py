@@ -941,15 +941,15 @@ def main():
         subheader("We were thrilled and excited to work on a project with large added value that contributes to society.")
         Yuvi, Tal, Dana, Gal, Niv = st.columns(5)
         with Yuvi:
-			st.image(Yuvi_pic, width=130)
+		st.image(Yuvi_pic, width=130)
         with Tal:
-			st.image(Tal_pic, width=130)
+		st.image(Tal_pic, width=130)
         with Dana:
-			st.image(Dana_pic, width=130)
+		st.image(Dana_pic, width=130)
         with Gal:
-			st.image(Gal_pic, width=130)
+		st.image(Gal_pic, width=130)
         with Niv:
-			st.image(Niv_pic, width=130)
+		st.image(Niv_pic, width=130)
     #     st.markdown(""" <style> .font {
     #     font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
     #     </style> """, unsafe_allow_html=True)
