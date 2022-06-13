@@ -895,7 +895,7 @@ def main():
                      file_name='Prediction.csv',
                      mime='text/csv',
                     ):
-                    st.stop
+                    st.stop()
 #         if (new_file is not None) and (finish_flag == True):
 #         def convert_df(df):
 #             # IMPORTANT: Cache the conversion to prevent computation on every rerun
