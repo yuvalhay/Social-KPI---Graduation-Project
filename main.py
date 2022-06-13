@@ -747,12 +747,13 @@ def main():
             return df.to_csv().encode('utf-8')
 
         csv = convert_df(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        st.download_button(
+        if st.download_button(
              label="Download the Risk data as CSV",
              data=csv,
              file_name='Prediction.csv',
              mime='text/csv',
-            )
+            ):
+            st.stop()
         
         Risk_layer = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
