@@ -49,6 +49,8 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
     df['age_score'] = df['age'].apply(lambda x : 2 if 18<x<44  else (-1 if 43<x<64 else (-2 if x>63  else 0)))
     df.rename(columns = { 'near 106 pizul and dangerous buildings' : 'near_106_pizul_and_dangerous_buildings' }, inplace = True)
     df['near_106_pizul_and_dangerous_buildings_score'] = df['near_106_pizul_and_dangerous_buildings'].apply(lambda x : -2 if x==2  else 0)
+    df['Ownership_score'] = df['Ownership']
+    df['area_per_person_score'] = df['area_per_person'].apply(lambda x : -2 if -1<x<10  else (-1 if 9<x<20 else (1 if 40<x<80 else ( 2 if x > 79 else 0))))
     df["count"] = df.groupby("STAT")["index"].transform('count') # population size of a statistic area
     # df.head()
     df = df.iloc[: , 1:]
@@ -65,11 +67,18 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
     # INCOME COLUMNS
     df['total_income'] = df['all_jobs_no_household_jobs_mean']+df['household_jobs_mean']+df['pension_mean']+df['kizbat_sheerim_mean']+df['self_employed_mean']
     df['income_per_person'] = df['total_income']/(df['members_Water']+1)
+    df['corona_immunity'] = df['accumulated_vaccination_first_dose'] + df['accumulated_recoveries']
+    prob_cols = ['widow_grown', 'widow_elderlies', 'lonely_elderlies', 'p85_plus', 'avtachat_hachansa_family', 'mekabley_kizva_elderlies', 'hashlamta_hachnasa_family_eldelies', 'hashlama_kizvat_nechut_elderlies', 'Hashlamat_hachnasa_sheerim_family', 'Mekabley_mezonot', 'Mekabley_kizbaot_nechut', 'zachaim_kizbat_nechut_children', 'mekabley_kizbaot_from_injured_Work', 'mekabley_kizba_siud','corona_immunity']
 
     for prob_col in prob_cols:
         df[f'{prob_col}_score'] = df[f'{prob_col}']*(-2)
         df[f'{prob_col}_score'] = df[f'{prob_col}_score'].fillna(0)
+        
+     df['corona_immunity_score'] = df['corona_immunity']*(1) #the only positive effect parameter
+     df['corona_immunity_score'].fillna(0)
 
+        
+        
     # df['income_per_person'].quantile(0.25)
     q25 = df['income_per_person'].quantile(0.25)
     q50 = df['income_per_person'].quantile(0.5)
@@ -93,6 +102,8 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
     return df_full, df_copy
 
 def update_weights(metric_dict, param_to_update, new_weight): # updated given dict with a new value
+    if param_to_update not in metric_dict:
+        raise Exception("ERROR: param does not exist in dictionary")
     up_dict = {f'{param_to_update}' : new_weight}
     updated_metric_dict = metric_dict.update(up_dict)
 
@@ -101,8 +112,6 @@ def update_weights(metric_dict, param_to_update, new_weight): # updated given di
         print("sum:", round(sum(metric_dict.values()), 4) )
     else:
         print(f"---Dictionary sums to 1---")
-    if param_to_update not in metric_dict:
-        print("WARNING: param does not exist in dictionary")
 
 #   return updated_metric_dict
 
