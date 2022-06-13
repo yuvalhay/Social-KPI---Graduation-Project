@@ -16,18 +16,19 @@ footer:after {
     top: 2px;
 }
 
-/* a {
-  background-color: #f44336;
+
+div[data-testid="stMarkdownContainer"] {
+  background-color: #FF4B4B;
   color: white;
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-} */
+}
 
-/* a:hover, a:active {
+a:hover, a:active {
   background-color: #FF4B4B;
-} */
+}
 
 /* body {
   background-color: lightgoldenrodyellow;
