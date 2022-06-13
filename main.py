@@ -181,6 +181,7 @@ def main():
                         loneliness_dict = {}
                         loneliness_dict = loneliness_default_weights(st.session_state['df'], loneliness_dict)
                         st.session_state['loneliness_dict'] = loneliness_dict
+                        st.write("")
 		
                     even_col, odd_col = st.columns(2)
                     index = 0
@@ -361,6 +362,7 @@ def main():
                         health_dict = {}
                         health_dict = health_default_weights(st.session_state['df'], health_dict)
                         st.session_state['health_dict'] = health_dict
+                        st.write("")
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -535,6 +537,7 @@ def main():
                         economic_strength_dict = {}
                         economic_strength_dict = economic_strength_default_weights(st.session_state['df'], economic_strength_dict)
                         st.session_state['economic_strength_dict'] = economic_strength_dict
+                        st.write("")
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -895,6 +898,7 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
+        subheader("In order to generalize the system for future usage, where the data format is similar but not identical to the initial format, a KNN model is used to predict the risk of a new given set of households. Upload new data and get the information about the percentage and the household in risk. You can also download the results for further processing.")
         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
         if new_file is not None:
             new_df = pd.read_csv(new_file)
