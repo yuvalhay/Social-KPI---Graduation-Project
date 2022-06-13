@@ -140,7 +140,19 @@ def MetricsCalc(raw_df, catagorized_df, loneliness_dict, health_dict, economic_s
         df_knn_raw = pd.merge(raw_df,df_scores[['index','Loneliness_score', 'Health_score', 'Economic_Strength_score']],on = 'index', how = 'left') #new one
         return df_scores, df_knn_raw
     else: return df_scores
+    
+    
+def CalcRisk(df_scores, K_const=5,T_threshold=34 ): #get df with he 3 metrics and creates risk 
+  NL = df_scores['Loneliness_score']
+  E = df_scores['Economic_Strength_score']
+  H = df_scores['Health_score']
+  # K_const = 5
+  # T_threshold = 34 # risker than (1,2,2)
 
+  df_scores['R_function'] = np.power(K_const-NL,2) + np.power(K_const-H,2) + np.power(K_const-E,2)
+  df_scores['Risk'] = df_scores['R_function'].apply(lambda x : 1 if x>= T_threshold else 0)
+
+  return df_scores
 
 def addAggMetrics(df): #adds M_AVG and M_STRCT columns for each metric M
     df.rename(columns = {'lon' : 'east', 'lat' : 'north'}, inplace = True)
