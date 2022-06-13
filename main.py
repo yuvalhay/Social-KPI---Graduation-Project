@@ -209,6 +209,7 @@ def main():
                                             'Ownership_score':('סוג בעלות על הדירה (שכירות/בעלות)', 'הסבר על המדד')
                                            }
                                             
+			
                     loneliness_english_dict={'arnona_cat_score':('Arnona discount per household', 'הסבר על המדד'),
                                             'members_Water_score':('Number of people per household', 'הסבר על המדד'),
                                             'martial_score':('Marital status of head of household', 'הסבר על המדד'),
