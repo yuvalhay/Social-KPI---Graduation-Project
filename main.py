@@ -381,15 +381,15 @@ def main():
                                         'mekabley_kizba_siud_score':('מספר מקבלי קצבת סיעוד באזור סטטיסטי', 'הסבר על המדד'),
                                         'corona_immunity':('סה"כ מקרי הדבקות בקורונה באזור סטטיסטי', 'הסבר על המדד'),
                                        }
-					health_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
-								'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
-								'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
-								'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
-								'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
-								'mekabley_kizbaot_from_injured_work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
-								'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
-								'corona_imunitiny_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
-								  }
+                    health_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
+					'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
+					'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
+					'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
+					'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
+					'mekabley_kizbaot_from_injured_work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
+					'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
+					'corona_imunitiny_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
+					  }
 	
                     curr_health_dict = health_dict.copy()
                     for key, val in curr_health_dict.items():
