@@ -103,7 +103,7 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
 
 def update_weights(metric_dict, param_to_update, new_weight): # updated given dict with a new value
     if param_to_update not in metric_dict:
-        raise Exception("ERROR: param does not exist in dictionary")
+        raise Exception("ERROR: param does not exist in dictionary. param name:", param_to_update)
     up_dict = {f'{param_to_update}' : new_weight}
     updated_metric_dict = metric_dict.update(up_dict)
 
