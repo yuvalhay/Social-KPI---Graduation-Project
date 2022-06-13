@@ -264,14 +264,6 @@ def main():
                             R_color_STRCT.append(255)
                             G_color_STRCT.append(0)
 
-    #                 map_df["R_color"] = R_color
-    #                 map_df["G_color"] = G_color
-    #                 st.session_state["R_color"] = R_color
-    #                 st.session_state["G_color"] = G_color
-                    
-                    
-#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-#                     st.write(R_color_AVG, num_of_rows)
                     map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
                     map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
                     map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
@@ -316,7 +308,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Loneliness KPI (Average) = math.round({Loneliness_score_AVG})</b>",
+                        "html": "<b>Loneliness KPI (Average) = {Loneliness_score_AVG}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -334,7 +326,7 @@ def main():
                     if option == 'Loneliness AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    else: 
+                    elif: option == 'Loneliness WORST score per building':
                         layer = WORST 
                         tooltip = tooltip_STRCT
                         
@@ -406,46 +398,38 @@ def main():
                     for avg in list(map_df["Health_score_AVG"]):
                         avg = round(avg)
                         if avg == 1:
-                            R_color_AVG.append(44)
-                            G_color_AVG.append(186)
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(0)
                         elif avg == 2:
-                            R_color_AVG.append(163)
-                            G_color_AVG.append(255)
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(167)
                         elif avg == 3:
                             R_color_AVG.append(255)
                             G_color_AVG.append(244)
                         elif avg == 4:
-                            R_color_AVG.append(255)
-                            G_color_AVG.append(167)
+                            R_color_AVG.append(163)
+                            G_color_AVG.append(255)
                         elif avg == 5:
-                            R_color_AVG.append(255)
-                            G_color_AVG.append(0)
+                            R_color_AVG.append(44)
+                            G_color_AVG.append(186)
                    
                     for strct in list(map_df["Health_score_STRCT"]):
                         if strct == 1:
-                            R_color_STRCT.append(44)
-                            G_color_STRCT.append(186)
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(0)
                         elif strct == 2:
-                            R_color_STRCT.append(163)
-                            G_color_STRCT.append(255)
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(167)
                         elif strct == 3:
                             R_color_STRCT.append(255)
                             G_color_STRCT.append(244)
                         elif strct == 4:
-                            R_color_STRCT.append(255)
-                            G_color_STRCT.append(167)
+                            R_color_STRCT.append(163)
+                            G_color_STRCT.append(255)
                         elif strct == 5:
-                            R_color_STRCT.append(255)
-                            G_color_STRCT.append(0)
+                            R_color_STRCT.append(44)
+                            G_color_STRCT.append(186)
 
-    #                 map_df["R_color"] = R_color
-    #                 map_df["G_color"] = G_color
-    #                 st.session_state["R_color"] = R_color
-    #                 st.session_state["G_color"] = G_color
-                    
-                    
-#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-#                     st.write(R_color_AVG, num_of_rows)
                     map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
                     map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
                     map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
@@ -490,7 +474,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Health KPI (Average) = math.round({Health_score_AVG})</b>",
+                        "html": "<b>Health KPI (Average) = {Health_score_AVG}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -508,7 +492,9 @@ def main():
                     if option == 'Health AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    else: layer = WORST, tooltip = tooltip_STRCT
+                    elif: 'Health WORST score per building':
+                        layer = WORST
+                        tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
                         layer,
@@ -577,52 +563,44 @@ def main():
                     map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         
                     R_color_AVG, G_color_AVG, R_color_STRCT, G_color_STRCT = [], [], [], []
-                    num_of_rows = map_df.shape[0]
+#                     num_of_rows = map_df.shape[0]
 #                     num_of_rows_range = [i for i in range(num_of_rows)]
 #                     st.write(map_df)
                     for avg in list(map_df["Economic_Strength_score_AVG"]):
                         avg = round(avg)
                         if avg == 1:
-                            R_color_AVG.append(44)
-                            G_color_AVG.append(186)
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(0)
                         elif avg == 2:
-                            R_color_AVG.append(163)
-                            G_color_AVG.append(255)
+                            R_color_AVG.append(255)
+                            G_color_AVG.append(167)
                         elif avg == 3:
                             R_color_AVG.append(255)
                             G_color_AVG.append(244)
                         elif avg == 4:
-                            R_color_AVG.append(255)
-                            G_color_AVG.append(167)
+                            R_color_AVG.append(163)
+                            G_color_AVG.append(255)
                         elif avg == 5:
-                            R_color_AVG.append(255)
-                            G_color_AVG.append(0)
+                            R_color_AVG.append(44)
+                            G_color_AVG.append(186)
                    
                     for strct in list(map_df["Economic_Strength_score_STRCT"]):
                         if strct == 1:
-                            R_color_STRCT.append(44)
-                            G_color_STRCT.append(186)
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(0)
                         elif strct == 2:
-                            R_color_STRCT.append(163)
-                            G_color_STRCT.append(255)
+                            R_color_STRCT.append(255)
+                            G_color_STRCT.append(167)
                         elif strct == 3:
                             R_color_STRCT.append(255)
                             G_color_STRCT.append(244)
                         elif strct == 4:
-                            R_color_STRCT.append(255)
-                            G_color_STRCT.append(167)
+                            R_color_STRCT.append(163)
+                            G_color_STRCT.append(255)
                         elif strct == 5:
-                            R_color_STRCT.append(255)
-                            G_color_STRCT.append(0)
+                            R_color_STRCT.append(44)
+                            G_color_STRCT.append(186)
 
-    #                 map_df["R_color"] = R_color
-    #                 map_df["G_color"] = G_color
-    #                 st.session_state["R_color"] = R_color
-    #                 st.session_state["G_color"] = G_color
-                    
-                    
-#                     map_df = curr_df[["lat", "lon", "Loneliness_score", "Health_score", "Economic_Strength_score"]]
-#                     st.write(R_color_AVG, num_of_rows)
                     map_df["R_color_AVG"] = R_color_AVG # st.session_state["R_color"]
                     map_df["G_color_AVG"] = G_color_AVG # st.session_state["G_color"]  
                     map_df["R_color_STRCT"] = R_color_STRCT # st.session_state["R_color"]
@@ -667,7 +645,7 @@ def main():
                         coverage=5 #0.1
                         )
                     tooltip_AVG = {
-                        "html": "<b>Economic Strength KPI (Average) = round({Economic_Strength_score_AVG})</b>",
+                        "html": "<b>Economic Strength KPI (Average) = {Economic_Strength_score_AVG}</b>",
                         "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
                     }
                     tooltip_STRCT = {
@@ -685,7 +663,9 @@ def main():
                     if option == 'Economic Strength AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    else: layer = WORST, tooltip = tooltip_STRCT
+                    elif: option == 'Economic Strength WORST score per building':
+                        layer = WORST
+                        tooltip = tooltip_STRCT
                         
                     r = pydeck.Deck(
                         layer,
@@ -752,23 +732,6 @@ def main():
             map_df = addAggMetrics(curr_df, True)
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-        
-#         R_color, G_color, B_color, A_color = [], [], [], []
-#         num_of_rows = map_df.shape[0]
-#                     num_of_rows_range = [i for i in range(num_of_rows)]
-#                     st.write(map_df)
-#         for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-#             if val == 0:
-#                 R_color.append(255)
-#                 G_color.append(0)
-#                 B_color.append(0)
-#                 A_color.append(0.5)
-
-#             elif val == 1:
-#                 R_color.append(255)
-#                 G_color.append(255)
-#                 B_color.append(255)
-#                 A_color.append(120)
                 
         
         st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
