@@ -178,7 +178,8 @@ def main():
 
                 if KPI_page == "Loneliness":
                     if st.button("Reset Weights"):
-                        loneliness_dict = loneliness_default_weights(st.session_state['df'], {})
+			loneliness_dict = {}
+                        loneliness_dict = loneliness_default_weights(st.session_state['df'], loneliness_dict)
                         st.session_state['loneliness_dict'] = loneliness_dict
 		
                     even_col, odd_col = st.columns(2)
@@ -357,7 +358,8 @@ def main():
 
                 elif KPI_page == "Health":
                     if st.button("Reset Weights"):
-                        health_dict = health_default_weights(st.session_state['df'], {})
+                        health_dict = {}
+                        health_dict = health_default_weights(st.session_state['df'], health_dict)
                         st.session_state['health_dict'] = health_dict
                     even_col, odd_col = st.columns(2)
                     index = 0
@@ -530,7 +532,8 @@ def main():
 
                 elif KPI_page == "Economic Strength":
                     if st.button("Reset Weights"):
-                        economic_strength_dict = economic_strength_default_weights(st.session_state['df'], {})
+			economic_strength_dict = {}
+                        economic_strength_dict = economic_strength_default_weights(st.session_state['df'], economic_strength_dict)
                         st.session_state['economic_strength_dict'] = economic_strength_dict
                     even_col, odd_col = st.columns(2)
                     index = 0
