@@ -933,8 +933,9 @@ def main():
                      label="Download the predicted data as CSV",
                      data=csv,
                      file_name='Prediction.csv',
-                     mime='text/csv',
-                     on_click=st.stop(),
+                     mime='text/csv'
+#                     ,
+#                      on_click=st.stop(),
                     )
                     
 #         if (new_file is not None) and (finish_flag == True):
