@@ -717,7 +717,9 @@ def main():
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
         curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
         st.session_state['df_scores'] = curr_df
+        curr_df = CalcRisk(curr_df)
         map_df = addAggMetrics(curr_df)
+        st.write(map_df)
         map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
         
@@ -725,41 +727,42 @@ def main():
         num_of_rows = map_df.shape[0]
 #                     num_of_rows_range = [i for i in range(num_of_rows)]
 #                     st.write(map_df)
-        for val in list(map_df["Economic_Strength_score_STRCT"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             if val == 0:
-                R_color.append(255)
-                G_color.append(255)
-                B_color.append(255)
-                A_color.append(120)
-            elif val == 1:
                 R_color.append(255)
                 G_color.append(0)
                 B_color.append(0)
                 A_color.append(0)
+            elif val == 1:
+                R_color.append(255)
+                G_color.append(255)
+                B_color.append(255)
+                A_color.append(120)
+                
         
         Risk_df = st.session_state['Risk'] # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        st.title(f'{round(perc_risk,3)}% of the households are under risk') # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#         st.title(f'{round(perc_risk,3)}% of the households are under risk') # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        st.dataframe(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        st.dataframe(Risk_df) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        def convert_df(df):
-            # IMPORTANT: Cache the conversion to prevent computation on every rerun
-            return df.to_csv().encode('utf-8')
+#         def convert_df(df):
+#             # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#             return df.to_csv().encode('utf-8')
 
-        csv = convert_df(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        if st.download_button(
-             label="Download the Risk data as CSV",
-             data=csv,
-             file_name='Prediction.csv',
-             mime='text/csv',
-            ):
-            st.stop()
+#         csv = convert_df(df_risk) # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#         if st.download_button(
+#              label="Download the Risk data as CSV",
+#              data=csv,
+#              file_name='Prediction.csv',
+#              mime='text/csv',
+#             ):
+#             st.stop()
         
         Risk_layer = pydeck.Layer(
                         'ScatterplotLayer', #'ColumnLayer',     # Change the `type` positional argument here
                         map_df,
                         get_position=['lon', 'lat'],
-                        get_elevation="Economic_Strength_score_STRCT", # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                        get_elevation="Risk", # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                         elevation_scale=20,
     #                     radius=40,
                         get_radius = 10,
@@ -774,7 +777,7 @@ def main():
                         coverage=5 #0.1
                         )
         Risk_tooltip = {
-            "html": "<b>Risk index (Worst) = {Risk_score})</b>",
+            "html": "<b>Risk index (Worst) = {Risk})</b>",
             "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
 
