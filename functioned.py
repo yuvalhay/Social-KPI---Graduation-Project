@@ -74,8 +74,8 @@ def rawToValCatagorized(raw_csv): # gets a raw DF from as arrive from authority 
         df[f'{prob_col}_score'] = df[f'{prob_col}']*(-2)
         df[f'{prob_col}_score'] = df[f'{prob_col}_score'].fillna(0)
         
-     df['corona_immunity_score'] = df['corona_immunity']*(1) #the only positive effect parameter
-     df['corona_immunity_score'].fillna(0)
+    df['corona_immunity_score'] = df['corona_immunity']*(1) #the only positive effect parameter
+    df['corona_immunity_score'].fillna(0)
 
         
         
