@@ -910,11 +910,12 @@ def main():
                 explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
                 fig1, ax1 = plt.subplots()
-                ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors)
+                ax1.pie(sizes, explode=explode, labels=labels, shadow=True, startangle=90,colors=colors)
                 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
                 col2.pyplot(fig1)
 
+                df_risk = df_risk.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['index','STAT','east','north','pred_Loneliness','pred_Health','pred_Economic_Strength']]
 
                 st.dataframe(df_risk)
 #                 st.session_state["finish_Prediction_flag"] = True
