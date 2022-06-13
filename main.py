@@ -129,10 +129,10 @@ def main():
 			map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
 
 			st.session_state['df_scored'] = df_scored
-			st.session_state['df_knn'] = df_knn
-			st.session_state['map_df'] = map_df
+		st.session_state['df_knn'] = df_knn
+		st.session_state['map_df'] = map_df
 
-			st.success("File was uploaded!")
+		st.success("File was uploaded!")
   
             else:
                 st.session_state['flag'] = False
