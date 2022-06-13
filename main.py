@@ -567,6 +567,27 @@ def main():
                                                     'members_Water_score':('מספר נפשות במשק בית', 'הסבר על המדד'),
                                                     'near_106_pizul_and_dangerous_buildings_score':('בניין שנמצא במרחק של עד 25 מטר מבניין מסוכן או בניין שעבר פיצול', 'הסבר על המדד')
                                                   }
+                    economic_strenght_english_dict={'area_per_person_score':('Area per person per household','Built-up area of the household divided by the number of people live in the house'),
+						'socio_economic_score':('Socio-economic score','The socio economic score of the statistical area'),
+						'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of household in statistical area who get nursing allowance'),
+						'mekabley_kizbaot_from_injured_Work_score':('Allowance recipients due to a work injury in statistical area', 'The number of households in statistical area who get an allowance due to a work injury'),
+						'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
+						'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of households in statistical area, who get a disability allowance'),
+						'Mekabley_mezonot_score':('Alimony recipients in statistical area','The number of households in statistical area, who get child support payments'),
+						'Hashlamat_hachnasa_sheerim_family_score':'Income completion of death benefits in statistical areas','The number of households in statistical area, who get death benefits'),
+						'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance’),
+						'hashlamta_hachnasa_family_eldelies_score':('Recipients of income completions due to elderlies in the family in statistical area', 'The number of household in statistical area  which get income completions due to elderlies in the family'),
+						'mekabley_kizva_elderlies_score':('Recipients of elderly allowance in statistical area','The number of households in statistical area who get elderly allowance'),
+						'avtachat_hachnasa_family_score':('Recipients of family income security in statistical area', 'The number of households which get family income security in statistical area'),
+						'income_per_person_score':('Total income per person per household','The total income of household divided by the number of people live in the house'),
+						'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
+						'Ownership_score':('Type of property ownership (rent/ownership)','Indicate whether the house is rent or owned by the head of the household'),
+						'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
+						'martial_score':('Marital status of head of household','The marital status can be one of the followings widow,single,married, divorced'),
+						'members_Water_score':('Number of people per household','Number of people living in this house according to water records'),
+						'near_106_pizul_and_dangerous_buildings_score':('A building that is up to 25 meters away from a dangerous building or a building that has been split','')
+						  }
+
                     curr_economic_strength_dict = economic_strength_dict.copy()
                     for key, val in curr_economic_strength_dict.items():
                         if index % 2 == 0:
@@ -574,8 +595,8 @@ def main():
                         if index % 2 == 1:
                             temp_col = odd_col
                         if val != 0:
-                            curr_economic_strength_dict[f'{key}'] = temp_col.select_slider(f'{economic_strength_hebrew_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                                                                        value=val, key=f'Economic_Strength_slider_{key}', help=f'{economic_strength_hebrew_dict[key][1]}')
+                            curr_economic_strength_dict[f'{key}'] = temp_col.select_slider(f'{economic_strenght_english_dict[key][0]}', options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                                                        value=val, key=f'Economic_Strength_slider_{key}', help=f'{economic_strenght_english_dict[key][1]}')
     #                         curr_loneliness_dict[f'{key}'] = temp_col.slider(f'loneliness_slider: {key}', min_value=0.0, max_value=10.0,
     #                                                                     value=val, key=f'loneliness_slider_{key}')
                             index += 1
