@@ -326,7 +326,7 @@ def main():
                     if option == 'Loneliness AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif: option == 'Loneliness WORST score per building':
+                    elif option == 'Loneliness WORST score per building':
                         layer = WORST 
                         tooltip = tooltip_STRCT
                         
@@ -492,7 +492,7 @@ def main():
                     if option == 'Health AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif: 'Health WORST score per building':
+                    elif 'Health WORST score per building':
                         layer = WORST
                         tooltip = tooltip_STRCT
                         
@@ -663,7 +663,7 @@ def main():
                     if option == 'Economic Strength AVERAGE score per building':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
-                    elif: option == 'Economic Strength WORST score per building':
+                    elif option == 'Economic Strength WORST score per building':
                         layer = WORST
                         tooltip = tooltip_STRCT
                         
