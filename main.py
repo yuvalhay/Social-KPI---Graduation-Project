@@ -753,22 +753,22 @@ def main():
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
         
-        R_color, G_color, B_color, A_color = [], [], [], []
-        num_of_rows = map_df.shape[0]
+#         R_color, G_color, B_color, A_color = [], [], [], []
+#         num_of_rows = map_df.shape[0]
 #                     num_of_rows_range = [i for i in range(num_of_rows)]
 #                     st.write(map_df)
-        for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            if val == 0:
-                R_color.append(255)
-                G_color.append(0)
-                B_color.append(0)
-                A_color.append(0.5)
+#         for val in list(map_df["Risk"]): # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#             if val == 0:
+#                 R_color.append(255)
+#                 G_color.append(0)
+#                 B_color.append(0)
+#                 A_color.append(0.5)
 
-            elif val == 1:
-                R_color.append(255)
-                G_color.append(255)
-                B_color.append(255)
-                A_color.append(120)
+#             elif val == 1:
+#                 R_color.append(255)
+#                 G_color.append(255)
+#                 B_color.append(255)
+#                 A_color.append(120)
                 
         
         st.session_state['Risk_df'] = map_df # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -801,14 +801,14 @@ def main():
     #                     get_radius=10000,          # Radius is given in meters
                         # Red-Black: ["63 * (Loneliness_score - 1)", "0", "0", "120"],
                         # new: ["R_color", "G_color", "0", "120"],
-                        get_fill_color=["255", "255", "255", "120"],  # Set an RGBA value for fill
+                        get_fill_color=["255", "0", "0", "120"],  # Set an RGBA value for fill
     #                     elevation_range=[0, 1000],
                         pickable=True,
                         extruded=True,
                         coverage=5 #0.1
                         )
         Risk_tooltip = {
-            "html": "<b>Risk index (Worst) = {Risk})</b>",
+            "html": "<b>Risk index (Worst) = 1)</b>",
             "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
 
