@@ -215,7 +215,7 @@ def main():
 						'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area','The number of elderlies widows (67 and older) who live in statistical area'),
 						'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area','The number of elderlies (67 and older) that defined lonely according to municipalities records'),
 						'p85_plus_score':('Number of people aged 85 and above in statistical area','Number of people aged 85 and above in statistical area according to municipalities records'),
-						'corona_imunitiny':('Corona status per statistical area','Calculation of Corona parameters in statistical area'),
+						'corona_immunity_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area'),
 					     	'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
 						'area_per_person_score':('area per person per household', 'Built-up area of the household divided by the number of people live in the house'),
 						'Ownership_score':('Type of property ownership (rent/ownership)', 'Indicate whether the house is rent or owned by the head of the household')
