@@ -40,7 +40,7 @@ Yuvi_pic = Image.open(r'Team_members_pictures/yuval.png')
 Tal_pic = Image.open(r'Team_members_pictures/tal.png')
 Dana_pic = Image.open(r'Team_members_pictures/dana.png')
 Gal_pic = Image.open(r'Team_members_pictures/gal.png')
-Niv_pic = Image.open(r'Team_members_pictures/niv.png')
+Niv_pic = Image.open(r'Team_members_pictures/niv2.png')
 
 kpi_header = st.container()
 kpi_selection = st.container()
