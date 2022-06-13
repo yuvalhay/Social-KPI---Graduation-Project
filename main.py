@@ -178,10 +178,9 @@ def main():
 
                 if KPI_page == "Loneliness":
                     if st.button("Reset Weights"):
-#                         loneliness_dict = {}
                         loneliness_dict = loneliness_default_weights(st.session_state['df'], {})
                         st.session_state['loneliness_dict'] = loneliness_dict
-                        st.write("Worrrrrrkkkkkkkk")
+		
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -357,6 +356,9 @@ def main():
                     st.pydeck_chart(r)
 
                 elif KPI_page == "Health":
+                    if st.button("Reset Weights"):
+                        health_dict = health_default_weights(st.session_state['df'], {})
+                        st.session_state['health_dict'] = health_dict
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -527,6 +529,9 @@ def main():
                     st.pydeck_chart(r)
 
                 elif KPI_page == "Economic Strength":
+                    if st.button("Reset Weights"):
+                        economic_strength_dict = economic_strength_default_weights(st.session_state['df'], {})
+                        st.session_state['economic_strength_dict'] = economic_strength_dict
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
