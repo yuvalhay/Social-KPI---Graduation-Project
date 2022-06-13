@@ -23,6 +23,7 @@ footer:after {
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
+  decoration: none;
   display: inline-block;
 }
 
