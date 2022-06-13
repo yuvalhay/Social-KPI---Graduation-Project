@@ -58,7 +58,7 @@ def subheader(name):
                 unsafe_allow_html=True)
 
 def about_home_subheader(name):
-    st.markdown(f'<p style="color: #000000; font-family: Monaco; font-size: 18px; "> {name} </p>',
+    st.markdown(f'<p style="color: #000000; font-family: Calibri; font-size: 18px; "> {name} </p>',
                 unsafe_allow_html=True)
 
 def perc_subheader(name):
