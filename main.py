@@ -13,8 +13,10 @@ from prediction import *
 # Utils
 import base64 
 import time
+from pytz import timezone
 curr_time = time.localtime()
-timestr = time.strftime("%d%m%Y_%H%M", curr_time)
+tz = timezone('Europe/Jerusalem')
+timestr = time.strftime("%d%m%Y_%H%M", tz)
 
 st.set_page_config(page_title="SoCity", page_icon="background_img/favicon.ico" ,layout="wide")
 # set_png_as_page_bg('background_img/3_background_img_1920_1080.png')
