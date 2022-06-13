@@ -1120,7 +1120,7 @@ class FileDownloader(object):
 		b64 = base64.b64encode(self.data.encode()).decode()
 		new_filename = "{}_{}_.{}".format(self.filename,timestr,self.file_ext)
 # 		st.markdown("#### Download File ###")
-		href = f'<div class="download"><a href="data:file/{self.file_ext};base64,{b64}" download="{new_filename}">Download</a></div>'
+		href = f'<div class="download"><a href="data:file/{self.file_ext};base64,{b64}" style="text-decoration:none;color:#FFFFFF" download="{new_filename}">Download</a></div>'
 		st.markdown(href,unsafe_allow_html=True)
 
 
