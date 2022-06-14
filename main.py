@@ -904,9 +904,9 @@ def main():
         st.markdown('<p class="font">Prediction</p>', unsafe_allow_html=True)
 #         knn_file = st.file_uploader("Choose a CSV file for KNN", type=['csv'], key="knn_file")
         subheader("In order to generalize the system for future usage, where the data format is similar but not identical to the initial format, ")
-	subheader("a KNN model is used to predict the risk of a new given set of households. ")
-	subheader("Upload new data and get the information about the percentage and the household in risk. ")
-	subheader("You can also download the results for further processing.")
+        subheader("a KNN model is used to predict the risk of a new given set of households. ")
+        subheader("Upload new data and get the information about the percentage and the household in risk. ")
+        subheader("You can also download the results for further processing.")
         new_file = st.file_uploader("Choose a new CSV file to predict", type=['csv'], key="new_file")    
         if new_file is not None:
             new_df = pd.read_csv(new_file)
