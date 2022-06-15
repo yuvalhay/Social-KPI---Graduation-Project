@@ -839,7 +839,7 @@ def main():
                         coverage=5 #0.1
                         )
         Risk_tooltip = {
-            "html": "<b>Risk index (Worst) = 1)</b>",
+            "html": "<b>Risk index (Worst) = 1</b>",
             "style": {"background": "grey", "color": "black", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
 
