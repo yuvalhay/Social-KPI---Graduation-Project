@@ -790,7 +790,9 @@ def main():
             subheader("List of under-risk households:")    
             
             under_risk_list_df.rename(columns = {'lon' : 'east', 'lat' : 'north'}, inplace = True)
-            st.dataframe(under_risk_list_df, 400)
+            st.dataframe(under_risk_list_df)
+            st.table(under_risk_list_df)
+            st.write(under_risk_list_df)
             under_risk_list_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
             
             download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
