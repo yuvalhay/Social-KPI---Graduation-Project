@@ -168,10 +168,9 @@ def main():
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
             st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
-            subheader("By the data provided for us from the “HAMAL”, we were able to establish metrics to calculate some of the social KPI’s the “Joint” organization defined - Loneliness, Health, Economic Strength.")
-            subheader("There are default weights that reflect our conclusion from the data. In this view we give you the opportunity to control the weight of each metric’s parameters, so you can observe how much it has affected the social KPI.")
-            subheader("This flexibility can help you change the importance of the parameter in the metric, or in a different perspective, it can reflect the changes regarding resource allocation.")
-            subheader("You can change each KPI parameters individually by choosing the relevant KPI. The changes you made here affect the “RISK”")
+            subheader("Social KPIs are our three social metrics - Loneliness, Health, Economic Strength. These are formed and calculated based on the given data and defined by the “Joint” organization and influenced by weights.")
+            subheader("SoCity enables you not only to explore and analyze the data as given but also to take control over the weighting process of each parameter, for each metric. This flexibility enables you to determine the importance of different parameters and reflects changes regarding resource allocation.")
+            subheader("Choose a KPI and set each parameter according to your urban planning and perception. This modification affects ‘Risk’.")
 
             with kpi_selection:
                 header("KPI Selection")
@@ -212,15 +211,15 @@ def main():
                                             
 			
                     loneliness_english_dict={'arnona_cat_score':('Arnona discount per household','If and under what circumstance the household get arnona discount'),
-						'members_Water_score':('Number of people per household','number of people living in this house according to water records'),
+						'members_Water_score':('Number of people per household','Number of people living in this house according to water records'),
 						'martial_score':('Marital status of head of household','The marital status can be one of the followings widow,single,married, divorced') ,
-						'widow_grown_score':('number of older (18 - 67) widows in statistical area', 'The number of grown widows in ages 18-67 who live in the statistical area'),
+						'widow_grown_score':('Number of older (18 - 67) widows in statistical area', 'The number of grown widows in ages 18-67 who live in the statistical area'),
 						'widow_elderlies_score':('Number of elderly (above 67) widows in statistical area','The number of elderlies widows (67 and older) who live in statistical area'),
 						'lonely_elderlies_score':('Number of lonely elderlies (above 67) in statistical area','The number of elderlies (67 and older) that defined lonely according to municipalities records'),
 						'p85_plus_score':('Number of people aged 85 and above in statistical area','Number of people aged 85 and above in statistical area according to municipalities records'),
 						'corona_immunity_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area'),
 					     	'age_score':('Age of head of household','The age of the head of the household according to municipalities records'),
-						'area_per_person_score':('area per person per household', 'Built-up area of the household divided by the number of people live in the house'),
+						'area_per_person_score':('Area per person per household', 'Built-up area of the household divided by the number of people live in the house'),
 						'Ownership_score':('Type of property ownership (rent/ownership)', 'Indicate whether the house is rent or owned by the head of the household')
 					    }
 
@@ -390,7 +389,7 @@ def main():
 					'hashlama_kizvat_nechut_elderlies_score':('Completion of a disability allowance for a senior citizen in statistical area','The number of elderlies (67+) in statistical area, who get Completion of a disability allowance'),
 					'Mekabley_kizbaot_nechut_score':('Disability allowance recipients in statistical area','The number of people in statistical area, who get a disability allowance'),
 					'zachaim_kizbat_nechut_children_score':('Children entitled to a disability allowance in statistical area','The number of children in statistical area, who are entitled to a disability allowance'),
-					'mekabley_kizbaot_from_injured_Work_score':('allowance recipients due to a work injury in statistical area', 'the number of people in statistical area who get an allowance due to a work injury'),
+					'mekabley_kizbaot_from_injured_Work_score':('Allowance recipients due to a work injury in statistical area', 'The number of people in statistical area who get an allowance due to a work injury'),
 					'mekabley_kizba_siud_score':('Recipients of nursing allowance in statistical area', 'The number of people in statistical area who get nursing allowance'),
 					'corona_immunity_score':('Corona status per statistical area','Calculation of Corona parameters in statistical area')
 					  }
