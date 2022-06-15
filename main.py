@@ -80,7 +80,7 @@ def main():
         image = Image.open('background_img/SoCityFINAL-LOGO_wide.png')
         st.image(image)
 
-        choose = option_menu("SoCity", ["Home", "File Upload", "Social KPIs", "Risk", "Prediction", "About"],
+        choose = option_menu("SoCity", ["Home", "File Upload", "Social KPIs", "Risk", "Prediction", "About Us"],
                              icons=['house', 'upload', 'sliders','bullseye', 'kanban', 'person lines fill'],
 
                              menu_icon="building", default_index=0,
@@ -167,7 +167,7 @@ def main():
             st.markdown(""" <style> .font {
             font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
             </style> """, unsafe_allow_html=True)
-            st.markdown('<p class="font">The visualization of our KPIs</p>', unsafe_allow_html=True)
+            st.markdown('<p class="font">Social KPIs</p>', unsafe_allow_html=True)
             subheader("Social KPIs are our three social metrics - Loneliness, Health, Economic Strength. These are formed and calculated based on the given data and defined by the “Joint” organization and influenced by weights.")
             subheader("SoCity enables you not only to explore and analyze the data as given but also to take control over the weighting process of each parameter, for each metric. This flexibility enables you to determine the importance of different parameters and reflects changes regarding resource allocation.")
             subheader("Choose a KPI and set each parameter according to your urban planning and perception. This modification affects ‘Risk’.")
@@ -342,7 +342,7 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    option = st.selectbox('Choose the Layer:',('Display by average', 'Display by worst'))
                     if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
@@ -518,7 +518,7 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    option = st.selectbox('Choose the Layer:',('Display by average', 'Display by worst'))
                     if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
@@ -715,7 +715,7 @@ def main():
                     view.zoom = 14
                     
                     layer, tooltip = "", ""
-                    option = st.selectbox('Choose the Layer?',('Display by average', 'Display by worst'))
+                    option = st.selectbox('Choose the Layer:',('Display by average', 'Display by worst'))
                     if option == 'Display by average':
                         layer = AVERAGE
                         tooltip = tooltip_AVG
@@ -788,7 +788,11 @@ def main():
         
             under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
             subheader("List of under-risk households:")    
-            st.dataframe(under_risk_list_df)
+            
+            under_risk_list_df.rename(columns = {'lon' : 'east', 'lat' : 'north'}, inplace = True)
+            st.dataframe(under_risk_list_df, 400)
+            under_risk_list_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
+            
             download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
             st.markdown("")
             subheader("For your convenience, visualization of under-risk buildings over the map. Notice that the darker the spot the more households under risk in this building")
@@ -982,12 +986,12 @@ def main():
 #              mime='text/csv',
 #             )
     
-    elif choose == "About":
+    elif choose == "About Us":
         #         st.title("The About section")
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">About</p>', unsafe_allow_html=True)
+        st.markdown('<p class="font">About Us</p>', unsafe_allow_html=True)
         about_home_subheader("We are information system engineering students at the Technion.")
         about_home_subheader("As a part of our studies we had to work on a final project that combines the knowledge we gained during the last four years of our studies.")
         about_home_subheader("Beside the fact that we are very good friends, we have also a lot of experience working together,")
