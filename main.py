@@ -182,12 +182,11 @@ def main():
                 header("KPI weights")
 
                 if KPI_page == "Loneliness":
-                    if st.button("Reset Weights"):
-                        loneliness_dict = {}
-                        loneliness_dict = loneliness_default_weights(st.session_state['df'], loneliness_dict)
-                        st.session_state['loneliness_dict'] = loneliness_dict
+#                     if st.button("Reset Weights"):
+#                         loneliness_dict = {}
+#                         loneliness_dict = loneliness_default_weights(st.session_state['df'], loneliness_dict)
+#                         st.session_state['loneliness_dict'] = loneliness_dict
 
-                    st.write(st.session_state['loneliness_dict'])
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -363,11 +362,11 @@ def main():
                     st.pydeck_chart(r)
 
                 elif KPI_page == "Health":
-                    if st.button("Reset Weights"):
-                        health_dict = {}
-                        health_dict = health_default_weights(st.session_state['df'], health_dict)
-                        st.session_state['health_dict'] = health_dict
-                        st.write(" ")
+#                     if st.button("Reset Weights"):
+#                         health_dict = {}
+#                         health_dict = health_default_weights(st.session_state['df'], health_dict)
+#                         st.session_state['health_dict'] = health_dict
+			
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
@@ -538,11 +537,11 @@ def main():
                     st.pydeck_chart(r)
 
                 elif KPI_page == "Economic Strength":
-                    if st.button("Reset Weights"):
-                        economic_strength_dict = {}
-                        economic_strength_dict = economic_strength_default_weights(st.session_state['df'], economic_strength_dict)
-                        st.session_state['economic_strength_dict'] = economic_strength_dict
-                        st.write(" ")
+#                     if st.button("Reset Weights"):
+#                         economic_strength_dict = {}
+#                         economic_strength_dict = economic_strength_default_weights(st.session_state['df'], economic_strength_dict)
+#                         st.session_state['economic_strength_dict'] = economic_strength_dict
+			
                     even_col, odd_col = st.columns(2)
                     index = 0
                     temp_col = even_col
