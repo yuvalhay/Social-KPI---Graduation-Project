@@ -749,10 +749,10 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #FF4B4B;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">Risk</p>', unsafe_allow_html=True)
-        subheader("SoCity is a project that combines data and visualization, not only to present the data, but use it in order to indicate households in risk. During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength.")
-        subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view. For the most convenient and effective data processing we present the household in risk in two ways:")
-        subheader("1.  On a map - you can get partial understanding")
-        subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
+        subheader("SoCity combines data and visualization, not only to present the data, but to spot households under risk. During the project we came to an understanding that “risk” is a combination of three social KPIs which are Loneliness, Health and Economic strength. The following view presents the buildings that have at least one household under risk, based on the metrics as defined in 'social KPIs' page.")
+#         subheader("This view presents the buildings that have at least one household in risk, considering the changes that were made on social KPIs view. For the most convenient and effective data processing we present the household in risk in two ways:")
+#         subheader("1.  On a map - you can get partial understanding")
+#         subheader("2.  In a table - you can get more details about the household in risk and act to help them. You can download this data for future usage.")
          # \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
         with st.spinner('Processing, it may take a few minutes..'):
             curr_df = MetricsCalc(st.session_state['raw_df'], st.session_state['df_scored'], st.session_state['loneliness_dict'], st.session_state['health_dict'], st.session_state['health_dict'], True, False)
@@ -787,9 +787,11 @@ def main():
             col2.pyplot(fig1)
         
             under_risk_list_df = under_risk_list_df.query('Risk == 1').sort_values(by=['R_function'], ascending=False)[['STAT','lat','lon','Loneliness_score','Health_score','Economic_Strength_score']]
+            subheader("List of under-risk households:")    
             st.dataframe(under_risk_list_df)
             download = FileDownloader(under_risk_list_df.to_csv(),file_ext='csv').download()
             st.markdown("")
+            subheader("For your convenience, visualization of under-risk buildings over the map. Notice that the darker the spot the more households under risk in this building")
             map_df = addAggMetrics(curr_df, True)
             map_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
         # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
