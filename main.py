@@ -790,7 +790,7 @@ def main():
             subheader("List of under-risk households:")    
             
             under_risk_list_df.rename(columns = {'lon' : 'east', 'lat' : 'north'}, inplace = True)
-            st.dataframe(under_risk_list_df, 800)
+            st.dataframe(under_risk_list_df)
 
             under_risk_list_df.rename(columns = {'east' : 'lon', 'north' : 'lat'}, inplace = True)
             
