@@ -7,8 +7,8 @@ from background_img.background_img import set_png_as_page_bg
 from PIL import Image
 import pydeck
 import math
-from functioned import *
-from prediction import *
+from func_lib import *
+from prediction_lib import *
 # Utils
 import base64 
 import time
